@@ -60,3 +60,13 @@ ggplot(champ,
 ```
 
 
+La moyenne vraie de la population vaut ainsi
+
+
+```{r}
+Moy = mean(champ$sim1)
+
+Moy
+
+```
+

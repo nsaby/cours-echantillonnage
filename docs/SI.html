@@ -154,8 +154,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>3.3</b> Calcul des estimateurs</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>3.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
-<li class="chapter" data-level="3.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-le-fini"><i class="fa fa-check"></i><b>3.3.2</b> La moyenne pour le fini</a></li>
-<li class="chapter" data-level="3.3.3" data-path="SI.html"><a href="SI.html#la-variance-déchantillonnage"><i class="fa fa-check"></i><b>3.3.3</b> La variance d’échantillonnage</a></li>
+<li class="chapter" data-level="3.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-fini"><i class="fa fa-check"></i><b>3.3.2</b> La moyenne pour la population discrète fini</a></li>
+<li class="chapter" data-level="3.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>3.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
 <li class="chapter" data-level="3.3.4" data-path="SI.html"><a href="SI.html#lintervalle-de-confiance"><i class="fa fa-check"></i><b>3.3.4</b> l’intervalle de confiance</a></li>
 </ul></li>
 </ul></li>
@@ -205,21 +205,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="avec-r-pour-les-polutations-discrètes" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Avec <code>R</code> pour les polutations discrètes</h3>
 <p>Voici comment tirer au hasard des position dans l’espace à partir de la liste des pixels.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="SI.html#cb16-1"></a>n =<span class="st"> </span><span class="dv">100</span></span>
-<span id="cb16-2"><a href="SI.html#cb16-2"></a></span>
-<span id="cb16-3"><a href="SI.html#cb16-3"></a><span class="co">#fixer la graine pour les tirages aléatoires</span></span>
-<span id="cb16-4"><a href="SI.html#cb16-4"></a><span class="kw">set.seed</span>(<span class="dv">5601</span>)</span>
-<span id="cb16-5"><a href="SI.html#cb16-5"></a></span>
-<span id="cb16-6"><a href="SI.html#cb16-6"></a><span class="co"># Creation des identifiants des lignes</span></span>
-<span id="cb16-7"><a href="SI.html#cb16-7"></a>id =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span></span>
-<span id="cb16-8"><a href="SI.html#cb16-8"></a><span class="co"># ou</span></span>
-<span id="cb16-9"><a href="SI.html#cb16-9"></a>id =<span class="st"> </span><span class="kw">seq</span>( <span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10000</span>, <span class="dt">by =</span> <span class="dv">1</span>)</span>
-<span id="cb16-10"><a href="SI.html#cb16-10"></a><span class="co"># tire au hasard n valeurs parmi 10000</span></span>
-<span id="cb16-11"><a href="SI.html#cb16-11"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sample</span>( <span class="dt">x =</span> id  , <span class="dt">size =</span> n)</span>
-<span id="cb16-12"><a href="SI.html#cb16-12"></a></span>
-<span id="cb16-13"><a href="SI.html#cb16-13"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sort</span>(MesIds)</span>
-<span id="cb16-14"><a href="SI.html#cb16-14"></a><span class="co"># Les coordonn?es</span></span>
-<span id="cb16-15"><a href="SI.html#cb16-15"></a>champ[MesIds,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="SI.html#cb18-1"></a>n =<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb18-2"><a href="SI.html#cb18-2"></a></span>
+<span id="cb18-3"><a href="SI.html#cb18-3"></a><span class="co">#fixer la graine pour les tirages aléatoires</span></span>
+<span id="cb18-4"><a href="SI.html#cb18-4"></a><span class="kw">set.seed</span>(<span class="dv">5601</span>)</span>
+<span id="cb18-5"><a href="SI.html#cb18-5"></a></span>
+<span id="cb18-6"><a href="SI.html#cb18-6"></a><span class="co"># Creation des identifiants des lignes</span></span>
+<span id="cb18-7"><a href="SI.html#cb18-7"></a>id =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span></span>
+<span id="cb18-8"><a href="SI.html#cb18-8"></a><span class="co"># ou</span></span>
+<span id="cb18-9"><a href="SI.html#cb18-9"></a>id =<span class="st"> </span><span class="kw">seq</span>( <span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10000</span>, <span class="dt">by =</span> <span class="dv">1</span>)</span>
+<span id="cb18-10"><a href="SI.html#cb18-10"></a><span class="co"># tire au hasard n valeurs parmi 10000</span></span>
+<span id="cb18-11"><a href="SI.html#cb18-11"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sample</span>( <span class="dt">x =</span> id  , <span class="dt">size =</span> n)</span>
+<span id="cb18-12"><a href="SI.html#cb18-12"></a></span>
+<span id="cb18-13"><a href="SI.html#cb18-13"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sort</span>(MesIds)</span>
+<span id="cb18-14"><a href="SI.html#cb18-14"></a><span class="co"># Les coordonn?es</span></span>
+<span id="cb18-15"><a href="SI.html#cb18-15"></a>champ[MesIds,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##        s1   s2
 ## 55   54.5  0.5
 ## 104   3.5  1.5
@@ -322,8 +322,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9882 81.5 98.5
 ## 9888 87.5 98.5</code></pre>
 <p>Il est possible alors d’extraire les valeurs de carbone simulée pour les pixels tirés au hasard</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="SI.html#cb18-1"></a>terrain1 &lt;-<span class="st"> </span>champ[ MesIds, <span class="st">&quot;sim1&quot;</span> ]</span>
-<span id="cb18-2"><a href="SI.html#cb18-2"></a>terrain1</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="SI.html#cb20-1"></a>terrain1 &lt;-<span class="st"> </span>champ[ MesIds, <span class="st">&quot;sim1&quot;</span> ]</span>
+<span id="cb20-2"><a href="SI.html#cb20-2"></a>terrain1</span></code></pre></div>
 <pre><code>##   [1] 3.787593 7.170623 4.517748 5.589748 4.565427 6.336521 4.049022 5.577667
 ##   [9] 3.713162 4.225770 5.593242 4.239982 5.638317 5.860584 5.711821 5.497942
 ##  [17] 6.044092 4.458579 4.735737 5.489597 4.594399 5.553660 6.099380 5.702267
@@ -347,18 +347,18 @@ et <span class="math inline">\(s_{2,aleat}\)</span>
 3. Utilisez une routine de point dans le polygone pour déterminer si (s_{1,v}<span class="math inline">\(,\)</span>s_{2,aleat}$) tombe dans la zone
 4. Répétez les étapes 2 et 3 jusqu’à ce que n positions soient sélectionnées</p>
 <p>Le package <code>sp</code> offre la fonction <code>spsample</code> pour effectuer cette procédure à partir de couches SIG.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="SI.html#cb20-1"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP , n , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb20-2"><a href="SI.html#cb20-2"></a></span>
-<span id="cb20-3"><a href="SI.html#cb20-3"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
-<span id="cb20-4"><a href="SI.html#cb20-4"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
-<span id="cb20-5"><a href="SI.html#cb20-5"></a><span class="st">  </span><span class="kw">tm_shape</span>(MonEch)<span class="op">+</span></span>
-<span id="cb20-6"><a href="SI.html#cb20-6"></a><span class="st">  </span><span class="kw">tm_symbols</span>()<span class="op">+</span></span>
-<span id="cb20-7"><a href="SI.html#cb20-7"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="SI.html#cb22-1"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP , n , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span>
+<span id="cb22-2"><a href="SI.html#cb22-2"></a></span>
+<span id="cb22-3"><a href="SI.html#cb22-3"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
+<span id="cb22-4"><a href="SI.html#cb22-4"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
+<span id="cb22-5"><a href="SI.html#cb22-5"></a><span class="st">  </span><span class="kw">tm_shape</span>(MonEch)<span class="op">+</span></span>
+<span id="cb22-6"><a href="SI.html#cb22-6"></a><span class="st">  </span><span class="kw">tm_symbols</span>()<span class="op">+</span></span>
+<span id="cb22-7"><a href="SI.html#cb22-7"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
 ## to be projected.</code></pre>
 <pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
 <pre><code>## Warning: Current projection of shape MonEch unknown and cannot be determined.</code></pre>
-<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>
 <div id="calcul-des-estimateurs" class="section level2">
@@ -375,19 +375,51 @@ et <span class="math inline">\(s_{2,aleat}\)</span>
 <p>avec <span class="math inline">\(n\)</span> tirage, elle vaut <span class="math inline">\(\pi_i = n/N\)</span></p>
 <p>Le total peut donc être estimé par $N/n_{i=1}^n{z_i } = N $</p>
 </div>
-<div id="la-moyenne-pour-le-fini" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> La moyenne pour le fini</h3>
+<div id="la-moyenne-pour-la-population-discrète-fini" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> La moyenne pour la population discrète fini</h3>
 <p>Avec le plan aléatoire simple, le calcul de la moyenne est très simple</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="SI.html#cb24-1"></a><span class="co"># simulation du terrain</span></span>
-<span id="cb24-2"><a href="SI.html#cb24-2"></a>terrain &lt;-<span class="st"> </span><span class="kw">over</span>(MonEch,champSP)</span>
-<span id="cb24-3"><a href="SI.html#cb24-3"></a><span class="kw">mean</span>(terrain<span class="op">$</span>sim1)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="SI.html#cb26-1"></a><span class="co"># simulation du terrain</span></span>
+<span id="cb26-2"><a href="SI.html#cb26-2"></a>terrain2 &lt;-<span class="st"> </span><span class="kw">over</span>(MonEch,champSP)</span>
+<span id="cb26-3"><a href="SI.html#cb26-3"></a></span>
+<span id="cb26-4"><a href="SI.html#cb26-4"></a>MoyEst &lt;-<span class="st"> </span><span class="kw">mean</span>(terrain2<span class="op">$</span>sim1)</span>
+<span id="cb26-5"><a href="SI.html#cb26-5"></a></span>
+<span id="cb26-6"><a href="SI.html#cb26-6"></a>MoyEst</span></code></pre></div>
 <pre><code>## [1] 5.209595</code></pre>
+<p>A comparer avec la moyenne de la population <code>R Moy</code></p>
 </div>
-<div id="la-variance-déchantillonnage" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> La variance d’échantillonnage</h3>
+<div id="la-variance-spatiale-et-variance-déchantillonnage" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> La variance spatiale et variance d’échantillonnage</h3>
+<p>Ne confondez pas la variance spatiale et la variance d’échantillonnage !</p>
+<ul>
+<li>La variance spatiale (variance de population) est une caractéristique de la population</li>
+<li>La variance d’échantillonnage est une caractéristique d’une stratégie d’échantillonnage,
+c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estimateur</li>
+</ul>
+<p>Son estimation dans le cas d’un SIR</p>
+<p>$ ( ) =  {n} $</p>
+<p>soit</p>
+<p>$  {(n(n-1))} _{i=1}^n (z_i - ) $</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="SI.html#cb28-1"></a><span class="co"># Variance d&#39;?chantillonnage de MoyEst</span></span>
+<span id="cb28-2"><a href="SI.html#cb28-2"></a>V &lt;-<span class="st"> </span><span class="kw">var</span>(terrain2<span class="op">$</span>sim1) <span class="op">/</span><span class="st"> </span>n</span></code></pre></div>
 </div>
 <div id="lintervalle-de-confiance" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> l’intervalle de confiance</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="SI.html#cb29-1"></a><span class="co"># calcul du quantile</span></span>
+<span id="cb29-2"><a href="SI.html#cb29-2"></a>z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb29-3"><a href="SI.html#cb29-3"></a><span class="co"># si n est petit &lt; 30</span></span>
+<span id="cb29-4"><a href="SI.html#cb29-4"></a>z &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>) , <span class="dt">df =</span> <span class="dv">20-1</span>)</span>
+<span id="cb29-5"><a href="SI.html#cb29-5"></a><span class="co"># calcul de l&#39;interval de confiance</span></span>
+<span id="cb29-6"><a href="SI.html#cb29-6"></a>IC &lt;-<span class="st"> </span>z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(V)</span>
+<span id="cb29-7"><a href="SI.html#cb29-7"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC</span></span>
+<span id="cb29-8"><a href="SI.html#cb29-8"></a>Moy <span class="op">&lt;</span><span class="st"> </span>MoyEst <span class="op">+</span><span class="st"> </span>IC</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="SI.html#cb31-1"></a>Moy <span class="op">&gt;</span><span class="st"> </span>MoyEst <span class="op">-</span><span class="st"> </span>IC</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="SI.html#cb33-1"></a><span class="dv">2</span> <span class="op">*</span>IC</span></code></pre></div>
+<pre><code>## [1] 0.3327585</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="SI.html#cb35-1"></a><span class="kw">cbind</span>(MoyEst, <span class="dt">ICbas =</span> MoyEst <span class="op">-</span><span class="st"> </span>IC, <span class="dt">ICHaut =</span>MoyEst <span class="op">+</span><span class="st"> </span>IC, Moy)</span></code></pre></div>
+<pre><code>##        MoyEst    ICbas   ICHaut      Moy
+## [1,] 5.209595 5.043216 5.375975 5.298602</code></pre>
 
 </div>
 </div>

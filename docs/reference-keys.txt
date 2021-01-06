@@ -16,8 +16,8 @@ avec-r-pour-les-polutations-discrètes
 avec-r-pour-les-populations-continues
 calcul-des-estimateurs
 lestimateur-de-horvitz-thompson
-la-moyenne-pour-le-fini
-la-variance-déchantillonnage
+la-moyenne-pour-la-population-discrète-fini
+la-variance-spatiale-et-variance-déchantillonnage
 lintervalle-de-confiance
 stsi
 SY-QUICK

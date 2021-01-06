@@ -107,17 +107,59 @@ Le total peut donc être estimé par $N/n\sum_{i=1}^n{z_i } = N\hat{z} $
 
 
 
-### La moyenne pour le fini
+### La moyenne pour la population discrète fini
 
 Avec le plan aléatoire simple, le calcul de la moyenne est très simple
 
 ```{r}
 # simulation du terrain
-terrain <- over(MonEch,champSP)
-mean(terrain$sim1)
+terrain2 <- over(MonEch,champSP)
+
+MoyEst <- mean(terrain2$sim1)
+
+MoyEst
 ```
 
+A comparer avec la moyenne de la population `R Moy`
 
-### La variance d'échantillonnage
+### La variance spatiale et variance d'échantillonnage 
+
+
+Ne confondez pas la variance spatiale et la variance d'échantillonnage !
+
+* La variance spatiale (variance de population) est une  caractéristique de la population
+* La variance d'échantillonnage est une caractéristique d'une stratégie d'échantillonnage,
+c'est-à-dire une combinaison d'un plan d'échantillonnage et d'un estimateur
+
+
+Son estimation dans le cas d'un SIR
+
+$ \hat{V}(\hat{ \overline{z} } )  = \frac{\hat{S^2}(z) } {n}  $
+
+soit 
+
+$ \frac{1}  {(n(n-1))} \sum_{i=1}^n (z_i - \hat{ \overline{z} }) $
+
+```{r}
+# Variance d'?chantillonnage de MoyEst
+V <- var(terrain2$sim1) / n
+```
 
 ### l'intervalle de confiance
+
+```{r}
+# calcul du quantile
+z <- qnorm(p = 1- (0.05/2), mean = 0, sd = 1)
+# si n est petit < 30
+z <- qt(p = 1- (0.05/2) , df = 20-1)
+# calcul de l'interval de confiance
+IC <- z * sqrt(V)
+# Est-ce que la vraie moyenne est dans l'IC
+Moy < MoyEst + IC
+Moy > MoyEst - IC
+2 *IC
+
+cbind(MoyEst, ICbas = MoyEst - IC, ICHaut =MoyEst + IC, Moy)
+
+```
+
