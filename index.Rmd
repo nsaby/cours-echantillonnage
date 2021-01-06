@@ -1,8 +1,9 @@
 --- 
-title: "Cours Echantillonnage Espace"
+title: "Cours Echantillonnage pour l'étude des propriétés du sol"
 author: "Nicolas Saby"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+github-repo: nsaby/cours-echantillonnage
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -37,7 +38,7 @@ Contenu
 
 - ou dans l'inférence statistique.
 
-- Connaissance de la manière dont les échantillons peuvent être sélectionnés dans R, et comment
+- Connaissance de la manière dont les échantillons peuvent être sélectionnés dans `R`, et comment
 les paramètres statistiques peuvent être estimés...
 
 - et de la manière dont un plan d'échantillonnage peut être évalué ex ante avant la collecte des données
@@ -45,7 +46,7 @@ les paramètres statistiques peuvent être estimés...
 
 
 
-Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006].
+Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006]. Les codes `R` sont également disponibles dans l'article de Brus et al [@de_gruijter_sampling_2006]
 
 
 Objectifs 
@@ -59,22 +60,23 @@ Objectifs
 - La propriété d'intérêt ne change pas pendant la période d'enquête
 
 
-Echantillonnage Probabiliste
+L'Echantillonnage Probabiliste
 ----------------------------
-Pour estimer les totaux ou les moyennes, l'échantillonnage probabiliste est le plus
+Pour estimer les totaux ou les moyennes, **l'échantillonnage probabiliste** est le plus
 approprié
+
 - Par échantillonnage probabiliste, on entend un échantillonnage aléatoire tel que
 - Toutes les unités de population ont une probabilité > 0 d'être sélectionnées
 - Les probabilités d'inclusion sont connues
-- NB Les probabilités d'inclusion ne doivent pas être égales !
-- Il existe de nombreuses façons de sélectionner les unités de population en échantillonnage probabiliste
+- NB Les probabilités d'inclusion ne doivent pas forcément être égales !
+- Il existe de nombreuses façons de sélectionner les unités de population avec un échantillonnage probabiliste
 
 
 
-Libraries
+Libraries utilisées
 ---------
 
-Nous avons besoin d'un certain nombres de librairies 
+Nous avons besoin des librairies suivantes
 
 ```{r}
 library(sp)

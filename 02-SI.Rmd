@@ -20,8 +20,26 @@ Mise en oeuvre avec un logiciel
 
 Voici la procédure
 
-### Avec 'R'
+### Avec `R` sans SIG
 
+```{r}
+n = 100
+
+
+# Creation des identifiants des lignes
+id = 1:10000
+# ou
+id = seq( from = 1, to = 10000, by = 1)
+# tire au hasard n valeurs parmi 10000
+MesIds <- sample( x = id  , size = n)
+
+MesIds <- sort(MesIds)
+# Les coordonn?es
+champ[MesIds,1:2]
+
+```
+
+### Avec `R` avec SIG
 
 Calcul des estimateurs
 -----------------------
