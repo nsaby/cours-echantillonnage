@@ -20,3 +20,5 @@ lintervalle-de-confiance
 stsi
 SY-QUICK
 final-words
+lechantillonnage-probabiliste
+libraries-utilisées
