@@ -4,7 +4,7 @@ Données {#data}
 
 Nous basons nos exercices sur une réalité simulée d'une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostatistques.
 
-```{r nice-fig2, fig.cap='Notre réalité: un champ aléatoire simulé avec une fonction exponentiel', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r nice-fig2, fig.cap='Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel', out.width='110%', fig.asp=.75, fig.align='center'}
 
 champ <- read.csv('data/simulatedField_1Exp25.csv')
 
@@ -24,13 +24,14 @@ tm_layout(legend.outside = TRUE)
 ```
 
 
-L'histogramme de la propriété ressemble à
+L'histogramme de la propriété ressemble à ceci:
 
 
 ```{r, fig.cap='Histogramme de la population', out.width='80%', fig.asp=.75, fig.align='center'}
 
 ggplot(champ, 
-       aes(x=sim1)) + geom_histogram()
+       aes(x=sim1)) + 
+  geom_histogram(bins = 50)
 
 ```
 
