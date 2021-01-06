@@ -1,0 +1,52 @@
+--- 
+title: "Cours Echantillonnage Espace"
+author: "Nicolas Saby"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Notes de cours pour l'échantillonnage statistique dans l'espace"
+---
+
+Pourquoi ce cours {#WHY}
+======================
+
+Motivations
+-----------
+
+Les motivations pour ce cours sont les suivantes:
+
+- Les cours de statistique classique ne s'attarde pas sur la discipline de l'échantillonnage
+- La conception d'un protocole d'échantillonnage efficace et efficient est une première étape importante d'un projet de recherche
+- Le plan d'échantillonnage détermine en grande partie la qualité du résultat final
+- Les problèmes d'inférence statistique peuvent souvent être évités lorsque nla réflection commence avant que les données ne soient collectées
+
+
+Contenu
+---------
+
+- Proposer une vue d'ensemble des différents plans d'échantillonnage pour l'étude des milieux
+
+- Connaissance des types de conception de base pour l'échantillonnage aléatoire : avantages et inconvénients...
+
+- et des types de conception spatiale plus avancés
+
+- Connaissance de la manière dont les informations annexes peuvent être utilisées dans le plan d'échantillonnage...
+
+-  ou dans l'inférence statistique.
+
+- Connaissance de la manière dont les échantillons peuvent être sélectionnés dans R, et comment
+les paramètres cibles peuvent être estimés...
+
+- et de la manière dont un plan d'échantillonnage peut être évalué ex ante avant la collecte des données
+
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+
+Ce cours est basé sur les travaux publié dans le livre [@degruitjer2006].
