@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contenu"><i class="fa fa-check"></i><b>1.2</b> Contenu</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i><b>1.3</b> Objectifs</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#lechantillonnage-probabiliste"><i class="fa fa-check"></i><b>1.4</b> L’Echantillonnage Probabiliste</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#polpulation-discrète-et-population-continue"><i class="fa fa-check"></i><b>1.5</b> Polpulation discrète et population continue</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#population-discrète-et-population-continue"><i class="fa fa-check"></i><b>1.5</b> Population discrète et population continue</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#libraries-utilisées"><i class="fa fa-check"></i><b>1.6</b> Libraries utilisées</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Données</a></li>
@@ -149,12 +149,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="SI.html"><a href="SI.html#définition"><i class="fa fa-check"></i><b>3.1</b> Définition</a></li>
 <li class="chapter" data-level="3.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>3.2</b> Mise en oeuvre avec un logiciel</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="SI.html"><a href="SI.html#excel"><i class="fa fa-check"></i><b>3.2.1</b> Excel</a></li>
-<li class="chapter" data-level="3.2.2" data-path="SI.html"><a href="SI.html#avec-r-sans-sig"><i class="fa fa-check"></i><b>3.2.2</b> Avec <code>R</code> <strong>sans</strong> SIG</a></li>
-<li class="chapter" data-level="3.2.3" data-path="SI.html"><a href="SI.html#avec-r-avec-sig"><i class="fa fa-check"></i><b>3.2.3</b> Avec <code>R</code> avec SIG</a></li>
+<li class="chapter" data-level="3.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>3.2.2</b> Avec <code>R</code> pour les polutations discrètes</a></li>
+<li class="chapter" data-level="3.2.3" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>3.2.3</b> Avec <code>R</code> pour les populations continues</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>3.3</b> Calcul des estimateurs</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="SI.html"><a href="SI.html#la-moyenne"><i class="fa fa-check"></i><b>3.3.1</b> La moyenne</a></li>
-<li class="chapter" data-level="3.3.2" data-path="SI.html"><a href="SI.html#lintervalle-de-confiance"><i class="fa fa-check"></i><b>3.3.2</b> l’intervalle de confiance</a></li>
+<li class="chapter" data-level="3.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>3.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
+<li class="chapter" data-level="3.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-le-fini"><i class="fa fa-check"></i><b>3.3.2</b> La moyenne pour le fini</a></li>
+<li class="chapter" data-level="3.3.3" data-path="SI.html"><a href="SI.html#la-variance-déchantillonnage"><i class="fa fa-check"></i><b>3.3.3</b> La variance d’échantillonnage</a></li>
+<li class="chapter" data-level="3.3.4" data-path="SI.html"><a href="SI.html#lintervalle-de-confiance"><i class="fa fa-check"></i><b>3.3.4</b> l’intervalle de confiance</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="stsi.html"><a href="stsi.html"><i class="fa fa-check"></i><b>4</b> STSI</a></li>
@@ -200,8 +202,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.2.1</span> Excel</h3>
 <p>Voici la procédure</p>
 </div>
-<div id="avec-r-sans-sig" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Avec <code>R</code> <strong>sans</strong> SIG</h3>
+<div id="avec-r-pour-les-polutations-discrètes" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Avec <code>R</code> pour les polutations discrètes</h3>
 <p>Voici comment tirer au hasard des position dans l’espace à partir de la liste des pixels.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="SI.html#cb16-1"></a>n =<span class="st"> </span><span class="dv">100</span></span>
 <span id="cb16-2"><a href="SI.html#cb16-2"></a></span>
@@ -336,33 +338,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  [89] 5.304427 5.244798 4.513166 5.442995 5.346196 5.236982 4.856616 5.302665
 ##  [97] 5.275403 3.683868 5.953372 5.166673</code></pre>
 </div>
-<div id="avec-r-avec-sig" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Avec <code>R</code> avec SIG</h3>
-<p>Le package <code>sp</code> offre la fonction <code>spsample</code> pour effectuer des tirages aléatoires dans l’espace à partir de couche SIG.</p>
+<div id="avec-r-pour-les-populations-continues" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Avec <code>R</code> pour les populations continues</h3>
+<p>1 Déterminer les coordonnées minimales et maximales s1 et s2
+du domaine (boîte englobante)</p>
+<p>2 Tirez deux coordonnées (pseudo-)aléatoires indépendantes <span class="math inline">\(s_{1,v}\)</span>
+et <span class="math inline">\(s_{2,aleat}\)</span>
+3. Utilisez une routine de point dans le polygone pour déterminer si (s_{1,v}<span class="math inline">\(,\)</span>s_{2,aleat}$) tombe dans la zone
+4. Répétez les étapes 2 et 3 jusqu’à ce que n positions soient sélectionnées</p>
+<p>Le package <code>sp</code> offre la fonction <code>spsample</code> pour effectuer cette procédure à partir de couches SIG.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="SI.html#cb20-1"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP , n , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb20-2"><a href="SI.html#cb20-2"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
-<span id="cb20-3"><a href="SI.html#cb20-3"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
-<span id="cb20-4"><a href="SI.html#cb20-4"></a><span class="st">  </span><span class="kw">tm_shape</span>(MonEch)<span class="op">+</span></span>
-<span id="cb20-5"><a href="SI.html#cb20-5"></a><span class="st">  </span><span class="kw">tm_symbols</span>()<span class="op">+</span></span>
-<span id="cb20-6"><a href="SI.html#cb20-6"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<span id="cb20-2"><a href="SI.html#cb20-2"></a></span>
+<span id="cb20-3"><a href="SI.html#cb20-3"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
+<span id="cb20-4"><a href="SI.html#cb20-4"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
+<span id="cb20-5"><a href="SI.html#cb20-5"></a><span class="st">  </span><span class="kw">tm_shape</span>(MonEch)<span class="op">+</span></span>
+<span id="cb20-6"><a href="SI.html#cb20-6"></a><span class="st">  </span><span class="kw">tm_symbols</span>()<span class="op">+</span></span>
+<span id="cb20-7"><a href="SI.html#cb20-7"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
 ## to be projected.</code></pre>
 <pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
 <pre><code>## Warning: Current projection of shape MonEch unknown and cannot be determined.</code></pre>
 <p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>TEst</p>
 </div>
 </div>
 <div id="calcul-des-estimateurs" class="section level2">
 <h2><span class="header-section-number">3.3</span> Calcul des estimateurs</h2>
 <p>Dans cette partie nous explorons les techniques pour calculer les estimateurs des paramètres statistiques à partir des données collectées.</p>
-<div id="la-moyenne" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> La moyenne</h3>
-<p>Avec le plan aléatoire simple, le calcul de la moyenne est très simple car
-### La variance d’échantillonnage</p>
+<div id="lestimateur-de-horvitz-thompson" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> l’estimateur de Horvitz-Thompson</h3>
+<p>L’estimateur H-T du total est <span class="math inline">\(\hat t = \sum{z_i/\pi_i}\)</span></p>
+<p>L’estimateur H-T de la moyenne est <span class="math inline">\(\hat t = 1/N\sum_{i=1}^n{z_i/\pi_i}\)</span></p>
+<p><span class="math inline">\(\pi\)</span> est la probabilité qu’un site d’échantillonnage soit inclu dans l’échantillon (probabilité d’inclusion)</p>
+<p><span class="math inline">\(z_i/\pi_i\)</span> s’appelle les valeurs étendues</p>
+<p>Cette formule fonctionne pour n’importe quel plan d’échantillonnage avec <span class="math inline">\(\pi_i\)</span> connus</p>
+<p>Pour un SIR, la probabilité qu’un site soit choisi pour un tirage vaut <span class="math inline">\(1/N\)</span></p>
+<p>avec <span class="math inline">\(n\)</span> tirage, elle vaut <span class="math inline">\(\pi_i = n/N\)</span></p>
+<p>Le total peut donc être estimé par $N/n_{i=1}^n{z_i } = N $</p>
+</div>
+<div id="la-moyenne-pour-le-fini" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> La moyenne pour le fini</h3>
+<p>Avec le plan aléatoire simple, le calcul de la moyenne est très simple</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="SI.html#cb24-1"></a><span class="co"># simulation du terrain</span></span>
+<span id="cb24-2"><a href="SI.html#cb24-2"></a>terrain &lt;-<span class="st"> </span><span class="kw">over</span>(MonEch,champSP)</span>
+<span id="cb24-3"><a href="SI.html#cb24-3"></a><span class="kw">mean</span>(terrain<span class="op">$</span>sim1)</span></code></pre></div>
+<pre><code>## [1] 5.209595</code></pre>
+</div>
+<div id="la-variance-déchantillonnage" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> La variance d’échantillonnage</h3>
 </div>
 <div id="lintervalle-de-confiance" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> l’intervalle de confiance</h3>
+<h3><span class="header-section-number">3.3.4</span> l’intervalle de confiance</h3>
 
 </div>
 </div>

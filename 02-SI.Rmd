@@ -115,8 +115,6 @@ Avec le plan aléatoire simple, le calcul de la moyenne est très simple
 # simulation du terrain
 terrain <- over(MonEch,champSP)
 mean(terrain$sim1)
-Moy
-
 ```
 
 
