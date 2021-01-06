@@ -1,0 +1,15 @@
+Echantillonnage aléatoire simple {#SI}
+=================================
+
+Définition
+-----------
+Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé "échantillonnage aléatoire indépendant (IRS)"
+
+- Deux sous-types :
+
++ avec remise (SIR)
++ sans remise (SI)
+
+- Cette distinction n'est pas pertinente pour des populations infinies
+- Toutes les combinaisons de n unités de population (tous les échantillons de n unités) ont une probabilité égale d'être sélectionnés
+

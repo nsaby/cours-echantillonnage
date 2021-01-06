@@ -1,0 +1,19 @@
+---
+output:
+  bookdown::html_document2:
+    fig_caption: yes
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r echo = FALSE, cache = FALSE}
+# This block needs cache=FALSE to set fig.width and fig.height, and have those
+# persist across cached builds.
+# source("utils.R", local = TRUE)
+knitr::opts_chunk$set(fig.width=5, fig.height=4, out.width="50%")
+```
+
+Echantillonnage systématique {#SY-QUICK}
+======================
+

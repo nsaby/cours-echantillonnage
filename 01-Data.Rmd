@@ -1,0 +1,37 @@
+Données {#data}
+======================
+
+
+Nous basons nos exercices sur une réalité simulée d'une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostatistques.
+
+```{r nice-fig2, fig.cap='Notre réalité: un champ aléatoire simulé avec une fonction exponentiel', out.width='80%', fig.asp=.75, fig.align='center'}
+
+champ <- read.csv('data/simulatedField_1Exp25.csv')
+
+champSP <- champ
+
+# transformer en un raster
+coordinates(champSP) <- c('s1','s2')  
+gridded(champSP) <- TRUE
+
+# structure de l'objet
+str(champSP)
+
+tm_shape(champSP) +
+  tm_raster()+
+tm_layout(legend.outside = TRUE)
+
+```
+
+
+L'histogramme de la propriété ressemble à
+
+
+```{r, fig.cap='Histogramme de la population', out.width='80%', fig.asp=.75, fig.align='center'}
+
+ggplot(champ, 
+       aes(x=sim1)) + geom_histogram()
+
+```
+
+
