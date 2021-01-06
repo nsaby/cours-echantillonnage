@@ -13,3 +13,21 @@ Les unités sont sélectionnées avec une probabilité égale et indépendamment
 - Cette distinction n'est pas pertinente pour des populations infinies
 - Toutes les combinaisons de n unités de population (tous les échantillons de n unités) ont une probabilité égale d'être sélectionnés
 
+Mise en oeuvre avec un logiciel
+------------------------------
+
+### Excel
+
+Voici la procédure
+
+### Avec 'R'
+
+
+Calcul des estimateurs
+-----------------------
+
+### La moyenne
+
+### La variance d'échantillonnage
+
+### l'intervalle de confiance

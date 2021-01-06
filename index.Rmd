@@ -35,18 +35,51 @@ Contenu
 
 - Connaissance de la manière dont les informations annexes peuvent être utilisées dans le plan d'échantillonnage...
 
--  ou dans l'inférence statistique.
+- ou dans l'inférence statistique.
 
 - Connaissance de la manière dont les échantillons peuvent être sélectionnés dans R, et comment
-les paramètres cibles peuvent être estimés...
+les paramètres statistiques peuvent être estimés...
 
 - et de la manière dont un plan d'échantillonnage peut être évalué ex ante avant la collecte des données
 
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
+
+
+Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006].
+
+
+Objectifs 
+---------
+
+- Objectifs possibles de l'étude
+ + Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l'étude la zone (population) dans son ensemble
+ + La même chose, mais maintenant pour plusieurs sous-domaines
+ + Pour cartographier la variable d'intérêt
+- Nous ne sommes pas intéressés par les changements au fil du temps
+- La propriété d'intérêt ne change pas pendant la période d'enquête
+
+
+Echantillonnage Probabiliste
+----------------------------
+Pour estimer les totaux ou les moyennes, l'échantillonnage probabiliste est le plus
+approprié
+- Par échantillonnage probabiliste, on entend un échantillonnage aléatoire tel que
+- Toutes les unités de population ont une probabilité > 0 d'être sélectionnées
+- Les probabilités d'inclusion sont connues
+- NB Les probabilités d'inclusion ne doivent pas être égales !
+- Il existe de nombreuses façons de sélectionner les unités de population en échantillonnage probabiliste
+
+
+
+Libraries
+---------
+
+Nous avons besoin d'un certain nombres de librairies 
+
+```{r}
+library(sp)
+library(tmap)
+library(rgdal)
+library(ggplot2)
+
 ```
-
-
-Ce cours est basé sur les travaux publié dans le livre [@degruitjer2006].
