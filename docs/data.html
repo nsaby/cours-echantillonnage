@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Notes de cours pour l’échantillonnage statistique dans l’espace" />
   
 
-<meta name="author" content="Nicolas Saby" />
+<meta name="author" content="Nicolas Saby, INRAe Infosol" />
 
 
 <meta name="date" content="2021-01-06" />
@@ -133,28 +133,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Cours Echantillonnage Sol</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pourquoi ce cours</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivations"><i class="fa fa-check"></i><b>1.1</b> Motivations</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contenu"><i class="fa fa-check"></i><b>1.2</b> Contenu</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i><b>1.3</b> Objectifs</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#echantillonnage-probabiliste"><i class="fa fa-check"></i><b>1.4</b> Echantillonnage Probabiliste</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#libraries"><i class="fa fa-check"></i><b>1.5</b> Libraries</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#lechantillonnage-probabiliste"><i class="fa fa-check"></i><b>1.4</b> L’Echantillonnage Probabiliste</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#polpulation-discrète-et-population-continue"><i class="fa fa-check"></i><b>1.5</b> Polpulation discrète et population continue</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#libraries-utilisées"><i class="fa fa-check"></i><b>1.6</b> Libraries utilisées</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Données</a></li>
 <li class="chapter" data-level="3" data-path="SI.html"><a href="SI.html"><i class="fa fa-check"></i><b>3</b> Echantillonnage aléatoire simple</a><ul>
 <li class="chapter" data-level="3.1" data-path="SI.html"><a href="SI.html#définition"><i class="fa fa-check"></i><b>3.1</b> Définition</a></li>
 <li class="chapter" data-level="3.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>3.2</b> Mise en oeuvre avec un logiciel</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="SI.html"><a href="SI.html#excel"><i class="fa fa-check"></i><b>3.2.1</b> Excel</a></li>
-<li class="chapter" data-level="3.2.2" data-path="SI.html"><a href="SI.html#avec-r-sans-sig"><i class="fa fa-check"></i><b>3.2.2</b> Avec <code>R</code> sans SIG</a></li>
+<li class="chapter" data-level="3.2.2" data-path="SI.html"><a href="SI.html#avec-r-sans-sig"><i class="fa fa-check"></i><b>3.2.2</b> Avec <code>R</code> <strong>sans</strong> SIG</a></li>
 <li class="chapter" data-level="3.2.3" data-path="SI.html"><a href="SI.html#avec-r-avec-sig"><i class="fa fa-check"></i><b>3.2.3</b> Avec <code>R</code> avec SIG</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>3.3</b> Calcul des estimateurs</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="SI.html"><a href="SI.html#la-moyenne"><i class="fa fa-check"></i><b>3.3.1</b> La moyenne</a></li>
-<li class="chapter" data-level="3.3.2" data-path="SI.html"><a href="SI.html#la-variance-déchantillonnage"><i class="fa fa-check"></i><b>3.3.2</b> La variance d’échantillonnage</a></li>
-<li class="chapter" data-level="3.3.3" data-path="SI.html"><a href="SI.html#lintervalle-de-confiance"><i class="fa fa-check"></i><b>3.3.3</b> l’intervalle de confiance</a></li>
+<li class="chapter" data-level="3.3.2" data-path="SI.html"><a href="SI.html#lintervalle-de-confiance"><i class="fa fa-check"></i><b>3.3.2</b> l’intervalle de confiance</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="stsi.html"><a href="stsi.html"><i class="fa fa-check"></i><b>4</b> STSI</a></li>
@@ -183,17 +183,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Données</h1>
-<p>Nous basons nos exercices sur une réalité simulée d’une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostatistques.</p>
+<p>Nous basons nos exercices sur une réalité simulée d’une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostastitques.</p>
+<p>L’objet correspond à un tableau comportant 3 colonnes.
+les coordonnées avec <code>s1</code> et <code>s2</code>
+les valeurs simulées <code>sim1</code></p>
+<p>Chaque coordonnée correspond au centre d’un pixel</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data.html#cb7-1"></a>champ &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/simulatedField_1Exp25.csv&#39;</span>)</span>
 <span id="cb7-2"><a href="data.html#cb7-2"></a></span>
-<span id="cb7-3"><a href="data.html#cb7-3"></a>champSP &lt;-<span class="st"> </span>champ</span>
-<span id="cb7-4"><a href="data.html#cb7-4"></a></span>
-<span id="cb7-5"><a href="data.html#cb7-5"></a><span class="co"># transformer en un raster</span></span>
-<span id="cb7-6"><a href="data.html#cb7-6"></a><span class="kw">coordinates</span>(champSP) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>)  </span>
-<span id="cb7-7"><a href="data.html#cb7-7"></a><span class="kw">gridded</span>(champSP) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb7-8"><a href="data.html#cb7-8"></a></span>
-<span id="cb7-9"><a href="data.html#cb7-9"></a><span class="co"># structure de l&#39;objet</span></span>
-<span id="cb7-10"><a href="data.html#cb7-10"></a><span class="kw">str</span>(champSP)</span></code></pre></div>
+<span id="cb7-3"><a href="data.html#cb7-3"></a><span class="kw">head</span>(champ)</span></code></pre></div>
+<pre><code>##    s1  s2     sim1
+## 1 0.5 0.5 7.184881
+## 2 1.5 0.5 7.366762
+## 3 2.5 0.5 7.417718
+## 4 3.5 0.5 7.305573
+## 5 4.5 0.5 7.373427
+## 6 5.5 0.5 7.161203</code></pre>
+<p>Il est donc facile de transformer le tableau en une grille de type <code>SpatialPixelsDataframe</code>. Pour cela, on passe par une structure de type <code>SpatialPointDataframe</code> dans un premier temps.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data.html#cb9-1"></a>champSP &lt;-<span class="st"> </span>champ</span>
+<span id="cb9-2"><a href="data.html#cb9-2"></a><span class="co"># transformer en un raster</span></span>
+<span id="cb9-3"><a href="data.html#cb9-3"></a><span class="kw">coordinates</span>(champSP) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>)  </span>
+<span id="cb9-4"><a href="data.html#cb9-4"></a><span class="kw">gridded</span>(champSP) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
+<p>Voici la structure de l’objet de type sp.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data.html#cb10-1"></a><span class="co"># structure de l&#39;objet</span></span>
+<span id="cb10-2"><a href="data.html#cb10-2"></a><span class="kw">str</span>(champSP)</span></code></pre></div>
 <pre><code>## Formal class &#39;SpatialPixelsDataFrame&#39; [package &quot;sp&quot;] with 7 slots
 ##   ..@ data       :&#39;data.frame&#39;:  10000 obs. of  1 variable:
 ##   .. ..$ sim1: num [1:10000] 7.18 7.37 7.42 7.31 7.37 ...
@@ -216,24 +228,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   .. .. ..$ : chr [1:2] &quot;min&quot; &quot;max&quot;
 ##   ..@ proj4string:Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
 ##   .. .. ..@ projargs: chr NA</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data.html#cb9-1"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
-<span id="cb9-2"><a href="data.html#cb9-2"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
-<span id="cb9-3"><a href="data.html#cb9-3"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p>Il est assez simple de faire une carte avec le package <code>tmap</code></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data.html#cb12-1"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
+<span id="cb12-2"><a href="data.html#cb12-2"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
+<span id="cb12-3"><a href="data.html#cb12-3"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
 ## to be projected.</code></pre>
 <pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:nice-fig2"></span>
-<img src="testcoursech_files/figure-html/nice-fig2-1.png" alt="Notre réalité: un champ aléatoire simulé avec une fonction exponentiel" width="80%" />
+<img src="cours-echantillonnage_files/figure-html/nice-fig2-1.png" alt="Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel" width="110%" />
 <p class="caption">
-Figure 2.1: Notre réalité: un champ aléatoire simulé avec une fonction exponentiel
+Figure 2.1: Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel
 </p>
 </div>
-<p>L’histogramme de la propriété ressemble à</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data.html#cb12-1"></a><span class="kw">ggplot</span>(champ, </span>
-<span id="cb12-2"><a href="data.html#cb12-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>sim1)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="testcoursech_files/figure-html/unnamed-chunk-2-1.png" alt="Histogramme de la population" width="80%" />
+<p>L’histogramme de la propriété ressemble à ceci:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data.html#cb15-1"></a><span class="kw">ggplot</span>(champ, </span>
+<span id="cb15-2"><a href="data.html#cb15-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>sim1)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb15-3"><a href="data.html#cb15-3"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">50</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="cours-echantillonnage_files/figure-html/unnamed-chunk-5-1.png" alt="Histogramme de la population" width="80%" />
 <p class="caption">
 Figure 2.2: Histogramme de la population
 </p>
@@ -288,7 +301,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["testcoursech.epub"],
+"download": ["cours-echantillonnage.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -296,6 +309,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

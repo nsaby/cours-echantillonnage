@@ -11,7 +11,7 @@ Les unités sont sélectionnées avec une probabilité égale et indépendamment
 + sans remise (SI)
 
 - Cette distinction n'est pas pertinente pour des populations infinies
-- Toutes les combinaisons de n unités de population (tous les échantillons de n unités) ont une probabilité égale d'être sélectionnés
+- Toutes les combinaisons de $n$ unités de population (tous les échantillons de $n$ unités) ont une probabilité égale d'être sélectionnés
 
 Mise en oeuvre avec un logiciel
 ------------------------------
@@ -20,11 +20,15 @@ Mise en oeuvre avec un logiciel
 
 Voici la procédure
 
-### Avec `R` sans SIG
+### Avec `R` pour les polutations discrètes
+
+Voici comment tirer au hasard des position dans l'espace à partir de la liste des pixels. 
 
 ```{r}
 n = 100
 
+#fixer la graine pour les tirages aléatoires
+set.seed(5601)
 
 # Creation des identifiants des lignes
 id = 1:10000
@@ -39,12 +43,82 @@ champ[MesIds,1:2]
 
 ```
 
-### Avec `R` avec SIG
+
+Il est possible alors d'extraire les valeurs de carbone simulée pour les pixels tirés au hasard
+
+```{r}
+terrain1 <- champ[ MesIds, "sim1" ]
+terrain1
+```
+
+
+
+
+### Avec `R` pour les populations continues
+
+1 Déterminer les coordonnées minimales et maximales s1 et s2
+du domaine (boîte englobante)
+
+2 Tirez deux coordonnées (pseudo-)aléatoires indépendantes $s_{1,v}$ 
+et $s_{2,aleat}$ 
+3. Utilisez une routine de point dans le polygone pour déterminer si (s_{1,v}$,$s_{2,aleat}$) tombe dans la zone
+4. Répétez les étapes 2 et 3 jusqu'à ce que n positions soient sélectionnées
+
+
+
+Le package `sp` offre la fonction `spsample` pour effectuer cette procédure à partir de couches SIG.
+
+```{r}
+MonEch <- spsample( champSP , n , type = "random")
+
+tm_shape(champSP) +
+  tm_raster()+
+  tm_shape(MonEch)+
+  tm_symbols()+
+tm_layout(legend.outside = TRUE)
+```
+
+
 
 Calcul des estimateurs
 -----------------------
 
-### La moyenne
+Dans cette partie nous explorons les techniques pour calculer les estimateurs des paramètres statistiques à partir des données collectées.
+
+
+### l'estimateur de Horvitz-Thompson
+
+L'estimateur H-T du total est $\hat t = \sum{z_i/\pi_i}$
+
+L'estimateur H-T de la moyenne est $\hat t = 1/N\sum_{i=1}^n{z_i/\pi_i}$
+
+$\pi$ est la probabilité  qu'un site d'échantillonnage soit inclu  dans l'échantillon (probabilité d'inclusion)
+
+$z_i/\pi_i$ s'appelle les valeurs étendues
+
+Cette formule fonctionne pour n'importe quel plan d'échantillonnage avec $\pi_i$ connus
+
+Pour un SIR, la probabilité qu'un site soit choisi pour un tirage vaut $1/N$
+
+avec $n$ tirage, elle vaut $\pi_i = n/N$
+
+Le total peut donc être estimé par $N/n\sum_{i=1}^n{z_i } = N\hat{z} $
+
+
+
+
+### La moyenne pour le fini
+
+Avec le plan aléatoire simple, le calcul de la moyenne est très simple
+
+```{r}
+# simulation du terrain
+terrain <- over(MonEch,champSP)
+mean(terrain$sim1)
+Moy
+
+```
+
 
 ### La variance d'échantillonnage
 

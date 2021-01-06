@@ -1,6 +1,6 @@
 --- 
 title: "Cours Echantillonnage pour l'étude des propriétés du sol"
-author: "Nicolas Saby"
+author: "Nicolas Saby, INRAe Infosol"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 github-repo: nsaby/cours-echantillonnage
@@ -46,18 +46,18 @@ les paramètres statistiques peuvent être estimés...
 
 
 
-Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006]. Les codes `R` sont également disponibles dans l'article de Brus et al [@de_gruijter_sampling_2006]
+Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006]. Les codes `R` sont également disponibles dans l'article de Brus et al [@brus_sampling_2019]
 
 
 Objectifs 
 ---------
 
-- Objectifs possibles de l'étude
+* Objectifs possibles de l'étude
  + Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l'étude la zone (population) dans son ensemble
  + La même chose, mais maintenant pour plusieurs sous-domaines
  + Pour cartographier la variable d'intérêt
-- Nous ne sommes pas intéressés par les changements au fil du temps
-- La propriété d'intérêt ne change pas pendant la période d'enquête
+* Nous ne sommes pas intéressés par les changements au fil du temps
+* La propriété d'intérêt ne change pas pendant la période d'enquête
 
 
 L'Echantillonnage Probabiliste
@@ -71,6 +71,23 @@ approprié
 - NB Les probabilités d'inclusion ne doivent pas forcément être égales !
 - Il existe de nombreuses façons de sélectionner les unités de population avec un échantillonnage probabiliste
 
+
+Population discrète et population continue
+---------------------------------------
+
+Nous devons **bien** distinguer deux types de populations :
+
+* Les populations discrètes : les objets naturels discrets correspondent naturellement aux unités d'échantillonnage. Le nombre total d'unités d'échantillonnage dans la  population ($N$) est finie
+
+* Populations continues : 
+les unités d'échantillonnage doivent être définies, par exemple carrés de 1 km × 1 km
+
+Mais
+
+* Nombre total d'unités d'échantillonnage dans une population continue peut être finie ou infinie
+
+  + Fini : tous les carrés disjoints de 1 km multipliés par 1 km dans une zone  
+  + Infini : points dans une zone
 
 
 Libraries utilisées

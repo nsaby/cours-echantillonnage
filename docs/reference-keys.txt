@@ -1,11 +1,12 @@
 fig:nice-fig2
-fig:unnamed-chunk-2
+fig:unnamed-chunk-5
 WHY
 motivations
 contenu
 objectifs
-echantillonnage-probabiliste
-libraries
+lechantillonnage-probabiliste
+polpulation-discrète-et-population-continue
+libraries-utilisées
 data
 SI
 définition
@@ -15,10 +16,7 @@ avec-r-sans-sig
 avec-r-avec-sig
 calcul-des-estimateurs
 la-moyenne
-la-variance-déchantillonnage
 lintervalle-de-confiance
 stsi
 SY-QUICK
 final-words
-lechantillonnage-probabiliste
-libraries-utilisées

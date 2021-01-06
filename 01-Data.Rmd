@@ -2,20 +2,44 @@ Données {#data}
 ======================
 
 
-Nous basons nos exercices sur une réalité simulée d'une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostatistques.
+Nous basons nos exercices sur une réalité simulée d'une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostastitques.
 
-```{r nice-fig2, fig.cap='Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel', out.width='110%', fig.asp=.75, fig.align='center'}
+L'objet correspond à un tableau comportant 3 colonnes.
+les coordonnées avec `s1` et `s2`
+les valeurs simulées  `sim1`
 
+Chaque coordonnée correspond au centre d'un pixel
+
+```{r}
 champ <- read.csv('data/simulatedField_1Exp25.csv')
 
-champSP <- champ
+head(champ)
 
+```
+
+Il est donc facile de transformer le tableau en une grille de type `SpatialPixelsDataframe`. Pour cela, on passe par une structure de type `SpatialPointDataframe` dans un premier temps.
+
+
+```{r}
+champSP <- champ
 # transformer en un raster
 coordinates(champSP) <- c('s1','s2')  
 gridded(champSP) <- TRUE
+```
 
+Voici la structure de l'objet de type sp.
+
+
+```{r}
 # structure de l'objet
 str(champSP)
+```
+
+Il est assez simple de faire une carte avec le package `tmap`
+
+
+```{r nice-fig2, fig.cap='Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel', out.width='110%', fig.asp=.75, fig.align='center'}
+
 
 tm_shape(champSP) +
   tm_raster()+
