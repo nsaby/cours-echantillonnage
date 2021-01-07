@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivations"><i class="fa fa-check"></i><b>1.1</b> Motivations</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#définition"><i class="fa fa-check"></i><b>1.2</b> Définition</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#contenu"><i class="fa fa-check"></i><b>1.3</b> Contenu</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i><b>1.4</b> Objectifs</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#objectifs-de-létude"><i class="fa fa-check"></i><b>1.4</b> Objectifs de l’étude</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#lechantillonnage-probabiliste"><i class="fa fa-check"></i><b>1.5</b> L’Echantillonnage Probabiliste</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#population-discrète-et-population-continue"><i class="fa fa-check"></i><b>1.6</b> Population discrète et population continue</a></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#libraries-utilisées"><i class="fa fa-check"></i><b>1.7</b> Libraries utilisées</a></li>
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>3.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
 <li class="chapter" data-level="3.3.4" data-path="SI.html"><a href="SI.html#linterval-de-confiance"><i class="fa fa-check"></i><b>3.3.4</b> l’interval de confiance</a></li>
 </ul></li>
+<li class="chapter" data-level="3.4" data-path="SI.html"><a href="SI.html#simulations"><i class="fa fa-check"></i><b>3.4</b> Simulations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="stsi.html"><a href="stsi.html"><i class="fa fa-check"></i><b>4</b> STSI</a></li>
 <li class="chapter" data-level="5" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>5</b> Echantillonnage systématique</a></li>
@@ -195,24 +196,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> Motivations</h2>
 <p>Les motivations pour ce cours sont les suivantes:</p>
 <ul>
-<li>Les cours de statistique classique ne s’attarde pas sur la discipline de l’échantillonnage</li>
+<li>Les cours de statistique classique ne s’attardent pas sur la discipline de l’échantillonnage</li>
 <li>La conception d’un protocole d’échantillonnage efficace et efficient est une première étape importante d’un projet de recherche</li>
 <li>Le plan d’échantillonnage détermine en grande partie la qualité du résultat final</li>
-<li>Les problèmes d’inférence statistique peuvent souvent être évités lorsque nla réflection commence avant que les données ne soient collectées</li>
+<li>Les problèmes d’inférence statistique peuvent souvent être évités lorsque la réflection commence avant que les données ne soient collectées</li>
 </ul>
 </div>
 <div id="définition" class="section level2">
 <h2><span class="header-section-number">1.2</span> Définition</h2>
-<p>Le plan d’échantillonnage d’une enquête par sondage se réfère
-* aux techniques utilisées pour sélectionner un échantillon probabiliste et
-* aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l’échantillon sélectionné.</p>
+<p>Le plan d’échantillonnage d’une enquête par sondage se réfère</p>
+<ul>
+<li>aux techniques utilisées pour sélectionner un échantillon probabiliste et</li>
+<li>aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l’échantillon sélectionné.</li>
+</ul>
 </div>
 <div id="contenu" class="section level2">
 <h2><span class="header-section-number">1.3</span> Contenu</h2>
 <ul>
 <li><p>Proposer une vue d’ensemble des différents plans d’échantillonnage pour l’étude des milieux</p></li>
 <li><p>Connaissance des types de conception de base pour l’échantillonnage aléatoire : avantages et inconvénients…</p></li>
-<li><p>et des types de conception spatiale plus avancés</p></li>
+<li><p>et des types de conception d’échantillonnage dans l’espace plus avancés</p></li>
 <li><p>Connaissance de la manière dont les informations annexes peuvent être utilisées dans le plan d’échantillonnage…</p></li>
 <li><p>ou dans l’inférence statistique.</p></li>
 <li><p>Connaissance de la manière dont les échantillons peuvent être sélectionnés dans <code>R</code>, et comment
@@ -221,8 +224,8 @@ les paramètres statistiques peuvent être estimés…</p></li>
 </ul>
 <p>Ce cours est basé sur les travaux publié dans le livre <span class="citation">(Gruijter et al. <a href="#ref-de_gruijter_sampling_2006" role="doc-biblioref">2006</a>)</span>. Les codes <code>R</code> sont également disponibles dans l’article de Brus et al <span class="citation">(Brus <a href="#ref-brus_sampling_2019" role="doc-biblioref">2019</a>)</span></p>
 </div>
-<div id="objectifs" class="section level2">
-<h2><span class="header-section-number">1.4</span> Objectifs</h2>
+<div id="objectifs-de-létude" class="section level2">
+<h2><span class="header-section-number">1.4</span> Objectifs de l’étude</h2>
 <ul>
 <li>Objectifs possibles de l’étude</li>
 <li>Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l’étude la zone (population) dans son ensemble</li>

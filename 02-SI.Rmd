@@ -160,24 +160,34 @@ Le calcul de l'interval de confiance sur la moyenne nécessite de faire une hypo
 
 * Pour le un nombre $n$ grand (>30) et si la distribution de la propirété dans l'espace n'est pas trop asymétrique, l'hypothèse de normalité est réaliste
 
-L'intervalle de confiance à $100(1-\alpha)$ %  est;
-$\hat{ \overline{z} }\pm u_{1-\alpha/2}.\sqrt{V(\hat{t^l}) }$
-où  $$t^{(n-1)}_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi de  Student $t$ avec $(n-1)$ degrees of freedom. $n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
+L'intervalle de confiance à $100(1-\alpha)$ %  est:
 
-* Pour des $n$ petit (<30), la loi de Student est plus adaptée
+
+$\hat{ \overline{z} }\pm u_{1-\alpha/2}.\sqrt{V(\hat{t^l}) }$
+
+
+où  $$t^{(n-1)}_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi de  Student $t$ avec $(n-1)$ degrees of freedom.
+
+$n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
+
+* Pour des $n$ petit (<30), la loi de Student est plus adaptée. on pbtient:
+
 
 $\hat{ \overline{z} }\pm t_{1-\alpha/2}^{(n-1)}.\sqrt{V(\hat{t^l}) }$
+
 où  $$t^{(n-1)}_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi de  Student $t$ avec $(n-1)$ degrees of freedom. $n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
 
+
+Voici comment le mettre en oeuvre dans `R`
 ```{r}
 # calcul du quantile
-z <- qnorm(p = 1- (0.05/2), mean = 0, sd = 1)
+zalpha <- qnorm(p = 1- (0.05/2), mean = 0, sd = 1)
 # si n est petit < 30
-t <- qt(p = 1- (0.05/2) , df = n-1)
+talpha <- qt(p = 1- (0.05/2) , df = n-1)
 
 # calcul de l'interval de confiance
-IC <- z * sqrt(V)
-ICT <- t * sqrt(V)
+IC <- zalpha * sqrt(V)
+ICT <- talpha * sqrt(V)
 
 c(IC,ICT)
 # Est-ce que la vraie moyenne est dans l'IC
@@ -191,3 +201,69 @@ cbind(MoyEst, ICbas = MoyEst - IC, ICHaut =MoyEst + IC, Moy)
 ```
 
 
+Simulations
+-----------
+
+Dans cette partie, nous allons tenter d'appréhender l'incertitude de l'estimation de l'indicateur  à travers la réalisation de plusieurs échantillonnages simulés de 20 échantillons.
+
+Pour cela, nous tirons au hasard 20 points 10000 fois et nous effectuons la jointure spatiale avec la couche SIG supposée représenter la réalité terrain.
+
+```{r}
+n = 20
+rep = 10000
+
+N = n * rep
+MonEch <- spsample( champSP , N , type = "random")
+
+# on récupère les valeurs de carbone
+terrainSimul <- over(MonEch,champSP)
+
+```
+
+On calcule ensuite, par réplication, les estimations de la moyenne, de la variance d'échantillonnage et de l'intervace de confiance de la moyenne.
+
+```{r}
+terrainSimul$id <- rep(1:rep,n)
+
+MesMoys <- aggregate(terrainSimul$sim1,
+                     by = list(terrainSimul$id),
+                     FUN = mean)
+
+MesVarsEch <- aggregate(terrainSimul$sim1,
+                        by = list(terrainSimul$id),
+                        FUN = var) 
+
+MesVarsEch$x <- MesVarsEch$x / 20
+
+MesStats <- cbind.data.frame(MesMoys,MesVarsEch$x)
+colnames(MesStats) <- c('Group','Moy','VarEch')
+
+MesStats$UCI <- MesStats$Moy + talpha * sqrt(MesStats$VarEch)
+MesStats$LCI <- MesStats$Moy - talpha * sqrt(MesStats$VarEch)
+```
+
+
+Pour se rendre compte de l'intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour un nombre limité de tirage les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels `R Moy`
+
+
+
+```{r IC50, fig.cap='Représentation de l\'intervalle de confiance à 95 % et de la vraie moyenne en rouge pour chaque simulation', out.width='110%', fig.asp=.75, fig.align='center'}
+ggplot(MesStats[ MesStats$Group %in% 1:100  , ]) + 
+  geom_pointrange(size = 0.62, 
+                aes(x = Group, ymin = UCI, ymax = LCI, y = Moy)) +
+  geom_abline(intercept =  Moy, slope = 0, color = "red")
+```
+
+
+Enfin, il est possible de calculer sur l'ensemble des réalisations, le nombre de fois que la vraie moyenne tombe en dehors de l'intervalle de confiance. Ce qui donne :
+
+```{r }
+MesStats$test <- ifelse(Moy > MesStats$LCI,
+                        ifelse(Moy< MesStats$UCI,
+                               1,0),
+                        0)
+
+100* sum(MesStats$test)/rep
+```
+
+OUI, 95 % comme attendu !

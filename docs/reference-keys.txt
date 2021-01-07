@@ -1,10 +1,11 @@
 fig:nice-fig2
 fig:unnamed-chunk-5
+fig:IC50
 WHY
 motivations
 définition
 contenu
-objectifs
+objectifs-de-létude
 lechantillonnage-probabiliste
 population-discrète-et-population-continue
 libraries-utilisées
@@ -20,6 +21,7 @@ lestimateur-de-horvitz-thompson
 la-moyenne-pour-la-population-discrète-fini
 la-variance-spatiale-et-variance-déchantillonnage
 linterval-de-confiance
+simulations
 stsi
 SY-QUICK
 final-words

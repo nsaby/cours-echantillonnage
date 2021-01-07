@@ -19,18 +19,19 @@ Motivations
 
 Les motivations pour ce cours sont les suivantes:
 
-- Les cours de statistique classique ne s'attarde pas sur la discipline de l'échantillonnage
+- Les cours de statistique classique ne s'attardent pas sur la discipline de l'échantillonnage
 - La conception d'un protocole d'échantillonnage efficace et efficient est une première étape importante d'un projet de recherche
 - Le plan d'échantillonnage détermine en grande partie la qualité du résultat final
-- Les problèmes d'inférence statistique peuvent souvent être évités lorsque nla réflection commence avant que les données ne soient collectées
+- Les problèmes d'inférence statistique peuvent souvent être évités lorsque la réflection commence avant que les données ne soient collectées
 
 
 Définition
 -----------
 
 Le plan d'échantillonnage d'une enquête par sondage se réfère
-* aux techniques utilisées pour sélectionner un échantillon probabiliste et
-* aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l'échantillon sélectionné.
+
+- aux techniques utilisées pour sélectionner un échantillon probabiliste et
+- aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l'échantillon sélectionné.
 
 
 Contenu
@@ -40,7 +41,7 @@ Contenu
 
 - Connaissance des types de conception de base pour l'échantillonnage aléatoire : avantages et inconvénients...
 
-- et des types de conception spatiale plus avancés
+- et des types de conception d'échantillonnage dans l'espace plus avancés
 
 - Connaissance de la manière dont les informations annexes peuvent être utilisées dans le plan d'échantillonnage...
 
@@ -57,8 +58,8 @@ les paramètres statistiques peuvent être estimés...
 Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006]. Les codes `R` sont également disponibles dans l'article de Brus et al [@brus_sampling_2019]
 
 
-Objectifs 
----------
+Objectifs de l'étude
+---------------------
 
 * Objectifs possibles de l'étude
  + Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l'étude la zone (population) dans son ensemble
