@@ -109,5 +109,5 @@ library(sp)
 library(tmap)
 library(rgdal)
 library(ggplot2)
-
+library(spcosa) # pour la stratification de la zone
 ```

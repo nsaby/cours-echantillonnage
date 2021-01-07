@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Echantillonnage systématique | Cours Echantillonnage pour l’étude des propriétés du sol</title>
+  <title>Chapter 5 Echantillonnage aléatoire systématique | Cours Echantillonnage pour l’étude des propriétés du sol</title>
   <meta name="description" content="Notes de cours pour l’échantillonnage statistique dans l’espace" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Echantillonnage systématique | Cours Echantillonnage pour l’étude des propriétés du sol" />
+  <meta property="og:title" content="Chapter 5 Echantillonnage aléatoire systématique | Cours Echantillonnage pour l’étude des propriétés du sol" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="nsaby/cours-echantillonnage" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Echantillonnage systématique | Cours Echantillonnage pour l’étude des propriétés du sol" />
+  <meta name="twitter:title" content="Chapter 5 Echantillonnage aléatoire systématique | Cours Echantillonnage pour l’étude des propriétés du sol" />
   
   <meta name="twitter:description" content="Notes de cours pour l’échantillonnage statistique dans l’espace" />
   
@@ -162,7 +162,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="SI.html"><a href="SI.html#simulations"><i class="fa fa-check"></i><b>3.4</b> Simulations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="stsi.html"><a href="stsi.html"><i class="fa fa-check"></i><b>4</b> STSI</a></li>
-<li class="chapter" data-level="5" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>5</b> Echantillonnage systématique</a></li>
+<li class="chapter" data-level="5" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>5</b> Echantillonnage aléatoire systématique</a><ul>
+<li class="chapter" data-level="5.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>5.1</b> Définitions</a></li>
+<li class="chapter" data-level="5.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>5.2</b> Exemple de grille</a></li>
+<li class="chapter" data-level="5.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>5.3</b> théorie</a></li>
+<li class="chapter" data-level="5.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>5.4</b> Exemple de mise en oeuvre</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -186,8 +191,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="SY-QUICK" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Echantillonnage systématique</h1>
+<h1><span class="header-section-number">Chapter 5</span> Echantillonnage aléatoire systématique</h1>
+<div id="définitions" class="section level2">
+<h2><span class="header-section-number">5.1</span> Définitions</h2>
+<p>En matière d’échantillonnage spatial, le type d’échantillonnage appelé communément SY signifie un échantillonnage sur une grille régulière
+Plusieurs points doivent caractériser cette grille</p>
+<ul>
+<li>La grille est placée au hasard sur la zone</li>
+<li>L’orientation ne doit pas être aléatoire</li>
+<li>Dans les SY, les unités d’échantillonnage sont très bien réparties dans la zone d’étude
+<ul>
+<li>Avantage : estimations précises du total, de la moyenne, de la proportion</li>
+<li>Inconvénient : ils n’existe pas d’estimateur non biaisé de la variance d’échantillonnage</li>
+</ul></li>
+</ul>
+</div>
+<div id="exemple-de-grille" class="section level2">
+<h2><span class="header-section-number">5.2</span> Exemple de grille</h2>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="SY-QUICK.html#cb47-1"></a>MonEch &lt;-<span class="st"> </span>sp<span class="op">::</span><span class="kw">spsample</span>( <span class="dt">x =</span> champSP , </span>
+<span id="cb47-2"><a href="SY-QUICK.html#cb47-2"></a>                    <span class="dt">cellsize =</span> <span class="dv">20</span> ,</span>
+<span id="cb47-3"><a href="SY-QUICK.html#cb47-3"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
+<span id="cb47-4"><a href="SY-QUICK.html#cb47-4"></a></span>
+<span id="cb47-5"><a href="SY-QUICK.html#cb47-5"></a><span class="kw">set.seed</span>(<span class="dv">2</span>) <span class="co"># ne marche pas sinon</span></span>
+<span id="cb47-6"><a href="SY-QUICK.html#cb47-6"></a>MonEch2 &lt;-<span class="st"> </span>sp<span class="op">::</span><span class="kw">spsample</span>( <span class="dt">x =</span> champSP , </span>
+<span id="cb47-7"><a href="SY-QUICK.html#cb47-7"></a>                    <span class="dt">cellsize =</span> <span class="dv">20</span> ,</span>
+<span id="cb47-8"><a href="SY-QUICK.html#cb47-8"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
+<span id="cb47-9"><a href="SY-QUICK.html#cb47-9"></a></span>
+<span id="cb47-10"><a href="SY-QUICK.html#cb47-10"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span><span class="st"> </span><span class="kw">tm_raster</span>() <span class="op">+</span></span>
+<span id="cb47-11"><a href="SY-QUICK.html#cb47-11"></a><span class="st">  </span><span class="kw">tm_shape</span>(<span class="dt">shp =</span> MonEch) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>(<span class="dt">col=</span><span class="st">&#39;black&#39;</span>) <span class="op">+</span></span>
+<span id="cb47-12"><a href="SY-QUICK.html#cb47-12"></a><span class="st">  </span><span class="kw">tm_shape</span>(<span class="dt">shp =</span> MonEch2) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>(<span class="dt">col=</span><span class="st">&#39;green&#39;</span>)<span class="op">+</span></span>
+<span id="cb47-13"><a href="SY-QUICK.html#cb47-13"></a></span>
+<span id="cb47-14"><a href="SY-QUICK.html#cb47-14"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:SYfig"></span>
+<img src="cours-echantillonnage_files/figure-html/SYfig-1.png" alt="Exemple de  grilles systématiques placées au hasard" width="110%" />
+<p class="caption">
+Figure 5.1: Exemple de grilles systématiques placées au hasard
+</p>
+</div>
+</div>
+<div id="théorie" class="section level2">
+<h2><span class="header-section-number">5.3</span> théorie</h2>
+</div>
+<div id="exemple-de-mise-en-oeuvre" class="section level2">
+<h2><span class="header-section-number">5.4</span> Exemple de mise en oeuvre</h2>
+<p>Voici un exemple de mise en oeuvre des calculs proposés au paragraphe précédent.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="SY-QUICK.html#cb48-1"></a>terrainSY &lt;-<span class="st"> </span><span class="kw">over</span>(MonEch2, champSP)</span>
+<span id="cb48-2"><a href="SY-QUICK.html#cb48-2"></a></span>
+<span id="cb48-3"><a href="SY-QUICK.html#cb48-3"></a><span class="co">#change class of object with sample data to SpatialPixelsDataFrame</span></span>
+<span id="cb48-4"><a href="SY-QUICK.html#cb48-4"></a><span class="kw">gridded</span>(MonEch2) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb48-5"><a href="SY-QUICK.html#cb48-5"></a></span>
+<span id="cb48-6"><a href="SY-QUICK.html#cb48-6"></a><span class="co">#compute number of strata from length of data file NB number of sampling units can be odd</span></span>
+<span id="cb48-7"><a href="SY-QUICK.html#cb48-7"></a>numberofStrata &lt;-<span class="st"> </span><span class="kw">floor</span>(<span class="kw">length</span>(MonEch2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb48-8"><a href="SY-QUICK.html#cb48-8"></a></span>
+<span id="cb48-9"><a href="SY-QUICK.html#cb48-9"></a><span class="co">#cluster the sampling units</span></span>
+<span id="cb48-10"><a href="SY-QUICK.html#cb48-10"></a>myStrata &lt;-</span>
+<span id="cb48-11"><a href="SY-QUICK.html#cb48-11"></a><span class="st">  </span><span class="kw">stratify</span>(MonEch2,</span>
+<span id="cb48-12"><a href="SY-QUICK.html#cb48-12"></a>           <span class="dt">nStrata =</span> numberofStrata,</span>
+<span id="cb48-13"><a href="SY-QUICK.html#cb48-13"></a>           <span class="dt">equalArea =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb48-14"><a href="SY-QUICK.html#cb48-14"></a>           <span class="dt">nTry =</span> <span class="dv">100</span>)</span>
+<span id="cb48-15"><a href="SY-QUICK.html#cb48-15"></a></span>
+<span id="cb48-16"><a href="SY-QUICK.html#cb48-16"></a>myStrata.df &lt;-<span class="st"> </span><span class="kw">as</span>(myStrata, <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb48-17"><a href="SY-QUICK.html#cb48-17"></a>data &lt;-<span class="st"> </span><span class="kw">cbind</span>(terrainSY, myStrata.df)</span>
+<span id="cb48-18"><a href="SY-QUICK.html#cb48-18"></a></span>
+<span id="cb48-19"><a href="SY-QUICK.html#cb48-19"></a>varh &lt;-<span class="st"> </span><span class="kw">tapply</span>(data<span class="op">$</span>sim1,</span>
+<span id="cb48-20"><a href="SY-QUICK.html#cb48-20"></a>               <span class="dt">INDEX =</span> data<span class="op">$</span>stratumId,</span>
+<span id="cb48-21"><a href="SY-QUICK.html#cb48-21"></a>               <span class="dt">FUN =</span> var)</span>
+<span id="cb48-22"><a href="SY-QUICK.html#cb48-22"></a></span>
+<span id="cb48-23"><a href="SY-QUICK.html#cb48-23"></a>nh &lt;-<span class="st"> </span><span class="kw">tapply</span>(data<span class="op">$</span>sim1,</span>
+<span id="cb48-24"><a href="SY-QUICK.html#cb48-24"></a>             <span class="dt">INDEX =</span> data<span class="op">$</span>stratumId,</span>
+<span id="cb48-25"><a href="SY-QUICK.html#cb48-25"></a>             <span class="dt">FUN =</span> length)</span>
+<span id="cb48-26"><a href="SY-QUICK.html#cb48-26"></a></span>
+<span id="cb48-27"><a href="SY-QUICK.html#cb48-27"></a>varmeanh&lt;-varh<span class="op">/</span>nh</span>
+<span id="cb48-28"><a href="SY-QUICK.html#cb48-28"></a>wh&lt;-nh<span class="op">/</span><span class="kw">sum</span>(nh)</span>
+<span id="cb48-29"><a href="SY-QUICK.html#cb48-29"></a>semeanSTSI&lt;-<span class="kw">sqrt</span>(<span class="kw">sum</span>(wh<span class="op">^</span><span class="dv">2</span><span class="op">*</span>varmeanh))</span>
+<span id="cb48-30"><a href="SY-QUICK.html#cb48-30"></a></span>
+<span id="cb48-31"><a href="SY-QUICK.html#cb48-31"></a>semeanSI &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">var</span>(terrainSY<span class="op">$</span>sim1)<span class="op">/</span><span class="kw">length</span>(MonEch2))</span></code></pre></div>
+<p>Ainsi, l’estimation de la variance d’échantillonnage dite naïve est 0.1801523. Cette valeur est supérieure à la valeur fournie par l’estimation avec le deuxième formule: 0.1292304</p>
 
+</div>
 </div>
             </section>
 

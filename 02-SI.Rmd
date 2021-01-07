@@ -28,7 +28,7 @@ Voici comment tirer au hasard des position dans l'espace à partir de la liste d
 n = 20
 
 #fixer la graine pour les tirages aléatoires
-set.seed(5601)
+set.seed(5602)
 
 # Creation des identifiants des lignes
 id = 1:10000
@@ -68,7 +68,7 @@ et $s_{2,aleat}$
 
 Le package `sp` offre la fonction `spsample` pour effectuer cette procédure à partir de couches SIG.
 
-```{r}
+```{r SIsample, fig.cap='Exemple d\'échantillonnage aléatoire simple, avec 20 points SI(20)', out.width='110%', fig.asp=.75, fig.align='center'}
 MonEch <- spsample( champSP , n , type = "random")
 
 tm_shape(champSP) +

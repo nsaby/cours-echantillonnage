@@ -1,6 +1,8 @@
 fig:nice-fig2
 fig:unnamed-chunk-5
+fig:SIsample
 fig:IC50
+fig:SYfig
 WHY
 motivations
 définition
@@ -24,4 +26,8 @@ linterval-de-confiance
 simulations
 stsi
 SY-QUICK
+définitions
+exemple-de-grille
+théorie
+exemple-de-mise-en-oeuvre
 final-words
