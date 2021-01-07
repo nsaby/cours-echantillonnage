@@ -25,7 +25,7 @@ Voici la procédure
 Voici comment tirer au hasard des position dans l'espace à partir de la liste des pixels. 
 
 ```{r}
-n = 100
+n = 20
 
 #fixer la graine pour les tirages aléatoires
 set.seed(5601)
@@ -132,34 +132,62 @@ Ne confondez pas la variance spatiale et la variance d'échantillonnage !
 c'est-à-dire une combinaison d'un plan d'échantillonnage et d'un estimateur
 
 
-Son estimation dans le cas d'un SIR
+Son estimation dans le cas d'un SIR pour une population dite infinie
 
-$ \hat{V}(\hat{ \overline{z} } )  = \frac{\hat{S^2}(z) } {n}  $
+$\hat{V}(\hat{ \overline{z} } )  = \frac{\hat{S^2}(z) } {n}$
 
 soit 
 
-$ \frac{1}  {(n(n-1))} \sum_{i=1}^n (z_i - \hat{ \overline{z} }) $
+$\hat{V}(\hat{ \overline{z} } )  = \frac{1}  {(n(n-1))} \sum_{i=1}^n (z_i - \hat{ \overline{z} })$
+
+
+Mais l'estimateur peut être utilisé pour les populations finie
+
+
+$\hat{V}(\hat{ \overline{z} } )  =  (1 - \frac{n}N) \frac{\hat{S^2}(z) } {n}$
+
+avec
+$(1 - \frac{n}N)$  correspondant à la correction pour les populations finies
 
 ```{r}
-# Variance d'?chantillonnage de MoyEst
+# Variance d'échantillonnage de MoyEst
 V <- var(terrain2$sim1) / n
 ```
 
-### l'intervalle de confiance
+### l'interval de confiance
+
+Le calcul de l'interval de confiance sur la moyenne nécessite de faire une hypothèse sur la distribution de $\hat{ \overline{z} }$
+
+* Pour le un nombre $n$ grand (>30) et si la distribution de la propirété dans l'espace n'est pas trop asymétrique, l'hypothèse de normalité est réaliste
+
+L'intervalle de confiance à $100(1-\alpha)$ %  est;
+$\hat{ \overline{z} }\pm u_{1-\alpha/2}.\sqrt{V(\hat{t^l}) }$
+où  $$t^{(n-1)}_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi de  Student $t$ avec $(n-1)$ degrees of freedom. $n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
+
+* Pour des $n$ petit (<30), la loi de Student est plus adaptée
+
+$\hat{ \overline{z} }\pm t_{1-\alpha/2}^{(n-1)}.\sqrt{V(\hat{t^l}) }$
+où  $$t^{(n-1)}_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi de  Student $t$ avec $(n-1)$ degrees of freedom. $n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
 
 ```{r}
 # calcul du quantile
 z <- qnorm(p = 1- (0.05/2), mean = 0, sd = 1)
 # si n est petit < 30
-z <- qt(p = 1- (0.05/2) , df = 20-1)
+t <- qt(p = 1- (0.05/2) , df = n-1)
+
 # calcul de l'interval de confiance
 IC <- z * sqrt(V)
+ICT <- t * sqrt(V)
+
+c(IC,ICT)
 # Est-ce que la vraie moyenne est dans l'IC
 Moy < MoyEst + IC
 Moy > MoyEst - IC
+
 2 *IC
 
 cbind(MoyEst, ICbas = MoyEst - IC, ICHaut =MoyEst + IC, Moy)
 
 ```
+
 

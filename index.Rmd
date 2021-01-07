@@ -25,6 +25,14 @@ Les motivations pour ce cours sont les suivantes:
 - Les problèmes d'inférence statistique peuvent souvent être évités lorsque nla réflection commence avant que les données ne soient collectées
 
 
+Définition
+-----------
+
+Le plan d'échantillonnage d'une enquête par sondage se réfère
+* aux techniques utilisées pour sélectionner un échantillon probabiliste et
+* aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l'échantillon sélectionné.
+
+
 Contenu
 ---------
 

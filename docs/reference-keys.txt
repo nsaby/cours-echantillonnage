@@ -2,6 +2,7 @@ fig:nice-fig2
 fig:unnamed-chunk-5
 WHY
 motivations
+définition
 contenu
 objectifs
 lechantillonnage-probabiliste
@@ -9,7 +10,7 @@ population-discrète-et-population-continue
 libraries-utilisées
 data
 SI
-définition
+définition-1
 mise-en-oeuvre-avec-un-logiciel
 excel
 avec-r-pour-les-polutations-discrètes
@@ -18,7 +19,7 @@ calcul-des-estimateurs
 lestimateur-de-horvitz-thompson
 la-moyenne-pour-la-population-discrète-fini
 la-variance-spatiale-et-variance-déchantillonnage
-lintervalle-de-confiance
+linterval-de-confiance
 stsi
 SY-QUICK
 final-words
