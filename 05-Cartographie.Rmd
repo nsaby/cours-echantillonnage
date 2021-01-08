@@ -11,9 +11,26 @@ Echantillonnage pour la cartographie {#CARTO}
 
 Définitions
 ------------
+* Paramètres de la population (moyenne ou total, percentiles) à étudier ou pour plusieurs sous-régions n'est pas suffisant
+
+* La résolution spatiale requise pour le résultat de l'enquête est très plus grande : cartographie
+
+* Quelles Méthodes de cartographie :
+  - Méthodes d'interpolation spatiale heuristique : Polygones de Thiessen, triangulation, voisin naturel, distance inverse
+  - Interpolation spatiale basée sur un modèle stochastique : le krigeage
+  -Modèle non spatial : modèle de régression linéaire, arbre de régression, forêt aléatoire
 
 
-Différents type de Grilles
+Différents types de plan disponibles
 ----------------------------
 
-
+* Echantillonnage pour la cartographie par interpolation spatiale 
+  - Plans d'échantillonnage géométriques
+  - Grilles régulières
+  - Échantillonnage de la couverture spatiale
+  - Plans d'échantillonnage basés sur des modèles
+ 
+* Echantillonnage pour la cartographie avec des modèles de régression ou par arbres de regression
+  - stratification de l'espace des covariables
+  - Échantillonnage par hypercube latin
+  - 

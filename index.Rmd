@@ -86,6 +86,8 @@ approprié
 
 
 Pour faire une carte par des techniques de modèlisation comme la géostatistiques ou la régression, un échantillonnage orienté est plus approprié. Il est préféreable 
+
+
 Population discrète et population continue
 ---------------------------------------
 

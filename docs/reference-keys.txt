@@ -9,6 +9,7 @@ définition
 contenu
 objectifs-de-létude
 lechantillonnage-probabiliste-vs-non-probabiliste
+population-discrète-et-population-continue
 plan
 libraries-utilisées
 data
@@ -32,4 +33,4 @@ théorie
 exemple-de-mise-en-oeuvre
 CARTO
 définitions-1
-différents-type-de-grilles
+différents-types-de-plan-disponibles
