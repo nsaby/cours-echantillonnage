@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
+  <title>Chapter 6 Echantillonnage pour la cartographie | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
   <meta name="description" content="Notes de cours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta property="og:title" content="Chapter 6 Echantillonnage pour la cartographie | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="nsaby/cours-echantillonnage" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta name="twitter:title" content="Chapter 6 Echantillonnage pour la cartographie | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   
   <meta name="twitter:description" content="Notes de cours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="data.html"/>
+<link rel="prev" href="SY-QUICK.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -193,131 +193,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</h1>
-<p class="author"><em>Nicolas Saby, INRAe Infosol</em></p>
-<p class="date"><em>2021-01-08</em></p>
+<div id="CARTO" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Echantillonnage pour la cartographie</h1>
+<div id="définitions-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Définitions</h2>
 </div>
-<div id="WHY" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Pourquoi ce cours</h1>
-<div id="motivations" class="section level2">
-<h2><span class="header-section-number">1.1</span> Motivations</h2>
-<p>Les motivations pour ce cours sont les suivantes:</p>
-<ul>
-<li>Les cours de statistique classique ne s’attardent pas sur la discipline de l’échantillonnage</li>
-<li>La conception d’un protocole d’échantillonnage efficace et efficient est une première étape importante d’un projet de recherche</li>
-<li>Le plan d’échantillonnage détermine en grande partie la qualité du résultat final</li>
-<li>Les problèmes d’inférence statistique peuvent souvent être évités lorsque la réflection commence avant que les données ne soient collectées</li>
-</ul>
-</div>
-<div id="définition" class="section level2">
-<h2><span class="header-section-number">1.2</span> Définition</h2>
-<p>Le plan d’échantillonnage d’une enquête par sondage se réfère</p>
-<ul>
-<li>aux techniques utilisées pour sélectionner un échantillon probabiliste et</li>
-<li>aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l’échantillon sélectionné.</li>
-</ul>
-</div>
-<div id="contenu" class="section level2">
-<h2><span class="header-section-number">1.3</span> Contenu</h2>
-<ul>
-<li><p>Proposer une vue d’ensemble des différents plans d’échantillonnage pour l’étude des milieux</p></li>
-<li><p>Connaissance des types de conception de base pour l’échantillonnage aléatoire : avantages et inconvénients…</p></li>
-<li><p>et des types de conception d’échantillonnage dans l’espace plus avancés</p></li>
-<li><p>Connaissance de la manière dont les informations annexes peuvent être utilisées dans le plan d’échantillonnage…</p></li>
-<li><p>ou dans l’inférence statistique.</p></li>
-<li><p>Connaissance de la manière dont les échantillons peuvent être sélectionnés dans <code>R</code>, et comment
-les paramètres statistiques peuvent être estimés…</p></li>
-<li><p>et de la manière dont un plan d’échantillonnage peut être évalué ex ante avant la collecte des données</p></li>
-</ul>
-<p>Ce cours est basé sur les travaux publié dans le livre <span class="citation">(Gruijter et al. <a href="#ref-de_gruijter_sampling_2006" role="doc-biblioref">2006</a>)</span>. Les codes <code>R</code> sont également disponibles dans l’article de Brus et al <span class="citation">(Brus <a href="#ref-brus_sampling_2019" role="doc-biblioref">2019</a>)</span></p>
-</div>
-<div id="objectifs-de-létude" class="section level2">
-<h2><span class="header-section-number">1.4</span> Objectifs de l’étude</h2>
-<ul>
-<li><p>Objectifs possibles de l’étude</p></li>
-<li><p>Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l’étude la zone (population) dans son ensemble</p></li>
-<li><p>La même chose, mais maintenant pour plusieurs sous-domaines</p></li>
-<li><p>Pour cartographier la variable d’intérêt</p></li>
-<li><p>Nous ne sommes pas intéressés par les changements au fil du temps</p></li>
-<li><p>La propriété d’intérêt ne change pas pendant la période d’enquête</p></li>
-</ul>
-</div>
-<div id="lechantillonnage-probabiliste-vs-non-probabiliste" class="section level2">
-<h2><span class="header-section-number">1.5</span> L’Echantillonnage Probabiliste vs non probabiliste</h2>
-<p>Pour estimer les totaux ou les moyennes, <strong>l’échantillonnage probabiliste</strong> est le plus
-approprié</p>
-<ul>
-<li>Par échantillonnage probabiliste, on entend un échantillonnage aléatoire tel que</li>
-<li>Toutes les unités de population ont une probabilité &gt; 0 d’être sélectionnées</li>
-<li>Les probabilités d’inclusion sont connues</li>
-<li>NB Les probabilités d’inclusion ne doivent pas forcément être égales !</li>
-<li>Il existe de nombreuses façons de sélectionner les unités de population avec un échantillonnage probabiliste</li>
-</ul>
-<p>Pour faire une carte par des techniques de modèlisation comme la géostatistiques ou la régression, un échantillonnage orienté est plus approprié. Il est préféreable
-Population discrète et population continue
-—————————————</p>
-<p>Nous devons <strong>bien</strong> distinguer deux types de populations :</p>
-<ul>
-<li><p>Les populations discrètes : les objets naturels discrets correspondent naturellement aux unités d’échantillonnage. Le nombre total d’unités d’échantillonnage dans la population (<span class="math inline">\(N\)</span>) est finie</p></li>
-<li><p>Populations continues :
-les unités d’échantillonnage doivent être définies, par exemple carrés de 1 km × 1 km</p></li>
-</ul>
-<p>Mais</p>
-<ul>
-<li><p>Nombre total d’unités d’échantillonnage dans une population continue peut être finie ou infinie</p>
-<ul>
-<li>Fini : tous les carrés disjoints de 1 km multipliés par 1 km dans une zone<br />
-</li>
-<li>Infini : points dans une zone</li>
-</ul></li>
-</ul>
-</div>
-<div id="plan" class="section level2">
-<h2><span class="header-section-number">1.6</span> Plan</h2>
-<p>Ce cours présente ainsi d’abord un ensemble de techniques relirées à l’échantillonnage probabiliste.</p>
-<p>IL aborde également des techniques pour l’échantillonnage pour la cartographie.</p>
-<ol style="list-style-type: decimal">
-<li>Echantillonnage aléatoire simple</li>
-<li>Echantillonnage aléatoire stratifié</li>
-<li>Echantillonnage alétoire systématique</li>
-<li>Echanillonnage pour la cartographie</li>
-</ol>
-</div>
-<div id="libraries-utilisées" class="section level2">
-<h2><span class="header-section-number">1.7</span> Libraries utilisées</h2>
-<p>Nous avons besoin des librairies suivantes</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="kw">library</span>(sp)</span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
-<pre><code>## Warning: le package &#39;tmap&#39; a été compilé avec la version R 4.0.3</code></pre>
-<pre><code>## Warning: replacing previous import &#39;vctrs::data_frame&#39; by &#39;tibble::data_frame&#39;
-## when loading &#39;dplyr&#39;</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">library</span>(rgdal)</span></code></pre></div>
-<pre><code>## rgdal: version: 1.5-12, (SVN revision 1018)
-## Geospatial Data Abstraction Library extensions to R successfully loaded
-## Loaded GDAL runtime: GDAL 3.0.4, released 2020/01/28
-## Path to GDAL shared files: D:/nsaby/R/win-library/4.0/rgdal/gdal
-## GDAL binary built with GEOS: TRUE 
-## Loaded PROJ runtime: Rel. 6.3.1, February 10th, 2020, [PJ_VERSION: 631]
-## Path to PROJ shared files: D:/nsaby/R/win-library/4.0/rgdal/proj
-## Linking to sp version:1.4-2
-## To mute warnings of possible GDAL/OSR exportToProj4() degradation,
-## use options(&quot;rgdal_show_exportToProj4_warnings&quot;=&quot;none&quot;) before loading rgdal.</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="index.html#cb6-2"></a><span class="kw">library</span>(spcosa) <span class="co"># pour la stratification de la zone</span></span></code></pre></div>
-<pre><code>## Warning: le package &#39;spcosa&#39; a été compilé avec la version R 4.0.3</code></pre>
-<pre><code>## Le chargement a nécessité le package : rJava</code></pre>
-<pre><code>## Warning: le package &#39;rJava&#39; a été compilé avec la version R 4.0.3</code></pre>
+<div id="différents-type-de-grilles" class="section level2">
+<h2><span class="header-section-number">6.2</span> Différents type de Grilles</h2>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-brus_sampling_2019">
-<p>Brus, D. J. 2019. “Sampling for Digital Soil Mapping: A Tutorial Supported by R Scripts.” <em>Geoderma</em> 338 (March): 464–80. <a href="https://doi.org/10.1016/j.geoderma.2018.07.036">https://doi.org/10.1016/j.geoderma.2018.07.036</a>.</p>
-</div>
-<div id="ref-de_gruijter_sampling_2006">
-<p>Gruijter, J. de, D. J. Brus, M. F. P. Bierkens, and M. Knotters. 2006. <em>Sampling for Natural Resource Monitoring</em>. Springer-Verlag.</p>
 </div>
 </div>
             </section>
@@ -325,8 +208,8 @@ les unités d’échantillonnage doivent être définies, par exemple carrés de
           </div>
         </div>
       </div>
-
-<a href="data.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="SY-QUICK.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -8,8 +8,8 @@ motivations
 définition
 contenu
 objectifs-de-létude
-lechantillonnage-probabiliste
-population-discrète-et-population-continue
+lechantillonnage-probabiliste-vs-non-probabiliste
+plan
 libraries-utilisées
 data
 SI
@@ -30,4 +30,6 @@ définitions
 exemple-de-grille
 théorie
 exemple-de-mise-en-oeuvre
-final-words
+CARTO
+définitions-1
+différents-type-de-grilles

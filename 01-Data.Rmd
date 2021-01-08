@@ -22,8 +22,9 @@ Il est donc facile de transformer le tableau en une grille de type `SpatialPixel
 
 ```{r}
 champSP <- champ
-# transformer en un raster
-coordinates(champSP) <- c('s1','s2')  
+# transformer en un vecteur de points
+coordinates(champSP) <- c('s1','s2') 
+# transformer en raster
 gridded(champSP) <- TRUE
 ```
 

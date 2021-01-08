@@ -39,7 +39,7 @@ MesIds <- sample( x = id  , size = n)
 
 MesIds <- sort(MesIds)
 # Les coordonn?es
-champ[MesIds,1:2]
+champ[ MesIds , 1:2 ]
 
 ```
 
@@ -61,7 +61,9 @@ du domaine (boîte englobante)
 
 2 Tirez deux coordonnées (pseudo-)aléatoires indépendantes $s_{1,v}$ 
 et $s_{2,aleat}$ 
+
 3. Utilisez une routine de point dans le polygone pour déterminer si (s_{1,v}$,$s_{2,aleat}$) tombe dans la zone
+
 4. Répétez les étapes 2 et 3 jusqu'à ce que n positions soient sélectionnées
 
 
@@ -69,7 +71,10 @@ et $s_{2,aleat}$
 Le package `sp` offre la fonction `spsample` pour effectuer cette procédure à partir de couches SIG.
 
 ```{r SIsample, fig.cap='Exemple d\'échantillonnage aléatoire simple, avec 20 points SI(20)', out.width='110%', fig.asp=.75, fig.align='center'}
-MonEch <- spsample( champSP , n , type = "random")
+MonEch <- spsample( x = champSP ,
+                    n  = n ,
+                    type = "random")
+
 
 tm_shape(champSP) +
   tm_raster()+
@@ -90,7 +95,7 @@ Dans cette partie nous explorons les techniques pour calculer les estimateurs de
 
 L'estimateur H-T du total est $\hat t = \sum{z_i/\pi_i}$
 
-L'estimateur H-T de la moyenne est $\hat t = 1/N\sum_{i=1}^n{z_i/\pi_i}$
+L'estimateur H-T de la moyenne est $\hat{\overline{t} } = 1/N\sum_{i=1}^n{z_i/\pi_i}$
 
 $\pi$ est la probabilité  qu'un site d'échantillonnage soit inclu  dans l'échantillon (probabilité d'inclusion)
 
@@ -102,7 +107,7 @@ Pour un SIR, la probabilité qu'un site soit choisi pour un tirage vaut $1/N$
 
 avec $n$ tirage, elle vaut $\pi_i = n/N$
 
-Le total peut donc être estimé par $N/n\sum_{i=1}^n{z_i } = N\hat{z} $
+Le total peut donc être estimé par $N/n\sum_{i=1}^n{z_i } = N \hat{z}$
 
 
 
@@ -166,7 +171,7 @@ L'intervalle de confiance à $100(1-\alpha)$ %  est:
 $\hat{ \overline{z} }\pm u_{1-\alpha/2}.\sqrt{V(\hat{t^l}) }$
 
 
-où  $$t^{(n-1)}_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi de  Student $t$ avec $(n-1)$ degrees of freedom.
+où  $$u_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi normale $u$.
 
 $n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
 
@@ -185,18 +190,20 @@ zalpha <- qnorm(p = 1- (0.05/2), mean = 0, sd = 1)
 # si n est petit < 30
 talpha <- qt(p = 1- (0.05/2) , df = n-1)
 
-# calcul de l'interval de confiance
+# calcul de l'interval de confiance selon les deux lois
 IC <- zalpha * sqrt(V)
 ICT <- talpha * sqrt(V)
 
 c(IC,ICT)
-# Est-ce que la vraie moyenne est dans l'IC
-Moy < MoyEst + IC
-Moy > MoyEst - IC
 
-2 *IC
+# comme n< 30, on garde ICT
+# Est-ce que la vraie moyenne est dans l'IC student
+Moy < MoyEst + ICT
+Moy > MoyEst - ICT
 
-cbind(MoyEst, ICbas = MoyEst - IC, ICHaut =MoyEst + IC, Moy)
+2 *ICT
+
+cbind(MoyEst, ICbas = MoyEst - ICT, ICHaut =MoyEst + ICT, Moy)
 
 ```
 
@@ -243,7 +250,7 @@ MesStats$LCI <- MesStats$Moy - talpha * sqrt(MesStats$VarEch)
 ```
 
 
-Pour se rendre compte de l'intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour un nombre limité de tirage les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels `R Moy`
+Pour se rendre compte de l'intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour les 100 premiers tirages, les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels: `r Moy`
 
 
 

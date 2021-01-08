@@ -1,5 +1,5 @@
 --- 
-title: "Cours Echantillonnage pour l'étude des propriétés du sol"
+title: "Cours sur les plans d'échantillonnage statistique dans l'espace pour l'étude des sols"
 author: "Nicolas Saby, INRAe Infosol"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Notes de cours pour l'échantillonnage statistique dans l'espace"
+description: "Notes de cours sur les méthodes pour les plans d'échantillonnage statistique dans l'espace"
 ---
 
 Pourquoi ce cours {#WHY}
@@ -63,13 +63,17 @@ Objectifs de l'étude
 
 * Objectifs possibles de l'étude
  + Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l'étude la zone (population) dans son ensemble
+ 
  + La même chose, mais maintenant pour plusieurs sous-domaines
+ 
  + Pour cartographier la variable d'intérêt
+ 
 * Nous ne sommes pas intéressés par les changements au fil du temps
+
 * La propriété d'intérêt ne change pas pendant la période d'enquête
 
 
-L'Echantillonnage Probabiliste
+L'Echantillonnage Probabiliste vs non probabiliste
 ----------------------------
 Pour estimer les totaux ou les moyennes, **l'échantillonnage probabiliste** est le plus
 approprié
@@ -81,6 +85,7 @@ approprié
 - Il existe de nombreuses façons de sélectionner les unités de population avec un échantillonnage probabiliste
 
 
+Pour faire une carte par des techniques de modèlisation comme la géostatistiques ou la régression, un échantillonnage orienté est plus approprié. Il est préféreable 
 Population discrète et population continue
 ---------------------------------------
 
@@ -98,6 +103,17 @@ Mais
   + Fini : tous les carrés disjoints de 1 km multipliés par 1 km dans une zone  
   + Infini : points dans une zone
 
+Plan
+------
+
+Ce cours présente ainsi d'abord un ensemble de techniques relirées à l'échantillonnage probabiliste.
+
+IL aborde également des techniques pour l'échantillonnage pour la cartographie.
+
+1. Echantillonnage aléatoire simple
+2. Echantillonnage aléatoire stratifié
+3. Echantillonnage alétoire systématique
+4. Echanillonnage pour la cartographie
 
 Libraries utilisées
 ---------

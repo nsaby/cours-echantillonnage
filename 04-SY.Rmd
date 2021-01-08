@@ -13,12 +13,13 @@ Définitions
 ------------
 
 En matière d'échantillonnage spatial, le type d'échantillonnage appelé communément SY signifie un échantillonnage sur une grille régulière
+
 Plusieurs points doivent caractériser cette grille
 
 * La grille est placée au hasard sur la zone
 * L'orientation ne doit pas être aléatoire
 * Dans les SY, les unités d'échantillonnage sont très bien réparties dans la zone d'étude
-  - Avantage : estimations précises du total, de la moyenne, de la proportion
+  - Avantage : estimations précises du total, de la moyenne, de la proportion, il est possible de mettre en oeuvre des techniques de cartographie
   - Inconvénient : ils n'existe pas d'estimateur non biaisé de la variance d'échantillonnage 
 
 Exemple de grille

@@ -1,0 +1,19 @@
+---
+output:
+  bookdown::html_document2:
+    fig_caption: yes
+editor_options:
+  chunk_output_type: console
+---
+
+Echantillonnage pour la cartographie {#CARTO}
+=========================================
+
+Définitions
+------------
+
+
+Différents type de Grilles
+----------------------------
+
+
