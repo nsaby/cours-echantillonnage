@@ -57,6 +57,8 @@ les paramètres statistiques peuvent être estimés...
 
 Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006]. Les codes `R` sont également disponibles dans l'article de Brus et al [@brus_sampling_2019]
 
+Un grand nombres de scripts `R` sont disponibles sur le github: https://github.com/DickBrus/TutorialSampling4DSM
+
 
 Objectifs de l'étude
 ---------------------
@@ -75,6 +77,7 @@ Objectifs de l'étude
 
 L'Echantillonnage Probabiliste vs non probabiliste
 ----------------------------
+
 Pour estimer les totaux ou les moyennes, **l'échantillonnage probabiliste** est le plus
 approprié
 
@@ -118,14 +121,15 @@ IL aborde également des techniques pour l'échantillonnage pour la cartographie
 4. Echanillonnage pour la cartographie
 
 Libraries utilisées
----------
+--------------------
 
 Nous avons besoin des librairies suivantes
 
-```{r}
+```{r , message= FALSE, warning= FALSE}
 library(sp)
 library(tmap)
 library(rgdal)
 library(ggplot2)
-library(spcosa) # pour la stratification de la zone
+library(spcosa) # pour les algorithme de stratification de la zone
+library(fields)
 ```

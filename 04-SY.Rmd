@@ -12,14 +12,18 @@ Echantillonnage aléatoire systématique {#SY-QUICK}
 Définitions
 ------------
 
-En matière d'échantillonnage spatial, le type d'échantillonnage appelé communément SY signifie un échantillonnage sur une grille régulière
+En matière d'échantillonnage dans l'espace, le type d'échantillonnage appelé communément SY signifie un échantillonnage selon une grille régulière
 
 Plusieurs points doivent caractériser cette grille
 
-* La grille est placée au hasard sur la zone
+* La grille est placée au hasard sur la zone. En général, on tire au hasard le point origine de la grille dans une zone de la résolution de la grille.
+
 * L'orientation ne doit pas être aléatoire
-* Dans les SY, les unités d'échantillonnage sont très bien réparties dans la zone d'étude
-  - Avantage : estimations précises du total, de la moyenne, de la proportion, il est possible de mettre en oeuvre des techniques de cartographie
+
+* Dans les SY, les unités d'échantillonnage sont très bien réparties au sein de la zone d'étude
+
+  - Avantage : (1) estimations précises du total, de la moyenne, de la proportion,  et (2) il est possible de mettre en oeuvre des techniques de cartographie statistiques comme le krigeage.
+  
   - Inconvénient : ils n'existe pas d'estimateur non biaisé de la variance d'échantillonnage 
 
 Exemple de grille

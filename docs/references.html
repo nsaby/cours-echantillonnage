@@ -24,14 +24,14 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2021-01-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="CARTO.html"/>
+<link rel="prev" href="Script.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -146,7 +146,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#plan"><i class="fa fa-check"></i><b>1.7</b> Plan</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#libraries-utilisées"><i class="fa fa-check"></i><b>1.8</b> Libraries utilisées</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Données</a></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Données</a><ul>
+<li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#statistiques-globales"><i class="fa fa-check"></i><b>2.1</b> Statistiques globales</a></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#cartographie"><i class="fa fa-check"></i><b>2.2</b> Cartographie</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="SI.html"><a href="SI.html"><i class="fa fa-check"></i><b>3</b> Echantillonnage aléatoire simple</a><ul>
 <li class="chapter" data-level="3.1" data-path="SI.html"><a href="SI.html#définition-1"><i class="fa fa-check"></i><b>3.1</b> Définition</a></li>
 <li class="chapter" data-level="3.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>3.2</b> Mise en oeuvre avec un logiciel</a><ul>
@@ -170,9 +173,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>5.4</b> Exemple de mise en oeuvre</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>6</b> Echantillonnage pour la cartographie</a><ul>
-<li class="chapter" data-level="6.1" data-path="CARTO.html"><a href="CARTO.html#définitions-1"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
-<li class="chapter" data-level="6.2" data-path="CARTO.html"><a href="CARTO.html#différents-types-de-plan-disponibles"><i class="fa fa-check"></i><b>6.2</b> Différents types de plan disponibles</a></li>
+<li class="chapter" data-level="6.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>6.1</b> Caractéristiques</a></li>
+<li class="chapter" data-level="6.2" data-path="CARTO.html"><a href="CARTO.html#différents-types-de-plans"><i class="fa fa-check"></i><b>6.2</b> Différents types de plans</a></li>
+<li class="chapter" data-level="6.3" data-path="CARTO.html"><a href="CARTO.html#la-grille-systématique"><i class="fa fa-check"></i><b>6.3</b> La grille systématique</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques-1"><i class="fa fa-check"></i><b>6.3.1</b> Caractéristiques</a></li>
+<li class="chapter" data-level="6.3.2" data-path="CARTO.html"><a href="CARTO.html#implémentation"><i class="fa fa-check"></i><b>6.3.2</b> Implémentation</a></li>
 </ul></li>
+<li class="chapter" data-level="6.4" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-spatial-optimisé"><i class="fa fa-check"></i><b>6.4</b> Echantillonnage spatial optimisé</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="CARTO.html"><a href="CARTO.html#définition-2"><i class="fa fa-check"></i><b>6.4.1</b> Définition</a></li>
+<li class="chapter" data-level="6.4.2" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-spcosa"><i class="fa fa-check"></i><b>6.4.2</b> Mise en oeuvre avec <code>spcosa</code></a></li>
+<li class="chapter" data-level="6.4.3" data-path="CARTO.html"><a href="CARTO.html#en-présence-de-données-existantes"><i class="fa fa-check"></i><b>6.4.3</b> En présence de données existantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-pour-la-géostatitique"><i class="fa fa-check"></i><b>6.5</b> Echantillonnage pour la géostatitique</a></li>
+<li class="chapter" data-level="6.6" data-path="CARTO.html"><a href="CARTO.html#plan-optimisé-dans-lespace-des-covariables"><i class="fa fa-check"></i><b>6.6</b> Plan optimisé dans l’espace des covariables</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="CARTO.html"><a href="CARTO.html#définition-3"><i class="fa fa-check"></i><b>6.6.1</b> Définition</a></li>
+<li class="chapter" data-level="6.6.2" data-path="CARTO.html"><a href="CARTO.html#données"><i class="fa fa-check"></i><b>6.6.2</b> Données</a></li>
+<li class="chapter" data-level="6.6.3" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-lalgorithme-k-moyennes"><i class="fa fa-check"></i><b>6.6.3</b> Mise en oeuvre avec l’algorithme K-moyennes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Script.html"><a href="Script.html"><i class="fa fa-check"></i><b>7</b> Script final</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -204,6 +223,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div>
 <p>Gruijter, J. de, D. J. Brus, M. F. P. Bierkens, and M. Knotters. 2006. <em>Sampling for Natural Resource Monitoring</em>. Springer-Verlag.</p>
 </div>
+<div>
+<p>Wadoux, Alexandre M. J. C., Benjamin P. Marchant, and Richard M. Lark. 2019. “Efficient Sampling for Geostatistical Surveys.” <em>European Journal of Soil Science</em>, May. <a href="https://doi.org/10.1111/ejss.12797">https://doi.org/10.1111/ejss.12797</a>.</p>
+</div>
+<div>
+<p>Walvoort, D. J. J., D. J. Brus, and J. J. de Gruijter. 2010. “An R Package for Spatial Coverage Sampling and Random Sampling from Compact Geographical Strata by K-Means.” <em>Computers &amp; Geosciences</em> 36 (10): 1261–7.</p>
+</div>
 </div>
 </div>
             </section>
@@ -211,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="CARTO.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Script.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

@@ -1,8 +1,9 @@
 Données {#data}
 ======================
 
-
-Nous basons nos exercices sur une réalité simulée d'une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostastitques.
+Statistiques globales
+-----------------------
+Pour la partie s'interessant aux statistiques globales, nous basons nos exercices sur une réalité simulée d'une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostastitques.
 
 L'objet correspond à un tableau comportant 3 colonnes.
 les coordonnées avec `s1` et `s2`
@@ -69,5 +70,17 @@ Moy = mean(champ$sim1)
 
 Moy
 
+```
+
+
+Cartographie
+------------
+Pour illuster les différents plans possible pour la cartographie, nous prenons comme exemple le contour d'une parcelle fourni par le package `spcosa`. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d'échantillonnage proposés.
+
+```{r, warning=FALSE}
+shpFarmsum <- readOGR(dsn = system.file("maps", package = "spcosa"), layer = "farmsum")
+
+tm_shape(shpFarmsum) + 
+  tm_borders()
 ```
 

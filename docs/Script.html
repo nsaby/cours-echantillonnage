@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Données | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
+  <title>Chapter 7 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
   <meta name="description" content="Notes de cours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Données | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta property="og:title" content="Chapter 7 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="nsaby/cours-echantillonnage" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Données | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta name="twitter:title" content="Chapter 7 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   
   <meta name="twitter:description" content="Notes de cours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="SI.html"/>
+<link rel="prev" href="CARTO.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -213,106 +213,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Données</h1>
-<div id="statistiques-globales" class="section level2">
-<h2><span class="header-section-number">2.1</span> Statistiques globales</h2>
-<p>Pour la partie s’interessant aux statistiques globales, nous basons nos exercices sur une réalité simulée d’une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostastitques.</p>
-<p>L’objet correspond à un tableau comportant 3 colonnes.
-les coordonnées avec <code>s1</code> et <code>s2</code>
-les valeurs simulées <code>sim1</code></p>
-<p>Chaque coordonnée correspond au centre d’un pixel</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data.html#cb2-1"></a>champ &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/simulatedField_1Exp25.csv&#39;</span>)</span>
-<span id="cb2-2"><a href="data.html#cb2-2"></a></span>
-<span id="cb2-3"><a href="data.html#cb2-3"></a><span class="kw">head</span>(champ)</span></code></pre></div>
-<pre><code>##    s1  s2     sim1
-## 1 0.5 0.5 7.184881
-## 2 1.5 0.5 7.366762
-## 3 2.5 0.5 7.417718
-## 4 3.5 0.5 7.305573
-## 5 4.5 0.5 7.373427
-## 6 5.5 0.5 7.161203</code></pre>
-<p>Il est donc facile de transformer le tableau en une grille de type <code>SpatialPixelsDataframe</code>. Pour cela, on passe par une structure de type <code>SpatialPointDataframe</code> dans un premier temps.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data.html#cb4-1"></a>champSP &lt;-<span class="st"> </span>champ</span>
-<span id="cb4-2"><a href="data.html#cb4-2"></a><span class="co"># transformer en un vecteur de points</span></span>
-<span id="cb4-3"><a href="data.html#cb4-3"></a><span class="kw">coordinates</span>(champSP) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>) </span>
-<span id="cb4-4"><a href="data.html#cb4-4"></a><span class="co"># transformer en raster</span></span>
-<span id="cb4-5"><a href="data.html#cb4-5"></a><span class="kw">gridded</span>(champSP) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
-<p>Voici la structure de l’objet de type sp.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data.html#cb5-1"></a><span class="co"># structure de l&#39;objet</span></span>
-<span id="cb5-2"><a href="data.html#cb5-2"></a><span class="kw">str</span>(champSP)</span></code></pre></div>
-<pre><code>## Formal class &#39;SpatialPixelsDataFrame&#39; [package &quot;sp&quot;] with 7 slots
-##   ..@ data       :&#39;data.frame&#39;:  10000 obs. of  1 variable:
-##   .. ..$ sim1: num [1:10000] 7.18 7.37 7.42 7.31 7.37 ...
-##   ..@ coords.nrs : num(0) 
-##   ..@ grid       :Formal class &#39;GridTopology&#39; [package &quot;sp&quot;] with 3 slots
-##   .. .. ..@ cellcentre.offset: Named num [1:2] 0.5 0.5
-##   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;s1&quot; &quot;s2&quot;
-##   .. .. ..@ cellsize         : Named num [1:2] 1 1
-##   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;s1&quot; &quot;s2&quot;
-##   .. .. ..@ cells.dim        : Named int [1:2] 100 100
-##   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;s1&quot; &quot;s2&quot;
-##   ..@ grid.index : int [1:10000] 9901 9902 9903 9904 9905 9906 9907 9908 9909 9910 ...
-##   ..@ coords     : num [1:10000, 1:2] 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 ...
-##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
-##   .. .. ..$ : NULL
-##   .. .. ..$ : chr [1:2] &quot;s1&quot; &quot;s2&quot;
-##   ..@ bbox       : num [1:2, 1:2] 0 0 100 100
-##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
-##   .. .. ..$ : chr [1:2] &quot;s1&quot; &quot;s2&quot;
-##   .. .. ..$ : chr [1:2] &quot;min&quot; &quot;max&quot;
-##   ..@ proj4string:Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
-##   .. .. ..@ projargs: chr NA</code></pre>
-<p>Il est assez simple de faire une carte avec le package <code>tmap</code></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data.html#cb7-1"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
-<span id="cb7-2"><a href="data.html#cb7-2"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
-<span id="cb7-3"><a href="data.html#cb7-3"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
-## to be projected.</code></pre>
-<pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:nice-fig2"></span>
-<img src="cours-echantillonnage_files/figure-html/nice-fig2-1.png" alt="Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel" width="110%" />
-<p class="caption">
-Figure 2.1: Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel
-</p>
-</div>
-<p>L’histogramme de la propriété ressemble à ceci:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data.html#cb10-1"></a><span class="kw">ggplot</span>(champ, </span>
-<span id="cb10-2"><a href="data.html#cb10-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>sim1)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb10-3"><a href="data.html#cb10-3"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">50</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="cours-echantillonnage_files/figure-html/unnamed-chunk-5-1.png" alt="Histogramme de la population" width="80%" />
-<p class="caption">
-Figure 2.2: Histogramme de la population
-</p>
-</div>
-<p>La moyenne vraie de la population vaut ainsi</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data.html#cb11-1"></a>Moy =<span class="st"> </span><span class="kw">mean</span>(champ<span class="op">$</span>sim1)</span>
-<span id="cb11-2"><a href="data.html#cb11-2"></a></span>
-<span id="cb11-3"><a href="data.html#cb11-3"></a>Moy</span></code></pre></div>
-<pre><code>## [1] 5.298602</code></pre>
-</div>
-<div id="cartographie" class="section level2">
-<h2><span class="header-section-number">2.2</span> Cartographie</h2>
-<p>Pour illuster les différents plans possible pour la cartographie, nous prenons comme exemple le contour d’une parcelle fourni par le package <code>spcosa</code>. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d’échantillonnage proposés.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data.html#cb13-1"></a>shpFarmsum &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="dt">dsn =</span> <span class="kw">system.file</span>(<span class="st">&quot;maps&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;spcosa&quot;</span>), <span class="dt">layer =</span> <span class="st">&quot;farmsum&quot;</span>)</span></code></pre></div>
-<pre><code>## OGR data source with driver: ESRI Shapefile 
-## Source: &quot;D:\nsaby\R\win-library\4.0\spcosa\maps&quot;, layer: &quot;farmsum&quot;
-## with 1 features
-## It has 4 fields</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data.html#cb15-1"></a><span class="kw">tm_shape</span>(shpFarmsum) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb15-2"><a href="data.html#cb15-2"></a><span class="st">  </span><span class="kw">tm_borders</span>()</span></code></pre></div>
-<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div id="Script" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Script final</h1>
+<p>Ce chapitre rassemble l’ensemble des commandes utilisées dans un script fonctionnel.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="Script.html#cb61-1"></a><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/nsaby/Dropbox/fac/tp/sampling/&quot;</span>)</span>
+<span id="cb61-2"><a href="Script.html#cb61-2"></a></span>
+<span id="cb61-3"><a href="Script.html#cb61-3"></a><span class="co"># R</span></span>
+<span id="cb61-4"><a href="Script.html#cb61-4"></a><span class="co"># Probablity sampling : SI, STSI (spatial et covariable), SY</span></span>
+<span id="cb61-5"><a href="Script.html#cb61-5"></a><span class="co"># impl?menter le workflow dans R/ArcGis avec vecteur et rasteur</span></span>
+<span id="cb61-6"><a href="Script.html#cb61-6"></a><span class="co"># Calculer la moyenne par SI, STSI et SY</span></span>
+<span id="cb61-7"><a href="Script.html#cb61-7"></a></span>
+<span id="cb61-8"><a href="Script.html#cb61-8"></a><span class="co"># MB sampling : grid,  infill sampling</span></span>
+<span id="cb61-9"><a href="Script.html#cb61-9"></a><span class="co"># </span></span>
+<span id="cb61-10"><a href="Script.html#cb61-10"></a></span>
+<span id="cb61-11"><a href="Script.html#cb61-11"></a></span>
+<span id="cb61-12"><a href="Script.html#cb61-12"></a><span class="co"># test 1 avec des ?chantillonnage al?atoire --------------</span></span>
+<span id="cb61-13"><a href="Script.html#cb61-13"></a></span>
+<span id="cb61-14"><a href="Script.html#cb61-14"></a><span class="kw">library</span>(sp)</span>
+<span id="cb61-15"><a href="Script.html#cb61-15"></a><span class="kw">library</span>(tmap)</span>
+<span id="cb61-16"><a href="Script.html#cb61-16"></a><span class="co"># library(maptools)</span></span>
+<span id="cb61-17"><a href="Script.html#cb61-17"></a><span class="co"># library(mapview)</span></span>
+<span id="cb61-18"><a href="Script.html#cb61-18"></a><span class="co"># library(rgdal)</span></span>
+<span id="cb61-19"><a href="Script.html#cb61-19"></a></span>
+<span id="cb61-20"><a href="Script.html#cb61-20"></a>champ &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;./data/simulatedField_1Exp25.csv&#39;</span>)</span>
+<span id="cb61-21"><a href="Script.html#cb61-21"></a></span>
+<span id="cb61-22"><a href="Script.html#cb61-22"></a><span class="co"># Simuler une Aléatoire Simple (SI)</span></span>
+<span id="cb61-23"><a href="Script.html#cb61-23"></a>n =<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb61-24"><a href="Script.html#cb61-24"></a></span>
+<span id="cb61-25"><a href="Script.html#cb61-25"></a><span class="co"># Creation des identifiants des lignes</span></span>
+<span id="cb61-26"><a href="Script.html#cb61-26"></a>id =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span></span>
+<span id="cb61-27"><a href="Script.html#cb61-27"></a><span class="co"># ou</span></span>
+<span id="cb61-28"><a href="Script.html#cb61-28"></a>id =<span class="st"> </span><span class="kw">seq</span>( <span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10000</span>, <span class="dt">by =</span> <span class="dv">1</span>)</span>
+<span id="cb61-29"><a href="Script.html#cb61-29"></a><span class="co"># tire au hasard n valeurs parmi 10000</span></span>
+<span id="cb61-30"><a href="Script.html#cb61-30"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sample</span>( <span class="dt">x =</span> id  , <span class="dt">size =</span> n)</span>
+<span id="cb61-31"><a href="Script.html#cb61-31"></a></span>
+<span id="cb61-32"><a href="Script.html#cb61-32"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sort</span>(MesIds)</span>
+<span id="cb61-33"><a href="Script.html#cb61-33"></a><span class="co"># Les coordonn?es</span></span>
+<span id="cb61-34"><a href="Script.html#cb61-34"></a>champ[MesIds,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
+<span id="cb61-35"><a href="Script.html#cb61-35"></a></span>
+<span id="cb61-36"><a href="Script.html#cb61-36"></a></span>
+<span id="cb61-37"><a href="Script.html#cb61-37"></a><span class="co"># Extraire les valeurs de carbone, simuler le terrain</span></span>
+<span id="cb61-38"><a href="Script.html#cb61-38"></a>terrain &lt;-<span class="st"> </span>champ[ MesIds, <span class="st">&quot;sim1&quot;</span> ]</span>
+<span id="cb61-39"><a href="Script.html#cb61-39"></a></span>
+<span id="cb61-40"><a href="Script.html#cb61-40"></a><span class="co"># moyenne estim?e ? partir de l&#39;?chantillon </span></span>
+<span id="cb61-41"><a href="Script.html#cb61-41"></a>MoyEst &lt;-<span class="st"> </span><span class="kw">mean</span>(terrain)</span>
+<span id="cb61-42"><a href="Script.html#cb61-42"></a><span class="co"># Variance d&#39;?chantillonnage de MoyEst</span></span>
+<span id="cb61-43"><a href="Script.html#cb61-43"></a>V &lt;-<span class="st"> </span><span class="kw">var</span>(terrain) <span class="op">/</span><span class="st"> </span>n</span>
+<span id="cb61-44"><a href="Script.html#cb61-44"></a></span>
+<span id="cb61-45"><a href="Script.html#cb61-45"></a><span class="co"># vraie moyenne</span></span>
+<span id="cb61-46"><a href="Script.html#cb61-46"></a>Moy &lt;-<span class="st"> </span><span class="kw">mean</span>(champ<span class="op">$</span>sim1)</span>
+<span id="cb61-47"><a href="Script.html#cb61-47"></a><span class="co"># calcul du quantile</span></span>
+<span id="cb61-48"><a href="Script.html#cb61-48"></a>z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb61-49"><a href="Script.html#cb61-49"></a><span class="co"># si n est petit &lt; 30</span></span>
+<span id="cb61-50"><a href="Script.html#cb61-50"></a>z &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>) , <span class="dt">df =</span> <span class="dv">20-1</span>)</span>
+<span id="cb61-51"><a href="Script.html#cb61-51"></a><span class="co"># calcul de l&#39;interval de confiance</span></span>
+<span id="cb61-52"><a href="Script.html#cb61-52"></a>IC &lt;-<span class="st"> </span>z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(V)</span>
+<span id="cb61-53"><a href="Script.html#cb61-53"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC</span></span>
+<span id="cb61-54"><a href="Script.html#cb61-54"></a>Moy <span class="op">&lt;</span><span class="st"> </span>MoyEst <span class="op">+</span><span class="st"> </span>IC</span>
+<span id="cb61-55"><a href="Script.html#cb61-55"></a>Moy <span class="op">&gt;</span><span class="st"> </span>MoyEst <span class="op">-</span><span class="st"> </span>IC</span>
+<span id="cb61-56"><a href="Script.html#cb61-56"></a><span class="dv">2</span> <span class="op">*</span>IC</span>
+<span id="cb61-57"><a href="Script.html#cb61-57"></a></span>
+<span id="cb61-58"><a href="Script.html#cb61-58"></a><span class="kw">cbind</span>(MoyEst, <span class="dt">ICbas =</span> MoyEst <span class="op">-</span><span class="st"> </span>IC, <span class="dt">ICHaut =</span>MoyEst <span class="op">+</span><span class="st"> </span>IC, Moy)</span>
+<span id="cb61-59"><a href="Script.html#cb61-59"></a></span>
+<span id="cb61-60"><a href="Script.html#cb61-60"></a><span class="co"># Tester le package sp ------</span></span>
+<span id="cb61-61"><a href="Script.html#cb61-61"></a><span class="kw">library</span>(sp)</span>
+<span id="cb61-62"><a href="Script.html#cb61-62"></a><span class="co"># Copie du tableau dans un nouvel objet</span></span>
+<span id="cb61-63"><a href="Script.html#cb61-63"></a>champSP &lt;-<span class="st"> </span>champ</span>
+<span id="cb61-64"><a href="Script.html#cb61-64"></a></span>
+<span id="cb61-65"><a href="Script.html#cb61-65"></a><span class="co"># transformer en un raster</span></span>
+<span id="cb61-66"><a href="Script.html#cb61-66"></a><span class="kw">coordinates</span>(champSP) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>)  </span>
+<span id="cb61-67"><a href="Script.html#cb61-67"></a></span>
+<span id="cb61-68"><a href="Script.html#cb61-68"></a><span class="co"># structure de l&#39;objet</span></span>
+<span id="cb61-69"><a href="Script.html#cb61-69"></a><span class="kw">str</span>(champSP)</span>
+<span id="cb61-70"><a href="Script.html#cb61-70"></a></span>
+<span id="cb61-71"><a href="Script.html#cb61-71"></a><span class="kw">spplot</span>(champSP)</span>
+<span id="cb61-72"><a href="Script.html#cb61-72"></a></span>
+<span id="cb61-73"><a href="Script.html#cb61-73"></a><span class="co"># transforme en raster le semi de points</span></span>
+<span id="cb61-74"><a href="Script.html#cb61-74"></a><span class="kw">gridded</span>(champSP) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb61-75"><a href="Script.html#cb61-75"></a><span class="kw">spplot</span>(champSP)</span>
+<span id="cb61-76"><a href="Script.html#cb61-76"></a><span class="kw">str</span>(champSP)</span>
+<span id="cb61-77"><a href="Script.html#cb61-77"></a></span>
+<span id="cb61-78"><a href="Script.html#cb61-78"></a><span class="co"># SI</span></span>
+<span id="cb61-79"><a href="Script.html#cb61-79"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP , n , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span>
+<span id="cb61-80"><a href="Script.html#cb61-80"></a><span class="kw">plot</span>(champSP)</span>
+<span id="cb61-81"><a href="Script.html#cb61-81"></a><span class="kw">points</span>(MonEch, <span class="dt">pch =</span> <span class="dv">3</span>)</span>
+<span id="cb61-82"><a href="Script.html#cb61-82"></a></span>
+<span id="cb61-83"><a href="Script.html#cb61-83"></a><span class="co"># regular</span></span>
+<span id="cb61-84"><a href="Script.html#cb61-84"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP ,</span>
+<span id="cb61-85"><a href="Script.html#cb61-85"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>,</span>
+<span id="cb61-86"><a href="Script.html#cb61-86"></a>                    <span class="dt">cellsize =</span> <span class="dv">10</span>)</span>
+<span id="cb61-87"><a href="Script.html#cb61-87"></a><span class="kw">plot</span>(champSP)</span>
+<span id="cb61-88"><a href="Script.html#cb61-88"></a><span class="kw">points</span>(MonEch, <span class="dt">pch =</span> <span class="dv">3</span>)</span></code></pre></div>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="SI.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="CARTO.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
