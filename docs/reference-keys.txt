@@ -12,8 +12,9 @@ WHY
 motivations
 définition
 contenu
-objectifs-de-létude
+objectifs-dune-étude-de-sol
 lechantillonnage-probabiliste-vs-non-probabiliste
+approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage
 population-discrète-et-population-continue
 plan
 libraries-utilisées

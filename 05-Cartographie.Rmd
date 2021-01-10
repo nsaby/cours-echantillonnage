@@ -240,7 +240,8 @@ Plan optimisé dans l'espace des covariables
 ---------------------------------------------
 ### Définition
 
-Il existe de nombreuse méthodes pour 
+Dans cette partie, l'échantillons doit permettre de calibrer un modèle de regression avec des covariables spatialisées. Il existe de nombreuse méthodes pour sélectionner des unités d'échantillonnage de sorte qu'elle permette d
+
 * cLHS
 * Surface response design
 * 

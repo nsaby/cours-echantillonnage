@@ -1,0 +1,105 @@
+---
+output:
+  bookdown::html_document2:
+    fig_caption: yes
+editor_options:
+  chunk_output_type: console
+---
+
+Script final {#Script}
+=========================================
+
+Ce chapitre rassemble l'ensemble des commandes utilisées dans un script fonctionnel.
+
+```{r , eval = FALSE}
+setwd("C:/Users/nsaby/Dropbox/fac/tp/sampling/")
+
+# R
+# Probablity sampling : SI, STSI (spatial et covariable), SY
+# impl?menter le workflow dans R/ArcGis avec vecteur et rasteur
+# Calculer la moyenne par SI, STSI et SY
+
+# MB sampling : grid,  infill sampling
+# 
+
+
+# test 1 avec des ?chantillonnage al?atoire --------------
+
+library(sp)
+library(tmap)
+# library(maptools)
+# library(mapview)
+# library(rgdal)
+
+champ <- read.csv('./data/simulatedField_1Exp25.csv')
+
+# Simuler une Aléatoire Simple (SI)
+n = 100
+
+# Creation des identifiants des lignes
+id = 1:10000
+# ou
+id = seq( from = 1, to = 10000, by = 1)
+# tire au hasard n valeurs parmi 10000
+MesIds <- sample( x = id  , size = n)
+
+MesIds <- sort(MesIds)
+# Les coordonn?es
+champ[MesIds,1:2]
+
+
+# Extraire les valeurs de carbone, simuler le terrain
+terrain <- champ[ MesIds, "sim1" ]
+
+# moyenne estim?e ? partir de l'?chantillon 
+MoyEst <- mean(terrain)
+# Variance d'?chantillonnage de MoyEst
+V <- var(terrain) / n
+
+# vraie moyenne
+Moy <- mean(champ$sim1)
+# calcul du quantile
+z <- qnorm(p = 1- (0.05/2), mean = 0, sd = 1)
+# si n est petit < 30
+z <- qt(p = 1- (0.05/2) , df = 20-1)
+# calcul de l'interval de confiance
+IC <- z * sqrt(V)
+# Est-ce que la vraie moyenne est dans l'IC
+Moy < MoyEst + IC
+Moy > MoyEst - IC
+2 *IC
+
+cbind(MoyEst, ICbas = MoyEst - IC, ICHaut =MoyEst + IC, Moy)
+
+# Tester le package sp ------
+library(sp)
+# Copie du tableau dans un nouvel objet
+champSP <- champ
+
+# transformer en un raster
+coordinates(champSP) <- c('s1','s2')  
+
+# structure de l'objet
+str(champSP)
+
+spplot(champSP)
+
+# transforme en raster le semi de points
+gridded(champSP) <- TRUE
+spplot(champSP)
+str(champSP)
+
+# SI
+MonEch <- spsample( champSP , n , type = "random")
+plot(champSP)
+points(MonEch, pch = 3)
+
+# regular
+MonEch <- spsample( champSP ,
+                    type = "regular",
+                    cellsize = 10)
+plot(champSP)
+points(MonEch, pch = 3)
+
+```
+
