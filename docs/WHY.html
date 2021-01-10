@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
+  <title>Chapter 2 Pourquoi ce cours | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
   <meta name="description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta property="og:title" content="Chapter 2 Pourquoi ce cours | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="nsaby/cours-echantillonnage" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta name="twitter:title" content="Chapter 2 Pourquoi ce cours | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   
   <meta name="twitter:description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Script.html"/>
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="data.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -227,22 +227,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="WHY" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Pourquoi ce cours</h1>
+<p>Ces quelques notes de cours et de script <code>R</code> ont été produite pour un cours de M1 de la Faculté de Tours. <a href="https://master-environnement.univ-tours.fr/" class="uri">https://master-environnement.univ-tours.fr/</a></p>
+<p>Ce cours est basé sur les travaux publié dans le livre <span class="citation">(Gruijter et al. <a href="#ref-de_gruijter_sampling_2006" role="doc-biblioref">2006</a>)</span>. Les codes <code>R</code> sont également disponibles dans l’article de Brus et al <span class="citation">(Brus <a href="#ref-brus_sampling_2019" role="doc-biblioref">2019</a>)</span> et une partie des scripts <code>R</code> utiles pour définir un plan d’échantillonnage dans l’espace sont disponibles sur le github: <a href="https://github.com/DickBrus/TutorialSampling4DSM" class="uri">https://github.com/DickBrus/TutorialSampling4DSM</a></p>
+<p>Ce cours rassemble un sélection choisie de techniques et de codes !</p>
+<div id="motivations" class="section level2">
+<h2><span class="header-section-number">2.1</span> Motivations</h2>
+<p>Les motivations pour ce cours sont les suivantes:</p>
+<ul>
+<li>Les cours de statistique classique ne s’attardent pas sur la discipline de l’échantillonnage</li>
+<li>La conception d’un protocole d’échantillonnage efficace et efficient est une première étape importante d’un projet de recherche</li>
+<li>Le plan d’échantillonnage détermine en grande partie la qualité du résultat final</li>
+<li>Les problèmes d’inférence statistique peuvent souvent être évités lorsque la réflexion commence avant que les données ne soient collectées</li>
+</ul>
+</div>
+<div id="définition" class="section level2">
+<h2><span class="header-section-number">2.2</span> Définition</h2>
+<p>Le plan d’échantillonnage d’une enquête par sondage se réfère</p>
+<ul>
+<li>aux techniques utilisées pour sélectionner un échantillon probabiliste et</li>
+<li>aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l’échantillon sélectionné.</li>
+</ul>
+<p>On définit également l’unité d’échantillonnage qui correspond à la position dans l’espace où des observations de sols vont être effectuées. AU doit de la position, il est possible d’effectuer par exemple un sondage, une fosse ou un échantillon composite.</p>
+</div>
+<div id="contenu" class="section level2">
+<h2><span class="header-section-number">2.3</span> Contenu</h2>
+<ul>
+<li><p>Proposer un aperçu des différents plans d’échantillonnage pour l’étude des milieux naturles et notamment le sol.</p></li>
+<li><p>Connaissance des types de conception de base pour l’échantillonnage probabiliste : avantages et inconvénients…</p></li>
+<li><p>et des types de conception d’échantillonnage dans l’espace plus avancés</p></li>
+<li><p>Connaissance de la manière dont les informations annexes peuvent être utilisées dans le plan d’échantillonnage…</p></li>
+<li><p>ou dans l’inférence statistique.</p></li>
+<li><p>Connaissance de la manière dont les échantillons peuvent être sélectionnés dans <code>R</code>, et comment
+les paramètres statistiques peuvent être estimés…</p></li>
+</ul>
+<p>Cela ne concerne pas la manière dont un plan d’échantillonnage peut être évalué ex ante avant la collecte des données</p>
+</div>
+<div id="objectifs-dune-étude-de-sol" class="section level2">
+<h2><span class="header-section-number">2.4</span> Objectifs d’une étude de sol</h2>
+<ul>
+<li><p>Objectifs possibles de l’étude</p></li>
+<li><p>Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l’étude la zone (population) dans son ensemble</p></li>
+<li><p>La même chose, mais maintenant pour plusieurs sous-domaines</p></li>
+<li><p>Pour <strong>cartographier</strong> la variable d’intérêt</p></li>
+<li><p>Nous ne sommes pas intéressés par les changements au fil du temps</p></li>
+<li><p>La propriété d’intérêt ne change pas pendant la période d’enquête</p></li>
+</ul>
+</div>
+<div id="léchantillonnage-probabiliste-vs-non-probabiliste" class="section level2">
+<h2><span class="header-section-number">2.5</span> L’échantillonnage probabiliste vs non probabiliste</h2>
+<p>Pour estimer les totaux ou les moyennes, <strong>l’échantillonnage probabiliste</strong> est le plus
+approprié</p>
+<ul>
+<li>Par échantillonnage probabiliste, on entend un échantillonnage aléatoire tel que</li>
+<li>Toutes les unités de population ont une probabilité &gt; 0 d’être sélectionnées</li>
+<li>Les probabilités d’inclusion sont connues</li>
+<li>NB Les probabilités d’inclusion ne doivent pas forcément être égales !</li>
+<li>Il existe de nombreuses façons de sélectionner les unités de population avec un échantillonnage probabiliste</li>
+</ul>
+<p>Pour faire une carte par des techniques de modèlisation comme la géostatistique, un échantillonnage qui répartit bien les observations dans l’espace géographique est plus approprié et tirer les positions au hasard n’est pas nécessaire.</p>
+</div>
+<div id="approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage" class="section level2">
+<h2><span class="header-section-number">2.6</span> Approche basée sur un modèle ou basée sur un plan d’échantillonnage</h2>
+<p>D’après le livre <span class="citation">(Gruijter et al. <a href="#ref-de_gruijter_sampling_2006" role="doc-biblioref">2006</a>)</span>, la théorie de l’échantillonnage sépare les techniques de sélection des unités d’échantillonnage en deux grandes approches:</p>
+<ul>
+<li><em>Model based</em> :</li>
+<li><em>Design based</em> : l’incertitude des estimateurs est calculée à partir des probabilités d’inclusions</li>
+</ul>
+</div>
+<div id="population-discrète-et-population-continue" class="section level2">
+<h2><span class="header-section-number">2.7</span> Population discrète et population continue</h2>
+<p>Nous devons <strong>bien</strong> distinguer deux types de populations :</p>
+<ul>
+<li><p>Les populations discrètes : les objets naturels discrets correspondent naturellement aux unités d’échantillonnage. Le nombre total d’unités d’échantillonnage dans la population (<span class="math inline">\(N\)</span>) est finie</p></li>
+<li><p>Populations continues :
+les unités d’échantillonnage doivent être définies, par exemple carrés de 1 km × 1 km</p></li>
+</ul>
+<p>Mais</p>
+<ul>
+<li><p>Nombre total d’unités d’échantillonnage dans une population continue peut être finie ou infinie</p>
+<ul>
+<li>Fini : tous les carrés disjoints de 1 km multipliés par 1 km dans une zone<br />
+</li>
+<li>Infini : points dans une zone</li>
+</ul></li>
+</ul>
+</div>
+<div id="plan" class="section level2">
+<h2><span class="header-section-number">2.8</span> Plan</h2>
+<p>Ce cours présente ainsi d’abord un ensemble de techniques relirées à l’échantillonnage probabiliste.</p>
+<p>IL aborde également des techniques pour l’échantillonnage pour la cartographie.</p>
+<ol style="list-style-type: decimal">
+<li>Echantillonnage aléatoire simple</li>
+<li>Echantillonnage aléatoire stratifié</li>
+<li>Echantillonnage alétoire systématique</li>
+<li>Echanillonnage pour la cartographie</li>
+</ol>
+</div>
+<div id="libraries-utilisées" class="section level2">
+<h2><span class="header-section-number">2.9</span> Libraries utilisées</h2>
+<p>Ces notes ont été produites par <a href="http://www.rstudio.com/ide/">RStudio</a> en utilisant <a href="http://bookdown.org/">bookdown</a>. Le site <a href="https://nsaby.github.io/cours-echantillonnage/">website</a> est en ligne via github <a href="http://netlify.com/">Netlify</a></p>
+<p>La version de ce livre numérique a été produite avec R version 4.0.2 (2020-06-22) et les package suivants:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="WHY.html#cb1-1"></a><span class="kw">library</span>(knitr)</span>
+<span id="cb1-2"><a href="WHY.html#cb1-2"></a><span class="kw">library</span>(sp)</span>
+<span id="cb1-3"><a href="WHY.html#cb1-3"></a><span class="kw">library</span>(tmap)</span>
+<span id="cb1-4"><a href="WHY.html#cb1-4"></a><span class="kw">library</span>(rgdal)</span>
+<span id="cb1-5"><a href="WHY.html#cb1-5"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="WHY.html#cb1-6"></a><span class="kw">library</span>(spcosa) <span class="co"># pour les algorithme de stratification de la zone</span></span>
+<span id="cb1-7"><a href="WHY.html#cb1-7"></a><span class="kw">library</span>(fields)</span></code></pre></div>
 
+</div>
+</div>
+<h3>References</h3>
 <div id="refs" class="references">
-<div>
+<div id="ref-brus_sampling_2019">
 <p>Brus, D. J. 2019. “Sampling for Digital Soil Mapping: A Tutorial Supported by R Scripts.” <em>Geoderma</em> 338 (March): 464–80. <a href="https://doi.org/10.1016/j.geoderma.2018.07.036">https://doi.org/10.1016/j.geoderma.2018.07.036</a>.</p>
 </div>
-<div>
+<div id="ref-de_gruijter_sampling_2006">
 <p>Gruijter, J. de, D. J. Brus, M. F. P. Bierkens, and M. Knotters. 2006. <em>Sampling for Natural Resource Monitoring</em>. Springer-Verlag.</p>
-</div>
-<div>
-<p>Wadoux, Alexandre M. J. C., Benjamin P. Marchant, and Richard M. Lark. 2019. “Efficient Sampling for Geostatistical Surveys.” <em>European Journal of Soil Science</em>, May. <a href="https://doi.org/10.1111/ejss.12797">https://doi.org/10.1111/ejss.12797</a>.</p>
-</div>
-<div>
-<p>Walvoort, D. J. J., D. J. Brus, and J. J. de Gruijter. 2010. “An R Package for Spatial Coverage Sampling and Random Sampling from Compact Geographical Strata by K-Means.” <em>Computers &amp; Geosciences</em> 36 (10): 1261–7.</p>
-</div>
 </div>
 </div>
             </section>
@@ -250,8 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="Script.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
+  <title>Chapter 8 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
   <meta name="description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta property="og:title" content="Chapter 8 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,12 +16,12 @@
   <meta name="github-repo" content="nsaby/cours-echantillonnage" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta name="twitter:title" content="Chapter 8 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   
   <meta name="twitter:description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   
 
-<meta name="author" content="Nicolas Saby, INRAe Infosol" />
+<meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
 <meta name="date" content="2021-01-10" />
@@ -136,63 +136,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Cours Echantillonnage Sol</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pourquoi ce cours</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivations"><i class="fa fa-check"></i><b>1.1</b> Motivations</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#définition"><i class="fa fa-check"></i><b>1.2</b> Définition</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#contenu"><i class="fa fa-check"></i><b>1.3</b> Contenu</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#objectifs-dune-étude-de-sol"><i class="fa fa-check"></i><b>1.4</b> Objectifs d’une étude de sol</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#lechantillonnage-probabiliste-vs-non-probabiliste"><i class="fa fa-check"></i><b>1.5</b> L’Echantillonnage Probabiliste vs non probabiliste</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage"><i class="fa fa-check"></i><b>1.6</b> Approche basée sur un modèle ou basée sur un plan d’échantillonnage</a></li>
-<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#population-discrète-et-population-continue"><i class="fa fa-check"></i><b>1.7</b> Population discrète et population continue</a></li>
-<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#plan"><i class="fa fa-check"></i><b>1.8</b> Plan</a></li>
-<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#libraries-utilisées"><i class="fa fa-check"></i><b>1.9</b> Libraries utilisées</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenue</a></li>
+<li class="chapter" data-level="2" data-path="WHY.html"><a href="WHY.html"><i class="fa fa-check"></i><b>2</b> Pourquoi ce cours</a><ul>
+<li class="chapter" data-level="2.1" data-path="WHY.html"><a href="WHY.html#motivations"><i class="fa fa-check"></i><b>2.1</b> Motivations</a></li>
+<li class="chapter" data-level="2.2" data-path="WHY.html"><a href="WHY.html#définition"><i class="fa fa-check"></i><b>2.2</b> Définition</a></li>
+<li class="chapter" data-level="2.3" data-path="WHY.html"><a href="WHY.html#contenu"><i class="fa fa-check"></i><b>2.3</b> Contenu</a></li>
+<li class="chapter" data-level="2.4" data-path="WHY.html"><a href="WHY.html#objectifs-dune-étude-de-sol"><i class="fa fa-check"></i><b>2.4</b> Objectifs d’une étude de sol</a></li>
+<li class="chapter" data-level="2.5" data-path="WHY.html"><a href="WHY.html#léchantillonnage-probabiliste-vs-non-probabiliste"><i class="fa fa-check"></i><b>2.5</b> L’échantillonnage probabiliste vs non probabiliste</a></li>
+<li class="chapter" data-level="2.6" data-path="WHY.html"><a href="WHY.html#approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage"><i class="fa fa-check"></i><b>2.6</b> Approche basée sur un modèle ou basée sur un plan d’échantillonnage</a></li>
+<li class="chapter" data-level="2.7" data-path="WHY.html"><a href="WHY.html#population-discrète-et-population-continue"><i class="fa fa-check"></i><b>2.7</b> Population discrète et population continue</a></li>
+<li class="chapter" data-level="2.8" data-path="WHY.html"><a href="WHY.html#plan"><i class="fa fa-check"></i><b>2.8</b> Plan</a></li>
+<li class="chapter" data-level="2.9" data-path="WHY.html"><a href="WHY.html#libraries-utilisées"><i class="fa fa-check"></i><b>2.9</b> Libraries utilisées</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Données</a><ul>
-<li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#statistiques-globales"><i class="fa fa-check"></i><b>2.1</b> Statistiques globales</a></li>
-<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#cartographie"><i class="fa fa-check"></i><b>2.2</b> Cartographie</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="SI.html"><a href="SI.html"><i class="fa fa-check"></i><b>3</b> Echantillonnage aléatoire simple</a><ul>
-<li class="chapter" data-level="3.1" data-path="SI.html"><a href="SI.html#définition-1"><i class="fa fa-check"></i><b>3.1</b> Définition</a></li>
-<li class="chapter" data-level="3.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>3.2</b> Mise en oeuvre avec un logiciel</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="SI.html"><a href="SI.html#excel"><i class="fa fa-check"></i><b>3.2.1</b> Excel</a></li>
-<li class="chapter" data-level="3.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>3.2.2</b> Avec <code>R</code> pour les polutations discrètes</a></li>
-<li class="chapter" data-level="3.2.3" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>3.2.3</b> Avec <code>R</code> pour les populations continues</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>3.3</b> Calcul des estimateurs</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>3.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
-<li class="chapter" data-level="3.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-fini"><i class="fa fa-check"></i><b>3.3.2</b> La moyenne pour la population discrète fini</a></li>
-<li class="chapter" data-level="3.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>3.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
-<li class="chapter" data-level="3.3.4" data-path="SI.html"><a href="SI.html#linterval-de-confiance"><i class="fa fa-check"></i><b>3.3.4</b> l’interval de confiance</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="SI.html"><a href="SI.html#simulations"><i class="fa fa-check"></i><b>3.4</b> Simulations</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="stsi.html"><a href="stsi.html"><i class="fa fa-check"></i><b>4</b> STSI</a></li>
-<li class="chapter" data-level="5" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>5</b> Echantillonnage aléatoire systématique</a><ul>
-<li class="chapter" data-level="5.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>5.1</b> Définitions</a></li>
-<li class="chapter" data-level="5.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>5.2</b> Exemple de grille</a></li>
-<li class="chapter" data-level="5.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>5.3</b> théorie</a></li>
-<li class="chapter" data-level="5.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>5.4</b> Exemple de mise en oeuvre</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>6</b> Echantillonnage pour la cartographie</a><ul>
-<li class="chapter" data-level="6.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>6.1</b> Caractéristiques</a></li>
-<li class="chapter" data-level="6.2" data-path="CARTO.html"><a href="CARTO.html#différents-types-de-plans"><i class="fa fa-check"></i><b>6.2</b> Différents types de plans</a></li>
-<li class="chapter" data-level="6.3" data-path="CARTO.html"><a href="CARTO.html#la-grille-systématique"><i class="fa fa-check"></i><b>6.3</b> La grille systématique</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques-1"><i class="fa fa-check"></i><b>6.3.1</b> Caractéristiques</a></li>
-<li class="chapter" data-level="6.3.2" data-path="CARTO.html"><a href="CARTO.html#implémentation"><i class="fa fa-check"></i><b>6.3.2</b> Implémentation</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-spatial-optimisé"><i class="fa fa-check"></i><b>6.4</b> Echantillonnage spatial optimisé</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="CARTO.html"><a href="CARTO.html#définition-2"><i class="fa fa-check"></i><b>6.4.1</b> Définition</a></li>
-<li class="chapter" data-level="6.4.2" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-spcosa"><i class="fa fa-check"></i><b>6.4.2</b> Mise en oeuvre avec <code>spcosa</code></a></li>
-<li class="chapter" data-level="6.4.3" data-path="CARTO.html"><a href="CARTO.html#en-présence-de-données-existantes"><i class="fa fa-check"></i><b>6.4.3</b> En présence de données existantes</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-pour-la-géostatitique"><i class="fa fa-check"></i><b>6.5</b> Echantillonnage pour la géostatitique</a></li>
-<li class="chapter" data-level="6.6" data-path="CARTO.html"><a href="CARTO.html#plan-optimisé-dans-lespace-des-covariables"><i class="fa fa-check"></i><b>6.6</b> Plan optimisé dans l’espace des covariables</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="CARTO.html"><a href="CARTO.html#définition-3"><i class="fa fa-check"></i><b>6.6.1</b> Définition</a></li>
-<li class="chapter" data-level="6.6.2" data-path="CARTO.html"><a href="CARTO.html#données"><i class="fa fa-check"></i><b>6.6.2</b> Données</a></li>
-<li class="chapter" data-level="6.6.3" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-lalgorithme-k-moyennes"><i class="fa fa-check"></i><b>6.6.3</b> Mise en oeuvre avec l’algorithme K-moyennes</a></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Données</a><ul>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#statistiques-globales"><i class="fa fa-check"></i><b>3.1</b> Statistiques globales</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cartographie"><i class="fa fa-check"></i><b>3.2</b> Cartographie</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#contour-dune-parcelle"><i class="fa fa-check"></i><b>3.2.1</b> Contour d’une parcelle</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#covariables-rasters-en-australie"><i class="fa fa-check"></i><b>3.2.2</b> Covariables rasters en Australie</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Script.html"><a href="Script.html"><i class="fa fa-check"></i><b>7</b> Script final</a></li>
+<li class="chapter" data-level="4" data-path="SI.html"><a href="SI.html"><i class="fa fa-check"></i><b>4</b> Echantillonnage aléatoire simple</a><ul>
+<li class="chapter" data-level="4.1" data-path="SI.html"><a href="SI.html#définition-1"><i class="fa fa-check"></i><b>4.1</b> Définition</a></li>
+<li class="chapter" data-level="4.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>4.2</b> Mise en oeuvre avec un logiciel</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="SI.html"><a href="SI.html#excel"><i class="fa fa-check"></i><b>4.2.1</b> Excel</a></li>
+<li class="chapter" data-level="4.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>4.2.2</b> Avec <code>R</code> pour les polutations discrètes</a></li>
+<li class="chapter" data-level="4.2.3" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>4.2.3</b> Avec <code>R</code> pour les populations continues</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>4.3</b> Calcul des estimateurs</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>4.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
+<li class="chapter" data-level="4.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-fini"><i class="fa fa-check"></i><b>4.3.2</b> La moyenne pour la population discrète fini</a></li>
+<li class="chapter" data-level="4.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>4.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
+<li class="chapter" data-level="4.3.4" data-path="SI.html"><a href="SI.html#linterval-de-confiance"><i class="fa fa-check"></i><b>4.3.4</b> l’interval de confiance</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="SI.html"><a href="SI.html#simulations"><i class="fa fa-check"></i><b>4.4</b> Simulations</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html"><i class="fa fa-check"></i><b>5</b> L’échantillonnage aléatoire stratifié</a><ul>
+<li class="chapter" data-level="5.1" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#pourquoi-stratifier"><i class="fa fa-check"></i><b>5.1</b> Pourquoi stratifier ?</a></li>
+<li class="chapter" data-level="5.2" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#comment-stratifier"><i class="fa fa-check"></i><b>5.2</b> Comment stratifier ?</a></li>
+<li class="chapter" data-level="5.3" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#estimateurs-stsi"><i class="fa fa-check"></i><b>5.3</b> Estimateurs STSI</a></li>
+<li class="chapter" data-level="5.4" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#stratification-géographique-par-strates-compactes"><i class="fa fa-check"></i><b>5.4</b> Stratification géographique par strates compactes</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#définition-2"><i class="fa fa-check"></i><b>5.4.1</b> Définition</a></li>
+<li class="chapter" data-level="5.4.2" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#estimateurs-stsi-1"><i class="fa fa-check"></i><b>5.4.2</b> Estimateurs STSI</a></li>
+<li class="chapter" data-level="5.4.3" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#implémentation"><i class="fa fa-check"></i><b>5.4.3</b> Implémentation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>6</b> Echantillonnage aléatoire systématique</a><ul>
+<li class="chapter" data-level="6.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
+<li class="chapter" data-level="6.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>6.2</b> Exemple de grille</a></li>
+<li class="chapter" data-level="6.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>6.3</b> théorie</a></li>
+<li class="chapter" data-level="6.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>6.4</b> Exemple de mise en oeuvre</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a><ul>
+<li class="chapter" data-level="7.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>7.1</b> Caractéristiques</a></li>
+<li class="chapter" data-level="7.2" data-path="CARTO.html"><a href="CARTO.html#différents-types-de-plans"><i class="fa fa-check"></i><b>7.2</b> Différents types de plans</a></li>
+<li class="chapter" data-level="7.3" data-path="CARTO.html"><a href="CARTO.html#la-grille-systématique"><i class="fa fa-check"></i><b>7.3</b> La grille systématique</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques-1"><i class="fa fa-check"></i><b>7.3.1</b> Caractéristiques</a></li>
+<li class="chapter" data-level="7.3.2" data-path="CARTO.html"><a href="CARTO.html#implémentation-1"><i class="fa fa-check"></i><b>7.3.2</b> Implémentation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-spatial-optimisé"><i class="fa fa-check"></i><b>7.4</b> Echantillonnage spatial optimisé</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="CARTO.html"><a href="CARTO.html#définition-3"><i class="fa fa-check"></i><b>7.4.1</b> Définition</a></li>
+<li class="chapter" data-level="7.4.2" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-spcosa"><i class="fa fa-check"></i><b>7.4.2</b> Mise en oeuvre avec <code>spcosa</code></a></li>
+<li class="chapter" data-level="7.4.3" data-path="CARTO.html"><a href="CARTO.html#en-présence-de-données-existantes"><i class="fa fa-check"></i><b>7.4.3</b> En présence de données existantes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-pour-la-géostatitique"><i class="fa fa-check"></i><b>7.5</b> Echantillonnage pour la géostatitique</a></li>
+<li class="chapter" data-level="7.6" data-path="CARTO.html"><a href="CARTO.html#plan-optimisé-dans-lespace-des-covariables"><i class="fa fa-check"></i><b>7.6</b> Plan optimisé dans l’espace des covariables</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="CARTO.html"><a href="CARTO.html#définition-4"><i class="fa fa-check"></i><b>7.6.1</b> Définition</a></li>
+<li class="chapter" data-level="7.6.2" data-path="CARTO.html"><a href="CARTO.html#données"><i class="fa fa-check"></i><b>7.6.2</b> Données</a></li>
+<li class="chapter" data-level="7.6.3" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-lalgorithme-k-moyennes"><i class="fa fa-check"></i><b>7.6.3</b> Mise en oeuvre avec l’algorithme K-moyennes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Script.html"><a href="Script.html"><i class="fa fa-check"></i><b>8</b> Script final</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -215,96 +228,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="Script" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Script final</h1>
+<h1><span class="header-section-number">Chapter 8</span> Script final</h1>
 <p>Ce chapitre rassemble l’ensemble des commandes utilisées dans un script fonctionnel.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="Script.html#cb61-1"></a><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/nsaby/Dropbox/fac/tp/sampling/&quot;</span>)</span>
-<span id="cb61-2"><a href="Script.html#cb61-2"></a></span>
-<span id="cb61-3"><a href="Script.html#cb61-3"></a><span class="co"># R</span></span>
-<span id="cb61-4"><a href="Script.html#cb61-4"></a><span class="co"># Probablity sampling : SI, STSI (spatial et covariable), SY</span></span>
-<span id="cb61-5"><a href="Script.html#cb61-5"></a><span class="co"># impl?menter le workflow dans R/ArcGis avec vecteur et rasteur</span></span>
-<span id="cb61-6"><a href="Script.html#cb61-6"></a><span class="co"># Calculer la moyenne par SI, STSI et SY</span></span>
-<span id="cb61-7"><a href="Script.html#cb61-7"></a></span>
-<span id="cb61-8"><a href="Script.html#cb61-8"></a><span class="co"># MB sampling : grid,  infill sampling</span></span>
-<span id="cb61-9"><a href="Script.html#cb61-9"></a><span class="co"># </span></span>
-<span id="cb61-10"><a href="Script.html#cb61-10"></a></span>
-<span id="cb61-11"><a href="Script.html#cb61-11"></a></span>
-<span id="cb61-12"><a href="Script.html#cb61-12"></a><span class="co"># test 1 avec des ?chantillonnage al?atoire --------------</span></span>
-<span id="cb61-13"><a href="Script.html#cb61-13"></a></span>
-<span id="cb61-14"><a href="Script.html#cb61-14"></a><span class="kw">library</span>(sp)</span>
-<span id="cb61-15"><a href="Script.html#cb61-15"></a><span class="kw">library</span>(tmap)</span>
-<span id="cb61-16"><a href="Script.html#cb61-16"></a><span class="co"># library(maptools)</span></span>
-<span id="cb61-17"><a href="Script.html#cb61-17"></a><span class="co"># library(mapview)</span></span>
-<span id="cb61-18"><a href="Script.html#cb61-18"></a><span class="co"># library(rgdal)</span></span>
-<span id="cb61-19"><a href="Script.html#cb61-19"></a></span>
-<span id="cb61-20"><a href="Script.html#cb61-20"></a>champ &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;./data/simulatedField_1Exp25.csv&#39;</span>)</span>
-<span id="cb61-21"><a href="Script.html#cb61-21"></a></span>
-<span id="cb61-22"><a href="Script.html#cb61-22"></a><span class="co"># Simuler une Aléatoire Simple (SI)</span></span>
-<span id="cb61-23"><a href="Script.html#cb61-23"></a>n =<span class="st"> </span><span class="dv">100</span></span>
-<span id="cb61-24"><a href="Script.html#cb61-24"></a></span>
-<span id="cb61-25"><a href="Script.html#cb61-25"></a><span class="co"># Creation des identifiants des lignes</span></span>
-<span id="cb61-26"><a href="Script.html#cb61-26"></a>id =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span></span>
-<span id="cb61-27"><a href="Script.html#cb61-27"></a><span class="co"># ou</span></span>
-<span id="cb61-28"><a href="Script.html#cb61-28"></a>id =<span class="st"> </span><span class="kw">seq</span>( <span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10000</span>, <span class="dt">by =</span> <span class="dv">1</span>)</span>
-<span id="cb61-29"><a href="Script.html#cb61-29"></a><span class="co"># tire au hasard n valeurs parmi 10000</span></span>
-<span id="cb61-30"><a href="Script.html#cb61-30"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sample</span>( <span class="dt">x =</span> id  , <span class="dt">size =</span> n)</span>
-<span id="cb61-31"><a href="Script.html#cb61-31"></a></span>
-<span id="cb61-32"><a href="Script.html#cb61-32"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sort</span>(MesIds)</span>
-<span id="cb61-33"><a href="Script.html#cb61-33"></a><span class="co"># Les coordonn?es</span></span>
-<span id="cb61-34"><a href="Script.html#cb61-34"></a>champ[MesIds,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
-<span id="cb61-35"><a href="Script.html#cb61-35"></a></span>
-<span id="cb61-36"><a href="Script.html#cb61-36"></a></span>
-<span id="cb61-37"><a href="Script.html#cb61-37"></a><span class="co"># Extraire les valeurs de carbone, simuler le terrain</span></span>
-<span id="cb61-38"><a href="Script.html#cb61-38"></a>terrain &lt;-<span class="st"> </span>champ[ MesIds, <span class="st">&quot;sim1&quot;</span> ]</span>
-<span id="cb61-39"><a href="Script.html#cb61-39"></a></span>
-<span id="cb61-40"><a href="Script.html#cb61-40"></a><span class="co"># moyenne estim?e ? partir de l&#39;?chantillon </span></span>
-<span id="cb61-41"><a href="Script.html#cb61-41"></a>MoyEst &lt;-<span class="st"> </span><span class="kw">mean</span>(terrain)</span>
-<span id="cb61-42"><a href="Script.html#cb61-42"></a><span class="co"># Variance d&#39;?chantillonnage de MoyEst</span></span>
-<span id="cb61-43"><a href="Script.html#cb61-43"></a>V &lt;-<span class="st"> </span><span class="kw">var</span>(terrain) <span class="op">/</span><span class="st"> </span>n</span>
-<span id="cb61-44"><a href="Script.html#cb61-44"></a></span>
-<span id="cb61-45"><a href="Script.html#cb61-45"></a><span class="co"># vraie moyenne</span></span>
-<span id="cb61-46"><a href="Script.html#cb61-46"></a>Moy &lt;-<span class="st"> </span><span class="kw">mean</span>(champ<span class="op">$</span>sim1)</span>
-<span id="cb61-47"><a href="Script.html#cb61-47"></a><span class="co"># calcul du quantile</span></span>
-<span id="cb61-48"><a href="Script.html#cb61-48"></a>z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb61-49"><a href="Script.html#cb61-49"></a><span class="co"># si n est petit &lt; 30</span></span>
-<span id="cb61-50"><a href="Script.html#cb61-50"></a>z &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>) , <span class="dt">df =</span> <span class="dv">20-1</span>)</span>
-<span id="cb61-51"><a href="Script.html#cb61-51"></a><span class="co"># calcul de l&#39;interval de confiance</span></span>
-<span id="cb61-52"><a href="Script.html#cb61-52"></a>IC &lt;-<span class="st"> </span>z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(V)</span>
-<span id="cb61-53"><a href="Script.html#cb61-53"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC</span></span>
-<span id="cb61-54"><a href="Script.html#cb61-54"></a>Moy <span class="op">&lt;</span><span class="st"> </span>MoyEst <span class="op">+</span><span class="st"> </span>IC</span>
-<span id="cb61-55"><a href="Script.html#cb61-55"></a>Moy <span class="op">&gt;</span><span class="st"> </span>MoyEst <span class="op">-</span><span class="st"> </span>IC</span>
-<span id="cb61-56"><a href="Script.html#cb61-56"></a><span class="dv">2</span> <span class="op">*</span>IC</span>
-<span id="cb61-57"><a href="Script.html#cb61-57"></a></span>
-<span id="cb61-58"><a href="Script.html#cb61-58"></a><span class="kw">cbind</span>(MoyEst, <span class="dt">ICbas =</span> MoyEst <span class="op">-</span><span class="st"> </span>IC, <span class="dt">ICHaut =</span>MoyEst <span class="op">+</span><span class="st"> </span>IC, Moy)</span>
-<span id="cb61-59"><a href="Script.html#cb61-59"></a></span>
-<span id="cb61-60"><a href="Script.html#cb61-60"></a><span class="co"># Tester le package sp ------</span></span>
-<span id="cb61-61"><a href="Script.html#cb61-61"></a><span class="kw">library</span>(sp)</span>
-<span id="cb61-62"><a href="Script.html#cb61-62"></a><span class="co"># Copie du tableau dans un nouvel objet</span></span>
-<span id="cb61-63"><a href="Script.html#cb61-63"></a>champSP &lt;-<span class="st"> </span>champ</span>
-<span id="cb61-64"><a href="Script.html#cb61-64"></a></span>
-<span id="cb61-65"><a href="Script.html#cb61-65"></a><span class="co"># transformer en un raster</span></span>
-<span id="cb61-66"><a href="Script.html#cb61-66"></a><span class="kw">coordinates</span>(champSP) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>)  </span>
-<span id="cb61-67"><a href="Script.html#cb61-67"></a></span>
-<span id="cb61-68"><a href="Script.html#cb61-68"></a><span class="co"># structure de l&#39;objet</span></span>
-<span id="cb61-69"><a href="Script.html#cb61-69"></a><span class="kw">str</span>(champSP)</span>
-<span id="cb61-70"><a href="Script.html#cb61-70"></a></span>
-<span id="cb61-71"><a href="Script.html#cb61-71"></a><span class="kw">spplot</span>(champSP)</span>
-<span id="cb61-72"><a href="Script.html#cb61-72"></a></span>
-<span id="cb61-73"><a href="Script.html#cb61-73"></a><span class="co"># transforme en raster le semi de points</span></span>
-<span id="cb61-74"><a href="Script.html#cb61-74"></a><span class="kw">gridded</span>(champSP) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb61-75"><a href="Script.html#cb61-75"></a><span class="kw">spplot</span>(champSP)</span>
-<span id="cb61-76"><a href="Script.html#cb61-76"></a><span class="kw">str</span>(champSP)</span>
-<span id="cb61-77"><a href="Script.html#cb61-77"></a></span>
-<span id="cb61-78"><a href="Script.html#cb61-78"></a><span class="co"># SI</span></span>
-<span id="cb61-79"><a href="Script.html#cb61-79"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP , n , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb61-80"><a href="Script.html#cb61-80"></a><span class="kw">plot</span>(champSP)</span>
-<span id="cb61-81"><a href="Script.html#cb61-81"></a><span class="kw">points</span>(MonEch, <span class="dt">pch =</span> <span class="dv">3</span>)</span>
-<span id="cb61-82"><a href="Script.html#cb61-82"></a></span>
-<span id="cb61-83"><a href="Script.html#cb61-83"></a><span class="co"># regular</span></span>
-<span id="cb61-84"><a href="Script.html#cb61-84"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP ,</span>
-<span id="cb61-85"><a href="Script.html#cb61-85"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>,</span>
-<span id="cb61-86"><a href="Script.html#cb61-86"></a>                    <span class="dt">cellsize =</span> <span class="dv">10</span>)</span>
-<span id="cb61-87"><a href="Script.html#cb61-87"></a><span class="kw">plot</span>(champSP)</span>
-<span id="cb61-88"><a href="Script.html#cb61-88"></a><span class="kw">points</span>(MonEch, <span class="dt">pch =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="Script.html#cb82-1"></a><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/nsaby/Dropbox/fac/tp/sampling/&quot;</span>)</span>
+<span id="cb82-2"><a href="Script.html#cb82-2"></a></span>
+<span id="cb82-3"><a href="Script.html#cb82-3"></a><span class="co"># R</span></span>
+<span id="cb82-4"><a href="Script.html#cb82-4"></a><span class="co"># Probablity sampling : SI, STSI (spatial et covariable), SY</span></span>
+<span id="cb82-5"><a href="Script.html#cb82-5"></a><span class="co"># impl?menter le workflow dans R/ArcGis avec vecteur et rasteur</span></span>
+<span id="cb82-6"><a href="Script.html#cb82-6"></a><span class="co"># Calculer la moyenne par SI, STSI et SY</span></span>
+<span id="cb82-7"><a href="Script.html#cb82-7"></a></span>
+<span id="cb82-8"><a href="Script.html#cb82-8"></a><span class="co"># MB sampling : grid,  infill sampling</span></span>
+<span id="cb82-9"><a href="Script.html#cb82-9"></a><span class="co"># </span></span>
+<span id="cb82-10"><a href="Script.html#cb82-10"></a></span>
+<span id="cb82-11"><a href="Script.html#cb82-11"></a></span>
+<span id="cb82-12"><a href="Script.html#cb82-12"></a><span class="co"># test 1 avec des ?chantillonnage al?atoire --------------</span></span>
+<span id="cb82-13"><a href="Script.html#cb82-13"></a></span>
+<span id="cb82-14"><a href="Script.html#cb82-14"></a><span class="kw">library</span>(sp)</span>
+<span id="cb82-15"><a href="Script.html#cb82-15"></a><span class="kw">library</span>(tmap)</span>
+<span id="cb82-16"><a href="Script.html#cb82-16"></a><span class="co"># library(maptools)</span></span>
+<span id="cb82-17"><a href="Script.html#cb82-17"></a><span class="co"># library(mapview)</span></span>
+<span id="cb82-18"><a href="Script.html#cb82-18"></a><span class="co"># library(rgdal)</span></span>
+<span id="cb82-19"><a href="Script.html#cb82-19"></a></span>
+<span id="cb82-20"><a href="Script.html#cb82-20"></a>champ &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;./data/simulatedField_1Exp25.csv&#39;</span>)</span>
+<span id="cb82-21"><a href="Script.html#cb82-21"></a></span>
+<span id="cb82-22"><a href="Script.html#cb82-22"></a><span class="co"># Simuler une Aléatoire Simple (SI)</span></span>
+<span id="cb82-23"><a href="Script.html#cb82-23"></a>n =<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb82-24"><a href="Script.html#cb82-24"></a></span>
+<span id="cb82-25"><a href="Script.html#cb82-25"></a><span class="co"># Creation des identifiants des lignes</span></span>
+<span id="cb82-26"><a href="Script.html#cb82-26"></a>id =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span></span>
+<span id="cb82-27"><a href="Script.html#cb82-27"></a><span class="co"># ou</span></span>
+<span id="cb82-28"><a href="Script.html#cb82-28"></a>id =<span class="st"> </span><span class="kw">seq</span>( <span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10000</span>, <span class="dt">by =</span> <span class="dv">1</span>)</span>
+<span id="cb82-29"><a href="Script.html#cb82-29"></a><span class="co"># tire au hasard n valeurs parmi 10000</span></span>
+<span id="cb82-30"><a href="Script.html#cb82-30"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sample</span>( <span class="dt">x =</span> id  , <span class="dt">size =</span> n)</span>
+<span id="cb82-31"><a href="Script.html#cb82-31"></a></span>
+<span id="cb82-32"><a href="Script.html#cb82-32"></a>MesIds &lt;-<span class="st"> </span><span class="kw">sort</span>(MesIds)</span>
+<span id="cb82-33"><a href="Script.html#cb82-33"></a><span class="co"># Les coordonn?es</span></span>
+<span id="cb82-34"><a href="Script.html#cb82-34"></a>champ[MesIds,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
+<span id="cb82-35"><a href="Script.html#cb82-35"></a></span>
+<span id="cb82-36"><a href="Script.html#cb82-36"></a></span>
+<span id="cb82-37"><a href="Script.html#cb82-37"></a><span class="co"># Extraire les valeurs de carbone, simuler le terrain</span></span>
+<span id="cb82-38"><a href="Script.html#cb82-38"></a>terrain &lt;-<span class="st"> </span>champ[ MesIds, <span class="st">&quot;sim1&quot;</span> ]</span>
+<span id="cb82-39"><a href="Script.html#cb82-39"></a></span>
+<span id="cb82-40"><a href="Script.html#cb82-40"></a><span class="co"># moyenne estim?e ? partir de l&#39;?chantillon </span></span>
+<span id="cb82-41"><a href="Script.html#cb82-41"></a>MoyEst &lt;-<span class="st"> </span><span class="kw">mean</span>(terrain)</span>
+<span id="cb82-42"><a href="Script.html#cb82-42"></a><span class="co"># Variance d&#39;?chantillonnage de MoyEst</span></span>
+<span id="cb82-43"><a href="Script.html#cb82-43"></a>V &lt;-<span class="st"> </span><span class="kw">var</span>(terrain) <span class="op">/</span><span class="st"> </span>n</span>
+<span id="cb82-44"><a href="Script.html#cb82-44"></a></span>
+<span id="cb82-45"><a href="Script.html#cb82-45"></a><span class="co"># vraie moyenne</span></span>
+<span id="cb82-46"><a href="Script.html#cb82-46"></a>Moy &lt;-<span class="st"> </span><span class="kw">mean</span>(champ<span class="op">$</span>sim1)</span>
+<span id="cb82-47"><a href="Script.html#cb82-47"></a><span class="co"># calcul du quantile</span></span>
+<span id="cb82-48"><a href="Script.html#cb82-48"></a>z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb82-49"><a href="Script.html#cb82-49"></a><span class="co"># si n est petit &lt; 30</span></span>
+<span id="cb82-50"><a href="Script.html#cb82-50"></a>z &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="st"> </span>(<span class="fl">0.05</span><span class="op">/</span><span class="dv">2</span>) , <span class="dt">df =</span> <span class="dv">20-1</span>)</span>
+<span id="cb82-51"><a href="Script.html#cb82-51"></a><span class="co"># calcul de l&#39;interval de confiance</span></span>
+<span id="cb82-52"><a href="Script.html#cb82-52"></a>IC &lt;-<span class="st"> </span>z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(V)</span>
+<span id="cb82-53"><a href="Script.html#cb82-53"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC</span></span>
+<span id="cb82-54"><a href="Script.html#cb82-54"></a>Moy <span class="op">&lt;</span><span class="st"> </span>MoyEst <span class="op">+</span><span class="st"> </span>IC</span>
+<span id="cb82-55"><a href="Script.html#cb82-55"></a>Moy <span class="op">&gt;</span><span class="st"> </span>MoyEst <span class="op">-</span><span class="st"> </span>IC</span>
+<span id="cb82-56"><a href="Script.html#cb82-56"></a><span class="dv">2</span> <span class="op">*</span>IC</span>
+<span id="cb82-57"><a href="Script.html#cb82-57"></a></span>
+<span id="cb82-58"><a href="Script.html#cb82-58"></a><span class="kw">cbind</span>(MoyEst, <span class="dt">ICbas =</span> MoyEst <span class="op">-</span><span class="st"> </span>IC, <span class="dt">ICHaut =</span>MoyEst <span class="op">+</span><span class="st"> </span>IC, Moy)</span>
+<span id="cb82-59"><a href="Script.html#cb82-59"></a></span>
+<span id="cb82-60"><a href="Script.html#cb82-60"></a><span class="co"># Tester le package sp ------</span></span>
+<span id="cb82-61"><a href="Script.html#cb82-61"></a><span class="kw">library</span>(sp)</span>
+<span id="cb82-62"><a href="Script.html#cb82-62"></a><span class="co"># Copie du tableau dans un nouvel objet</span></span>
+<span id="cb82-63"><a href="Script.html#cb82-63"></a>champSP &lt;-<span class="st"> </span>champ</span>
+<span id="cb82-64"><a href="Script.html#cb82-64"></a></span>
+<span id="cb82-65"><a href="Script.html#cb82-65"></a><span class="co"># transformer en un raster</span></span>
+<span id="cb82-66"><a href="Script.html#cb82-66"></a><span class="kw">coordinates</span>(champSP) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>)  </span>
+<span id="cb82-67"><a href="Script.html#cb82-67"></a></span>
+<span id="cb82-68"><a href="Script.html#cb82-68"></a><span class="co"># structure de l&#39;objet</span></span>
+<span id="cb82-69"><a href="Script.html#cb82-69"></a><span class="kw">str</span>(champSP)</span>
+<span id="cb82-70"><a href="Script.html#cb82-70"></a></span>
+<span id="cb82-71"><a href="Script.html#cb82-71"></a><span class="kw">spplot</span>(champSP)</span>
+<span id="cb82-72"><a href="Script.html#cb82-72"></a></span>
+<span id="cb82-73"><a href="Script.html#cb82-73"></a><span class="co"># transforme en raster le semi de points</span></span>
+<span id="cb82-74"><a href="Script.html#cb82-74"></a><span class="kw">gridded</span>(champSP) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb82-75"><a href="Script.html#cb82-75"></a><span class="kw">spplot</span>(champSP)</span>
+<span id="cb82-76"><a href="Script.html#cb82-76"></a><span class="kw">str</span>(champSP)</span>
+<span id="cb82-77"><a href="Script.html#cb82-77"></a></span>
+<span id="cb82-78"><a href="Script.html#cb82-78"></a><span class="co"># SI</span></span>
+<span id="cb82-79"><a href="Script.html#cb82-79"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP , n , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span>
+<span id="cb82-80"><a href="Script.html#cb82-80"></a><span class="kw">plot</span>(champSP)</span>
+<span id="cb82-81"><a href="Script.html#cb82-81"></a><span class="kw">points</span>(MonEch, <span class="dt">pch =</span> <span class="dv">3</span>)</span>
+<span id="cb82-82"><a href="Script.html#cb82-82"></a></span>
+<span id="cb82-83"><a href="Script.html#cb82-83"></a><span class="co"># regular</span></span>
+<span id="cb82-84"><a href="Script.html#cb82-84"></a>MonEch &lt;-<span class="st"> </span><span class="kw">spsample</span>( champSP ,</span>
+<span id="cb82-85"><a href="Script.html#cb82-85"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>,</span>
+<span id="cb82-86"><a href="Script.html#cb82-86"></a>                    <span class="dt">cellsize =</span> <span class="dv">10</span>)</span>
+<span id="cb82-87"><a href="Script.html#cb82-87"></a><span class="kw">plot</span>(champSP)</span>
+<span id="cb82-88"><a href="Script.html#cb82-88"></a><span class="kw">points</span>(MonEch, <span class="dt">pch =</span> <span class="dv">3</span>)</span></code></pre></div>
 
 </div>
             </section>

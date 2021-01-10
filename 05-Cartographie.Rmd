@@ -246,7 +246,9 @@ Dans cette partie, l'échantillons doit permettre de calibrer un modèle de regr
 * Surface response design
 * 
 
-### Données 
+### Données
+
+Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données consitué de grille décrivant un ensemble de caractéristiques d'une parcelle en Australie.
 
 ```{r}
 #Read data with coordinates and other attributes of fine grid (discretization of study area)

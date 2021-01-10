@@ -75,12 +75,40 @@ Moy
 
 Cartographie
 ------------
-Pour illuster les différents plans possible pour la cartographie, nous prenons comme exemple le contour d'une parcelle fourni par le package `spcosa`. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d'échantillonnage proposés.
+Pour illuster les différents plans possible pour la cartographie, nous prenons de jeus de données en exemple
 
-```{r, warning=FALSE}
+### Contour d'une parcelle
+
+le contour d'une parcelle  est fourni par le package `spcosa`. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d'échantillonnage proposés.
+
+```{r, warning=FALSE, fig.cap='Contour d\'une parcelle agricole', out.width='80%', fig.asp=.75, fig.align='center'}
 shpFarmsum <- readOGR(dsn = system.file("maps", package = "spcosa"), layer = "farmsum")
 
 tm_shape(shpFarmsum) + 
   tm_borders()
+```
+
+
+### Covariables rasters en Australie
+
+Un ensemble de 5 rasters sont disponibles pour une parcelle située en Australie dans un zone viticole appelée 'Hunter vallée'.
+
+ - Altitude
+ - l'orientation de la pente
+ - pente
+ - indice de topographie
+ - l'indice de végétation normalisé
+
+
+```{r , warning=FALSE, fig.cap='Covariables raster en Australie', out.width='80%', fig.asp=.75, fig.align='center'}
+#Read data with coordinates and other attributes of fine grid (discretization of study area)
+load(file="Data/HunterValley4Practicals.RData")
+grdHunterValley2 <- grdHunterValley
+coordinates(grdHunterValley2) <- c('Easting','Northing')
+gridded(grdHunterValley2) <- TRUE
+
+tm_shape(grdHunterValley2) + 
+  tm_raster(col = c("elevation_m","slope_deg","cti","ndvi") )
+
 ```
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
+  <title>Chapter 5 L’échantillonnage aléatoire stratifié | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
   <meta name="description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta property="og:title" content="Chapter 5 L’échantillonnage aléatoire stratifié | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="nsaby/cours-echantillonnage" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta name="twitter:title" content="Chapter 5 L’échantillonnage aléatoire stratifié | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   
   <meta name="twitter:description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Script.html"/>
-
+<link rel="prev" href="SI.html"/>
+<link rel="next" href="SY-QUICK.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -227,22 +227,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="léchantillonnage-aléatoire-stratifié" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> L’échantillonnage aléatoire stratifié</h1>
+<p>Pour ce type d’approche, la population ou la zone d’étude est subdivisée en sous-populations, appelées
+strates.</p>
+<ul>
+<li>Les strates ne peuvent pas se chevaucher, et leur union doit correspondre à la population étudiée.</li>
+<li>Dans chaque strate, un échantillon est sélectionné au hasard</li>
+<li>Les strates peuvent être échantillonnées de nombreuses manières, par exemple par échantillonnage aléatoire (SI). Cela conduit à un échantillonnage aléatoire simple stratifié (STSI)</li>
+<li>La méthode de sélection des unité par SI est appliquée à chaque strate séparément</li>
+</ul>
+<div id="pourquoi-stratifier" class="section level2">
+<h2><span class="header-section-number">5.1</span> Pourquoi stratifier ?</h2>
+<p>Deux raisons possibles :
+- Les estimations des paramètres statistiques pour la zone sont plus précises
+- Nous voulons des estimations séparées des paramètres statistiques pour les sous-populations</p>
+</div>
+<div id="comment-stratifier" class="section level2">
+<h2><span class="header-section-number">5.2</span> Comment stratifier ?</h2>
+<p>Deux approches :</p>
+<ul>
+<li>Stratification à l’aide d’un variables auxiliaires</li>
+<li>Variable catégorielle (unités cartographiques)</li>
+<li>variable quantitative (par exemple, images de télédétection)</li>
+<li>Stratification par la position géographique uniquement (X et Y)</li>
+</ul>
+</div>
+<div id="estimateurs-stsi" class="section level2">
+<h2><span class="header-section-number">5.3</span> Estimateurs STSI</h2>
+<p>L’estimateur de la moyenne STSI est le suivant</p>
+<p><span class="math inline">\(\hat{ \overline{z} } = \sum_{h=1}^{H} w_h \hat{\overline{z} }_{h}\)</span></p>
+<p>avec <span class="math inline">\(w_h = A_h/\sum_{h}A_h\)</span> et <span class="math inline">\(\hat{\overline{z} }_{h}\)</span> est l’estimateur SI de chaque strate <span class="math inline">\(h\)</span> avec un échantillonnage aléatoire simple.</p>
+<p>La variance d’échantillonnage de la moyenne expérimentale des <span class="math inline">\(z\)</span> est :</p>
+<p><span class="math display">\[\begin{equation}
 
+V(\hat{ \overline{z^l} } )  = \sum_{h=1}^{H} w_h^2 \frac{ \hat{ S^2_h} (\hat{ \overline{z^l} } ) }{n_h}
+\end{equation}\]</span></p>
+<p>où <span class="math inline">\(\hat{ S^2_h} (\hat{ \overline{z^l} })\)</span> est la variance SI dans la strate <span class="math inline">\(h\)</span> :</p>
+<p><span class="math display">\[\begin{equation}
+\hat{ S^2_h} (\hat{ \overline{z^l} })= \frac{1}{n_h-1}\sum_{i=1}^{n_h} ( z^l_{hi}  -\hat{\overline{z}}_h^l )
+\end{equation}\]</span></p>
+</div>
+<div id="stratification-géographique-par-strates-compactes" class="section level2">
+<h2><span class="header-section-number">5.4</span> Stratification géographique par strates compactes</h2>
+<p>Parfois, il n’existe pas d’information a priori sur la variabilité spatiale de la propriété visée. Dans ce cas, une bonne répartition spatiale peut</p>
+<div id="définition-2" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Définition</h3>
+<p>Dans cette approche, les <span class="math inline">\(n\)</span> observations sont réparties de manière optimale au sein de la zone d’étude. Pour cela, on utilise un critère qui minimise la distance entre les observations et un discrétisation de la zone d’étude.
+La moyenne du carré de la plus courte distance au point j:</p>
+<p><span class="math inline">\(MCPCD_j = 1/N \sum^N_{i=1}min_j(D_{ij}^2)\)</span></p>
+<p>Le critère <span class="math inline">\(MCPCD_j\)</span> peut être minmisé en utilisant l’algorithme des K-moyenne</p>
+<p>Il existe un package R <code>spcosa</code> de <span class="citation">Walvoort, Brus, and Gruijter (<a href="#ref-walvoort_r_2010" role="doc-biblioref">2010</a>)</span>.</p>
+<p>Dans cette appraoche, il n’est pas nécessaire de définir un variogramme a priori pour l’optimisation de la répartition des <span class="math inline">\(n\)</span> observations. Les strates ainsi définies sont appelées <strong>Strates compactes</strong></p>
+</div>
+<div id="estimateurs-stsi-1" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Estimateurs STSI</h3>
+<p>Ici, comme les strates ont la même surface et donc le même poids, on peut simplifier les estimateurs</p>
+<p>En effet, on peut simplifier les poids : <span class="math inline">\(w_h = A_h/\sum_{h}A_h = 1/H\)</span></p>
+<p>La moyenne:</p>
+<p><br/>
+<span class="math display">\[\begin{equation}
+
+\hat{ \overline{z} } = \sum_{h=1}^{H} \frac1H \hat{\overline{z} }_{h}
+\end{equation}\]</span></p>
+<p>et</p>
+<p><span class="math display">\[\begin{equation}
+\hat{\overline{z}}_{h} =\frac1{n_h} \sum_{i=1}^{n_h}z_i
+\end{equation}\]</span></p>
+<p>Si en plus le nombre d’observations est le même par strate (<span class="math inline">\(n_h\)</span>), on obtient une formule assez simple</p>
+<p><span class="math display">\[\begin{equation}
+
+\hat{ \overline{z} } =  \frac1N \sum_{i=1}^{N} z_i
+\end{equation}\]</span></p>
+<p>Pour la variance d’échantillonnage, il en va de même.</p>
+<p><span class="math display">\[\begin{equation}
+V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\hat{ \overline{z^l} } ) }{n_h}
+\end{equation}\]</span></p>
+</div>
+<div id="implémentation" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Implémentation</h3>
+<p>Il est conseillé de tirer au hasard 2 points par strate afin de pouvoir calculer une variance. Il suffit ensuite d’adapter le nombre de strate pour atteindre le nombre d’unités d’échantillonnage visé.</p>
+<p>Avec cette méthode, on réparit au mieux les unités dans l’espace.</p>
+<p>Ici, on avait retenu 20 unités, soit donc 10 strates.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb44-1"></a><span class="kw">library</span>(raster)</span>
+<span id="cb44-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb44-2"></a></span>
+<span id="cb44-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb44-3"></a>champSP.r &lt;-<span class="st"> </span><span class="kw">raster</span>(champSP)</span>
+<span id="cb44-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb44-4"></a><span class="kw">res</span>(champSP.r)</span></code></pre></div>
+<pre><code>## [1] 1 1</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb46-1"></a><span class="co">#aggregate from 1x1 resolution to 3x3 (factor = 3)</span></span>
+<span id="cb46-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb46-2"></a>champSP.r.aggregate &lt;-<span class="st"> </span><span class="kw">aggregate</span>(champSP.r, </span>
+<span id="cb46-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb46-3"></a>                                 <span class="dt">fact =</span> <span class="dv">2</span>)</span>
+<span id="cb46-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb46-4"></a><span class="kw">res</span>(champSP.r.aggregate)</span></code></pre></div>
+<pre><code>## [1] 2 2</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-1"></a>champSP.r.aggregate &lt;-<span class="st"> </span><span class="kw">as</span>(champSP.r.aggregate , <span class="st">&quot;SpatialPixels&quot;</span>)</span>
+<span id="cb48-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-2"></a></span>
+<span id="cb48-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-3"></a><span class="co"># compute compact geographical strata</span></span>
+<span id="cb48-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-4"></a>myStrata &lt;-<span class="st"> </span><span class="kw">stratify</span>(champSP.r.aggregate,</span>
+<span id="cb48-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-5"></a>                     <span class="dt">nStrata =</span> <span class="dv">10</span>,</span>
+<span id="cb48-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-6"></a>                     <span class="dt">equalArea=</span><span class="ot">TRUE</span>, </span>
+<span id="cb48-7"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-7"></a>                     <span class="dt">nTry=</span><span class="dv">5</span></span>
+<span id="cb48-8"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-8"></a>                     )</span>
+<span id="cb48-9"><a href="léchantillonnage-aléatoire-stratifié.html#cb48-9"></a><span class="kw">plot</span>(myStrata)</span></code></pre></div>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb49-1"></a><span class="co"># obtain the surface areas of the strata</span></span>
+<span id="cb49-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb49-2"></a><span class="kw">print</span>(areaStrata&lt;-<span class="kw">getArea</span>(myStrata))</span></code></pre></div>
+<pre><code>##    0    1    2    3    4    5    6    7    8    9 
+## 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb51-1"></a><span class="co"># select randomly n locations from the strata</span></span>
+<span id="cb51-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb51-2"></a>mySample &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStrata, <span class="dt">n =</span> <span class="dv">2</span>)</span>
+<span id="cb51-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb51-3"></a><span class="kw">plot</span>(myStrata, mySample)</span></code></pre></div>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<p>Examinons ce que donne la simulation pour la moyenne</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-1"></a>terrainSTSI &lt;-<span class="st"> </span><span class="kw">over</span>(mySample<span class="op">@</span>sample,champSP)</span>
+<span id="cb52-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-2"></a></span>
+<span id="cb52-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-3"></a>MoyEstSTSI &lt;-<span class="st"> </span><span class="kw">mean</span>(terrainSTSI<span class="op">$</span>sim1)</span>
+<span id="cb52-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-4"></a></span>
+<span id="cb52-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-5"></a>MoyEstSTSI</span></code></pre></div>
+<pre><code>## [1] 5.459981</code></pre>
+<p>Et pour la variance</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb54-1"></a>StratesSTSI &lt;-<span class="st"> </span><span class="kw">over</span>(mySample<span class="op">@</span>sample,myStrata<span class="op">@</span>cells)</span>
+<span id="cb54-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb54-2"></a></span>
+<span id="cb54-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb54-3"></a>myStrata<span class="op">@</span>stratumId[StratesSTSI]</span></code></pre></div>
+<pre><code>##  [1] 0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-1"></a>Mydata &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(</span>
+<span id="cb56-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-2"></a>  <span class="dt">strate =</span> myStrata<span class="op">@</span>stratumId[StratesSTSI],</span>
+<span id="cb56-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-3"></a>  <span class="dt">z=</span> terrainSTSI<span class="op">$</span>sim1</span>
+<span id="cb56-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-4"></a>  </span>
+<span id="cb56-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-5"></a>)</span>
+<span id="cb56-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-6"></a></span>
+<span id="cb56-7"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-7"></a>Varh&lt;-<span class="kw">tapply</span>(Mydata<span class="op">$</span>z, <span class="dt">INDEX=</span>Mydata<span class="op">$</span>strate,<span class="dt">FUN=</span>var)</span>
+<span id="cb56-8"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-8"></a></span>
+<span id="cb56-9"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-9"></a>VStsi &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(Varh<span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
+<p>Voici donc la variance SI 0.0414588 et la variance dans ce cas 0.0271827</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-1"></a><span class="co"># calcul de l&#39;interval de confiance selon les deux lois</span></span>
+<span id="cb57-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-2"></a>ICT &lt;-<span class="st"> </span>talpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(VStsi)</span>
+<span id="cb57-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-3"></a></span>
+<span id="cb57-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-4"></a><span class="co"># comme n&lt; 30, on garde ICT</span></span>
+<span id="cb57-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-5"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC student</span></span>
+<span id="cb57-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-6"></a>Moy <span class="op">&lt;</span><span class="st"> </span>MoyEstSTSI <span class="op">+</span><span class="st"> </span>ICT</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb59-1"></a>Moy <span class="op">&gt;</span><span class="st"> </span>MoyEstSTSI <span class="op">-</span><span class="st"> </span>ICT</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb61-1"></a><span class="kw">cbind</span>(MoyEstSTSI, </span>
+<span id="cb61-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb61-2"></a>      <span class="dt">ICbas =</span> MoyEstSTSI <span class="op">-</span><span class="st"> </span>ICT,</span>
+<span id="cb61-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb61-3"></a>      <span class="dt">ICHaut =</span> MoyEstSTSI <span class="op">+</span><span class="st"> </span>ICT, Moy)</span></code></pre></div>
+<pre><code>##      MoyEstSTSI  ICbas   ICHaut      Moy
+## [1,]   5.459981 5.1149 5.805062 5.298602</code></pre>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
 <div id="refs" class="references">
-<div>
-<p>Brus, D. J. 2019. “Sampling for Digital Soil Mapping: A Tutorial Supported by R Scripts.” <em>Geoderma</em> 338 (March): 464–80. <a href="https://doi.org/10.1016/j.geoderma.2018.07.036">https://doi.org/10.1016/j.geoderma.2018.07.036</a>.</p>
-</div>
-<div>
-<p>Gruijter, J. de, D. J. Brus, M. F. P. Bierkens, and M. Knotters. 2006. <em>Sampling for Natural Resource Monitoring</em>. Springer-Verlag.</p>
-</div>
-<div>
-<p>Wadoux, Alexandre M. J. C., Benjamin P. Marchant, and Richard M. Lark. 2019. “Efficient Sampling for Geostatistical Surveys.” <em>European Journal of Soil Science</em>, May. <a href="https://doi.org/10.1111/ejss.12797">https://doi.org/10.1111/ejss.12797</a>.</p>
-</div>
-<div>
+<div id="ref-walvoort_r_2010">
 <p>Walvoort, D. J. J., D. J. Brus, and J. J. de Gruijter. 2010. “An R Package for Spatial Coverage Sampling and Random Sampling from Compact Geographical Strata by K-Means.” <em>Computers &amp; Geosciences</em> 36 (10): 1261–7.</p>
-</div>
 </div>
 </div>
             </section>
@@ -250,8 +388,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="Script.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="SI.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="SY-QUICK.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
