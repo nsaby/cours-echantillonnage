@@ -30,9 +30,9 @@ knitr::write_bib(c(
 Pourquoi ce cours {#WHY}
 ======================
 
-Ces quelques notes de cours et de script `R` ont été produite pour un cours de M1 de la Faculté de Tours. https://master-environnement.univ-tours.fr/
+Ces quelques notes de cours et de scripts `R` ont été produits pour un cours de M1 de la Faculté de Tours. https://master-environnement.univ-tours.fr/
 
-Ce cours est basé sur les travaux publié dans le livre [@de_gruijter_sampling_2006]. Les codes `R` sont également disponibles dans l'article de Brus et al [@brus_sampling_2019] et une partie des scripts `R` utiles pour définir un plan d'échantillonnage dans l'espace sont disponibles sur le github: https://github.com/DickBrus/TutorialSampling4DSM
+Ce cours est basé sur les travaux publiés dans le livre [@de_gruijter_sampling_2006]. Un descriptif des approches utiles pour la cartographie est également disponible dans l'article de Brus et al [@brus_sampling_2019] ainsi que les scripts `R` associés  sur le github: https://github.com/DickBrus/TutorialSampling4DSM
 
 Ce cours rassemble un sélection choisie de techniques et de codes !
 
