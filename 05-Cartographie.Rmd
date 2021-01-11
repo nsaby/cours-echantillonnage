@@ -20,7 +20,7 @@ Caractéristiques
 
   - Méthodes d'interpolation spatiale heuristique : Polygones de Thiessen, triangulation, voisin naturel, distance inverse
   - Interpolation spatiale basée sur un modèle stochastique : le krigeage
-  -Modèle non spatial : modèle de régression linéaire, arbre de régression, forêt aléatoire
+  - Modèle non spatial : modèle de régression linéaire, arbre de régression, forêt aléatoire
 
 
 Différents types de plans
@@ -142,9 +142,11 @@ plot(myStratification, mySamplingPattern)
 Supposons l'existance d'un $k$ échantillons sur la zone
 
 ```{r}
-k= 15
+k= 20
 set.seed(3)
 MonEchAncien <- spsample( shpFarmsum , k , type = "random")
+spplot(MonEchAncien)
+
 ```
 
 La commande `spcosa::stratify` permet de construire les strates compactes en tenant compte de ces observations afin d'optimiser la répartition des échantillons supplémentaires pour la cartographie
@@ -162,6 +164,7 @@ myStrata <- stratify(shpFarmsum,
                      nStrata = ntot,
                      priorPoints=MonEchAncien,
                      nTry=10)
+
 
 #Select sampling points of infill sample (centres of geostrata)
 mySample <- spsample(myStrata)
@@ -301,6 +304,15 @@ ggplot(grdHunterValley) +
   geom_point(data=mySample,mapping=aes(y=elevation_m,x=cti),size=1.5) +
   scale_y_continuous(name = "Elevation") +
   scale_x_continuous(name = "ndvi") +
+  theme(legend.position="none")
+```
+
+```{r KMSample2, fig.cap='Plan optimisé par K-moyenne sur les covariables, représentation dans l\'espace des covariables', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
+ggplot(grdHunterValley) +
+  geom_point(mapping=aes(y=elevation_m,x=slope_deg,colour=factor(clusters)), size = .51) +
+  geom_point(data=mySample,mapping=aes(y=elevation_m,x=cti),size=1.5) +
+  scale_y_continuous(name = "Elevation") +
+  scale_x_continuous(name = "Slope") +
   theme(legend.position="none")
 ```
 

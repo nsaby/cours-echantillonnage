@@ -242,23 +242,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Inconvénient : ils n’existe pas d’estimateur non biaisé de la variance d’échantillonnage</p></li>
 </ul></li>
 </ul>
+<p>fixer le nombre de points avec la résolution qui va dépndre du budget alloué au projet.</p>
 </div>
 <div id="exemple-de-grille" class="section level2">
 <h2><span class="header-section-number">6.2</span> Exemple de grille</h2>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="SY-QUICK.html#cb63-1"></a>MonEch &lt;-<span class="st"> </span>sp<span class="op">::</span><span class="kw">spsample</span>( <span class="dt">x =</span> champSP , </span>
-<span id="cb63-2"><a href="SY-QUICK.html#cb63-2"></a>                    <span class="dt">cellsize =</span> <span class="dv">20</span> ,</span>
-<span id="cb63-3"><a href="SY-QUICK.html#cb63-3"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
-<span id="cb63-4"><a href="SY-QUICK.html#cb63-4"></a></span>
-<span id="cb63-5"><a href="SY-QUICK.html#cb63-5"></a><span class="kw">set.seed</span>(<span class="dv">2</span>) <span class="co"># ne marche pas sinon</span></span>
-<span id="cb63-6"><a href="SY-QUICK.html#cb63-6"></a>MonEch2 &lt;-<span class="st"> </span>sp<span class="op">::</span><span class="kw">spsample</span>( <span class="dt">x =</span> champSP , </span>
-<span id="cb63-7"><a href="SY-QUICK.html#cb63-7"></a>                    <span class="dt">cellsize =</span> <span class="dv">20</span> ,</span>
-<span id="cb63-8"><a href="SY-QUICK.html#cb63-8"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
-<span id="cb63-9"><a href="SY-QUICK.html#cb63-9"></a></span>
-<span id="cb63-10"><a href="SY-QUICK.html#cb63-10"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span><span class="st"> </span><span class="kw">tm_raster</span>() <span class="op">+</span></span>
-<span id="cb63-11"><a href="SY-QUICK.html#cb63-11"></a><span class="st">  </span><span class="kw">tm_shape</span>(<span class="dt">shp =</span> MonEch) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>(<span class="dt">col=</span><span class="st">&#39;black&#39;</span>) <span class="op">+</span></span>
-<span id="cb63-12"><a href="SY-QUICK.html#cb63-12"></a><span class="st">  </span><span class="kw">tm_shape</span>(<span class="dt">shp =</span> MonEch2) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>(<span class="dt">col=</span><span class="st">&#39;green&#39;</span>)<span class="op">+</span></span>
-<span id="cb63-13"><a href="SY-QUICK.html#cb63-13"></a></span>
-<span id="cb63-14"><a href="SY-QUICK.html#cb63-14"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="SY-QUICK.html#cb76-1"></a>MonEch &lt;-<span class="st"> </span>sp<span class="op">::</span><span class="kw">spsample</span>( <span class="dt">x =</span> champSP , </span>
+<span id="cb76-2"><a href="SY-QUICK.html#cb76-2"></a>                    <span class="dt">cellsize =</span> <span class="dv">20</span> ,</span>
+<span id="cb76-3"><a href="SY-QUICK.html#cb76-3"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
+<span id="cb76-4"><a href="SY-QUICK.html#cb76-4"></a></span>
+<span id="cb76-5"><a href="SY-QUICK.html#cb76-5"></a><span class="kw">set.seed</span>(<span class="dv">2</span>) <span class="co"># ne marche pas sinon</span></span>
+<span id="cb76-6"><a href="SY-QUICK.html#cb76-6"></a>MonEch2 &lt;-<span class="st"> </span>sp<span class="op">::</span><span class="kw">spsample</span>( <span class="dt">x =</span> champSP , </span>
+<span id="cb76-7"><a href="SY-QUICK.html#cb76-7"></a>                    <span class="dt">cellsize =</span> <span class="dv">20</span> ,</span>
+<span id="cb76-8"><a href="SY-QUICK.html#cb76-8"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
+<span id="cb76-9"><a href="SY-QUICK.html#cb76-9"></a></span>
+<span id="cb76-10"><a href="SY-QUICK.html#cb76-10"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span><span class="st"> </span><span class="kw">tm_raster</span>() <span class="op">+</span></span>
+<span id="cb76-11"><a href="SY-QUICK.html#cb76-11"></a><span class="st">  </span><span class="kw">tm_shape</span>(<span class="dt">shp =</span> MonEch) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>(<span class="dt">col=</span><span class="st">&#39;black&#39;</span>) <span class="op">+</span></span>
+<span id="cb76-12"><a href="SY-QUICK.html#cb76-12"></a><span class="st">  </span><span class="kw">tm_shape</span>(<span class="dt">shp =</span> MonEch2) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>(<span class="dt">col=</span><span class="st">&#39;green&#39;</span>)<span class="op">+</span></span>
+<span id="cb76-13"><a href="SY-QUICK.html#cb76-13"></a></span>
+<span id="cb76-14"><a href="SY-QUICK.html#cb76-14"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:SYfig"></span>
 <img src="cours-echantillonnage_files/figure-html/SYfig-1.png" alt="Exemple de  grilles systématiques placées au hasard" width="110%" />
 <p class="caption">
@@ -272,37 +273,37 @@ Figure 6.1: Exemple de grilles systématiques placées au hasard
 <div id="exemple-de-mise-en-oeuvre" class="section level2">
 <h2><span class="header-section-number">6.4</span> Exemple de mise en oeuvre</h2>
 <p>Voici un exemple de mise en oeuvre des calculs proposés au paragraphe précédent.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="SY-QUICK.html#cb64-1"></a>terrainSY &lt;-<span class="st"> </span><span class="kw">over</span>(MonEch2, champSP)</span>
-<span id="cb64-2"><a href="SY-QUICK.html#cb64-2"></a></span>
-<span id="cb64-3"><a href="SY-QUICK.html#cb64-3"></a><span class="co">#change class of object with sample data to SpatialPixelsDataFrame</span></span>
-<span id="cb64-4"><a href="SY-QUICK.html#cb64-4"></a><span class="kw">gridded</span>(MonEch2) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb64-5"><a href="SY-QUICK.html#cb64-5"></a></span>
-<span id="cb64-6"><a href="SY-QUICK.html#cb64-6"></a><span class="co">#compute number of strata from length of data file NB number of sampling units can be odd</span></span>
-<span id="cb64-7"><a href="SY-QUICK.html#cb64-7"></a>numberofStrata &lt;-<span class="st"> </span><span class="kw">floor</span>(<span class="kw">length</span>(MonEch2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span>
-<span id="cb64-8"><a href="SY-QUICK.html#cb64-8"></a></span>
-<span id="cb64-9"><a href="SY-QUICK.html#cb64-9"></a><span class="co">#cluster the sampling units</span></span>
-<span id="cb64-10"><a href="SY-QUICK.html#cb64-10"></a>myStrata &lt;-</span>
-<span id="cb64-11"><a href="SY-QUICK.html#cb64-11"></a><span class="st">  </span><span class="kw">stratify</span>(MonEch2,</span>
-<span id="cb64-12"><a href="SY-QUICK.html#cb64-12"></a>           <span class="dt">nStrata =</span> numberofStrata,</span>
-<span id="cb64-13"><a href="SY-QUICK.html#cb64-13"></a>           <span class="dt">equalArea =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb64-14"><a href="SY-QUICK.html#cb64-14"></a>           <span class="dt">nTry =</span> <span class="dv">100</span>)</span>
-<span id="cb64-15"><a href="SY-QUICK.html#cb64-15"></a></span>
-<span id="cb64-16"><a href="SY-QUICK.html#cb64-16"></a>myStrata.df &lt;-<span class="st"> </span><span class="kw">as</span>(myStrata, <span class="st">&quot;data.frame&quot;</span>)</span>
-<span id="cb64-17"><a href="SY-QUICK.html#cb64-17"></a>data &lt;-<span class="st"> </span><span class="kw">cbind</span>(terrainSY, myStrata.df)</span>
-<span id="cb64-18"><a href="SY-QUICK.html#cb64-18"></a></span>
-<span id="cb64-19"><a href="SY-QUICK.html#cb64-19"></a>varh &lt;-<span class="st"> </span><span class="kw">tapply</span>(data<span class="op">$</span>sim1,</span>
-<span id="cb64-20"><a href="SY-QUICK.html#cb64-20"></a>               <span class="dt">INDEX =</span> data<span class="op">$</span>stratumId,</span>
-<span id="cb64-21"><a href="SY-QUICK.html#cb64-21"></a>               <span class="dt">FUN =</span> var)</span>
-<span id="cb64-22"><a href="SY-QUICK.html#cb64-22"></a></span>
-<span id="cb64-23"><a href="SY-QUICK.html#cb64-23"></a>nh &lt;-<span class="st"> </span><span class="kw">tapply</span>(data<span class="op">$</span>sim1,</span>
-<span id="cb64-24"><a href="SY-QUICK.html#cb64-24"></a>             <span class="dt">INDEX =</span> data<span class="op">$</span>stratumId,</span>
-<span id="cb64-25"><a href="SY-QUICK.html#cb64-25"></a>             <span class="dt">FUN =</span> length)</span>
-<span id="cb64-26"><a href="SY-QUICK.html#cb64-26"></a></span>
-<span id="cb64-27"><a href="SY-QUICK.html#cb64-27"></a>varmeanh&lt;-varh<span class="op">/</span>nh</span>
-<span id="cb64-28"><a href="SY-QUICK.html#cb64-28"></a>wh&lt;-nh<span class="op">/</span><span class="kw">sum</span>(nh)</span>
-<span id="cb64-29"><a href="SY-QUICK.html#cb64-29"></a>semeanSTSI&lt;-<span class="kw">sqrt</span>(<span class="kw">sum</span>(wh<span class="op">^</span><span class="dv">2</span><span class="op">*</span>varmeanh))</span>
-<span id="cb64-30"><a href="SY-QUICK.html#cb64-30"></a></span>
-<span id="cb64-31"><a href="SY-QUICK.html#cb64-31"></a>semeanSI &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">var</span>(terrainSY<span class="op">$</span>sim1)<span class="op">/</span><span class="kw">length</span>(MonEch2))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="SY-QUICK.html#cb77-1"></a>terrainSY &lt;-<span class="st"> </span><span class="kw">over</span>(MonEch2, champSP)</span>
+<span id="cb77-2"><a href="SY-QUICK.html#cb77-2"></a></span>
+<span id="cb77-3"><a href="SY-QUICK.html#cb77-3"></a><span class="co">#change class of object with sample data to SpatialPixelsDataFrame</span></span>
+<span id="cb77-4"><a href="SY-QUICK.html#cb77-4"></a><span class="kw">gridded</span>(MonEch2) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb77-5"><a href="SY-QUICK.html#cb77-5"></a></span>
+<span id="cb77-6"><a href="SY-QUICK.html#cb77-6"></a><span class="co">#compute number of strata from length of data file NB number of sampling units can be odd</span></span>
+<span id="cb77-7"><a href="SY-QUICK.html#cb77-7"></a>numberofStrata &lt;-<span class="st"> </span><span class="kw">floor</span>(<span class="kw">length</span>(MonEch2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb77-8"><a href="SY-QUICK.html#cb77-8"></a></span>
+<span id="cb77-9"><a href="SY-QUICK.html#cb77-9"></a><span class="co">#cluster the sampling units</span></span>
+<span id="cb77-10"><a href="SY-QUICK.html#cb77-10"></a>myStrata &lt;-</span>
+<span id="cb77-11"><a href="SY-QUICK.html#cb77-11"></a><span class="st">  </span><span class="kw">stratify</span>(MonEch2,</span>
+<span id="cb77-12"><a href="SY-QUICK.html#cb77-12"></a>           <span class="dt">nStrata =</span> numberofStrata,</span>
+<span id="cb77-13"><a href="SY-QUICK.html#cb77-13"></a>           <span class="dt">equalArea =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb77-14"><a href="SY-QUICK.html#cb77-14"></a>           <span class="dt">nTry =</span> <span class="dv">100</span>)</span>
+<span id="cb77-15"><a href="SY-QUICK.html#cb77-15"></a></span>
+<span id="cb77-16"><a href="SY-QUICK.html#cb77-16"></a>myStrata.df &lt;-<span class="st"> </span><span class="kw">as</span>(myStrata, <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb77-17"><a href="SY-QUICK.html#cb77-17"></a>data &lt;-<span class="st"> </span><span class="kw">cbind</span>(terrainSY, myStrata.df)</span>
+<span id="cb77-18"><a href="SY-QUICK.html#cb77-18"></a></span>
+<span id="cb77-19"><a href="SY-QUICK.html#cb77-19"></a>varh &lt;-<span class="st"> </span><span class="kw">tapply</span>(data<span class="op">$</span>sim1,</span>
+<span id="cb77-20"><a href="SY-QUICK.html#cb77-20"></a>               <span class="dt">INDEX =</span> data<span class="op">$</span>stratumId,</span>
+<span id="cb77-21"><a href="SY-QUICK.html#cb77-21"></a>               <span class="dt">FUN =</span> var)</span>
+<span id="cb77-22"><a href="SY-QUICK.html#cb77-22"></a></span>
+<span id="cb77-23"><a href="SY-QUICK.html#cb77-23"></a>nh &lt;-<span class="st"> </span><span class="kw">tapply</span>(data<span class="op">$</span>sim1,</span>
+<span id="cb77-24"><a href="SY-QUICK.html#cb77-24"></a>             <span class="dt">INDEX =</span> data<span class="op">$</span>stratumId,</span>
+<span id="cb77-25"><a href="SY-QUICK.html#cb77-25"></a>             <span class="dt">FUN =</span> length)</span>
+<span id="cb77-26"><a href="SY-QUICK.html#cb77-26"></a></span>
+<span id="cb77-27"><a href="SY-QUICK.html#cb77-27"></a>varmeanh&lt;-varh<span class="op">/</span>nh</span>
+<span id="cb77-28"><a href="SY-QUICK.html#cb77-28"></a>wh&lt;-nh<span class="op">/</span><span class="kw">sum</span>(nh)</span>
+<span id="cb77-29"><a href="SY-QUICK.html#cb77-29"></a>semeanSTSI&lt;-<span class="kw">sqrt</span>(<span class="kw">sum</span>(wh<span class="op">^</span><span class="dv">2</span><span class="op">*</span>varmeanh))</span>
+<span id="cb77-30"><a href="SY-QUICK.html#cb77-30"></a></span>
+<span id="cb77-31"><a href="SY-QUICK.html#cb77-31"></a>semeanSI &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">var</span>(terrainSY<span class="op">$</span>sim1)<span class="op">/</span><span class="kw">length</span>(MonEch2))</span></code></pre></div>
 <p>Ainsi, l’estimation de la variance d’échantillonnage dite naïve est 0.1801523. Cette valeur est supérieure à la valeur fournie par l’estimation avec le deuxième formule: 0.1292304</p>
 
 </div>

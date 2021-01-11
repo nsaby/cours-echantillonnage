@@ -23,6 +23,7 @@ Pourquoi stratifier ?
 ---------------------
 
 Deux raisons possibles :
+
 - Les estimations des paramètres statistiques pour la zone sont plus précises 
 - Nous voulons des estimations séparées des paramètres statistiques pour les sous-populations
 
@@ -32,8 +33,10 @@ Comment stratifier ?
 Deux approches :
 
 * Stratification à l'aide d'un  variables auxiliaires
- -  Variable catégorielle (unités cartographiques)
+
+ - Variable catégorielle (unités cartographiques)
  - variable quantitative (par exemple, images de télédétection)
+ 
 * Stratification par la position géographique uniquement (X et Y)
 
 Estimateurs STSI
@@ -154,6 +157,20 @@ mySample <- spsample(myStrata, n = 2)
 plot(myStrata, mySample)
 
 ```
+
+
+Comparons les deux approches: SI et STSI avec strates compactes
+
+```{r}
+STSI <- tm_shape(champSP) +
+  tm_raster()+
+  tm_shape(mySample@sample)+
+  tm_symbols()+
+tm_layout(legend.outside = TRUE)
+
+tmap_arrange(SI, STSI)
+```
+
 
 Examinons ce que donne la simulation pour la moyenne
 

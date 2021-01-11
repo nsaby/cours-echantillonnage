@@ -285,15 +285,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.3.2</span> Implémentation</h3>
 <p>On teste ici les fonctions en prenant la parcelle du package <code>spcosa</code></p>
 <p>Voici l’exemple pour la grille de type régulière à maille carrée. On remarque la présence de zone sans donnée.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="CARTO.html#cb65-1"></a><span class="co"># regular</span></span>
-<span id="cb65-2"><a href="CARTO.html#cb65-2"></a>MagrilleReg &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum ,</span>
-<span id="cb65-3"><a href="CARTO.html#cb65-3"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>,</span>
-<span id="cb65-4"><a href="CARTO.html#cb65-4"></a>                    <span class="dt">cellsize =</span> <span class="dv">30</span>)</span>
-<span id="cb65-5"><a href="CARTO.html#cb65-5"></a></span>
-<span id="cb65-6"><a href="CARTO.html#cb65-6"></a><span class="kw">tm_shape</span>(shpFarmsum) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb65-7"><a href="CARTO.html#cb65-7"></a><span class="st">  </span><span class="kw">tm_borders</span>( ) <span class="op">+</span></span>
-<span id="cb65-8"><a href="CARTO.html#cb65-8"></a><span class="kw">tm_shape</span>(MagrilleReg) <span class="op">+</span></span>
-<span id="cb65-9"><a href="CARTO.html#cb65-9"></a><span class="st">    </span><span class="kw">tm_symbols</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="CARTO.html#cb78-1"></a><span class="co"># regular</span></span>
+<span id="cb78-2"><a href="CARTO.html#cb78-2"></a>MagrilleReg &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum ,</span>
+<span id="cb78-3"><a href="CARTO.html#cb78-3"></a>                    <span class="dt">type =</span> <span class="st">&quot;regular&quot;</span>,</span>
+<span id="cb78-4"><a href="CARTO.html#cb78-4"></a>                    <span class="dt">cellsize =</span> <span class="dv">30</span>)</span>
+<span id="cb78-5"><a href="CARTO.html#cb78-5"></a></span>
+<span id="cb78-6"><a href="CARTO.html#cb78-6"></a><span class="kw">tm_shape</span>(shpFarmsum) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb78-7"><a href="CARTO.html#cb78-7"></a><span class="st">  </span><span class="kw">tm_borders</span>( ) <span class="op">+</span></span>
+<span id="cb78-8"><a href="CARTO.html#cb78-8"></a><span class="kw">tm_shape</span>(MagrilleReg) <span class="op">+</span></span>
+<span id="cb78-9"><a href="CARTO.html#cb78-9"></a><span class="st">    </span><span class="kw">tm_symbols</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Grilleregfig"></span>
 <img src="cours-echantillonnage_files/figure-html/Grilleregfig-1.png" alt="Grille régulière" width="110%" />
 <p class="caption">
@@ -301,14 +301,14 @@ Figure 7.1: Grille régulière
 </p>
 </div>
 <p>Voici l’exemple pour la grille de type régulière carré. On remarque la présence de zone sans donnée.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="CARTO.html#cb66-1"></a>MagrilleHex &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum ,</span>
-<span id="cb66-2"><a href="CARTO.html#cb66-2"></a>                    <span class="dt">type =</span> <span class="st">&quot;hexagonal&quot;</span>,</span>
-<span id="cb66-3"><a href="CARTO.html#cb66-3"></a>                    <span class="dt">cellsize =</span> <span class="dv">30</span>)</span>
-<span id="cb66-4"><a href="CARTO.html#cb66-4"></a></span>
-<span id="cb66-5"><a href="CARTO.html#cb66-5"></a><span class="kw">tm_shape</span>(shpFarmsum) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb66-6"><a href="CARTO.html#cb66-6"></a><span class="st">  </span><span class="kw">tm_borders</span>( ) <span class="op">+</span></span>
-<span id="cb66-7"><a href="CARTO.html#cb66-7"></a><span class="kw">tm_shape</span>(MagrilleHex) <span class="op">+</span></span>
-<span id="cb66-8"><a href="CARTO.html#cb66-8"></a><span class="st">    </span><span class="kw">tm_symbols</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="CARTO.html#cb79-1"></a>MagrilleHex &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum ,</span>
+<span id="cb79-2"><a href="CARTO.html#cb79-2"></a>                    <span class="dt">type =</span> <span class="st">&quot;hexagonal&quot;</span>,</span>
+<span id="cb79-3"><a href="CARTO.html#cb79-3"></a>                    <span class="dt">cellsize =</span> <span class="dv">30</span>)</span>
+<span id="cb79-4"><a href="CARTO.html#cb79-4"></a></span>
+<span id="cb79-5"><a href="CARTO.html#cb79-5"></a><span class="kw">tm_shape</span>(shpFarmsum) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb79-6"><a href="CARTO.html#cb79-6"></a><span class="st">  </span><span class="kw">tm_borders</span>( ) <span class="op">+</span></span>
+<span id="cb79-7"><a href="CARTO.html#cb79-7"></a><span class="kw">tm_shape</span>(MagrilleHex) <span class="op">+</span></span>
+<span id="cb79-8"><a href="CARTO.html#cb79-8"></a><span class="st">    </span><span class="kw">tm_symbols</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GrillerHexfig"></span>
 <img src="cours-echantillonnage_files/figure-html/GrillerHexfig-1.png" alt="Echantillonnage optimisé pour le krigeage" width="110%" />
 <p class="caption">
@@ -331,89 +331,89 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <div id="mise-en-oeuvre-avec-spcosa" class="section level3">
 <h3><span class="header-section-number">7.4.2</span> Mise en oeuvre avec <code>spcosa</code></h3>
 <p>La fonction <code>stratify</code> implémente la stratification dite par strate compacte.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="CARTO.html#cb67-1"></a><span class="co"># initialize pseudo random number generator</span></span>
-<span id="cb67-2"><a href="CARTO.html#cb67-2"></a><span class="kw">set.seed</span>(<span class="dv">700124</span>)</span>
-<span id="cb67-3"><a href="CARTO.html#cb67-3"></a></span>
-<span id="cb67-4"><a href="CARTO.html#cb67-4"></a><span class="co"># stratify Farmsum into 50 strata</span></span>
-<span id="cb67-5"><a href="CARTO.html#cb67-5"></a>myStratification &lt;-<span class="st"> </span><span class="kw">stratify</span>(shpFarmsum, <span class="dt">nStrata =</span> <span class="dv">30</span>)</span>
-<span id="cb67-6"><a href="CARTO.html#cb67-6"></a></span>
-<span id="cb67-7"><a href="CARTO.html#cb67-7"></a><span class="co"># plot stratification</span></span>
-<span id="cb67-8"><a href="CARTO.html#cb67-8"></a><span class="kw">plot</span>(myStratification)</span></code></pre></div>
-<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<p>Sans option, la commande spcosa::spsample extrait le centroïde des strates obtenues par l’algorithme des K-moyennes.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="CARTO.html#cb68-1"></a><span class="co"># sans option, la commande spcosa::spsample extrait le centroïde de la strate.</span></span>
-<span id="cb68-2"><a href="CARTO.html#cb68-2"></a>mySamplingPattern &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStratification)</span>
-<span id="cb68-3"><a href="CARTO.html#cb68-3"></a></span>
-<span id="cb68-4"><a href="CARTO.html#cb68-4"></a><span class="co"># plot sampling pattern</span></span>
-<span id="cb68-5"><a href="CARTO.html#cb68-5"></a><span class="kw">plot</span>(myStratification, mySamplingPattern)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="CARTO.html#cb80-1"></a><span class="co"># initialize pseudo random number generator</span></span>
+<span id="cb80-2"><a href="CARTO.html#cb80-2"></a><span class="kw">set.seed</span>(<span class="dv">700124</span>)</span>
+<span id="cb80-3"><a href="CARTO.html#cb80-3"></a></span>
+<span id="cb80-4"><a href="CARTO.html#cb80-4"></a><span class="co"># stratify Farmsum into 50 strata</span></span>
+<span id="cb80-5"><a href="CARTO.html#cb80-5"></a>myStratification &lt;-<span class="st"> </span><span class="kw">stratify</span>(shpFarmsum, <span class="dt">nStrata =</span> <span class="dv">30</span>)</span>
+<span id="cb80-6"><a href="CARTO.html#cb80-6"></a></span>
+<span id="cb80-7"><a href="CARTO.html#cb80-7"></a><span class="co"># plot stratification</span></span>
+<span id="cb80-8"><a href="CARTO.html#cb80-8"></a><span class="kw">plot</span>(myStratification)</span></code></pre></div>
 <p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Sans option, la commande spcosa::spsample extrait le centroïde des strates obtenues par l’algorithme des K-moyennes.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="CARTO.html#cb81-1"></a><span class="co"># sans option, la commande spcosa::spsample extrait le centroïde de la strate.</span></span>
+<span id="cb81-2"><a href="CARTO.html#cb81-2"></a>mySamplingPattern &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStratification)</span>
+<span id="cb81-3"><a href="CARTO.html#cb81-3"></a></span>
+<span id="cb81-4"><a href="CARTO.html#cb81-4"></a><span class="co"># plot sampling pattern</span></span>
+<span id="cb81-5"><a href="CARTO.html#cb81-5"></a><span class="kw">plot</span>(myStratification, mySamplingPattern)</span></code></pre></div>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 <div id="en-présence-de-données-existantes" class="section level3">
 <h3><span class="header-section-number">7.4.3</span> En présence de données existantes</h3>
 <p>Supposons l’existance d’un <span class="math inline">\(k\)</span> échantillons sur la zone</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="CARTO.html#cb69-1"></a>k=<span class="st"> </span><span class="dv">15</span></span>
-<span id="cb69-2"><a href="CARTO.html#cb69-2"></a><span class="kw">set.seed</span>(<span class="dv">3</span>)</span>
-<span id="cb69-3"><a href="CARTO.html#cb69-3"></a>MonEchAncien &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum , k , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="CARTO.html#cb82-1"></a>k=<span class="st"> </span><span class="dv">15</span></span>
+<span id="cb82-2"><a href="CARTO.html#cb82-2"></a><span class="kw">set.seed</span>(<span class="dv">3</span>)</span>
+<span id="cb82-3"><a href="CARTO.html#cb82-3"></a>MonEchAncien &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum , k , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span></code></pre></div>
 <p>La commande <code>spcosa::stratify</code> permet de construire les strates compactes en tenant compte de ces observations afin d’optimiser la répartition des échantillons supplémentaires pour la cartographie</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="CARTO.html#cb70-1"></a><span class="co">#Set number of new sampling locations to be selected</span></span>
-<span id="cb70-2"><a href="CARTO.html#cb70-2"></a>n&lt;-<span class="dv">100</span></span>
-<span id="cb70-3"><a href="CARTO.html#cb70-3"></a></span>
-<span id="cb70-4"><a href="CARTO.html#cb70-4"></a><span class="co">#Compute total sample size (existing points + new points)</span></span>
-<span id="cb70-5"><a href="CARTO.html#cb70-5"></a>ntot&lt;-n<span class="op">+</span>k</span>
-<span id="cb70-6"><a href="CARTO.html#cb70-6"></a><span class="co">#Compute geostrata with option priorPoints=priordataEthiopia</span></span>
-<span id="cb70-7"><a href="CARTO.html#cb70-7"></a><span class="kw">set.seed</span>(<span class="dv">314</span>)</span>
-<span id="cb70-8"><a href="CARTO.html#cb70-8"></a>myStrata &lt;-<span class="st"> </span><span class="kw">stratify</span>(shpFarmsum, </span>
-<span id="cb70-9"><a href="CARTO.html#cb70-9"></a>                     <span class="dt">cellSize=</span> <span class="dv">2</span> ,</span>
-<span id="cb70-10"><a href="CARTO.html#cb70-10"></a>                     <span class="dt">nStrata =</span> ntot,</span>
-<span id="cb70-11"><a href="CARTO.html#cb70-11"></a>                     <span class="dt">priorPoints=</span>MonEchAncien,</span>
-<span id="cb70-12"><a href="CARTO.html#cb70-12"></a>                     <span class="dt">nTry=</span><span class="dv">10</span>)</span>
-<span id="cb70-13"><a href="CARTO.html#cb70-13"></a></span>
-<span id="cb70-14"><a href="CARTO.html#cb70-14"></a><span class="co">#Select sampling points of infill sample (centres of geostrata)</span></span>
-<span id="cb70-15"><a href="CARTO.html#cb70-15"></a>mySample &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStrata)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="CARTO.html#cb83-1"></a><span class="co">#Set number of new sampling locations to be selected</span></span>
+<span id="cb83-2"><a href="CARTO.html#cb83-2"></a>n&lt;-<span class="dv">100</span></span>
+<span id="cb83-3"><a href="CARTO.html#cb83-3"></a></span>
+<span id="cb83-4"><a href="CARTO.html#cb83-4"></a><span class="co">#Compute total sample size (existing points + new points)</span></span>
+<span id="cb83-5"><a href="CARTO.html#cb83-5"></a>ntot&lt;-n<span class="op">+</span>k</span>
+<span id="cb83-6"><a href="CARTO.html#cb83-6"></a><span class="co">#Compute geostrata with option priorPoints=priordataEthiopia</span></span>
+<span id="cb83-7"><a href="CARTO.html#cb83-7"></a><span class="kw">set.seed</span>(<span class="dv">314</span>)</span>
+<span id="cb83-8"><a href="CARTO.html#cb83-8"></a>myStrata &lt;-<span class="st"> </span><span class="kw">stratify</span>(shpFarmsum, </span>
+<span id="cb83-9"><a href="CARTO.html#cb83-9"></a>                     <span class="dt">cellSize=</span> <span class="dv">2</span> ,</span>
+<span id="cb83-10"><a href="CARTO.html#cb83-10"></a>                     <span class="dt">nStrata =</span> ntot,</span>
+<span id="cb83-11"><a href="CARTO.html#cb83-11"></a>                     <span class="dt">priorPoints=</span>MonEchAncien,</span>
+<span id="cb83-12"><a href="CARTO.html#cb83-12"></a>                     <span class="dt">nTry=</span><span class="dv">10</span>)</span>
+<span id="cb83-13"><a href="CARTO.html#cb83-13"></a></span>
+<span id="cb83-14"><a href="CARTO.html#cb83-14"></a><span class="co">#Select sampling points of infill sample (centres of geostrata)</span></span>
+<span id="cb83-15"><a href="CARTO.html#cb83-15"></a>mySample &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStrata)</span></code></pre></div>
 <p>Voici la répartition des points.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="CARTO.html#cb71-1"></a><span class="co">#Plot geostrata and sampling points (centres of geostrata)</span></span>
-<span id="cb71-2"><a href="CARTO.html#cb71-2"></a><span class="kw">plot</span>(myStrata, mySample)</span></code></pre></div>
-<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="CARTO.html#cb84-1"></a><span class="co">#Plot geostrata and sampling points (centres of geostrata)</span></span>
+<span id="cb84-2"><a href="CARTO.html#cb84-2"></a><span class="kw">plot</span>(myStrata, mySample)</span></code></pre></div>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 </div>
 </div>
 <div id="echantillonnage-pour-la-géostatitique" class="section level2">
 <h2><span class="header-section-number">7.5</span> Echantillonnage pour la géostatitique</h2>
 <p>Dans une récente étude, <span class="citation">Wadoux, Marchant, and Lark (<a href="#ref-wadoux_efficient_2019" role="doc-biblioref">2019</a>)</span> propose de rajouter 10 % du nombre total d’observations au plan par couverture spatiale optimisée. Ces points sont positionné à une petite distance de cette sélection au hasard de points.</p>
 <p>On définit premièremement la distance <span class="math inline">\(d\)</span> (20 m dans cette exemple) et le nombre de points <span class="math inline">\(m\)</span> (10 %)</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="CARTO.html#cb72-1"></a>mySCsample.df &lt;-<span class="st"> </span><span class="kw">as</span>(mySamplingPattern, <span class="st">&quot;data.frame&quot;</span>) <span class="co"># on extrait ici les coordonnées</span></span>
-<span id="cb72-2"><a href="CARTO.html#cb72-2"></a></span>
-<span id="cb72-3"><a href="CARTO.html#cb72-3"></a>h &lt;-<span class="st"> </span><span class="dv">20</span> <span class="co"># Distance</span></span>
-<span id="cb72-4"><a href="CARTO.html#cb72-4"></a>m &lt;-<span class="st"> </span><span class="kw">round</span>( <span class="fl">0.1</span>  <span class="op">*</span><span class="st"> </span><span class="kw">nrow</span>(mySCsample.df)) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="CARTO.html#cb85-1"></a>mySCsample.df &lt;-<span class="st"> </span><span class="kw">as</span>(mySamplingPattern, <span class="st">&quot;data.frame&quot;</span>) <span class="co"># on extrait ici les coordonnées</span></span>
+<span id="cb85-2"><a href="CARTO.html#cb85-2"></a></span>
+<span id="cb85-3"><a href="CARTO.html#cb85-3"></a>h &lt;-<span class="st"> </span><span class="dv">20</span> <span class="co"># Distance</span></span>
+<span id="cb85-4"><a href="CARTO.html#cb85-4"></a>m &lt;-<span class="st"> </span><span class="kw">round</span>( <span class="fl">0.1</span>  <span class="op">*</span><span class="st"> </span><span class="kw">nrow</span>(mySCsample.df)) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
 <p>On tire ensuite au hasard les <span class="math inline">\(m\)</span> points et on calcule les nouvelles coordonnées afin de placer au hasard le nouveau points sur un cercle de rayon <span class="math inline">\(d\)</span>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="CARTO.html#cb73-1"></a><span class="co"># Specify separation distances and subsample sizes</span></span>
-<span id="cb73-2"><a href="CARTO.html#cb73-2"></a></span>
-<span id="cb73-3"><a href="CARTO.html#cb73-3"></a><span class="co"># Select random subsample from the spatial coverage sample</span></span>
-<span id="cb73-4"><a href="CARTO.html#cb73-4"></a><span class="kw">set.seed</span>(<span class="dv">314</span>)</span>
-<span id="cb73-5"><a href="CARTO.html#cb73-5"></a>ids &lt;-<span class="kw">sample</span>(<span class="kw">nrow</span>(mySCsample.df),</span>
-<span id="cb73-6"><a href="CARTO.html#cb73-6"></a>             <span class="dt">size =</span> m)</span>
-<span id="cb73-7"><a href="CARTO.html#cb73-7"></a>mySubsample &lt;-<span class="st"> </span>mySCsample.df[ids,]</span>
-<span id="cb73-8"><a href="CARTO.html#cb73-8"></a></span>
-<span id="cb73-9"><a href="CARTO.html#cb73-9"></a><span class="co"># Select locations in random direction at distances h from subsample</span></span>
-<span id="cb73-10"><a href="CARTO.html#cb73-10"></a></span>
-<span id="cb73-11"><a href="CARTO.html#cb73-11"></a>plus &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb73-12"><a href="CARTO.html#cb73-12"></a></span>
-<span id="cb73-13"><a href="CARTO.html#cb73-13"></a>  dxy &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow=</span>m,<span class="dt">ncol=</span><span class="dv">2</span>)</span>
-<span id="cb73-14"><a href="CARTO.html#cb73-14"></a>  angle&lt;-<span class="kw">runif</span>(<span class="dt">n =</span> m,</span>
-<span id="cb73-15"><a href="CARTO.html#cb73-15"></a>               <span class="dt">min =</span> <span class="dv">0</span>,</span>
-<span id="cb73-16"><a href="CARTO.html#cb73-16"></a>               <span class="dt">max =</span> <span class="dv">2</span><span class="op">*</span>pi</span>
-<span id="cb73-17"><a href="CARTO.html#cb73-17"></a>               )</span>
-<span id="cb73-18"><a href="CARTO.html#cb73-18"></a>  dxy[,<span class="dv">1</span>] &lt;-<span class="st"> </span>h <span class="op">*</span><span class="st"> </span><span class="kw">sin</span>(angle)</span>
-<span id="cb73-19"><a href="CARTO.html#cb73-19"></a>  dxy[,<span class="dv">2</span>] &lt;-<span class="st"> </span>h <span class="op">*</span><span class="st"> </span><span class="kw">cos</span>(angle)</span>
-<span id="cb73-20"><a href="CARTO.html#cb73-20"></a>  </span>
-<span id="cb73-21"><a href="CARTO.html#cb73-21"></a>  plus.h&lt;-mySubsample<span class="op">+</span>dxy</span>
-<span id="cb73-22"><a href="CARTO.html#cb73-22"></a>  </span>
-<span id="cb73-23"><a href="CARTO.html#cb73-23"></a>mySCsample.df &lt;-<span class="st"> </span><span class="kw">rbind</span>(mySCsample.df,plus.h)</span>
-<span id="cb73-24"><a href="CARTO.html#cb73-24"></a></span>
-<span id="cb73-25"><a href="CARTO.html#cb73-25"></a>mySCsample.df<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw">row.names</span>(mySCsample.df)</span>
-<span id="cb73-26"><a href="CARTO.html#cb73-26"></a><span class="kw">coordinates</span>(mySCsample.df) &lt;-<span class="st"> </span><span class="er">~</span>x1<span class="op">+</span><span class="st"> </span>x2</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="CARTO.html#cb86-1"></a><span class="co"># Specify separation distances and subsample sizes</span></span>
+<span id="cb86-2"><a href="CARTO.html#cb86-2"></a></span>
+<span id="cb86-3"><a href="CARTO.html#cb86-3"></a><span class="co"># Select random subsample from the spatial coverage sample</span></span>
+<span id="cb86-4"><a href="CARTO.html#cb86-4"></a><span class="kw">set.seed</span>(<span class="dv">314</span>)</span>
+<span id="cb86-5"><a href="CARTO.html#cb86-5"></a>ids &lt;-<span class="kw">sample</span>(<span class="kw">nrow</span>(mySCsample.df),</span>
+<span id="cb86-6"><a href="CARTO.html#cb86-6"></a>             <span class="dt">size =</span> m)</span>
+<span id="cb86-7"><a href="CARTO.html#cb86-7"></a>mySubsample &lt;-<span class="st"> </span>mySCsample.df[ids,]</span>
+<span id="cb86-8"><a href="CARTO.html#cb86-8"></a></span>
+<span id="cb86-9"><a href="CARTO.html#cb86-9"></a><span class="co"># Select locations in random direction at distances h from subsample</span></span>
+<span id="cb86-10"><a href="CARTO.html#cb86-10"></a></span>
+<span id="cb86-11"><a href="CARTO.html#cb86-11"></a>plus &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb86-12"><a href="CARTO.html#cb86-12"></a></span>
+<span id="cb86-13"><a href="CARTO.html#cb86-13"></a>  dxy &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow=</span>m,<span class="dt">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb86-14"><a href="CARTO.html#cb86-14"></a>  angle&lt;-<span class="kw">runif</span>(<span class="dt">n =</span> m,</span>
+<span id="cb86-15"><a href="CARTO.html#cb86-15"></a>               <span class="dt">min =</span> <span class="dv">0</span>,</span>
+<span id="cb86-16"><a href="CARTO.html#cb86-16"></a>               <span class="dt">max =</span> <span class="dv">2</span><span class="op">*</span>pi</span>
+<span id="cb86-17"><a href="CARTO.html#cb86-17"></a>               )</span>
+<span id="cb86-18"><a href="CARTO.html#cb86-18"></a>  dxy[,<span class="dv">1</span>] &lt;-<span class="st"> </span>h <span class="op">*</span><span class="st"> </span><span class="kw">sin</span>(angle)</span>
+<span id="cb86-19"><a href="CARTO.html#cb86-19"></a>  dxy[,<span class="dv">2</span>] &lt;-<span class="st"> </span>h <span class="op">*</span><span class="st"> </span><span class="kw">cos</span>(angle)</span>
+<span id="cb86-20"><a href="CARTO.html#cb86-20"></a>  </span>
+<span id="cb86-21"><a href="CARTO.html#cb86-21"></a>  plus.h&lt;-mySubsample<span class="op">+</span>dxy</span>
+<span id="cb86-22"><a href="CARTO.html#cb86-22"></a>  </span>
+<span id="cb86-23"><a href="CARTO.html#cb86-23"></a>mySCsample.df &lt;-<span class="st"> </span><span class="kw">rbind</span>(mySCsample.df,plus.h)</span>
+<span id="cb86-24"><a href="CARTO.html#cb86-24"></a></span>
+<span id="cb86-25"><a href="CARTO.html#cb86-25"></a>mySCsample.df<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw">row.names</span>(mySCsample.df)</span>
+<span id="cb86-26"><a href="CARTO.html#cb86-26"></a><span class="kw">coordinates</span>(mySCsample.df) &lt;-<span class="st"> </span><span class="er">~</span>x1<span class="op">+</span><span class="st"> </span>x2</span></code></pre></div>
 <p>Voici la représentation du plan d’échantillonnage pour la géostatistique.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="CARTO.html#cb74-1"></a><span class="kw">tm_shape</span>(shpFarmsum)<span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>()<span class="op">+</span></span>
-<span id="cb74-2"><a href="CARTO.html#cb74-2"></a><span class="st">  </span><span class="kw">tm_shape</span>(mySCsample.df) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="CARTO.html#cb87-1"></a><span class="kw">tm_shape</span>(shpFarmsum)<span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>()<span class="op">+</span></span>
+<span id="cb87-2"><a href="CARTO.html#cb87-2"></a><span class="st">  </span><span class="kw">tm_shape</span>(mySCsample.df) <span class="op">+</span><span class="st"> </span><span class="kw">tm_symbols</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:PlusSample"></span>
 <img src="cours-echantillonnage_files/figure-html/PlusSample-1.png" alt="Plan optimisé pour la géostatistique" width="110%" />
 <p class="caption">
@@ -435,45 +435,45 @@ Figure 7.3: Plan optimisé pour la géostatistique
 <div id="données" class="section level3">
 <h3><span class="header-section-number">7.6.2</span> Données</h3>
 <p>Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données consitué de grille décrivant un ensemble de caractéristiques d’une parcelle en Australie.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="CARTO.html#cb75-1"></a><span class="co">#Read data with coordinates and other attributes of fine grid (discretization of study area)</span></span>
-<span id="cb75-2"><a href="CARTO.html#cb75-2"></a><span class="kw">load</span>(<span class="dt">file=</span><span class="st">&quot;Data/HunterValley4Practicals.RData&quot;</span>)</span>
-<span id="cb75-3"><a href="CARTO.html#cb75-3"></a>grdHunterValley2 &lt;-<span class="st"> </span>grdHunterValley</span>
-<span id="cb75-4"><a href="CARTO.html#cb75-4"></a><span class="kw">coordinates</span>(grdHunterValley2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Easting&#39;</span>,<span class="st">&#39;Northing&#39;</span>)</span>
-<span id="cb75-5"><a href="CARTO.html#cb75-5"></a><span class="kw">gridded</span>(grdHunterValley2) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb75-6"><a href="CARTO.html#cb75-6"></a></span>
-<span id="cb75-7"><a href="CARTO.html#cb75-7"></a><span class="kw">tm_shape</span>(grdHunterValley2) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb75-8"><a href="CARTO.html#cb75-8"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;elevation_m&quot;</span>,<span class="st">&quot;slope_deg&quot;</span>,<span class="st">&quot;cti&quot;</span>,<span class="st">&quot;ndvi&quot;</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="CARTO.html#cb88-1"></a><span class="co">#Read data with coordinates and other attributes of fine grid (discretization of study area)</span></span>
+<span id="cb88-2"><a href="CARTO.html#cb88-2"></a><span class="kw">load</span>(<span class="dt">file=</span><span class="st">&quot;Data/HunterValley4Practicals.RData&quot;</span>)</span>
+<span id="cb88-3"><a href="CARTO.html#cb88-3"></a>grdHunterValley2 &lt;-<span class="st"> </span>grdHunterValley</span>
+<span id="cb88-4"><a href="CARTO.html#cb88-4"></a><span class="kw">coordinates</span>(grdHunterValley2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Easting&#39;</span>,<span class="st">&#39;Northing&#39;</span>)</span>
+<span id="cb88-5"><a href="CARTO.html#cb88-5"></a><span class="kw">gridded</span>(grdHunterValley2) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb88-6"><a href="CARTO.html#cb88-6"></a></span>
+<span id="cb88-7"><a href="CARTO.html#cb88-7"></a><span class="kw">tm_shape</span>(grdHunterValley2) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb88-8"><a href="CARTO.html#cb88-8"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;elevation_m&quot;</span>,<span class="st">&quot;slope_deg&quot;</span>,<span class="st">&quot;cti&quot;</span>,<span class="st">&quot;ndvi&quot;</span>) )</span></code></pre></div>
 <pre><code>## Warning: The projection of the shape object grdHunterValley2 is not known, while
 ## it seems to be projected.</code></pre>
 <pre><code>## Warning: Current projection of shape grdHunterValley2 unknown and cannot be
 ## determined.</code></pre>
 <pre><code>## Variable(s) &quot;ndvi&quot; contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full spectrum of the color palette.</code></pre>
-<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 </div>
 <div id="mise-en-oeuvre-avec-lalgorithme-k-moyennes" class="section level3">
 <h3><span class="header-section-number">7.6.3</span> Mise en oeuvre avec l’algorithme K-moyennes</h3>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="CARTO.html#cb79-1"></a><span class="co">#Set number of sampling locations to be selected</span></span>
-<span id="cb79-2"><a href="CARTO.html#cb79-2"></a>n&lt;-<span class="dv">20</span></span>
-<span id="cb79-3"><a href="CARTO.html#cb79-3"></a></span>
-<span id="cb79-4"><a href="CARTO.html#cb79-4"></a><span class="co">#Compute clusters</span></span>
-<span id="cb79-5"><a href="CARTO.html#cb79-5"></a><span class="kw">set.seed</span>(<span class="dv">314</span>)</span>
-<span id="cb79-6"><a href="CARTO.html#cb79-6"></a>myClusters &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="kw">scale</span>(grdHunterValley[,<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)]), <span class="dt">centers=</span>n, <span class="dt">iter.max=</span><span class="dv">100</span>,<span class="dt">nstart=</span><span class="dv">10</span>)</span>
-<span id="cb79-7"><a href="CARTO.html#cb79-7"></a>grdHunterValley<span class="op">$</span>clusters &lt;-<span class="st"> </span>myClusters<span class="op">$</span>cluster</span>
-<span id="cb79-8"><a href="CARTO.html#cb79-8"></a></span>
-<span id="cb79-9"><a href="CARTO.html#cb79-9"></a><span class="co">#Select locations closest to the centers of the clusters</span></span>
-<span id="cb79-10"><a href="CARTO.html#cb79-10"></a>rdist.out &lt;-<span class="st"> </span><span class="kw">rdist</span>(<span class="dt">x1=</span>myClusters<span class="op">$</span>centers,<span class="dt">x2=</span><span class="kw">scale</span>(grdHunterValley[,<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]))</span>
-<span id="cb79-11"><a href="CARTO.html#cb79-11"></a>ids.mindist &lt;-<span class="st"> </span><span class="kw">apply</span>(rdist.out,<span class="dt">MARGIN=</span><span class="dv">1</span>,which.min)</span>
-<span id="cb79-12"><a href="CARTO.html#cb79-12"></a>mySample &lt;-<span class="st"> </span>grdHunterValley[ids.mindist,]</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="CARTO.html#cb92-1"></a><span class="co">#Set number of sampling locations to be selected</span></span>
+<span id="cb92-2"><a href="CARTO.html#cb92-2"></a>n&lt;-<span class="dv">20</span></span>
+<span id="cb92-3"><a href="CARTO.html#cb92-3"></a></span>
+<span id="cb92-4"><a href="CARTO.html#cb92-4"></a><span class="co">#Compute clusters</span></span>
+<span id="cb92-5"><a href="CARTO.html#cb92-5"></a><span class="kw">set.seed</span>(<span class="dv">314</span>)</span>
+<span id="cb92-6"><a href="CARTO.html#cb92-6"></a>myClusters &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="kw">scale</span>(grdHunterValley[,<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)]), <span class="dt">centers=</span>n, <span class="dt">iter.max=</span><span class="dv">100</span>,<span class="dt">nstart=</span><span class="dv">10</span>)</span>
+<span id="cb92-7"><a href="CARTO.html#cb92-7"></a>grdHunterValley<span class="op">$</span>clusters &lt;-<span class="st"> </span>myClusters<span class="op">$</span>cluster</span>
+<span id="cb92-8"><a href="CARTO.html#cb92-8"></a></span>
+<span id="cb92-9"><a href="CARTO.html#cb92-9"></a><span class="co">#Select locations closest to the centers of the clusters</span></span>
+<span id="cb92-10"><a href="CARTO.html#cb92-10"></a>rdist.out &lt;-<span class="st"> </span><span class="kw">rdist</span>(<span class="dt">x1=</span>myClusters<span class="op">$</span>centers,<span class="dt">x2=</span><span class="kw">scale</span>(grdHunterValley[,<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]))</span>
+<span id="cb92-11"><a href="CARTO.html#cb92-11"></a>ids.mindist &lt;-<span class="st"> </span><span class="kw">apply</span>(rdist.out,<span class="dt">MARGIN=</span><span class="dv">1</span>,which.min)</span>
+<span id="cb92-12"><a href="CARTO.html#cb92-12"></a>mySample &lt;-<span class="st"> </span>grdHunterValley[ids.mindist,]</span></code></pre></div>
 <p>Dans cette</p>
 <p>Il est possible de représenter les unités d’échantillonnage dans l’espace géographique:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="CARTO.html#cb80-1"></a><span class="kw">ggplot</span>(grdHunterValley) <span class="op">+</span></span>
-<span id="cb80-2"><a href="CARTO.html#cb80-2"></a><span class="st">  </span><span class="kw">geom_tile</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Easting, <span class="dt">y =</span> Northing, <span class="dt">fill =</span> <span class="kw">factor</span>(clusters))) <span class="op">+</span></span>
-<span id="cb80-3"><a href="CARTO.html#cb80-3"></a><span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;cluster&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-4"><a href="CARTO.html#cb80-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mySample,<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Easting,<span class="dt">y=</span>Northing),<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb80-5"><a href="CARTO.html#cb80-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-6"><a href="CARTO.html#cb80-6"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-7"><a href="CARTO.html#cb80-7"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
-<span id="cb80-8"><a href="CARTO.html#cb80-8"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="CARTO.html#cb93-1"></a><span class="kw">ggplot</span>(grdHunterValley) <span class="op">+</span></span>
+<span id="cb93-2"><a href="CARTO.html#cb93-2"></a><span class="st">  </span><span class="kw">geom_tile</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Easting, <span class="dt">y =</span> Northing, <span class="dt">fill =</span> <span class="kw">factor</span>(clusters))) <span class="op">+</span></span>
+<span id="cb93-3"><a href="CARTO.html#cb93-3"></a><span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;cluster&quot;</span>) <span class="op">+</span></span>
+<span id="cb93-4"><a href="CARTO.html#cb93-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mySample,<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Easting,<span class="dt">y=</span>Northing),<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb93-5"><a href="CARTO.html#cb93-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb93-6"><a href="CARTO.html#cb93-6"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb93-7"><a href="CARTO.html#cb93-7"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb93-8"><a href="CARTO.html#cb93-8"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KMsample"></span>
 <img src="cours-echantillonnage_files/figure-html/KMsample-1.png" alt="Plan optimisé par K-moyenne sur les covariables, représentation dans l'espace géographique" width="110%" />
 <p class="caption">
@@ -481,12 +481,12 @@ Figure 7.4: Plan optimisé par K-moyenne sur les covariables, représentation da
 </p>
 </div>
 <p>Mais également dans l’espace des covariables. Ici, on retient l’altitude et le CTI.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="CARTO.html#cb81-1"></a><span class="kw">ggplot</span>(grdHunterValley) <span class="op">+</span></span>
-<span id="cb81-2"><a href="CARTO.html#cb81-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">y=</span>elevation_m,<span class="dt">x=</span>cti,<span class="dt">colour=</span><span class="kw">factor</span>(clusters)), <span class="dt">size =</span> <span class="fl">.51</span>) <span class="op">+</span></span>
-<span id="cb81-3"><a href="CARTO.html#cb81-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mySample,<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">y=</span>elevation_m,<span class="dt">x=</span>cti),<span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span></span>
-<span id="cb81-4"><a href="CARTO.html#cb81-4"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></span>
-<span id="cb81-5"><a href="CARTO.html#cb81-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;ndvi&quot;</span>) <span class="op">+</span></span>
-<span id="cb81-6"><a href="CARTO.html#cb81-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="CARTO.html#cb94-1"></a><span class="kw">ggplot</span>(grdHunterValley) <span class="op">+</span></span>
+<span id="cb94-2"><a href="CARTO.html#cb94-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">y=</span>elevation_m,<span class="dt">x=</span>cti,<span class="dt">colour=</span><span class="kw">factor</span>(clusters)), <span class="dt">size =</span> <span class="fl">.51</span>) <span class="op">+</span></span>
+<span id="cb94-3"><a href="CARTO.html#cb94-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mySample,<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">y=</span>elevation_m,<span class="dt">x=</span>cti),<span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span></span>
+<span id="cb94-4"><a href="CARTO.html#cb94-4"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></span>
+<span id="cb94-5"><a href="CARTO.html#cb94-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;ndvi&quot;</span>) <span class="op">+</span></span>
+<span id="cb94-6"><a href="CARTO.html#cb94-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KMSample2"></span>
 <img src="cours-echantillonnage_files/figure-html/KMSample2-1.png" alt="Plan optimisé par K-moyenne sur les covariables, représentation dans l'espace des covariables" width="110%" />
 <p class="caption">

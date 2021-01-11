@@ -239,18 +239,20 @@ strates.</p>
 </ul>
 <div id="pourquoi-stratifier" class="section level2">
 <h2><span class="header-section-number">5.1</span> Pourquoi stratifier ?</h2>
-<p>Deux raisons possibles :
-- Les estimations des paramètres statistiques pour la zone sont plus précises
-- Nous voulons des estimations séparées des paramètres statistiques pour les sous-populations</p>
+<p>Deux raisons possibles :</p>
+<ul>
+<li>Les estimations des paramètres statistiques pour la zone sont plus précises</li>
+<li>Nous voulons des estimations séparées des paramètres statistiques pour les sous-populations</li>
+</ul>
 </div>
 <div id="comment-stratifier" class="section level2">
 <h2><span class="header-section-number">5.2</span> Comment stratifier ?</h2>
 <p>Deux approches :</p>
 <ul>
-<li>Stratification à l’aide d’un variables auxiliaires</li>
-<li>Variable catégorielle (unités cartographiques)</li>
-<li>variable quantitative (par exemple, images de télédétection)</li>
-<li>Stratification par la position géographique uniquement (X et Y)</li>
+<li><p>Stratification à l’aide d’un variables auxiliaires</p></li>
+<li><p>Variable catégorielle (unités cartographiques)</p></li>
+<li><p>variable quantitative (par exemple, images de télédétection)</p></li>
+<li><p>Stratification par la position géographique uniquement (X et Y)</p></li>
 </ul>
 </div>
 <div id="estimateurs-stsi" class="section level2">
@@ -337,40 +339,67 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 <span id="cb51-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb51-2"></a>mySample &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStrata, <span class="dt">n =</span> <span class="dv">2</span>)</span>
 <span id="cb51-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb51-3"></a><span class="kw">plot</span>(myStrata, mySample)</span></code></pre></div>
 <p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<p>Comparons les deux approches: SI et STSI avec strates compactes</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-1"></a>STSI &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
+<span id="cb52-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-2"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
+<span id="cb52-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-3"></a><span class="st">  </span><span class="kw">tm_shape</span>(mySample<span class="op">@</span>sample)<span class="op">+</span></span>
+<span id="cb52-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-4"></a><span class="st">  </span><span class="kw">tm_symbols</span>()<span class="op">+</span></span>
+<span id="cb52-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-5"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb52-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-6"></a></span>
+<span id="cb52-7"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-7"></a><span class="kw">tmap_arrange</span>(SI, STSI)</span></code></pre></div>
+<pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
+## to be projected.</code></pre>
+<pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
+<pre><code>## Warning: Current projection of shape MonEch unknown and cannot be determined.</code></pre>
+<pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
+## to be projected.</code></pre>
+<pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
+<pre><code>## Warning: Current projection of shape mySample@sample unknown and cannot be
+## determined.</code></pre>
+<pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
+## to be projected.</code></pre>
+<pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
+<pre><code>## Warning: Current projection of shape MonEch unknown and cannot be determined.</code></pre>
+<pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
+## to be projected.</code></pre>
+<pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
+<pre><code>## Warning: Current projection of shape mySample@sample unknown and cannot be
+## determined.</code></pre>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Examinons ce que donne la simulation pour la moyenne</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-1"></a>terrainSTSI &lt;-<span class="st"> </span><span class="kw">over</span>(mySample<span class="op">@</span>sample,champSP)</span>
-<span id="cb52-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-2"></a></span>
-<span id="cb52-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-3"></a>MoyEstSTSI &lt;-<span class="st"> </span><span class="kw">mean</span>(terrainSTSI<span class="op">$</span>sim1)</span>
-<span id="cb52-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-4"></a></span>
-<span id="cb52-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb52-5"></a>MoyEstSTSI</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb65-1"></a>terrainSTSI &lt;-<span class="st"> </span><span class="kw">over</span>(mySample<span class="op">@</span>sample,champSP)</span>
+<span id="cb65-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb65-2"></a></span>
+<span id="cb65-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb65-3"></a>MoyEstSTSI &lt;-<span class="st"> </span><span class="kw">mean</span>(terrainSTSI<span class="op">$</span>sim1)</span>
+<span id="cb65-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb65-4"></a></span>
+<span id="cb65-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb65-5"></a>MoyEstSTSI</span></code></pre></div>
 <pre><code>## [1] 5.459981</code></pre>
 <p>Et pour la variance</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb54-1"></a>StratesSTSI &lt;-<span class="st"> </span><span class="kw">over</span>(mySample<span class="op">@</span>sample,myStrata<span class="op">@</span>cells)</span>
-<span id="cb54-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb54-2"></a></span>
-<span id="cb54-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb54-3"></a>myStrata<span class="op">@</span>stratumId[StratesSTSI]</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb67-1"></a>StratesSTSI &lt;-<span class="st"> </span><span class="kw">over</span>(mySample<span class="op">@</span>sample,myStrata<span class="op">@</span>cells)</span>
+<span id="cb67-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb67-2"></a></span>
+<span id="cb67-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb67-3"></a>myStrata<span class="op">@</span>stratumId[StratesSTSI]</span></code></pre></div>
 <pre><code>##  [1] 0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-1"></a>Mydata &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(</span>
-<span id="cb56-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-2"></a>  <span class="dt">strate =</span> myStrata<span class="op">@</span>stratumId[StratesSTSI],</span>
-<span id="cb56-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-3"></a>  <span class="dt">z=</span> terrainSTSI<span class="op">$</span>sim1</span>
-<span id="cb56-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-4"></a>  </span>
-<span id="cb56-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-5"></a>)</span>
-<span id="cb56-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-6"></a></span>
-<span id="cb56-7"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-7"></a>Varh&lt;-<span class="kw">tapply</span>(Mydata<span class="op">$</span>z, <span class="dt">INDEX=</span>Mydata<span class="op">$</span>strate,<span class="dt">FUN=</span>var)</span>
-<span id="cb56-8"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-8"></a></span>
-<span id="cb56-9"><a href="léchantillonnage-aléatoire-stratifié.html#cb56-9"></a>VStsi &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(Varh<span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-1"></a>Mydata &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(</span>
+<span id="cb69-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-2"></a>  <span class="dt">strate =</span> myStrata<span class="op">@</span>stratumId[StratesSTSI],</span>
+<span id="cb69-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-3"></a>  <span class="dt">z=</span> terrainSTSI<span class="op">$</span>sim1</span>
+<span id="cb69-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-4"></a>  </span>
+<span id="cb69-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-5"></a>)</span>
+<span id="cb69-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-6"></a></span>
+<span id="cb69-7"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-7"></a>Varh&lt;-<span class="kw">tapply</span>(Mydata<span class="op">$</span>z, <span class="dt">INDEX=</span>Mydata<span class="op">$</span>strate,<span class="dt">FUN=</span>var)</span>
+<span id="cb69-8"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-8"></a></span>
+<span id="cb69-9"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-9"></a>VStsi &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(Varh<span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
 <p>Voici donc la variance SI 0.0414588 et la variance dans ce cas 0.0271827</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-1"></a><span class="co"># calcul de l&#39;interval de confiance selon les deux lois</span></span>
-<span id="cb57-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-2"></a>ICT &lt;-<span class="st"> </span>talpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(VStsi)</span>
-<span id="cb57-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-3"></a></span>
-<span id="cb57-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-4"></a><span class="co"># comme n&lt; 30, on garde ICT</span></span>
-<span id="cb57-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-5"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC student</span></span>
-<span id="cb57-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb57-6"></a>Moy <span class="op">&lt;</span><span class="st"> </span>MoyEstSTSI <span class="op">+</span><span class="st"> </span>ICT</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-1"></a><span class="co"># calcul de l&#39;interval de confiance selon les deux lois</span></span>
+<span id="cb70-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-2"></a>ICT &lt;-<span class="st"> </span>talpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(VStsi)</span>
+<span id="cb70-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-3"></a></span>
+<span id="cb70-4"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-4"></a><span class="co"># comme n&lt; 30, on garde ICT</span></span>
+<span id="cb70-5"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-5"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC student</span></span>
+<span id="cb70-6"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-6"></a>Moy <span class="op">&lt;</span><span class="st"> </span>MoyEstSTSI <span class="op">+</span><span class="st"> </span>ICT</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb59-1"></a>Moy <span class="op">&gt;</span><span class="st"> </span>MoyEstSTSI <span class="op">-</span><span class="st"> </span>ICT</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb72-1"></a>Moy <span class="op">&gt;</span><span class="st"> </span>MoyEstSTSI <span class="op">-</span><span class="st"> </span>ICT</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb61-1"></a><span class="kw">cbind</span>(MoyEstSTSI, </span>
-<span id="cb61-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb61-2"></a>      <span class="dt">ICbas =</span> MoyEstSTSI <span class="op">-</span><span class="st"> </span>ICT,</span>
-<span id="cb61-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb61-3"></a>      <span class="dt">ICHaut =</span> MoyEstSTSI <span class="op">+</span><span class="st"> </span>ICT, Moy)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb74-1"></a><span class="kw">cbind</span>(MoyEstSTSI, </span>
+<span id="cb74-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb74-2"></a>      <span class="dt">ICbas =</span> MoyEstSTSI <span class="op">-</span><span class="st"> </span>ICT,</span>
+<span id="cb74-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb74-3"></a>      <span class="dt">ICHaut =</span> MoyEstSTSI <span class="op">+</span><span class="st"> </span>ICT, Moy)</span></code></pre></div>
 <pre><code>##      MoyEstSTSI  ICbas   ICHaut      Moy
 ## [1,]   5.459981 5.1149 5.805062 5.298602</code></pre>
 

@@ -76,11 +76,13 @@ MonEch <- spsample( x = champSP ,
                     type = "random")
 
 
-tm_shape(champSP) +
+SI <- tm_shape(champSP) +
   tm_raster()+
   tm_shape(MonEch)+
   tm_symbols()+
 tm_layout(legend.outside = TRUE)
+
+SI
 ```
 
 

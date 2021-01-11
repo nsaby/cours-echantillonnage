@@ -26,6 +26,9 @@ Plusieurs points doivent caractériser cette grille
   
   - Inconvénient : ils n'existe pas d'estimateur non biaisé de la variance d'échantillonnage 
 
+
+fixer le nombre de points avec la résolution qui va dépndre du budget alloué au projet.
+
 Exemple de grille
 -----------------
 
