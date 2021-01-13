@@ -10,6 +10,7 @@ fig:GrillerHexfig
 fig:PlusSample
 fig:KMsample
 fig:KMSample2
+fig:KMSample3
 bienvenue
 WHY
 motivations
@@ -50,7 +51,6 @@ SY-QUICK
 définitions
 exemple-de-grille
 théorie
-exemple-de-mise-en-oeuvre
 CARTO
 caractéristiques
 différents-types-de-plans

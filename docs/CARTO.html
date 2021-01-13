@@ -24,7 +24,7 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
 <li class="chapter" data-level="6.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>6.2</b> Exemple de grille</a></li>
 <li class="chapter" data-level="6.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>6.3</b> théorie</a></li>
-<li class="chapter" data-level="6.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>6.4</b> Exemple de mise en oeuvre</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a><ul>
 <li class="chapter" data-level="7.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>7.1</b> Caractéristiques</a></li>
@@ -237,8 +236,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Quelles Méthodes de cartographie :</p>
 <ul>
 <li>Méthodes d’interpolation spatiale heuristique : Polygones de Thiessen, triangulation, voisin naturel, distance inverse</li>
-<li>Interpolation spatiale basée sur un modèle stochastique : le krigeage
--Modèle non spatial : modèle de régression linéaire, arbre de régression, forêt aléatoire</li>
+<li>Interpolation spatiale basée sur un modèle stochastique : le krigeage</li>
+<li>Modèle non spatial : modèle de régression linéaire, arbre de régression, forêt aléatoire</li>
 </ul></li>
 </ul>
 </div>
@@ -351,9 +350,11 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <div id="en-présence-de-données-existantes" class="section level3">
 <h3><span class="header-section-number">7.4.3</span> En présence de données existantes</h3>
 <p>Supposons l’existance d’un <span class="math inline">\(k\)</span> échantillons sur la zone</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="CARTO.html#cb82-1"></a>k=<span class="st"> </span><span class="dv">15</span></span>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="CARTO.html#cb82-1"></a>k=<span class="st"> </span><span class="dv">20</span></span>
 <span id="cb82-2"><a href="CARTO.html#cb82-2"></a><span class="kw">set.seed</span>(<span class="dv">3</span>)</span>
-<span id="cb82-3"><a href="CARTO.html#cb82-3"></a>MonEchAncien &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum , k , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span></code></pre></div>
+<span id="cb82-3"><a href="CARTO.html#cb82-3"></a>MonEchAncien &lt;-<span class="st"> </span><span class="kw">spsample</span>( shpFarmsum , k , <span class="dt">type =</span> <span class="st">&quot;random&quot;</span>)</span>
+<span id="cb82-4"><a href="CARTO.html#cb82-4"></a><span class="kw">spplot</span>(MonEchAncien)</span></code></pre></div>
+<p><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>La commande <code>spcosa::stratify</code> permet de construire les strates compactes en tenant compte de ces observations afin d’optimiser la répartition des échantillons supplémentaires pour la cartographie</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="CARTO.html#cb83-1"></a><span class="co">#Set number of new sampling locations to be selected</span></span>
 <span id="cb83-2"><a href="CARTO.html#cb83-2"></a>n&lt;-<span class="dv">100</span></span>
@@ -368,8 +369,9 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <span id="cb83-11"><a href="CARTO.html#cb83-11"></a>                     <span class="dt">priorPoints=</span>MonEchAncien,</span>
 <span id="cb83-12"><a href="CARTO.html#cb83-12"></a>                     <span class="dt">nTry=</span><span class="dv">10</span>)</span>
 <span id="cb83-13"><a href="CARTO.html#cb83-13"></a></span>
-<span id="cb83-14"><a href="CARTO.html#cb83-14"></a><span class="co">#Select sampling points of infill sample (centres of geostrata)</span></span>
-<span id="cb83-15"><a href="CARTO.html#cb83-15"></a>mySample &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStrata)</span></code></pre></div>
+<span id="cb83-14"><a href="CARTO.html#cb83-14"></a></span>
+<span id="cb83-15"><a href="CARTO.html#cb83-15"></a><span class="co">#Select sampling points of infill sample (centres of geostrata)</span></span>
+<span id="cb83-16"><a href="CARTO.html#cb83-16"></a>mySample &lt;-<span class="st"> </span><span class="kw">spsample</span>(myStrata)</span></code></pre></div>
 <p>Voici la répartition des points.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="CARTO.html#cb84-1"></a><span class="co">#Plot geostrata and sampling points (centres of geostrata)</span></span>
 <span id="cb84-2"><a href="CARTO.html#cb84-2"></a><span class="kw">plot</span>(myStrata, mySample)</span></code></pre></div>
@@ -491,6 +493,18 @@ Figure 7.4: Plan optimisé par K-moyenne sur les covariables, représentation da
 <img src="cours-echantillonnage_files/figure-html/KMSample2-1.png" alt="Plan optimisé par K-moyenne sur les covariables, représentation dans l'espace des covariables" width="110%" />
 <p class="caption">
 Figure 7.5: Plan optimisé par K-moyenne sur les covariables, représentation dans l’espace des covariables
+</p>
+</div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="CARTO.html#cb95-1"></a><span class="kw">ggplot</span>(grdHunterValley) <span class="op">+</span></span>
+<span id="cb95-2"><a href="CARTO.html#cb95-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">y=</span>elevation_m,<span class="dt">x=</span>slope_deg,<span class="dt">colour=</span><span class="kw">factor</span>(clusters)), <span class="dt">size =</span> <span class="fl">.51</span>) <span class="op">+</span></span>
+<span id="cb95-3"><a href="CARTO.html#cb95-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mySample,<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">y=</span>elevation_m,<span class="dt">x=</span>cti),<span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span></span>
+<span id="cb95-4"><a href="CARTO.html#cb95-4"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></span>
+<span id="cb95-5"><a href="CARTO.html#cb95-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Slope&quot;</span>) <span class="op">+</span></span>
+<span id="cb95-6"><a href="CARTO.html#cb95-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:KMSample3"></span>
+<img src="cours-echantillonnage_files/figure-html/KMSample3-1.png" alt="Plan optimisé par K-moyenne sur les covariables, représentation dans l'espace des covariables" width="110%" />
+<p class="caption">
+Figure 7.6: Plan optimisé par K-moyenne sur les covariables, représentation dans l’espace des covariables
 </p>
 </div>
 

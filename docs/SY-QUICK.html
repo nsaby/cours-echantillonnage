@@ -24,7 +24,7 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
 <li class="chapter" data-level="6.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>6.2</b> Exemple de grille</a></li>
 <li class="chapter" data-level="6.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>6.3</b> théorie</a></li>
-<li class="chapter" data-level="6.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>6.4</b> Exemple de mise en oeuvre</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a><ul>
 <li class="chapter" data-level="7.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>7.1</b> Caractéristiques</a></li>
@@ -269,9 +268,9 @@ Figure 6.1: Exemple de grilles systématiques placées au hasard
 </div>
 <div id="théorie" class="section level2">
 <h2><span class="header-section-number">6.3</span> théorie</h2>
-</div>
-<div id="exemple-de-mise-en-oeuvre" class="section level2">
-<h2><span class="header-section-number">6.4</span> Exemple de mise en oeuvre</h2>
+<p>La moyenne peut être calculé avec l’estimateur SI
+Exemple de mise en oeuvre
+————————-</p>
 <p>Voici un exemple de mise en oeuvre des calculs proposés au paragraphe précédent.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="SY-QUICK.html#cb77-1"></a>terrainSY &lt;-<span class="st"> </span><span class="kw">over</span>(MonEch2, champSP)</span>
 <span id="cb77-2"><a href="SY-QUICK.html#cb77-2"></a></span>
@@ -304,7 +303,7 @@ Figure 6.1: Exemple de grilles systématiques placées au hasard
 <span id="cb77-29"><a href="SY-QUICK.html#cb77-29"></a>semeanSTSI&lt;-<span class="kw">sqrt</span>(<span class="kw">sum</span>(wh<span class="op">^</span><span class="dv">2</span><span class="op">*</span>varmeanh))</span>
 <span id="cb77-30"><a href="SY-QUICK.html#cb77-30"></a></span>
 <span id="cb77-31"><a href="SY-QUICK.html#cb77-31"></a>semeanSI &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">var</span>(terrainSY<span class="op">$</span>sim1)<span class="op">/</span><span class="kw">length</span>(MonEch2))</span></code></pre></div>
-<p>Ainsi, l’estimation de la variance d’échantillonnage dite naïve est 0.1801523. Cette valeur est supérieure à la valeur fournie par l’estimation avec le deuxième formule: 0.1292304</p>
+<p>Ainsi, l’estimation de la variance d’échantillonnage dite naïve est <span class="math inline">\(0.1801523\)</span>. Cette valeur est supérieure à la valeur fournie par l’estimation avec le deuxième formule: <span class="math inline">\(0.1292304\)</span></p>
 
 </div>
 </div>

@@ -62,7 +62,7 @@ du domaine (boîte englobante)
 2 Tirez deux coordonnées (pseudo-)aléatoires indépendantes $s_{1,v}$ 
 et $s_{2,aleat}$ 
 
-3. Utilisez une routine de point dans le polygone pour déterminer si (s_{1,v}$,$s_{2,aleat}$) tombe dans la zone
+3. Utilisez une routine de point dans le polygone pour déterminer si ($s_{1,v}$,$s_{2,aleat}$) tombe dans la zone
 
 4. Répétez les étapes 2 et 3 jusqu'à ce que n positions soient sélectionnées
 
@@ -127,7 +127,7 @@ MoyEst <- mean(terrain2$sim1)
 MoyEst
 ```
 
-A comparer avec la moyenne de la population `R Moy`
+A comparer avec la moyenne de la population $`r Moy`$
 
 ### La variance spatiale et variance d'échantillonnage 
 
@@ -252,7 +252,7 @@ MesStats$LCI <- MesStats$Moy - talpha * sqrt(MesStats$VarEch)
 ```
 
 
-Pour se rendre compte de l'intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour les 100 premiers tirages, les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels: `r Moy`
+Pour se rendre compte de l'intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour les 100 premiers tirages, les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels: $`r Moy`$
 
 
 

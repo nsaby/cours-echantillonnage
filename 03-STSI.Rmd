@@ -202,7 +202,7 @@ Varh<-tapply(Mydata$z, INDEX=Mydata$strate,FUN=var)
 VStsi <- (1/10^2) * sum(Varh/2)
 ```
 
-Voici donc la variance SI `r V` et la variance dans ce cas `r VStsi`
+Voici donc la variance SI $`r V`$ et la variance dans ce cas $`r VStsi`$
 
 ```{r}
 

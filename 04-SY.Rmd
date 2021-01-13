@@ -55,7 +55,7 @@ tm_layout(legend.outside = TRUE)
 théorie
 ------------
 
-
+La moyenne peut être calculé avec l'estimateur SI
 Exemple de mise en oeuvre
 -------------------------
 
@@ -96,4 +96,4 @@ semeanSI <- sqrt(var(terrainSY$sim1)/length(MonEch2))
 
 ```
 
-Ainsi, l'estimation de la variance d'échantillonnage dite naïve est `r semeanSI`. Cette valeur est supérieure à la valeur fournie par l'estimation avec le deuxième formule: `r semeanSTSI`
+Ainsi, l'estimation de la variance d'échantillonnage dite naïve est $`r semeanSI`$. Cette valeur est supérieure à la valeur fournie par l'estimation avec le deuxième formule: $`r semeanSTSI`$

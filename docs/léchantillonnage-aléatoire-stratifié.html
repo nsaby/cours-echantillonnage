@@ -24,7 +24,7 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
 <li class="chapter" data-level="6.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>6.2</b> Exemple de grille</a></li>
 <li class="chapter" data-level="6.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>6.3</b> théorie</a></li>
-<li class="chapter" data-level="6.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>6.4</b> Exemple de mise en oeuvre</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a><ul>
 <li class="chapter" data-level="7.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>7.1</b> Caractéristiques</a></li>
@@ -387,7 +386,7 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 <span id="cb69-7"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-7"></a>Varh&lt;-<span class="kw">tapply</span>(Mydata<span class="op">$</span>z, <span class="dt">INDEX=</span>Mydata<span class="op">$</span>strate,<span class="dt">FUN=</span>var)</span>
 <span id="cb69-8"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-8"></a></span>
 <span id="cb69-9"><a href="léchantillonnage-aléatoire-stratifié.html#cb69-9"></a>VStsi &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(Varh<span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
-<p>Voici donc la variance SI 0.0414588 et la variance dans ce cas 0.0271827</p>
+<p>Voici donc la variance SI <span class="math inline">\(0.0414588\)</span> et la variance dans ce cas <span class="math inline">\(0.0271827\)</span></p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-1"></a><span class="co"># calcul de l&#39;interval de confiance selon les deux lois</span></span>
 <span id="cb70-2"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-2"></a>ICT &lt;-<span class="st"> </span>talpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(VStsi)</span>
 <span id="cb70-3"><a href="léchantillonnage-aléatoire-stratifié.html#cb70-3"></a></span>

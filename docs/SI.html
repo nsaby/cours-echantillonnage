@@ -24,7 +24,7 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
 <li class="chapter" data-level="6.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>6.2</b> Exemple de grille</a></li>
 <li class="chapter" data-level="6.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>6.3</b> théorie</a></li>
-<li class="chapter" data-level="6.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>6.4</b> Exemple de mise en oeuvre</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a><ul>
 <li class="chapter" data-level="7.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>7.1</b> Caractéristiques</a></li>
@@ -299,7 +298,7 @@ du domaine (boîte englobante)</p>
 <p>2 Tirez deux coordonnées (pseudo-)aléatoires indépendantes <span class="math inline">\(s_{1,v}\)</span>
 et <span class="math inline">\(s_{2,aleat}\)</span></p>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Utilisez une routine de point dans le polygone pour déterminer si (s_{1,v}<span class="math inline">\(,\)</span>s_{2,aleat}$) tombe dans la zone</p></li>
+<li><p>Utilisez une routine de point dans le polygone pour déterminer si (<span class="math inline">\(s_{1,v}\)</span>,<span class="math inline">\(s_{2,aleat}\)</span>) tombe dans la zone</p></li>
 <li><p>Répétez les étapes 2 et 3 jusqu’à ce que n positions soient sélectionnées</p></li>
 </ol>
 <p>Le package <code>sp</code> offre la fonction <code>spsample</code> pour effectuer cette procédure à partir de couches SIG.</p>
@@ -351,7 +350,7 @@ Figure 4.1: Exemple d’échantillonnage aléatoire simple, avec 20 points SI(20
 <span id="cb26-5"><a href="SI.html#cb26-5"></a></span>
 <span id="cb26-6"><a href="SI.html#cb26-6"></a>MoyEst</span></code></pre></div>
 <pre><code>## [1] 4.935534</code></pre>
-<p>A comparer avec la moyenne de la population <code>R Moy</code></p>
+<p>A comparer avec la moyenne de la population <span class="math inline">\(5.2986022\)</span></p>
 </div>
 <div id="la-variance-spatiale-et-variance-déchantillonnage" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> La variance spatiale et variance d’échantillonnage</h3>
@@ -442,7 +441,7 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <span id="cb40-15"><a href="SI.html#cb40-15"></a></span>
 <span id="cb40-16"><a href="SI.html#cb40-16"></a>MesStats<span class="op">$</span>UCI &lt;-<span class="st"> </span>MesStats<span class="op">$</span>Moy <span class="op">+</span><span class="st"> </span>talpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(MesStats<span class="op">$</span>VarEch)</span>
 <span id="cb40-17"><a href="SI.html#cb40-17"></a>MesStats<span class="op">$</span>LCI &lt;-<span class="st"> </span>MesStats<span class="op">$</span>Moy <span class="op">-</span><span class="st"> </span>talpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(MesStats<span class="op">$</span>VarEch)</span></code></pre></div>
-<p>Pour se rendre compte de l’intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour les 100 premiers tirages, les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels: 5.2986022</p>
+<p>Pour se rendre compte de l’intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour les 100 premiers tirages, les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels: <span class="math inline">\(5.2986022\)</span></p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="SI.html#cb41-1"></a><span class="kw">ggplot</span>(MesStats[ MesStats<span class="op">$</span>Group <span class="op">%in%</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span>  , ]) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb41-2"><a href="SI.html#cb41-2"></a><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="dt">size =</span> <span class="fl">0.62</span>, </span>
 <span id="cb41-3"><a href="SI.html#cb41-3"></a>                <span class="kw">aes</span>(<span class="dt">x =</span> Group, <span class="dt">ymin =</span> UCI, <span class="dt">ymax =</span> LCI, <span class="dt">y =</span> Moy)) <span class="op">+</span></span>

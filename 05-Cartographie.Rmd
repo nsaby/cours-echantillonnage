@@ -307,7 +307,7 @@ ggplot(grdHunterValley) +
   theme(legend.position="none")
 ```
 
-```{r KMSample2, fig.cap='Plan optimisé par K-moyenne sur les covariables, représentation dans l\'espace des covariables', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
+```{r KMSample3, fig.cap='Plan optimisé par K-moyenne sur les covariables, représentation dans l\'espace des covariables', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
 ggplot(grdHunterValley) +
   geom_point(mapping=aes(y=elevation_m,x=slope_deg,colour=factor(clusters)), size = .51) +
   geom_point(data=mySample,mapping=aes(y=elevation_m,x=cti),size=1.5) +
