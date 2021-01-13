@@ -51,6 +51,7 @@ SY-QUICK
 définitions
 exemple-de-grille
 théorie
+exemple-de-mise-en-oeuvre
 CARTO
 caractéristiques
 différents-types-de-plans

@@ -2,6 +2,8 @@
 output:
   bookdown::html_document2:
     fig_caption: yes
+    toc: yes
+    toc_float: true
 editor_options:
   chunk_output_type: console
 ---
@@ -56,6 +58,7 @@ théorie
 ------------
 
 La moyenne peut être calculé avec l'estimateur SI
+
 Exemple de mise en oeuvre
 -------------------------
 
