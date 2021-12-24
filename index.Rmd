@@ -22,6 +22,8 @@ Bienvenue
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','sp','tmap','rgdal','ggplot2','spcosa','fields'
 ), 'packages.bib')
+
+knitr::opts_chunk$set(warning = FALSE)
 ```
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" /></a><br />This work by Nicolas Saby is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License</a>.
@@ -79,41 +81,45 @@ Cela ne concerne pas  la manière dont un plan d'échantillonnage peut être év
 Objectifs d'une étude de sol
 ----------------------------
 
-* Objectifs possibles de l'étude
+Une étude sur le sols peut avoir les objectifs :
 
- + Pour estimer des statistiques sommaires (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour l'étude la zone (population) dans son ensemble
+ + Estimer des **statistiques sommaires** (moyenne, total, proportion) ou la fonction de distribution cumulative spatiale (SCDF) pour la zone (ou population) dans son ensemble.
  
- + La même chose, mais maintenant pour plusieurs sous-domaines
+ + Estimer les mêmes indicateurs statistiques, mais maintenant pour plusieurs sous-domaines
  
- + Pour **cartographier** la variable d'intérêt
+ + Pour **cartographier** la variable d'intérêt et donc produire une carte à une résolution définie.
  
-* Nous ne sommes pas intéressés par les changements au fil du temps
+Selon l'objectif, il conviendra de choisir un type d'échantillonnage différent . 
 
-* La propriété d'intérêt ne change pas pendant la période d'enquête
+Dans ce cours, nous ne sommes pas intéressés par les changements au fil du temps de la variable d'intérêt. Nous faisons l'hypothèse que cette dernière ne change pas pendant la période d'enquête. Nos 
 
 
 L'échantillonnage probabiliste vs non probabiliste
 ----------------------------
 
-Pour estimer les totaux ou les moyennes, **l'échantillonnage probabiliste** est le plus
-approprié
+Pour estimer les statistiques sommaires comme les totaux ou les moyennes, **l'échantillonnage probabiliste** est le plus approprié
 
-- Par échantillonnage probabiliste, on entend un échantillonnage aléatoire tel que
+ Par échantillonnage probabiliste, on entend un échantillonnage où la position dans l'espace des unité d'échantillonnage est tiré au hasard par un algorithme et est donc aléatoire. Ces échantillonnage sont tel que :
+ 
 - Toutes les unités de population ont une probabilité > 0 d'être sélectionnées
 - Les probabilités d'inclusion sont connues
 - NB Les probabilités d'inclusion ne doivent pas forcément être égales !
 - Il existe de nombreuses façons de sélectionner les unités de population avec un échantillonnage probabiliste
 
 
-Pour faire une carte par des techniques de modèlisation comme la géostatistique, un échantillonnage qui répartit bien les observations dans l'espace géographique est plus approprié et tirer les positions au hasard n'est pas nécessaire.
+Pour faire une **carte** par des techniques de modélisation comme la géostatistique, un échantillonnage qui répartit bien les observations dans l'espace géographique est plus approprié et tirer les positions au hasard n'est pas nécessaire. 
 
 
 Approche basée sur un modèle ou basée sur un plan d'échantillonnage
 ------------------------------------------------------------------
 
+la production de statistiques sur une zone d'étude implique l'utilisation  d'un estimateur à partir d'un ensemble d'observations recueillies selon un protocole d'échantillonnage. Le lien entre l'estimateur et le protocole d'échantillonnage est important.
+
+
 D'après le livre [@de_gruijter_sampling_2006], la théorie de l'échantillonnage sépare les techniques de sélection des unités d'échantillonnage en deux grandes approches:
 
-* *Model based* : 
+* *Model based* : L'incertitude des estimateurs est obtenu à partir d'un modèle stochastique.
+
 * *Design based* : l'incertitude des estimateurs est calculée à partir des probabilités d'inclusions
 
 

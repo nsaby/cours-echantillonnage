@@ -1,10 +1,3 @@
----
-output:
-  bookdown::html_document2:
-    fig_caption: yes
-editor_options:
-  chunk_output_type: console
----
 
 
 L'échantillonnage aléatoire stratifié
@@ -123,7 +116,7 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 Il est conseillé de tirer au hasard 2 points par strate afin de pouvoir calculer une variance. Il suffit ensuite d'adapter le nombre de strate pour atteindre le nombre d'unités d'échantillonnage visé.
 
 
-Avec cette méthode, on réparit au mieux les unités dans l'espace.
+Avec cette méthode, il est possible de répartir au mieux les unités dans l'espace.
 
 Ici, on avait retenu 20 unités, soit donc 10 strates.
 
@@ -147,7 +140,7 @@ myStrata <- stratify(champSP.r.aggregate,
                      equalArea=TRUE, 
                      nTry=5
                      )
-plot(myStrata)
+spcosa::plot(myStrata)
 
 # obtain the surface areas of the strata
 print(areaStrata<-getArea(myStrata))
@@ -172,7 +165,7 @@ tmap_arrange(SI, STSI)
 ```
 
 
-Examinons ce que donne la simulation pour la moyenne
+Examinons ce que donne la simulation pour le calcul de la moyenne. On interroge ainsi au droit des pixels les points d'échantillonnage. c'est une opération SIG classique. Puis, on calule la moyenne en utilisant l'estimateur classique.
 
 ```{r}
 terrainSTSI <- over(mySample@sample,champSP)
@@ -183,7 +176,7 @@ MoyEstSTSI
 
 ```
 
-Et pour la variance
+Et pour la variance, il est nécessaire de calculer la variance par state et de calculer ensuite la moyenne de ces variances.
 
 
 ```{r}

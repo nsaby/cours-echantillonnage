@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Données | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
   <meta name="description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Données | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-12-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,9 @@
   
 <link rel="prev" href="WHY.html"/>
 <link rel="next" href="SI.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,25 +51,23 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,6 +120,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -137,7 +160,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenue</a></li>
-<li class="chapter" data-level="2" data-path="WHY.html"><a href="WHY.html"><i class="fa fa-check"></i><b>2</b> Pourquoi ce cours</a><ul>
+<li class="chapter" data-level="2" data-path="WHY.html"><a href="WHY.html"><i class="fa fa-check"></i><b>2</b> Pourquoi ce cours</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="WHY.html"><a href="WHY.html#motivations"><i class="fa fa-check"></i><b>2.1</b> Motivations</a></li>
 <li class="chapter" data-level="2.2" data-path="WHY.html"><a href="WHY.html#définition"><i class="fa fa-check"></i><b>2.2</b> Définition</a></li>
 <li class="chapter" data-level="2.3" data-path="WHY.html"><a href="WHY.html#contenu"><i class="fa fa-check"></i><b>2.3</b> Contenu</a></li>
@@ -148,21 +172,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8" data-path="WHY.html"><a href="WHY.html#plan"><i class="fa fa-check"></i><b>2.8</b> Plan</a></li>
 <li class="chapter" data-level="2.9" data-path="WHY.html"><a href="WHY.html#libraries-utilisées"><i class="fa fa-check"></i><b>2.9</b> Libraries utilisées</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Données</a><ul>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Données</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#statistiques-globales"><i class="fa fa-check"></i><b>3.1</b> Statistiques globales</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cartographie"><i class="fa fa-check"></i><b>3.2</b> Cartographie</a><ul>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cartographie"><i class="fa fa-check"></i><b>3.2</b> Cartographie</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#contour-dune-parcelle"><i class="fa fa-check"></i><b>3.2.1</b> Contour d’une parcelle</a></li>
 <li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#covariables-rasters-en-australie"><i class="fa fa-check"></i><b>3.2.2</b> Covariables rasters en Australie</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="SI.html"><a href="SI.html"><i class="fa fa-check"></i><b>4</b> Echantillonnage aléatoire simple</a><ul>
+<li class="chapter" data-level="4" data-path="SI.html"><a href="SI.html"><i class="fa fa-check"></i><b>4</b> Echantillonnage aléatoire simple</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="SI.html"><a href="SI.html#définition-1"><i class="fa fa-check"></i><b>4.1</b> Définition</a></li>
-<li class="chapter" data-level="4.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>4.2</b> Mise en oeuvre avec un logiciel</a><ul>
+<li class="chapter" data-level="4.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>4.2</b> Mise en oeuvre avec un logiciel</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="SI.html"><a href="SI.html#excel"><i class="fa fa-check"></i><b>4.2.1</b> Excel</a></li>
 <li class="chapter" data-level="4.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>4.2.2</b> Avec <code>R</code> pour les polutations discrètes</a></li>
 <li class="chapter" data-level="4.2.3" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>4.2.3</b> Avec <code>R</code> pour les populations continues</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>4.3</b> Calcul des estimateurs</a><ul>
+<li class="chapter" data-level="4.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>4.3</b> Calcul des estimateurs</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>4.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
 <li class="chapter" data-level="4.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-fini"><i class="fa fa-check"></i><b>4.3.2</b> La moyenne pour la population discrète fini</a></li>
 <li class="chapter" data-level="4.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>4.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
@@ -170,36 +199,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="SI.html"><a href="SI.html#simulations"><i class="fa fa-check"></i><b>4.4</b> Simulations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html"><i class="fa fa-check"></i><b>5</b> L’échantillonnage aléatoire stratifié</a><ul>
+<li class="chapter" data-level="5" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html"><i class="fa fa-check"></i><b>5</b> L’échantillonnage aléatoire stratifié</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#pourquoi-stratifier"><i class="fa fa-check"></i><b>5.1</b> Pourquoi stratifier ?</a></li>
 <li class="chapter" data-level="5.2" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#comment-stratifier"><i class="fa fa-check"></i><b>5.2</b> Comment stratifier ?</a></li>
 <li class="chapter" data-level="5.3" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#estimateurs-stsi"><i class="fa fa-check"></i><b>5.3</b> Estimateurs STSI</a></li>
-<li class="chapter" data-level="5.4" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#stratification-géographique-par-strates-compactes"><i class="fa fa-check"></i><b>5.4</b> Stratification géographique par strates compactes</a><ul>
+<li class="chapter" data-level="5.4" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#stratification-géographique-par-strates-compactes"><i class="fa fa-check"></i><b>5.4</b> Stratification géographique par strates compactes</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#définition-2"><i class="fa fa-check"></i><b>5.4.1</b> Définition</a></li>
 <li class="chapter" data-level="5.4.2" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#estimateurs-stsi-1"><i class="fa fa-check"></i><b>5.4.2</b> Estimateurs STSI</a></li>
 <li class="chapter" data-level="5.4.3" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#implémentation"><i class="fa fa-check"></i><b>5.4.3</b> Implémentation</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>6</b> Echantillonnage aléatoire systématique</a><ul>
+<li class="chapter" data-level="6" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>6</b> Echantillonnage aléatoire systématique</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
 <li class="chapter" data-level="6.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>6.2</b> Exemple de grille</a></li>
 <li class="chapter" data-level="6.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>6.3</b> théorie</a></li>
 <li class="chapter" data-level="6.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>6.4</b> Exemple de mise en oeuvre</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a><ul>
+<li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>7.1</b> Caractéristiques</a></li>
 <li class="chapter" data-level="7.2" data-path="CARTO.html"><a href="CARTO.html#différents-types-de-plans"><i class="fa fa-check"></i><b>7.2</b> Différents types de plans</a></li>
-<li class="chapter" data-level="7.3" data-path="CARTO.html"><a href="CARTO.html#la-grille-systématique"><i class="fa fa-check"></i><b>7.3</b> La grille systématique</a><ul>
+<li class="chapter" data-level="7.3" data-path="CARTO.html"><a href="CARTO.html#la-grille-systématique"><i class="fa fa-check"></i><b>7.3</b> La grille systématique</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques-1"><i class="fa fa-check"></i><b>7.3.1</b> Caractéristiques</a></li>
 <li class="chapter" data-level="7.3.2" data-path="CARTO.html"><a href="CARTO.html#implémentation-1"><i class="fa fa-check"></i><b>7.3.2</b> Implémentation</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-spatial-optimisé"><i class="fa fa-check"></i><b>7.4</b> Echantillonnage spatial optimisé</a><ul>
+<li class="chapter" data-level="7.4" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-spatial-optimisé"><i class="fa fa-check"></i><b>7.4</b> Echantillonnage spatial optimisé</a>
+<ul>
 <li class="chapter" data-level="7.4.1" data-path="CARTO.html"><a href="CARTO.html#définition-3"><i class="fa fa-check"></i><b>7.4.1</b> Définition</a></li>
 <li class="chapter" data-level="7.4.2" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-spcosa"><i class="fa fa-check"></i><b>7.4.2</b> Mise en oeuvre avec <code>spcosa</code></a></li>
 <li class="chapter" data-level="7.4.3" data-path="CARTO.html"><a href="CARTO.html#en-présence-de-données-existantes"><i class="fa fa-check"></i><b>7.4.3</b> En présence de données existantes</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-pour-la-géostatitique"><i class="fa fa-check"></i><b>7.5</b> Echantillonnage pour la géostatitique</a></li>
-<li class="chapter" data-level="7.6" data-path="CARTO.html"><a href="CARTO.html#plan-optimisé-dans-lespace-des-covariables"><i class="fa fa-check"></i><b>7.6</b> Plan optimisé dans l’espace des covariables</a><ul>
+<li class="chapter" data-level="7.6" data-path="CARTO.html"><a href="CARTO.html#plan-optimisé-dans-lespace-des-covariables"><i class="fa fa-check"></i><b>7.6</b> Plan optimisé dans l’espace des covariables</a>
+<ul>
 <li class="chapter" data-level="7.6.1" data-path="CARTO.html"><a href="CARTO.html#définition-4"><i class="fa fa-check"></i><b>7.6.1</b> Définition</a></li>
 <li class="chapter" data-level="7.6.2" data-path="CARTO.html"><a href="CARTO.html#données"><i class="fa fa-check"></i><b>7.6.2</b> Données</a></li>
 <li class="chapter" data-level="7.6.3" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-lalgorithme-k-moyennes"><i class="fa fa-check"></i><b>7.6.3</b> Mise en oeuvre avec l’algorithme K-moyennes</a></li>
@@ -227,18 +263,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data" class="section level1">
+<div id="data" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Données</h1>
-<div id="statistiques-globales" class="section level2">
+<div id="statistiques-globales" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Statistiques globales</h2>
 <p>Pour la partie s’interessant aux statistiques globales, nous basons nos exercices sur une réalité simulée d’une valeur de carbone dans un parcelle agricole. Ce champ a été simulé en utilisant des techniques géostastitques.</p>
 <p>L’objet correspond à un tableau comportant 3 colonnes.
 les coordonnées avec <code>s1</code> et <code>s2</code>
 les valeurs simulées <code>sim1</code></p>
 <p>Chaque coordonnée correspond au centre d’un pixel</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data.html#cb2-1"></a>champ &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/simulatedField_1Exp25.csv&#39;</span>)</span>
-<span id="cb2-2"><a href="data.html#cb2-2"></a></span>
-<span id="cb2-3"><a href="data.html#cb2-3"></a><span class="kw">head</span>(champ)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data.html#cb2-1" aria-hidden="true" tabindex="-1"></a>champ <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/simulatedField_1Exp25.csv&#39;</span>)</span>
+<span id="cb2-2"><a href="data.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="data.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(champ)</span></code></pre></div>
 <pre><code>##    s1  s2     sim1
 ## 1 0.5 0.5 7.184881
 ## 2 1.5 0.5 7.366762
@@ -247,14 +283,14 @@ les valeurs simulées <code>sim1</code></p>
 ## 5 4.5 0.5 7.373427
 ## 6 5.5 0.5 7.161203</code></pre>
 <p>Il est donc facile de transformer le tableau en une grille de type <code>SpatialPixelsDataframe</code>. Pour cela, on passe par une structure de type <code>SpatialPointDataframe</code> dans un premier temps.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data.html#cb4-1"></a>champSP &lt;-<span class="st"> </span>champ</span>
-<span id="cb4-2"><a href="data.html#cb4-2"></a><span class="co"># transformer en un vecteur de points</span></span>
-<span id="cb4-3"><a href="data.html#cb4-3"></a><span class="kw">coordinates</span>(champSP) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>) </span>
-<span id="cb4-4"><a href="data.html#cb4-4"></a><span class="co"># transformer en raster</span></span>
-<span id="cb4-5"><a href="data.html#cb4-5"></a><span class="kw">gridded</span>(champSP) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data.html#cb4-1" aria-hidden="true" tabindex="-1"></a>champSP <span class="ot">&lt;-</span> champ</span>
+<span id="cb4-2"><a href="data.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># transformer en un vecteur de points</span></span>
+<span id="cb4-3"><a href="data.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(champSP) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>) </span>
+<span id="cb4-4"><a href="data.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># transformer en raster</span></span>
+<span id="cb4-5"><a href="data.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gridded</span>(champSP) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code></pre></div>
 <p>Voici la structure de l’objet de type sp.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data.html#cb5-1"></a><span class="co"># structure de l&#39;objet</span></span>
-<span id="cb5-2"><a href="data.html#cb5-2"></a><span class="kw">str</span>(champSP)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># structure de l&#39;objet</span></span>
+<span id="cb5-2"><a href="data.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(champSP)</span></code></pre></div>
 <pre><code>## Formal class &#39;SpatialPixelsDataFrame&#39; [package &quot;sp&quot;] with 7 slots
 ##   ..@ data       :&#39;data.frame&#39;:  10000 obs. of  1 variable:
 ##   .. ..$ sim1: num [1:10000] 7.18 7.37 7.42 7.31 7.37 ...
@@ -278,57 +314,54 @@ les valeurs simulées <code>sim1</code></p>
 ##   ..@ proj4string:Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
 ##   .. .. ..@ projargs: chr NA</code></pre>
 <p>Il est assez simple de faire une carte avec le package <code>tmap</code></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data.html#cb7-1"></a><span class="kw">tm_shape</span>(champSP) <span class="op">+</span></span>
-<span id="cb7-2"><a href="data.html#cb7-2"></a><span class="st">  </span><span class="kw">tm_raster</span>()<span class="op">+</span></span>
-<span id="cb7-3"><a href="data.html#cb7-3"></a><span class="kw">tm_layout</span>(<span class="dt">legend.outside =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning: The projection of the shape object champSP is not known, while it seems
-## to be projected.</code></pre>
-<pre><code>## Warning: Current projection of shape champSP unknown and cannot be determined.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:nice-fig2"></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(champSP) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="data.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>()<span class="sc">+</span></span>
+<span id="cb7-3"><a href="data.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.outside =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig2"></span>
 <img src="cours-echantillonnage_files/figure-html/nice-fig2-1.png" alt="Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel" width="110%" />
 <p class="caption">
 Figure 3.1: Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel
 </p>
 </div>
 <p>L’histogramme de la propriété ressemble à ceci:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data.html#cb10-1"></a><span class="kw">ggplot</span>(champ, </span>
-<span id="cb10-2"><a href="data.html#cb10-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>sim1)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb10-3"><a href="data.html#cb10-3"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">50</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(champ, </span>
+<span id="cb8-2"><a href="data.html#cb8-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>sim1)) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="data.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="cours-echantillonnage_files/figure-html/unnamed-chunk-6-1.png" alt="Histogramme de la population" width="80%" />
 <p class="caption">
 Figure 3.2: Histogramme de la population
 </p>
 </div>
 <p>La moyenne vraie de la population vaut ainsi</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data.html#cb11-1"></a>Moy =<span class="st"> </span><span class="kw">mean</span>(champ<span class="op">$</span>sim1)</span>
-<span id="cb11-2"><a href="data.html#cb11-2"></a></span>
-<span id="cb11-3"><a href="data.html#cb11-3"></a>Moy</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data.html#cb9-1" aria-hidden="true" tabindex="-1"></a>Moy <span class="ot">=</span> <span class="fu">mean</span>(champ<span class="sc">$</span>sim1)</span>
+<span id="cb9-2"><a href="data.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="data.html#cb9-3" aria-hidden="true" tabindex="-1"></a>Moy</span></code></pre></div>
 <pre><code>## [1] 5.298602</code></pre>
 </div>
-<div id="cartographie" class="section level2">
+<div id="cartographie" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Cartographie</h2>
 <p>Pour illuster les différents plans possible pour la cartographie, nous prenons de jeus de données en exemple</p>
-<div id="contour-dune-parcelle" class="section level3">
+<div id="contour-dune-parcelle" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Contour d’une parcelle</h3>
 <p>le contour d’une parcelle est fourni par le package <code>spcosa</code>. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d’échantillonnage proposés.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data.html#cb13-1"></a>shpFarmsum &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="dt">dsn =</span> <span class="kw">system.file</span>(<span class="st">&quot;maps&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;spcosa&quot;</span>), <span class="dt">layer =</span> <span class="st">&quot;farmsum&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data.html#cb11-1" aria-hidden="true" tabindex="-1"></a>shpFarmsum <span class="ot">&lt;-</span> <span class="fu">readOGR</span>(<span class="at">dsn =</span> <span class="fu">system.file</span>(<span class="st">&quot;maps&quot;</span>, <span class="at">package =</span> <span class="st">&quot;spcosa&quot;</span>), <span class="at">layer =</span> <span class="st">&quot;farmsum&quot;</span>)</span></code></pre></div>
 <pre><code>## OGR data source with driver: ESRI Shapefile 
-## Source: &quot;D:\nsaby\R\win-library\4.0\spcosa\maps&quot;, layer: &quot;farmsum&quot;
+## Source: &quot;D:\nsaby\R\win-library\4.1\spcosa\maps&quot;, layer: &quot;farmsum&quot;
 ## with 1 features
 ## It has 4 fields</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data.html#cb15-1"></a><span class="kw">tm_shape</span>(shpFarmsum) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb15-2"><a href="data.html#cb15-2"></a><span class="st">  </span><span class="kw">tm_borders</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(shpFarmsum) <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="cours-echantillonnage_files/figure-html/unnamed-chunk-8-1.png" alt="Contour d'une parcelle agricole" width="80%" />
 <p class="caption">
 Figure 3.3: Contour d’une parcelle agricole
 </p>
 </div>
 </div>
-<div id="covariables-rasters-en-australie" class="section level3">
+<div id="covariables-rasters-en-australie" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Covariables rasters en Australie</h3>
-<p>Un ensemble de 5 rasters sont disponibles pour une parcelle située en Australie dans un zone viticole appelée ‘Hunter vallée’.</p>
+<p>Un ensemble de 5 rasters sont disponibles pour une parcelle située en Australie dans un zone viticole appelée ‘Hunter vallée.’</p>
 <ul>
 <li>Altitude</li>
 <li>l’orientation de la pente</li>
@@ -336,16 +369,16 @@ Figure 3.3: Contour d’une parcelle agricole
 <li>indice de topographie</li>
 <li>l’indice de végétation normalisé</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data.html#cb16-1"></a><span class="co">#Read data with coordinates and other attributes of fine grid (discretization of study area)</span></span>
-<span id="cb16-2"><a href="data.html#cb16-2"></a><span class="kw">load</span>(<span class="dt">file=</span><span class="st">&quot;Data/HunterValley4Practicals.RData&quot;</span>)</span>
-<span id="cb16-3"><a href="data.html#cb16-3"></a>grdHunterValley2 &lt;-<span class="st"> </span>grdHunterValley</span>
-<span id="cb16-4"><a href="data.html#cb16-4"></a><span class="kw">coordinates</span>(grdHunterValley2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Easting&#39;</span>,<span class="st">&#39;Northing&#39;</span>)</span>
-<span id="cb16-5"><a href="data.html#cb16-5"></a><span class="kw">gridded</span>(grdHunterValley2) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="data.html#cb16-6"></a></span>
-<span id="cb16-7"><a href="data.html#cb16-7"></a><span class="kw">tm_shape</span>(grdHunterValley2) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb16-8"><a href="data.html#cb16-8"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;elevation_m&quot;</span>,<span class="st">&quot;slope_deg&quot;</span>,<span class="st">&quot;cti&quot;</span>,<span class="st">&quot;ndvi&quot;</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read data with coordinates and other attributes of fine grid (discretization of study area)</span></span>
+<span id="cb14-2"><a href="data.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file=</span><span class="st">&quot;Data/HunterValley4Practicals.RData&quot;</span>)</span>
+<span id="cb14-3"><a href="data.html#cb14-3" aria-hidden="true" tabindex="-1"></a>grdHunterValley2 <span class="ot">&lt;-</span> grdHunterValley</span>
+<span id="cb14-4"><a href="data.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(grdHunterValley2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Easting&#39;</span>,<span class="st">&#39;Northing&#39;</span>)</span>
+<span id="cb14-5"><a href="data.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gridded</span>(grdHunterValley2) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb14-6"><a href="data.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="data.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(grdHunterValley2) <span class="sc">+</span> </span>
+<span id="cb14-8"><a href="data.html#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;elevation_m&quot;</span>,<span class="st">&quot;slope_deg&quot;</span>,<span class="st">&quot;cti&quot;</span>,<span class="st">&quot;ndvi&quot;</span>) )</span></code></pre></div>
 <pre><code>## Variable(s) &quot;ndvi&quot; contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full spectrum of the color palette.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
 <img src="cours-echantillonnage_files/figure-html/unnamed-chunk-9-1.png" alt="Covariables raster en Australie" width="80%" />
 <p class="caption">
 Figure 3.4: Covariables raster en Australie
@@ -365,7 +398,6 @@ Figure 3.4: Covariables raster en Australie
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -384,6 +416,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -404,6 +437,10 @@ gitbook.start({
 "text": null
 },
 "download": ["cours-echantillonnage.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

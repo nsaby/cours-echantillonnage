@@ -170,14 +170,14 @@ Le calcul de l'interval de confiance sur la moyenne nécessite de faire une hypo
 L'intervalle de confiance à $100(1-\alpha)$ %  est:
 
 
-$\hat{ \overline{z} }\pm u_{1-\alpha/2}.\sqrt{V(\hat{t^l}) }$
+$\hat{ \overline{z} }\pm u_{1-\alpha/2}.\sqrt{V(\hat{\overline z}) }$
 
 
 où  $$u_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi normale $u$.
 
 $n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
 
-* Pour des $n$ petit (<30), la loi de Student est plus adaptée. on pbtient:
+* Pour des $n$ petit (<30), la loi de Student est plus adaptée. on obtient:
 
 
 $\hat{ \overline{z} }\pm t_{1-\alpha/2}^{(n-1)}.\sqrt{V(\hat{t^l}) }$
@@ -185,7 +185,8 @@ $\hat{ \overline{z} }\pm t_{1-\alpha/2}^{(n-1)}.\sqrt{V(\hat{t^l}) }$
 où  $$t^{(n-1)}_{1-\alpha/2}$$ est le $(1-\alpha/2)$ quantile de la loi de  Student $t$ avec $(n-1)$ degrees of freedom. $n$ is the number of sampling observations to compute the mean, eg $n_h*H$.
 
 
-Voici comment le mettre en oeuvre dans `R`
+Voici comment le mettre en oeuvre dans $`R`$
+
 ```{r}
 # calcul du quantile
 zalpha <- qnorm(p = 1- (0.05/2), mean = 0, sd = 1)

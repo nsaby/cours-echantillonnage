@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
+  <title>Page not found | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
   <meta name="description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta property="og:title" content="Page not found | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="nsaby/cours-echantillonnage" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Script final | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
+  <meta name="twitter:title" content="Page not found | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
   
   <meta name="twitter:description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="CARTO.html"/>
-<link rel="next" href="references.html"/>
+
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -263,106 +263,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Script" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Script final</h1>
-<p>Ce chapitre rassemble l’ensemble des commandes utilisées dans un script fonctionnel.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="Script.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Users/nsaby/Dropbox/fac/tp/sampling/&quot;</span>)</span>
-<span id="cb77-2"><a href="Script.html#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-3"><a href="Script.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="co"># R</span></span>
-<span id="cb77-4"><a href="Script.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Probablity sampling : SI, STSI (spatial et covariable), SY</span></span>
-<span id="cb77-5"><a href="Script.html#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="co"># impl?menter le workflow dans R/ArcGis avec vecteur et rasteur</span></span>
-<span id="cb77-6"><a href="Script.html#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculer la moyenne par SI, STSI et SY</span></span>
-<span id="cb77-7"><a href="Script.html#cb77-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-8"><a href="Script.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="co"># MB sampling : grid,  infill sampling</span></span>
-<span id="cb77-9"><a href="Script.html#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb77-10"><a href="Script.html#cb77-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-11"><a href="Script.html#cb77-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-12"><a href="Script.html#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test 1 avec des ?chantillonnage al?atoire --------------</span></span>
-<span id="cb77-13"><a href="Script.html#cb77-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-14"><a href="Script.html#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
-<span id="cb77-15"><a href="Script.html#cb77-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb77-16"><a href="Script.html#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="co"># library(maptools)</span></span>
-<span id="cb77-17"><a href="Script.html#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="co"># library(mapview)</span></span>
-<span id="cb77-18"><a href="Script.html#cb77-18" aria-hidden="true" tabindex="-1"></a><span class="co"># library(rgdal)</span></span>
-<span id="cb77-19"><a href="Script.html#cb77-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-20"><a href="Script.html#cb77-20" aria-hidden="true" tabindex="-1"></a>champ <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./data/simulatedField_1Exp25.csv&#39;</span>)</span>
-<span id="cb77-21"><a href="Script.html#cb77-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-22"><a href="Script.html#cb77-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Simuler une Aléatoire Simple (SI)</span></span>
-<span id="cb77-23"><a href="Script.html#cb77-23" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">100</span></span>
-<span id="cb77-24"><a href="Script.html#cb77-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-25"><a href="Script.html#cb77-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Creation des identifiants des lignes</span></span>
-<span id="cb77-26"><a href="Script.html#cb77-26" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span></span>
-<span id="cb77-27"><a href="Script.html#cb77-27" aria-hidden="true" tabindex="-1"></a><span class="co"># ou</span></span>
-<span id="cb77-28"><a href="Script.html#cb77-28" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> <span class="fu">seq</span>( <span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb77-29"><a href="Script.html#cb77-29" aria-hidden="true" tabindex="-1"></a><span class="co"># tire au hasard n valeurs parmi 10000</span></span>
-<span id="cb77-30"><a href="Script.html#cb77-30" aria-hidden="true" tabindex="-1"></a>MesIds <span class="ot">&lt;-</span> <span class="fu">sample</span>( <span class="at">x =</span> id  , <span class="at">size =</span> n)</span>
-<span id="cb77-31"><a href="Script.html#cb77-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-32"><a href="Script.html#cb77-32" aria-hidden="true" tabindex="-1"></a>MesIds <span class="ot">&lt;-</span> <span class="fu">sort</span>(MesIds)</span>
-<span id="cb77-33"><a href="Script.html#cb77-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Les coordonn?es</span></span>
-<span id="cb77-34"><a href="Script.html#cb77-34" aria-hidden="true" tabindex="-1"></a>champ[MesIds,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
-<span id="cb77-35"><a href="Script.html#cb77-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-36"><a href="Script.html#cb77-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-37"><a href="Script.html#cb77-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire les valeurs de carbone, simuler le terrain</span></span>
-<span id="cb77-38"><a href="Script.html#cb77-38" aria-hidden="true" tabindex="-1"></a>terrain <span class="ot">&lt;-</span> champ[ MesIds, <span class="st">&quot;sim1&quot;</span> ]</span>
-<span id="cb77-39"><a href="Script.html#cb77-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-40"><a href="Script.html#cb77-40" aria-hidden="true" tabindex="-1"></a><span class="co"># moyenne estim?e ? partir de l&#39;?chantillon </span></span>
-<span id="cb77-41"><a href="Script.html#cb77-41" aria-hidden="true" tabindex="-1"></a>MoyEst <span class="ot">&lt;-</span> <span class="fu">mean</span>(terrain)</span>
-<span id="cb77-42"><a href="Script.html#cb77-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance d&#39;?chantillonnage de MoyEst</span></span>
-<span id="cb77-43"><a href="Script.html#cb77-43" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">var</span>(terrain) <span class="sc">/</span> n</span>
-<span id="cb77-44"><a href="Script.html#cb77-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-45"><a href="Script.html#cb77-45" aria-hidden="true" tabindex="-1"></a><span class="co"># vraie moyenne</span></span>
-<span id="cb77-46"><a href="Script.html#cb77-46" aria-hidden="true" tabindex="-1"></a>Moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(champ<span class="sc">$</span>sim1)</span>
-<span id="cb77-47"><a href="Script.html#cb77-47" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul du quantile</span></span>
-<span id="cb77-48"><a href="Script.html#cb77-48" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">-</span> (<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb77-49"><a href="Script.html#cb77-49" aria-hidden="true" tabindex="-1"></a><span class="co"># si n est petit &lt; 30</span></span>
-<span id="cb77-50"><a href="Script.html#cb77-50" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">-</span> (<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>) , <span class="at">df =</span> <span class="dv">20-1</span>)</span>
-<span id="cb77-51"><a href="Script.html#cb77-51" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul de l&#39;interval de confiance</span></span>
-<span id="cb77-52"><a href="Script.html#cb77-52" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">&lt;-</span> z <span class="sc">*</span> <span class="fu">sqrt</span>(V)</span>
-<span id="cb77-53"><a href="Script.html#cb77-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC</span></span>
-<span id="cb77-54"><a href="Script.html#cb77-54" aria-hidden="true" tabindex="-1"></a>Moy <span class="sc">&lt;</span> MoyEst <span class="sc">+</span> IC</span>
-<span id="cb77-55"><a href="Script.html#cb77-55" aria-hidden="true" tabindex="-1"></a>Moy <span class="sc">&gt;</span> MoyEst <span class="sc">-</span> IC</span>
-<span id="cb77-56"><a href="Script.html#cb77-56" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span>IC</span>
-<span id="cb77-57"><a href="Script.html#cb77-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-58"><a href="Script.html#cb77-58" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(MoyEst, <span class="at">ICbas =</span> MoyEst <span class="sc">-</span> IC, <span class="at">ICHaut =</span>MoyEst <span class="sc">+</span> IC, Moy)</span>
-<span id="cb77-59"><a href="Script.html#cb77-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-60"><a href="Script.html#cb77-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Tester le package sp ------</span></span>
-<span id="cb77-61"><a href="Script.html#cb77-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
-<span id="cb77-62"><a href="Script.html#cb77-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Copie du tableau dans un nouvel objet</span></span>
-<span id="cb77-63"><a href="Script.html#cb77-63" aria-hidden="true" tabindex="-1"></a>champSP <span class="ot">&lt;-</span> champ</span>
-<span id="cb77-64"><a href="Script.html#cb77-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-65"><a href="Script.html#cb77-65" aria-hidden="true" tabindex="-1"></a><span class="co"># transformer en un raster</span></span>
-<span id="cb77-66"><a href="Script.html#cb77-66" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(champSP) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;s1&#39;</span>,<span class="st">&#39;s2&#39;</span>)  </span>
-<span id="cb77-67"><a href="Script.html#cb77-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-68"><a href="Script.html#cb77-68" aria-hidden="true" tabindex="-1"></a><span class="co"># structure de l&#39;objet</span></span>
-<span id="cb77-69"><a href="Script.html#cb77-69" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(champSP)</span>
-<span id="cb77-70"><a href="Script.html#cb77-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-71"><a href="Script.html#cb77-71" aria-hidden="true" tabindex="-1"></a><span class="fu">spplot</span>(champSP)</span>
-<span id="cb77-72"><a href="Script.html#cb77-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-73"><a href="Script.html#cb77-73" aria-hidden="true" tabindex="-1"></a><span class="co"># transforme en raster le semi de points</span></span>
-<span id="cb77-74"><a href="Script.html#cb77-74" aria-hidden="true" tabindex="-1"></a><span class="fu">gridded</span>(champSP) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb77-75"><a href="Script.html#cb77-75" aria-hidden="true" tabindex="-1"></a><span class="fu">spplot</span>(champSP)</span>
-<span id="cb77-76"><a href="Script.html#cb77-76" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(champSP)</span>
-<span id="cb77-77"><a href="Script.html#cb77-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-78"><a href="Script.html#cb77-78" aria-hidden="true" tabindex="-1"></a><span class="co"># SI</span></span>
-<span id="cb77-79"><a href="Script.html#cb77-79" aria-hidden="true" tabindex="-1"></a>MonEch <span class="ot">&lt;-</span> <span class="fu">spsample</span>( champSP , n , <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb77-80"><a href="Script.html#cb77-80" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(champSP)</span>
-<span id="cb77-81"><a href="Script.html#cb77-81" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(MonEch, <span class="at">pch =</span> <span class="dv">3</span>)</span>
-<span id="cb77-82"><a href="Script.html#cb77-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-83"><a href="Script.html#cb77-83" aria-hidden="true" tabindex="-1"></a><span class="co"># regular</span></span>
-<span id="cb77-84"><a href="Script.html#cb77-84" aria-hidden="true" tabindex="-1"></a>MonEch <span class="ot">&lt;-</span> <span class="fu">spsample</span>( champSP ,</span>
-<span id="cb77-85"><a href="Script.html#cb77-85" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&quot;regular&quot;</span>,</span>
-<span id="cb77-86"><a href="Script.html#cb77-86" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cellsize =</span> <span class="dv">10</span>)</span>
-<span id="cb77-87"><a href="Script.html#cb77-87" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(champSP)</span>
-<span id="cb77-88"><a href="Script.html#cb77-88" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(MonEch, <span class="at">pch =</span> <span class="dv">3</span>)</span></code></pre></div>
-
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="CARTO.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
