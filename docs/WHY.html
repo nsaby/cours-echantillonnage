@@ -24,7 +24,7 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
-<meta name="date" content="2021-12-24" />
+<meta name="date" content="2021-12-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,7 +156,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cours Echantillonnage Sol</a></li>
+<li><a href="./">Cours Echantillonnage</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenue</a></li>
@@ -186,18 +186,17 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="SI.html"><a href="SI.html#définition-1"><i class="fa fa-check"></i><b>4.1</b> Définition</a></li>
 <li class="chapter" data-level="4.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>4.2</b> Mise en oeuvre avec un logiciel</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="SI.html"><a href="SI.html#excel"><i class="fa fa-check"></i><b>4.2.1</b> Excel</a></li>
-<li class="chapter" data-level="4.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>4.2.2</b> Avec <code>R</code> pour les polutations discrètes</a></li>
-<li class="chapter" data-level="4.2.3" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>4.2.3</b> Avec <code>R</code> pour les populations continues</a></li>
+<li class="chapter" data-level="4.2.1" data-path="SI.html"><a href="SI.html#pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>4.2.1</b> Pour les polutations discrètes</a></li>
+<li class="chapter" data-level="4.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>4.2.2</b> Avec <code>R</code> pour les populations continues</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>4.3</b> Calcul des estimateurs</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>4.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
-<li class="chapter" data-level="4.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-fini"><i class="fa fa-check"></i><b>4.3.2</b> La moyenne pour la population discrète fini</a></li>
+<li class="chapter" data-level="4.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-finie"><i class="fa fa-check"></i><b>4.3.2</b> La moyenne pour la population discrète finie</a></li>
 <li class="chapter" data-level="4.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>4.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
 <li class="chapter" data-level="4.3.4" data-path="SI.html"><a href="SI.html#linterval-de-confiance"><i class="fa fa-check"></i><b>4.3.4</b> l’interval de confiance</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="SI.html"><a href="SI.html#simulations"><i class="fa fa-check"></i><b>4.4</b> Simulations</a></li>
+<li class="chapter" data-level="4.4" data-path="SI.html"><a href="SI.html#simulations-dun-interval-de-confiance"><i class="fa fa-check"></i><b>4.4</b> Simulations d’un interval de confiance</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html"><i class="fa fa-check"></i><b>5</b> L’échantillonnage aléatoire stratifié</a>
 <ul>
@@ -366,12 +365,13 @@ les unités d’échantillonnage doivent être définies, par exemple carrés de
 <p>Ces notes ont été produites par <a href="http://www.rstudio.com/ide/">RStudio</a> en utilisant <a href="http://bookdown.org/">bookdown</a>. Le site <a href="https://nsaby.github.io/cours-echantillonnage/">website</a> est en ligne via github <a href="http://netlify.com/">Netlify</a></p>
 <p>La version de ce livre numérique a été produite avec R version 4.1.1 (2021-08-10) et les package suivants:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="WHY.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-2"><a href="WHY.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
-<span id="cb1-3"><a href="WHY.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb1-4"><a href="WHY.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
-<span id="cb1-5"><a href="WHY.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-6"><a href="WHY.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spcosa) <span class="co"># pour les algorithme de stratification de la zone</span></span>
-<span id="cb1-7"><a href="WHY.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fields)</span></code></pre></div>
+<span id="cb1-2"><a href="WHY.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp) <span class="co"># pour gérer les données SIG raster et vecteurs</span></span>
+<span id="cb1-3"><a href="WHY.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># pour gérer les données SIG vecteurs</span></span>
+<span id="cb1-4"><a href="WHY.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap) <span class="co"># faire les carte</span></span>
+<span id="cb1-5"><a href="WHY.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal) <span class="co"># gestion des données raster et vecteurs</span></span>
+<span id="cb1-6"><a href="WHY.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-7"><a href="WHY.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spcosa) <span class="co"># pour les algorithme de stratification de la zone</span></span>
+<span id="cb1-8"><a href="WHY.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fields)</span></code></pre></div>
 
 </div>
 </div>
@@ -432,13 +432,13 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["cours-echantillonnage.epub"],
+"download": ["cours-echantillonnage.pdf", "cours-echantillonnage.epub"],
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

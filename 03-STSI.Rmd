@@ -3,11 +3,10 @@
 L'échantillonnage aléatoire stratifié
 =======================================
 
-Pour ce type d'approche, la population ou la zone d'étude est subdivisée en sous-populations, appelées
-strates.
+Pour ce type d'approche, la population ou la zone d'étude est subdivisée en sous-populations, appelées strates.
 
 - Les strates ne peuvent pas  se chevaucher, et leur union doit correspondre à la population étudiée.
-- Dans chaque strate, un échantillon est sélectionné au hasard
+- Dans chaque strate, un échantillon est sélectionné au **hasard**
 - Les strates peuvent être échantillonnées de nombreuses manières, par exemple par échantillonnage aléatoire (SI). Cela conduit à un échantillonnage aléatoire simple stratifié (STSI)
 - La méthode de sélection des unité par SI est appliquée à chaque strate séparément
 

@@ -163,9 +163,10 @@ La version de ce livre numérique a été produite avec  `r R.version.string` et
 
 ```{r , message= FALSE, warning= FALSE}
 library(knitr)
-library(sp)
-library(tmap)
-library(rgdal)
+library(sp) # pour gérer les données SIG raster et vecteurs
+library(sf) # pour gérer les données SIG vecteurs
+library(tmap) # faire les carte
+library(rgdal) # gestion des données raster et vecteurs
 library(ggplot2)
 library(spcosa) # pour les algorithme de stratification de la zone
 library(fields)

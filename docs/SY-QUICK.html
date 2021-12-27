@@ -24,7 +24,7 @@
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
 
 
-<meta name="date" content="2021-12-24" />
+<meta name="date" content="2021-12-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,7 +156,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cours Echantillonnage Sol</a></li>
+<li><a href="./">Cours Echantillonnage</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenue</a></li>
@@ -186,18 +186,17 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="SI.html"><a href="SI.html#définition-1"><i class="fa fa-check"></i><b>4.1</b> Définition</a></li>
 <li class="chapter" data-level="4.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>4.2</b> Mise en oeuvre avec un logiciel</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="SI.html"><a href="SI.html#excel"><i class="fa fa-check"></i><b>4.2.1</b> Excel</a></li>
-<li class="chapter" data-level="4.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>4.2.2</b> Avec <code>R</code> pour les polutations discrètes</a></li>
-<li class="chapter" data-level="4.2.3" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>4.2.3</b> Avec <code>R</code> pour les populations continues</a></li>
+<li class="chapter" data-level="4.2.1" data-path="SI.html"><a href="SI.html#pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>4.2.1</b> Pour les polutations discrètes</a></li>
+<li class="chapter" data-level="4.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>4.2.2</b> Avec <code>R</code> pour les populations continues</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>4.3</b> Calcul des estimateurs</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>4.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
-<li class="chapter" data-level="4.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-fini"><i class="fa fa-check"></i><b>4.3.2</b> La moyenne pour la population discrète fini</a></li>
+<li class="chapter" data-level="4.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-finie"><i class="fa fa-check"></i><b>4.3.2</b> La moyenne pour la population discrète finie</a></li>
 <li class="chapter" data-level="4.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>4.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
 <li class="chapter" data-level="4.3.4" data-path="SI.html"><a href="SI.html#linterval-de-confiance"><i class="fa fa-check"></i><b>4.3.4</b> l’interval de confiance</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="SI.html"><a href="SI.html#simulations"><i class="fa fa-check"></i><b>4.4</b> Simulations</a></li>
+<li class="chapter" data-level="4.4" data-path="SI.html"><a href="SI.html#simulations-dun-interval-de-confiance"><i class="fa fa-check"></i><b>4.4</b> Simulations d’un interval de confiance</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html"><i class="fa fa-check"></i><b>5</b> L’échantillonnage aléatoire stratifié</a>
 <ul>
@@ -282,20 +281,20 @@ div.csl-indent {
 </div>
 <div id="exemple-de-grille" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Exemple de grille</h2>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="SY-QUICK.html#cb59-1" aria-hidden="true" tabindex="-1"></a>MonEch <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">spsample</span>( <span class="at">x =</span> champSP , </span>
-<span id="cb59-2"><a href="SY-QUICK.html#cb59-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cellsize =</span> <span class="dv">20</span> ,</span>
-<span id="cb59-3"><a href="SY-QUICK.html#cb59-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
-<span id="cb59-4"><a href="SY-QUICK.html#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-5"><a href="SY-QUICK.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>) <span class="co"># ne marche pas sinon</span></span>
-<span id="cb59-6"><a href="SY-QUICK.html#cb59-6" aria-hidden="true" tabindex="-1"></a>MonEch2 <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">spsample</span>( <span class="at">x =</span> champSP , </span>
-<span id="cb59-7"><a href="SY-QUICK.html#cb59-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cellsize =</span> <span class="dv">20</span> ,</span>
-<span id="cb59-8"><a href="SY-QUICK.html#cb59-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
-<span id="cb59-9"><a href="SY-QUICK.html#cb59-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-10"><a href="SY-QUICK.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(champSP) <span class="sc">+</span> <span class="fu">tm_raster</span>() <span class="sc">+</span></span>
-<span id="cb59-11"><a href="SY-QUICK.html#cb59-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(<span class="at">shp =</span> MonEch) <span class="sc">+</span> <span class="fu">tm_symbols</span>(<span class="at">col=</span><span class="st">&#39;black&#39;</span>) <span class="sc">+</span></span>
-<span id="cb59-12"><a href="SY-QUICK.html#cb59-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(<span class="at">shp =</span> MonEch2) <span class="sc">+</span> <span class="fu">tm_symbols</span>(<span class="at">col=</span><span class="st">&#39;green&#39;</span>)<span class="sc">+</span></span>
-<span id="cb59-13"><a href="SY-QUICK.html#cb59-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-14"><a href="SY-QUICK.html#cb59-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.outside =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="SY-QUICK.html#cb60-1" aria-hidden="true" tabindex="-1"></a>MonEch <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">spsample</span>( <span class="at">x =</span> champSP , </span>
+<span id="cb60-2"><a href="SY-QUICK.html#cb60-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cellsize =</span> <span class="dv">20</span> ,</span>
+<span id="cb60-3"><a href="SY-QUICK.html#cb60-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
+<span id="cb60-4"><a href="SY-QUICK.html#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="SY-QUICK.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>) <span class="co"># ne marche pas sinon</span></span>
+<span id="cb60-6"><a href="SY-QUICK.html#cb60-6" aria-hidden="true" tabindex="-1"></a>MonEch2 <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">spsample</span>( <span class="at">x =</span> champSP , </span>
+<span id="cb60-7"><a href="SY-QUICK.html#cb60-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cellsize =</span> <span class="dv">20</span> ,</span>
+<span id="cb60-8"><a href="SY-QUICK.html#cb60-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&quot;regular&quot;</span>)</span>
+<span id="cb60-9"><a href="SY-QUICK.html#cb60-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-10"><a href="SY-QUICK.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(champSP) <span class="sc">+</span> <span class="fu">tm_raster</span>() <span class="sc">+</span></span>
+<span id="cb60-11"><a href="SY-QUICK.html#cb60-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(<span class="at">shp =</span> MonEch) <span class="sc">+</span> <span class="fu">tm_symbols</span>(<span class="at">col=</span><span class="st">&#39;black&#39;</span>) <span class="sc">+</span></span>
+<span id="cb60-12"><a href="SY-QUICK.html#cb60-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(<span class="at">shp =</span> MonEch2) <span class="sc">+</span> <span class="fu">tm_symbols</span>(<span class="at">col=</span><span class="st">&#39;green&#39;</span>)<span class="sc">+</span></span>
+<span id="cb60-13"><a href="SY-QUICK.html#cb60-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-14"><a href="SY-QUICK.html#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.outside =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SYfig"></span>
 <img src="cours-echantillonnage_files/figure-html/SYfig-1.png" alt="Exemple de  grilles systématiques placées au hasard" width="110%" />
 <p class="caption">
@@ -305,42 +304,42 @@ Figure 6.1: Exemple de grilles systématiques placées au hasard
 </div>
 <div id="théorie" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> théorie</h2>
-<p>La moyenne peut être calculé avec l’estimateur SI</p>
+<p>La moyenne peut être calculé avec l’estimateur classique de l’échantillonnage aléatoire simple ou SI. la fonction <code>mean</code> de R.</p>
 </div>
 <div id="exemple-de-mise-en-oeuvre" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Exemple de mise en oeuvre</h2>
 <p>Voici un exemple de mise en oeuvre des calculs proposés au paragraphe précédent.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="SY-QUICK.html#cb60-1" aria-hidden="true" tabindex="-1"></a>terrainSY <span class="ot">&lt;-</span> <span class="fu">over</span>(MonEch2, champSP)</span>
-<span id="cb60-2"><a href="SY-QUICK.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="SY-QUICK.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#change class of object with sample data to SpatialPixelsDataFrame</span></span>
-<span id="cb60-4"><a href="SY-QUICK.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gridded</span>(MonEch2) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb60-5"><a href="SY-QUICK.html#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-6"><a href="SY-QUICK.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co">#compute number of strata from length of data file NB number of sampling units can be odd</span></span>
-<span id="cb60-7"><a href="SY-QUICK.html#cb60-7" aria-hidden="true" tabindex="-1"></a>numberofStrata <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">length</span>(MonEch2) <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb60-8"><a href="SY-QUICK.html#cb60-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-9"><a href="SY-QUICK.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co">#cluster the sampling units</span></span>
-<span id="cb60-10"><a href="SY-QUICK.html#cb60-10" aria-hidden="true" tabindex="-1"></a>myStrata <span class="ot">&lt;-</span></span>
-<span id="cb60-11"><a href="SY-QUICK.html#cb60-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stratify</span>(MonEch2,</span>
-<span id="cb60-12"><a href="SY-QUICK.html#cb60-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">nStrata =</span> numberofStrata,</span>
-<span id="cb60-13"><a href="SY-QUICK.html#cb60-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">equalArea =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb60-14"><a href="SY-QUICK.html#cb60-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">nTry =</span> <span class="dv">100</span>)</span>
-<span id="cb60-15"><a href="SY-QUICK.html#cb60-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-16"><a href="SY-QUICK.html#cb60-16" aria-hidden="true" tabindex="-1"></a>myStrata.df <span class="ot">&lt;-</span> <span class="fu">as</span>(myStrata, <span class="st">&quot;data.frame&quot;</span>)</span>
-<span id="cb60-17"><a href="SY-QUICK.html#cb60-17" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(terrainSY, myStrata.df)</span>
-<span id="cb60-18"><a href="SY-QUICK.html#cb60-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-19"><a href="SY-QUICK.html#cb60-19" aria-hidden="true" tabindex="-1"></a>varh <span class="ot">&lt;-</span> <span class="fu">tapply</span>(data<span class="sc">$</span>sim1,</span>
-<span id="cb60-20"><a href="SY-QUICK.html#cb60-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">INDEX =</span> data<span class="sc">$</span>stratumId,</span>
-<span id="cb60-21"><a href="SY-QUICK.html#cb60-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">FUN =</span> var)</span>
-<span id="cb60-22"><a href="SY-QUICK.html#cb60-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-23"><a href="SY-QUICK.html#cb60-23" aria-hidden="true" tabindex="-1"></a>nh <span class="ot">&lt;-</span> <span class="fu">tapply</span>(data<span class="sc">$</span>sim1,</span>
-<span id="cb60-24"><a href="SY-QUICK.html#cb60-24" aria-hidden="true" tabindex="-1"></a>             <span class="at">INDEX =</span> data<span class="sc">$</span>stratumId,</span>
-<span id="cb60-25"><a href="SY-QUICK.html#cb60-25" aria-hidden="true" tabindex="-1"></a>             <span class="at">FUN =</span> length)</span>
-<span id="cb60-26"><a href="SY-QUICK.html#cb60-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-27"><a href="SY-QUICK.html#cb60-27" aria-hidden="true" tabindex="-1"></a>varmeanh<span class="ot">&lt;-</span>varh<span class="sc">/</span>nh</span>
-<span id="cb60-28"><a href="SY-QUICK.html#cb60-28" aria-hidden="true" tabindex="-1"></a>wh<span class="ot">&lt;-</span>nh<span class="sc">/</span><span class="fu">sum</span>(nh)</span>
-<span id="cb60-29"><a href="SY-QUICK.html#cb60-29" aria-hidden="true" tabindex="-1"></a>semeanSTSI<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(wh<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>varmeanh))</span>
-<span id="cb60-30"><a href="SY-QUICK.html#cb60-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-31"><a href="SY-QUICK.html#cb60-31" aria-hidden="true" tabindex="-1"></a>semeanSI <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(terrainSY<span class="sc">$</span>sim1)<span class="sc">/</span><span class="fu">length</span>(MonEch2))</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="SY-QUICK.html#cb61-1" aria-hidden="true" tabindex="-1"></a>terrainSY <span class="ot">&lt;-</span> <span class="fu">over</span>(MonEch2, champSP)</span>
+<span id="cb61-2"><a href="SY-QUICK.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="SY-QUICK.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co">#change class of object with sample data to SpatialPixelsDataFrame</span></span>
+<span id="cb61-4"><a href="SY-QUICK.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gridded</span>(MonEch2) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb61-5"><a href="SY-QUICK.html#cb61-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-6"><a href="SY-QUICK.html#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="co">#compute number of strata from length of data file NB number of sampling units can be odd</span></span>
+<span id="cb61-7"><a href="SY-QUICK.html#cb61-7" aria-hidden="true" tabindex="-1"></a>numberofStrata <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">length</span>(MonEch2) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb61-8"><a href="SY-QUICK.html#cb61-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-9"><a href="SY-QUICK.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co">#cluster the sampling units</span></span>
+<span id="cb61-10"><a href="SY-QUICK.html#cb61-10" aria-hidden="true" tabindex="-1"></a>myStrata <span class="ot">&lt;-</span></span>
+<span id="cb61-11"><a href="SY-QUICK.html#cb61-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stratify</span>(MonEch2,</span>
+<span id="cb61-12"><a href="SY-QUICK.html#cb61-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">nStrata =</span> numberofStrata,</span>
+<span id="cb61-13"><a href="SY-QUICK.html#cb61-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">equalArea =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb61-14"><a href="SY-QUICK.html#cb61-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">nTry =</span> <span class="dv">100</span>)</span>
+<span id="cb61-15"><a href="SY-QUICK.html#cb61-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-16"><a href="SY-QUICK.html#cb61-16" aria-hidden="true" tabindex="-1"></a>myStrata.df <span class="ot">&lt;-</span> <span class="fu">as</span>(myStrata, <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb61-17"><a href="SY-QUICK.html#cb61-17" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(terrainSY, myStrata.df)</span>
+<span id="cb61-18"><a href="SY-QUICK.html#cb61-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-19"><a href="SY-QUICK.html#cb61-19" aria-hidden="true" tabindex="-1"></a>varh <span class="ot">&lt;-</span> <span class="fu">tapply</span>(data<span class="sc">$</span>sim1,</span>
+<span id="cb61-20"><a href="SY-QUICK.html#cb61-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">INDEX =</span> data<span class="sc">$</span>stratumId,</span>
+<span id="cb61-21"><a href="SY-QUICK.html#cb61-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">FUN =</span> var)</span>
+<span id="cb61-22"><a href="SY-QUICK.html#cb61-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-23"><a href="SY-QUICK.html#cb61-23" aria-hidden="true" tabindex="-1"></a>nh <span class="ot">&lt;-</span> <span class="fu">tapply</span>(data<span class="sc">$</span>sim1,</span>
+<span id="cb61-24"><a href="SY-QUICK.html#cb61-24" aria-hidden="true" tabindex="-1"></a>             <span class="at">INDEX =</span> data<span class="sc">$</span>stratumId,</span>
+<span id="cb61-25"><a href="SY-QUICK.html#cb61-25" aria-hidden="true" tabindex="-1"></a>             <span class="at">FUN =</span> length)</span>
+<span id="cb61-26"><a href="SY-QUICK.html#cb61-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-27"><a href="SY-QUICK.html#cb61-27" aria-hidden="true" tabindex="-1"></a>varmeanh<span class="ot">&lt;-</span>varh<span class="sc">/</span>nh</span>
+<span id="cb61-28"><a href="SY-QUICK.html#cb61-28" aria-hidden="true" tabindex="-1"></a>wh<span class="ot">&lt;-</span>nh<span class="sc">/</span><span class="fu">sum</span>(nh)</span>
+<span id="cb61-29"><a href="SY-QUICK.html#cb61-29" aria-hidden="true" tabindex="-1"></a>semeanSTSI<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(wh<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>varmeanh))</span>
+<span id="cb61-30"><a href="SY-QUICK.html#cb61-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-31"><a href="SY-QUICK.html#cb61-31" aria-hidden="true" tabindex="-1"></a>semeanSI <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(terrainSY<span class="sc">$</span>sim1)<span class="sc">/</span><span class="fu">length</span>(MonEch2))</span></code></pre></div>
 <p>Ainsi, l’estimation de la variance d’échantillonnage dite naïve est <span class="math inline">\(0.1801523\)</span>. Cette valeur est supérieure à la valeur fournie par l’estimation avec le deuxième formule: <span class="math inline">\(0.1292304\)</span></p>
 
 </div>
@@ -393,13 +392,13 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["cours-echantillonnage.epub"],
+"download": ["cours-echantillonnage.pdf", "cours-echantillonnage.epub"],
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

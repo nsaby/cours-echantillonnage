@@ -3,6 +3,7 @@ fig:unnamed-chunk-6
 fig:unnamed-chunk-8
 fig:unnamed-chunk-9
 fig:SIsample
+fig:SIsampleSF
 fig:IC50
 fig:SYfig
 fig:Grilleregfig
@@ -30,15 +31,16 @@ covariables-rasters-en-australie
 SI
 définition-1
 mise-en-oeuvre-avec-un-logiciel
+pour-les-polutations-discrètes
 excel
-avec-r-pour-les-polutations-discrètes
+avec-r
 avec-r-pour-les-populations-continues
 calcul-des-estimateurs
 lestimateur-de-horvitz-thompson
-la-moyenne-pour-la-population-discrète-fini
+la-moyenne-pour-la-population-discrète-finie
 la-variance-spatiale-et-variance-déchantillonnage
 linterval-de-confiance
-simulations
+simulations-dun-interval-de-confiance
 léchantillonnage-aléatoire-stratifié
 pourquoi-stratifier
 comment-stratifier

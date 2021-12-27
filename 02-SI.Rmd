@@ -16,13 +16,20 @@ Les unités sont sélectionnées avec une probabilité égale et indépendamment
 Mise en oeuvre avec un logiciel
 ------------------------------
 
-### Excel
+### Pour les polutations discrètes
+#### Excel 
 
-Voici la procédure
+Voici la procédure:
 
-### Avec `R` pour les polutations discrètes
+1. Utiliser la fonction ALEA dans une colonne ajouter au tableau des coordonnées à choisir
+2. Copier coller en valeur le résultat de la fonction ALEA dans une nouvelle colonne
+3. Classer le tableau par ordre croissant  selon la colonne créée à l'étape 2
+4. Choisir les n premiers points du tableau
 
-Voici comment tirer au hasard des position dans l'espace à partir de la liste des pixels. 
+
+#### Avec `R` 
+
+Voici comment tirer au hasard des positions dans l'espace à partir de la liste des pixels. 
 
 ```{r}
 n = 20
@@ -70,6 +77,7 @@ et $s_{2,aleat}$
 
 Le package `sp` offre la fonction `spsample` pour effectuer cette procédure à partir de couches SIG.
 
+
 ```{r SIsample, fig.cap='Exemple d\'échantillonnage aléatoire simple, avec 20 points SI(20)', out.width='110%', fig.asp=.75, fig.align='center'}
 MonEch <- spsample( x = champSP ,
                     n  = n ,
@@ -85,6 +93,24 @@ tm_layout(legend.outside = TRUE)
 SI
 ```
 
+
+Le package `sf` qui va remplacer progressivement `sp` contient la fonction `st_sample`.
+
+
+```{r SIsampleSF, fig.cap='Exemple d\'échantillonnage aléatoire simple, avec 20 points SI(20), avec le package sf', out.width='110%', fig.asp=.75, fig.align='center'}
+MonEchSF <- st_sample( x = as(champSP,'sf') ,
+                    size  = n ,
+                    type = "random")
+
+
+SI <- tm_shape(champSP) +
+  tm_raster()+
+  tm_shape(MonEchSF)+
+  tm_symbols()+
+tm_layout(legend.outside = TRUE)
+
+SI
+```
 
 
 Calcul des estimateurs
@@ -114,7 +140,7 @@ Le total peut donc être estimé par $N/n\sum_{i=1}^n{z_i } = N \hat{z}$
 
 
 
-### La moyenne pour la population discrète fini
+### La moyenne pour la population discrète finie
 
 Avec le plan aléatoire simple, le calcul de la moyenne est très simple
 
@@ -211,7 +237,7 @@ cbind(MoyEst, ICbas = MoyEst - ICT, ICHaut =MoyEst + ICT, Moy)
 ```
 
 
-Simulations
+Simulations d'un interval de confiance
 -----------
 
 Dans cette partie, nous allons tenter d'appréhender l'incertitude de l'estimation de l'indicateur  à travers la réalisation de plusieurs échantillonnages simulés de 20 échantillons.
