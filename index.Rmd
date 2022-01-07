@@ -17,6 +17,8 @@ description: "Notes de cours M1 Master IHBV de Tours sur les méthodes pour les 
 Avant propos
 =========
 
+Bienvenu.e sur la page d'accueil en ligne de ce livre sur les méthodes de conception de plan d'échantillonnage statistique pour le suivi et la cartographie des caractéristiques des sols.
+
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
@@ -46,6 +48,9 @@ style_data <- function(dat, n_rows = NULL, caption = NULL) {
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" /></a><br />This work by Nicolas Saby is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License</a>.
 
+
+Je suis Ingénieur de Recherche en analyse de données à l'unité Infosol de l'INRAE à Orléans.
+[Ma page google Scholar](https://scholar.google.fr/citations?hl=fr&user=p1DMUcEAAAAJ&alert_preview_top_rm=2)
 
 Introduction {#WHY}
 ===================
