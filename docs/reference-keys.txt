@@ -1,7 +1,8 @@
+tab:book-pkgs
 fig:nice-fig2
-fig:unnamed-chunk-6
+fig:unnamed-chunk-5
+fig:unnamed-chunk-7
 fig:unnamed-chunk-8
-fig:unnamed-chunk-9
 fig:SIsample
 fig:SIsampleSF
 fig:IC50
@@ -12,7 +13,7 @@ fig:PlusSample
 fig:KMsample
 fig:KMSample2
 fig:KMSample3
-bienvenue
+avant-propos
 WHY
 motivations
 définition
@@ -22,7 +23,7 @@ léchantillonnage-probabiliste-vs-non-probabiliste
 approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage
 population-discrète-et-population-continue
 plan
-libraries-utilisées
+details-techniques
 data
 statistiques-globales
 cartographie

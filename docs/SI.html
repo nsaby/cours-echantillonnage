@@ -1,271 +1,69 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
-  <meta name="description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
-  <meta name="github-repo" content="nsaby/cours-echantillonnage" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols" />
-  
-  <meta name="twitter:description" content="Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d’échantillonnage statistique dans l’espace" />
-  
-
-<meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France" />
-
-
-<meta name="date" content="2021-12-27" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="data.html"/>
-<link rel="next" href="léchantillonnage-aléatoire-stratifié.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
+<meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France">
+<meta name="description" content="4.1 Définition Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé “échantillonnage aléatoire indépendant (IRS)” Deux sous-types :...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
+<meta property="og:type" content="book">
+<meta property="og:description" content="4.1 Définition Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé “échantillonnage aléatoire indépendant (IRS)” Deux sous-types :...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
+<meta name="twitter:description" content="4.1 Définition Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé “échantillonnage aléatoire indépendant (IRS)” Deux sous-types :...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Cours Echantillonnage</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenue</a></li>
-<li class="chapter" data-level="2" data-path="WHY.html"><a href="WHY.html"><i class="fa fa-check"></i><b>2</b> Pourquoi ce cours</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="WHY.html"><a href="WHY.html#motivations"><i class="fa fa-check"></i><b>2.1</b> Motivations</a></li>
-<li class="chapter" data-level="2.2" data-path="WHY.html"><a href="WHY.html#définition"><i class="fa fa-check"></i><b>2.2</b> Définition</a></li>
-<li class="chapter" data-level="2.3" data-path="WHY.html"><a href="WHY.html#contenu"><i class="fa fa-check"></i><b>2.3</b> Contenu</a></li>
-<li class="chapter" data-level="2.4" data-path="WHY.html"><a href="WHY.html#objectifs-dune-étude-de-sol"><i class="fa fa-check"></i><b>2.4</b> Objectifs d’une étude de sol</a></li>
-<li class="chapter" data-level="2.5" data-path="WHY.html"><a href="WHY.html#léchantillonnage-probabiliste-vs-non-probabiliste"><i class="fa fa-check"></i><b>2.5</b> L’échantillonnage probabiliste vs non probabiliste</a></li>
-<li class="chapter" data-level="2.6" data-path="WHY.html"><a href="WHY.html#approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage"><i class="fa fa-check"></i><b>2.6</b> Approche basée sur un modèle ou basée sur un plan d’échantillonnage</a></li>
-<li class="chapter" data-level="2.7" data-path="WHY.html"><a href="WHY.html#population-discrète-et-population-continue"><i class="fa fa-check"></i><b>2.7</b> Population discrète et population continue</a></li>
-<li class="chapter" data-level="2.8" data-path="WHY.html"><a href="WHY.html#plan"><i class="fa fa-check"></i><b>2.8</b> Plan</a></li>
-<li class="chapter" data-level="2.9" data-path="WHY.html"><a href="WHY.html#libraries-utilisées"><i class="fa fa-check"></i><b>2.9</b> Libraries utilisées</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Données</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#statistiques-globales"><i class="fa fa-check"></i><b>3.1</b> Statistiques globales</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cartographie"><i class="fa fa-check"></i><b>3.2</b> Cartographie</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#contour-dune-parcelle"><i class="fa fa-check"></i><b>3.2.1</b> Contour d’une parcelle</a></li>
-<li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#covariables-rasters-en-australie"><i class="fa fa-check"></i><b>3.2.2</b> Covariables rasters en Australie</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="SI.html"><a href="SI.html"><i class="fa fa-check"></i><b>4</b> Echantillonnage aléatoire simple</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="SI.html"><a href="SI.html#définition-1"><i class="fa fa-check"></i><b>4.1</b> Définition</a></li>
-<li class="chapter" data-level="4.2" data-path="SI.html"><a href="SI.html#mise-en-oeuvre-avec-un-logiciel"><i class="fa fa-check"></i><b>4.2</b> Mise en oeuvre avec un logiciel</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="SI.html"><a href="SI.html#pour-les-polutations-discrètes"><i class="fa fa-check"></i><b>4.2.1</b> Pour les polutations discrètes</a></li>
-<li class="chapter" data-level="4.2.2" data-path="SI.html"><a href="SI.html#avec-r-pour-les-populations-continues"><i class="fa fa-check"></i><b>4.2.2</b> Avec <code>R</code> pour les populations continues</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="SI.html"><a href="SI.html#calcul-des-estimateurs"><i class="fa fa-check"></i><b>4.3</b> Calcul des estimateurs</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="SI.html"><a href="SI.html#lestimateur-de-horvitz-thompson"><i class="fa fa-check"></i><b>4.3.1</b> l’estimateur de Horvitz-Thompson</a></li>
-<li class="chapter" data-level="4.3.2" data-path="SI.html"><a href="SI.html#la-moyenne-pour-la-population-discrète-finie"><i class="fa fa-check"></i><b>4.3.2</b> La moyenne pour la population discrète finie</a></li>
-<li class="chapter" data-level="4.3.3" data-path="SI.html"><a href="SI.html#la-variance-spatiale-et-variance-déchantillonnage"><i class="fa fa-check"></i><b>4.3.3</b> La variance spatiale et variance d’échantillonnage</a></li>
-<li class="chapter" data-level="4.3.4" data-path="SI.html"><a href="SI.html#linterval-de-confiance"><i class="fa fa-check"></i><b>4.3.4</b> l’interval de confiance</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="SI.html"><a href="SI.html#simulations-dun-interval-de-confiance"><i class="fa fa-check"></i><b>4.4</b> Simulations d’un interval de confiance</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html"><i class="fa fa-check"></i><b>5</b> L’échantillonnage aléatoire stratifié</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#pourquoi-stratifier"><i class="fa fa-check"></i><b>5.1</b> Pourquoi stratifier ?</a></li>
-<li class="chapter" data-level="5.2" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#comment-stratifier"><i class="fa fa-check"></i><b>5.2</b> Comment stratifier ?</a></li>
-<li class="chapter" data-level="5.3" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#estimateurs-stsi"><i class="fa fa-check"></i><b>5.3</b> Estimateurs STSI</a></li>
-<li class="chapter" data-level="5.4" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#stratification-géographique-par-strates-compactes"><i class="fa fa-check"></i><b>5.4</b> Stratification géographique par strates compactes</a>
-<ul>
-<li class="chapter" data-level="5.4.1" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#définition-2"><i class="fa fa-check"></i><b>5.4.1</b> Définition</a></li>
-<li class="chapter" data-level="5.4.2" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#estimateurs-stsi-1"><i class="fa fa-check"></i><b>5.4.2</b> Estimateurs STSI</a></li>
-<li class="chapter" data-level="5.4.3" data-path="léchantillonnage-aléatoire-stratifié.html"><a href="léchantillonnage-aléatoire-stratifié.html#implémentation"><i class="fa fa-check"></i><b>5.4.3</b> Implémentation</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="SY-QUICK.html"><a href="SY-QUICK.html"><i class="fa fa-check"></i><b>6</b> Echantillonnage aléatoire systématique</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="SY-QUICK.html"><a href="SY-QUICK.html#définitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
-<li class="chapter" data-level="6.2" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-grille"><i class="fa fa-check"></i><b>6.2</b> Exemple de grille</a></li>
-<li class="chapter" data-level="6.3" data-path="SY-QUICK.html"><a href="SY-QUICK.html#théorie"><i class="fa fa-check"></i><b>6.3</b> théorie</a></li>
-<li class="chapter" data-level="6.4" data-path="SY-QUICK.html"><a href="SY-QUICK.html#exemple-de-mise-en-oeuvre"><i class="fa fa-check"></i><b>6.4</b> Exemple de mise en oeuvre</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="CARTO.html"><a href="CARTO.html"><i class="fa fa-check"></i><b>7</b> Echantillonnage pour la cartographie</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques"><i class="fa fa-check"></i><b>7.1</b> Caractéristiques</a></li>
-<li class="chapter" data-level="7.2" data-path="CARTO.html"><a href="CARTO.html#différents-types-de-plans"><i class="fa fa-check"></i><b>7.2</b> Différents types de plans</a></li>
-<li class="chapter" data-level="7.3" data-path="CARTO.html"><a href="CARTO.html#la-grille-systématique"><i class="fa fa-check"></i><b>7.3</b> La grille systématique</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="CARTO.html"><a href="CARTO.html#caractéristiques-1"><i class="fa fa-check"></i><b>7.3.1</b> Caractéristiques</a></li>
-<li class="chapter" data-level="7.3.2" data-path="CARTO.html"><a href="CARTO.html#implémentation-1"><i class="fa fa-check"></i><b>7.3.2</b> Implémentation</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-spatial-optimisé"><i class="fa fa-check"></i><b>7.4</b> Echantillonnage spatial optimisé</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="CARTO.html"><a href="CARTO.html#définition-3"><i class="fa fa-check"></i><b>7.4.1</b> Définition</a></li>
-<li class="chapter" data-level="7.4.2" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-spcosa"><i class="fa fa-check"></i><b>7.4.2</b> Mise en oeuvre avec <code>spcosa</code></a></li>
-<li class="chapter" data-level="7.4.3" data-path="CARTO.html"><a href="CARTO.html#en-présence-de-données-existantes"><i class="fa fa-check"></i><b>7.4.3</b> En présence de données existantes</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="CARTO.html"><a href="CARTO.html#echantillonnage-pour-la-géostatitique"><i class="fa fa-check"></i><b>7.5</b> Echantillonnage pour la géostatitique</a></li>
-<li class="chapter" data-level="7.6" data-path="CARTO.html"><a href="CARTO.html#plan-optimisé-dans-lespace-des-covariables"><i class="fa fa-check"></i><b>7.6</b> Plan optimisé dans l’espace des covariables</a>
-<ul>
-<li class="chapter" data-level="7.6.1" data-path="CARTO.html"><a href="CARTO.html#définition-4"><i class="fa fa-check"></i><b>7.6.1</b> Définition</a></li>
-<li class="chapter" data-level="7.6.2" data-path="CARTO.html"><a href="CARTO.html#données"><i class="fa fa-check"></i><b>7.6.2</b> Données</a></li>
-<li class="chapter" data-level="7.6.3" data-path="CARTO.html"><a href="CARTO.html#mise-en-oeuvre-avec-lalgorithme-k-moyennes"><i class="fa fa-check"></i><b>7.6.3</b> Mise en oeuvre avec l’algorithme K-moyennes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="Script.html"><a href="Script.html"><i class="fa fa-check"></i><b>8</b> Script final</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Avant propos</a></li>
+<li><a class="" href="WHY.html"><span class="header-section-number">2</span> Introduction</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">3</span> Données</a></li>
+<li><a class="active" href="SI.html"><span class="header-section-number">4</span> Echantillonnage aléatoire simple</a></li>
+<li><a class="" href="l%C3%A9chantillonnage-al%C3%A9atoire-stratifi%C3%A9.html"><span class="header-section-number">5</span> L’échantillonnage aléatoire stratifié</a></li>
+<li><a class="" href="SY-QUICK.html"><span class="header-section-number">6</span> Echantillonnage aléatoire systématique</a></li>
+<li><a class="" href="CARTO.html"><span class="header-section-number">7</span> Echantillonnage pour la cartographie</a></li>
+<li><a class="" href="Script.html"><span class="header-section-number">8</span> Script final</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="SI" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Echantillonnage aléatoire simple</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="SI" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Echantillonnage aléatoire simple<a class="anchor" aria-label="anchor" href="#SI"><i class="fas fa-link"></i></a>
+</h1>
 <div id="définition-1" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Définition</h2>
+<h2>
+<span class="header-section-number">4.1</span> Définition<a class="anchor" aria-label="anchor" href="#d%C3%A9finition-1"><i class="fas fa-link"></i></a>
+</h2>
 <p>Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé “échantillonnage aléatoire indépendant (IRS)”</p>
 <ul>
 <li><p>Deux sous-types :</p></li>
@@ -276,11 +74,17 @@ div.csl-indent {
 </ul>
 </div>
 <div id="mise-en-oeuvre-avec-un-logiciel" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Mise en oeuvre avec un logiciel</h2>
+<h2>
+<span class="header-section-number">4.2</span> Mise en oeuvre avec un logiciel<a class="anchor" aria-label="anchor" href="#mise-en-oeuvre-avec-un-logiciel"><i class="fas fa-link"></i></a>
+</h2>
 <div id="pour-les-polutations-discrètes" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Pour les polutations discrètes</h3>
+<h3>
+<span class="header-section-number">4.2.1</span> Pour les polutations discrètes<a class="anchor" aria-label="anchor" href="#pour-les-polutations-discr%C3%A8tes"><i class="fas fa-link"></i></a>
+</h3>
 <div id="excel" class="section level4" number="4.2.1.1">
-<h4><span class="header-section-number">4.2.1.1</span> Excel</h4>
+<h4>
+<span class="header-section-number">4.2.1.1</span> Excel<a class="anchor" aria-label="anchor" href="#excel"><i class="fas fa-link"></i></a>
+</h4>
 <p>Voici la procédure:</p>
 <ol style="list-style-type: decimal">
 <li>Utiliser la fonction ALEA dans une colonne ajouter au tableau des coordonnées à choisir</li>
@@ -290,23 +94,26 @@ div.csl-indent {
 </ol>
 </div>
 <div id="avec-r" class="section level4" number="4.2.1.2">
-<h4><span class="header-section-number">4.2.1.2</span> Avec <code>R</code></h4>
+<h4>
+<span class="header-section-number">4.2.1.2</span> Avec <code>R</code><a class="anchor" aria-label="anchor" href="#avec-r"><i class="fas fa-link"></i></a>
+</h4>
 <p>Voici comment tirer au hasard des positions dans l’espace à partir de la liste des pixels.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="SI.html#cb16-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
-<span id="cb16-2"><a href="SI.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="SI.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#fixer la graine pour les tirages aléatoires</span></span>
-<span id="cb16-4"><a href="SI.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5602</span>)</span>
-<span id="cb16-5"><a href="SI.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="SI.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Creation des identifiants des lignes</span></span>
-<span id="cb16-7"><a href="SI.html#cb16-7" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span></span>
-<span id="cb16-8"><a href="SI.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ou</span></span>
-<span id="cb16-9"><a href="SI.html#cb16-9" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> <span class="fu">seq</span>( <span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb16-10"><a href="SI.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># tire au hasard n valeurs parmi 10000</span></span>
-<span id="cb16-11"><a href="SI.html#cb16-11" aria-hidden="true" tabindex="-1"></a>MesIds <span class="ot">&lt;-</span> <span class="fu">sample</span>( <span class="at">x =</span> id  , <span class="at">size =</span> n)</span>
-<span id="cb16-12"><a href="SI.html#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="SI.html#cb16-13" aria-hidden="true" tabindex="-1"></a>MesIds <span class="ot">&lt;-</span> <span class="fu">sort</span>(MesIds)</span>
-<span id="cb16-14"><a href="SI.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Les coordonn?es</span></span>
-<span id="cb16-15"><a href="SI.html#cb16-15" aria-hidden="true" tabindex="-1"></a>champ[ MesIds , <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span> ]</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n</span> <span class="op">=</span> <span class="fl">20</span>
+
+<span class="co">#fixer la graine pour les tirages aléatoires</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">5602</span><span class="op">)</span>
+
+<span class="co"># Creation des identifiants des lignes</span>
+<span class="va">id</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10000</span>
+<span class="co"># ou</span>
+<span class="va">id</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span> from <span class="op">=</span> <span class="fl">1</span>, to <span class="op">=</span> <span class="fl">10000</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co"># tire au hasard n valeurs parmi 10000</span>
+<span class="va">MesIds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">id</span>  , size <span class="op">=</span> <span class="va">n</span><span class="op">)</span>
+
+<span class="va">MesIds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">MesIds</span><span class="op">)</span>
+<span class="co"># Les coordonn?es</span>
+<span class="va">champ</span><span class="op">[</span> <span class="va">MesIds</span> , <span class="fl">1</span><span class="op">:</span><span class="fl">2</span> <span class="op">]</span></code></pre></div>
 <pre><code>##        s1   s2
 ## 220  19.5  2.5
 ## 286  85.5  2.5
@@ -329,15 +136,18 @@ div.csl-indent {
 ## 8220 19.5 82.5
 ## 9119 18.5 91.5</code></pre>
 <p>Il est possible alors d’extraire les valeurs de carbone simulée pour les pixels tirés au hasard</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="SI.html#cb18-1" aria-hidden="true" tabindex="-1"></a>terrain1 <span class="ot">&lt;-</span> champ[ MesIds, <span class="st">&quot;sim1&quot;</span> ]</span>
-<span id="cb18-2"><a href="SI.html#cb18-2" aria-hidden="true" tabindex="-1"></a>terrain1</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">terrain1</span> <span class="op">&lt;-</span> <span class="va">champ</span><span class="op">[</span> <span class="va">MesIds</span>, <span class="st">"sim1"</span> <span class="op">]</span>
+<span class="va">terrain1</span></code></pre></div>
 <pre><code>##  [1] 5.088422 5.870447 4.565427 3.839903 4.177815 6.237273 5.100200 5.643163
 ##  [9] 6.107451 5.163339 5.708381 6.154790 6.040184 6.388020 6.277084 5.526610
 ## [17] 6.171215 5.415374 6.536455 4.433357</code></pre>
 </div>
 </div>
 <div id="avec-r-pour-les-populations-continues" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Avec <code>R</code> pour les populations continues</h3>
+<h3>
+<span class="header-section-number">4.2.2</span> Avec <code>R</code> pour les populations continues<a class="anchor" aria-label="anchor" href="#avec-r-pour-les-populations-continues"><i class="fas fa-link"></i></a>
+</h3>
 <p>1 Déterminer les coordonnées minimales et maximales s1 et s2
 du domaine (boîte englobante)</p>
 <p>2 Tirez deux coordonnées (pseudo-)aléatoires indépendantes <span class="math inline">\(s_{1,v}\)</span>
@@ -347,50 +157,56 @@ et <span class="math inline">\(s_{2,aleat}\)</span></p>
 <li><p>Répétez les étapes 2 et 3 jusqu’à ce que n positions soient sélectionnées</p></li>
 </ol>
 <p>Le package <code>sp</code> offre la fonction <code>spsample</code> pour effectuer cette procédure à partir de couches SIG.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="SI.html#cb20-1" aria-hidden="true" tabindex="-1"></a>MonEch <span class="ot">&lt;-</span> <span class="fu">spsample</span>( <span class="at">x =</span> champSP ,</span>
-<span id="cb20-2"><a href="SI.html#cb20-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">n  =</span> n ,</span>
-<span id="cb20-3"><a href="SI.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb20-4"><a href="SI.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="SI.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="SI.html#cb20-6" aria-hidden="true" tabindex="-1"></a>SI <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(champSP) <span class="sc">+</span></span>
-<span id="cb20-7"><a href="SI.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>()<span class="sc">+</span></span>
-<span id="cb20-8"><a href="SI.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(MonEch)<span class="sc">+</span></span>
-<span id="cb20-9"><a href="SI.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_symbols</span>()<span class="sc">+</span></span>
-<span id="cb20-10"><a href="SI.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.outside =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-11"><a href="SI.html#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="SI.html#cb20-12" aria-hidden="true" tabindex="-1"></a>SI</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:SIsample"></span>
-<img src="cours-echantillonnage_files/figure-html/SIsample-1.png" alt="Exemple d'échantillonnage aléatoire simple, avec 20 points SI(20)" width="110%" />
-<p class="caption">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span> x <span class="op">=</span> <span class="va">champSP</span> ,
+                    n  <span class="op">=</span> <span class="va">n</span> ,
+                    type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span>
+
+
+<span class="va">SI</span> <span class="op">&lt;-</span> <span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">tm_raster</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">tm_shape</span><span class="op">(</span><span class="va">MonEch</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">tm_symbols</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+<span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="va">SI</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:SIsample"></span>
+<img src="cours-echantillonnage_files/figure-html/SIsample-1.png" alt="Exemple d'échantillonnage aléatoire simple, avec 20 points SI(20)" width="110%"><p class="caption">
 Figure 4.1: Exemple d’échantillonnage aléatoire simple, avec 20 points SI(20)
 </p>
 </div>
 <p>Le package <code>sf</code> qui va remplacer progressivement <code>sp</code> contient la fonction <code>st_sample</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="SI.html#cb21-1" aria-hidden="true" tabindex="-1"></a>MonEchSF <span class="ot">&lt;-</span> <span class="fu">st_sample</span>( <span class="at">x =</span> <span class="fu">as</span>(champSP,<span class="st">&#39;sf&#39;</span>) ,</span>
-<span id="cb21-2"><a href="SI.html#cb21-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size  =</span> n ,</span>
-<span id="cb21-3"><a href="SI.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb21-4"><a href="SI.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="SI.html#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="SI.html#cb21-6" aria-hidden="true" tabindex="-1"></a>SI <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(champSP) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="SI.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>()<span class="sc">+</span></span>
-<span id="cb21-8"><a href="SI.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(MonEchSF)<span class="sc">+</span></span>
-<span id="cb21-9"><a href="SI.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_symbols</span>()<span class="sc">+</span></span>
-<span id="cb21-10"><a href="SI.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.outside =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-11"><a href="SI.html#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="SI.html#cb21-12" aria-hidden="true" tabindex="-1"></a>SI</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:SIsampleSF"></span>
-<img src="cours-echantillonnage_files/figure-html/SIsampleSF-1.png" alt="Exemple d'échantillonnage aléatoire simple, avec 20 points SI(20), avec le package sf" width="110%" />
-<p class="caption">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">MonEchSF</span> <span class="op">&lt;-</span> <span class="fu">st_sample</span><span class="op">(</span> x <span class="op">=</span> <span class="fu">as</span><span class="op">(</span><span class="va">champSP</span>,<span class="st">'sf'</span><span class="op">)</span> ,
+                    size  <span class="op">=</span> <span class="va">n</span> ,
+                    type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span>
+
+
+<span class="va">SI</span> <span class="op">&lt;-</span> <span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">tm_raster</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">tm_shape</span><span class="op">(</span><span class="va">MonEchSF</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">tm_symbols</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+<span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="va">SI</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:SIsampleSF"></span>
+<img src="cours-echantillonnage_files/figure-html/SIsampleSF-1.png" alt="Exemple d'échantillonnage aléatoire simple, avec 20 points SI(20), avec le package sf" width="110%"><p class="caption">
 Figure 4.2: Exemple d’échantillonnage aléatoire simple, avec 20 points SI(20), avec le package sf
 </p>
 </div>
 </div>
 </div>
 <div id="calcul-des-estimateurs" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Calcul des estimateurs</h2>
+<h2>
+<span class="header-section-number">4.3</span> Calcul des estimateurs<a class="anchor" aria-label="anchor" href="#calcul-des-estimateurs"><i class="fas fa-link"></i></a>
+</h2>
 <p>Dans cette partie nous explorons les techniques pour calculer les estimateurs des paramètres statistiques à partir des données collectées.</p>
 <div id="lestimateur-de-horvitz-thompson" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> l’estimateur de Horvitz-Thompson</h3>
+<h3>
+<span class="header-section-number">4.3.1</span> l’estimateur de Horvitz-Thompson<a class="anchor" aria-label="anchor" href="#lestimateur-de-horvitz-thompson"><i class="fas fa-link"></i></a>
+</h3>
 <p>L’estimateur H-T du total est <span class="math inline">\(\hat t = \sum{z_i/\pi_i}\)</span></p>
 <p>L’estimateur H-T de la moyenne est <span class="math inline">\(\hat{\overline{t} } = 1/N\sum_{i=1}^n{z_i/\pi_i}\)</span></p>
 <p><span class="math inline">\(\pi\)</span> est la probabilité qu’un site d’échantillonnage soit inclu dans l’échantillon (probabilité d’inclusion)</p>
@@ -401,19 +217,24 @@ Figure 4.2: Exemple d’échantillonnage aléatoire simple, avec 20 points SI(20
 <p>Le total peut donc être estimé par <span class="math inline">\(N/n\sum_{i=1}^n{z_i } = N \hat{z}\)</span></p>
 </div>
 <div id="la-moyenne-pour-la-population-discrète-finie" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> La moyenne pour la population discrète finie</h3>
+<h3>
+<span class="header-section-number">4.3.2</span> La moyenne pour la population discrète finie<a class="anchor" aria-label="anchor" href="#la-moyenne-pour-la-population-discr%C3%A8te-finie"><i class="fas fa-link"></i></a>
+</h3>
 <p>Avec le plan aléatoire simple, le calcul de la moyenne est très simple</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="SI.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulation du terrain</span></span>
-<span id="cb22-2"><a href="SI.html#cb22-2" aria-hidden="true" tabindex="-1"></a>terrain2 <span class="ot">&lt;-</span> <span class="fu">over</span>(MonEch,champSP)</span>
-<span id="cb22-3"><a href="SI.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="SI.html#cb22-4" aria-hidden="true" tabindex="-1"></a>MoyEst <span class="ot">&lt;-</span> <span class="fu">mean</span>(terrain2<span class="sc">$</span>sim1)</span>
-<span id="cb22-5"><a href="SI.html#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="SI.html#cb22-6" aria-hidden="true" tabindex="-1"></a>MoyEst</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># simulation du terrain</span>
+<span class="va">terrain2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html">over</a></span><span class="op">(</span><span class="va">MonEch</span>,<span class="va">champSP</span><span class="op">)</span>
+
+<span class="va">MoyEst</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">terrain2</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span>
+
+<span class="va">MoyEst</span></code></pre></div>
 <pre><code>## [1] 4.935534</code></pre>
 <p>A comparer avec la moyenne de la population <span class="math inline">\(5.2986022\)</span></p>
 </div>
 <div id="la-variance-spatiale-et-variance-déchantillonnage" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> La variance spatiale et variance d’échantillonnage</h3>
+<h3>
+<span class="header-section-number">4.3.3</span> La variance spatiale et variance d’échantillonnage<a class="anchor" aria-label="anchor" href="#la-variance-spatiale-et-variance-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
+</h3>
 <p>Ne confondez pas la variance spatiale et la variance d’échantillonnage !</p>
 <ul>
 <li>La variance spatiale (variance de population) est une caractéristique de la population</li>
@@ -428,11 +249,14 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <p><span class="math inline">\(\hat{V}(\hat{ \overline{z} } ) = (1 - \frac{n}N) \frac{\hat{S^2}(z) } {n}\)</span></p>
 <p>avec
 <span class="math inline">\((1 - \frac{n}N)\)</span> correspondant à la correction pour les populations finies</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="SI.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance d&#39;échantillonnage de MoyEst</span></span>
-<span id="cb24-2"><a href="SI.html#cb24-2" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">var</span>(terrain2<span class="sc">$</span>sim1) <span class="sc">/</span> n</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Variance d'échantillonnage de MoyEst</span>
+<span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">terrain2</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span></code></pre></div>
 </div>
 <div id="linterval-de-confiance" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> l’interval de confiance</h3>
+<h3>
+<span class="header-section-number">4.3.4</span> l’interval de confiance<a class="anchor" aria-label="anchor" href="#linterval-de-confiance"><i class="fas fa-link"></i></a>
+</h3>
 <p>Le calcul de l’interval de confiance sur la moyenne nécessite de faire une hypothèse sur la distribution de <span class="math inline">\(\hat{ \overline{z} }\)</span></p>
 <ul>
 <li>Pour le un nombre <span class="math inline">\(n\)</span> grand (&gt;30) et si la distribution de la propirété dans l’espace n’est pas trop asymétrique, l’hypothèse de normalité est réaliste</li>
@@ -447,145 +271,142 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <p><span class="math inline">\(\hat{ \overline{z} }\pm t_{1-\alpha/2}^{(n-1)}.\sqrt{V(\hat{t^l}) }\)</span></p>
 <p>où <span class="math display">\[t^{(n-1)}_{1-\alpha/2}\]</span> est le <span class="math inline">\((1-\alpha/2)\)</span> quantile de la loi de Student <span class="math inline">\(t\)</span> avec <span class="math inline">\((n-1)\)</span> degrees of freedom. <span class="math inline">\(n\)</span> is the number of sampling observations to compute the mean, eg <span class="math inline">\(n_h*H\)</span>.</p>
 <p>Voici comment le mettre en oeuvre dans <span class="math inline">\(`R`\)</span></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="SI.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul du quantile</span></span>
-<span id="cb25-2"><a href="SI.html#cb25-2" aria-hidden="true" tabindex="-1"></a>zalpha <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">-</span> (<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb25-3"><a href="SI.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># si n est petit &lt; 30</span></span>
-<span id="cb25-4"><a href="SI.html#cb25-4" aria-hidden="true" tabindex="-1"></a>talpha <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">-</span> (<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>) , <span class="at">df =</span> n<span class="dv">-1</span>)</span>
-<span id="cb25-5"><a href="SI.html#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="SI.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul de l&#39;interval de confiance selon les deux lois</span></span>
-<span id="cb25-7"><a href="SI.html#cb25-7" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">&lt;-</span> zalpha <span class="sc">*</span> <span class="fu">sqrt</span>(V)</span>
-<span id="cb25-8"><a href="SI.html#cb25-8" aria-hidden="true" tabindex="-1"></a>ICT <span class="ot">&lt;-</span> talpha <span class="sc">*</span> <span class="fu">sqrt</span>(V)</span>
-<span id="cb25-9"><a href="SI.html#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="SI.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(IC,ICT)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># calcul du quantile</span>
+<span class="va">zalpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1</span><span class="op">-</span> <span class="op">(</span><span class="fl">0.05</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co"># si n est petit &lt; 30</span>
+<span class="va">talpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1</span><span class="op">-</span> <span class="op">(</span><span class="fl">0.05</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span> , df <span class="op">=</span> <span class="va">n</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>
+
+<span class="co"># calcul de l'interval de confiance selon les deux lois</span>
+<span class="va">IC</span> <span class="op">&lt;-</span> <span class="va">zalpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span>
+<span class="va">ICT</span> <span class="op">&lt;-</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">IC</span>,<span class="va">ICT</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0.3990766 0.4261695</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="SI.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comme n&lt; 30, on garde ICT</span></span>
-<span id="cb27-2"><a href="SI.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Est-ce que la vraie moyenne est dans l&#39;IC student</span></span>
-<span id="cb27-3"><a href="SI.html#cb27-3" aria-hidden="true" tabindex="-1"></a>Moy <span class="sc">&lt;</span> MoyEst <span class="sc">+</span> ICT</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># comme n&lt; 30, on garde ICT</span>
+<span class="co"># Est-ce que la vraie moyenne est dans l'IC student</span>
+<span class="va">Moy</span> <span class="op">&lt;</span> <span class="va">MoyEst</span> <span class="op">+</span> <span class="va">ICT</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="SI.html#cb29-1" aria-hidden="true" tabindex="-1"></a>Moy <span class="sc">&gt;</span> MoyEst <span class="sc">-</span> ICT</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Moy</span> <span class="op">&gt;</span> <span class="va">MoyEst</span> <span class="op">-</span> <span class="va">ICT</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="SI.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span>ICT</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">*</span><span class="va">ICT</span></code></pre></div>
 <pre><code>## [1] 0.8523391</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="SI.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(MoyEst, <span class="at">ICbas =</span> MoyEst <span class="sc">-</span> ICT, <span class="at">ICHaut =</span>MoyEst <span class="sc">+</span> ICT, Moy)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">MoyEst</span>, ICbas <span class="op">=</span> <span class="va">MoyEst</span> <span class="op">-</span> <span class="va">ICT</span>, ICHaut <span class="op">=</span><span class="va">MoyEst</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span></code></pre></div>
 <pre><code>##        MoyEst    ICbas   ICHaut      Moy
 ## [1,] 4.935534 4.509364 5.361703 5.298602</code></pre>
 </div>
 </div>
 <div id="simulations-dun-interval-de-confiance" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Simulations d’un interval de confiance</h2>
+<h2>
+<span class="header-section-number">4.4</span> Simulations d’un interval de confiance<a class="anchor" aria-label="anchor" href="#simulations-dun-interval-de-confiance"><i class="fas fa-link"></i></a>
+</h2>
 <p>Dans cette partie, nous allons tenter d’appréhender l’incertitude de l’estimation de l’indicateur à travers la réalisation de plusieurs échantillonnages simulés de 20 échantillons.</p>
 <p>Pour cela, nous tirons au hasard 20 points 10000 fois et nous effectuons la jointure spatiale avec la couche SIG supposée représenter la réalité terrain.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="SI.html#cb35-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
-<span id="cb35-2"><a href="SI.html#cb35-2" aria-hidden="true" tabindex="-1"></a>rep <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb35-3"><a href="SI.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="SI.html#cb35-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> n <span class="sc">*</span> rep</span>
-<span id="cb35-5"><a href="SI.html#cb35-5" aria-hidden="true" tabindex="-1"></a>MonEch <span class="ot">&lt;-</span> <span class="fu">spsample</span>( champSP , N , <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb35-6"><a href="SI.html#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="SI.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># on récupère les valeurs de carbone</span></span>
-<span id="cb35-8"><a href="SI.html#cb35-8" aria-hidden="true" tabindex="-1"></a>terrainSimul <span class="ot">&lt;-</span> <span class="fu">over</span>(MonEch,champSP)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n</span> <span class="op">=</span> <span class="fl">20</span>
+<span class="va">rep</span> <span class="op">=</span> <span class="fl">10000</span>
+
+<span class="va">N</span> <span class="op">=</span> <span class="va">n</span> <span class="op">*</span> <span class="va">rep</span>
+<span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span> <span class="va">champSP</span> , <span class="va">N</span> , type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span>
+
+<span class="co"># on récupère les valeurs de carbone</span>
+<span class="va">terrainSimul</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html">over</a></span><span class="op">(</span><span class="va">MonEch</span>,<span class="va">champSP</span><span class="op">)</span></code></pre></div>
 <p>On calcule ensuite, par réplication, les estimations de la moyenne, de la variance d’échantillonnage et de l’intervace de confiance de la moyenne.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="SI.html#cb36-1" aria-hidden="true" tabindex="-1"></a>terrainSimul<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>rep,n)</span>
-<span id="cb36-2"><a href="SI.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="SI.html#cb36-3" aria-hidden="true" tabindex="-1"></a>MesMoys <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(terrainSimul<span class="sc">$</span>sim1,</span>
-<span id="cb36-4"><a href="SI.html#cb36-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">by =</span> <span class="fu">list</span>(terrainSimul<span class="sc">$</span>id),</span>
-<span id="cb36-5"><a href="SI.html#cb36-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">FUN =</span> mean)</span>
-<span id="cb36-6"><a href="SI.html#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="SI.html#cb36-7" aria-hidden="true" tabindex="-1"></a>MesVarsEch <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(terrainSimul<span class="sc">$</span>sim1,</span>
-<span id="cb36-8"><a href="SI.html#cb36-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">by =</span> <span class="fu">list</span>(terrainSimul<span class="sc">$</span>id),</span>
-<span id="cb36-9"><a href="SI.html#cb36-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">FUN =</span> var) </span>
-<span id="cb36-10"><a href="SI.html#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="SI.html#cb36-11" aria-hidden="true" tabindex="-1"></a>MesVarsEch<span class="sc">$</span>x <span class="ot">&lt;-</span> MesVarsEch<span class="sc">$</span>x <span class="sc">/</span> <span class="dv">20</span></span>
-<span id="cb36-12"><a href="SI.html#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-13"><a href="SI.html#cb36-13" aria-hidden="true" tabindex="-1"></a>MesStats <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(MesMoys,MesVarsEch<span class="sc">$</span>x)</span>
-<span id="cb36-14"><a href="SI.html#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(MesStats) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Group&#39;</span>,<span class="st">&#39;Moy&#39;</span>,<span class="st">&#39;VarEch&#39;</span>)</span>
-<span id="cb36-15"><a href="SI.html#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="SI.html#cb36-16" aria-hidden="true" tabindex="-1"></a>MesStats<span class="sc">$</span>UCI <span class="ot">&lt;-</span> MesStats<span class="sc">$</span>Moy <span class="sc">+</span> talpha <span class="sc">*</span> <span class="fu">sqrt</span>(MesStats<span class="sc">$</span>VarEch)</span>
-<span id="cb36-17"><a href="SI.html#cb36-17" aria-hidden="true" tabindex="-1"></a>MesStats<span class="sc">$</span>LCI <span class="ot">&lt;-</span> MesStats<span class="sc">$</span>Moy <span class="sc">-</span> talpha <span class="sc">*</span> <span class="fu">sqrt</span>(MesStats<span class="sc">$</span>VarEch)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">terrainSimul</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">rep</span>,<span class="va">n</span><span class="op">)</span>
+
+<span class="va">MesMoys</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">sim1</span>,
+                     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">id</span><span class="op">)</span>,
+                     FUN <span class="op">=</span> <span class="va">mean</span><span class="op">)</span>
+
+<span class="va">MesVarsEch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">sim1</span>,
+                        by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">id</span><span class="op">)</span>,
+                        FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span> 
+
+<span class="va">MesVarsEch</span><span class="op">$</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">MesVarsEch</span><span class="op">$</span><span class="va">x</span> <span class="op">/</span> <span class="fl">20</span>
+
+<span class="va">MesStats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span><span class="op">(</span><span class="va">MesMoys</span>,<span class="va">MesVarsEch</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">MesStats</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Group'</span>,<span class="st">'Moy'</span>,<span class="st">'VarEch'</span><span class="op">)</span>
+
+<span class="va">MesStats</span><span class="op">$</span><span class="va">UCI</span> <span class="op">&lt;-</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">Moy</span> <span class="op">+</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">MesStats</span><span class="op">$</span><span class="va">VarEch</span><span class="op">)</span>
+<span class="va">MesStats</span><span class="op">$</span><span class="va">LCI</span> <span class="op">&lt;-</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">Moy</span> <span class="op">-</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">MesStats</span><span class="op">$</span><span class="va">VarEch</span><span class="op">)</span></code></pre></div>
 <p>Pour se rendre compte de l’intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour les 100 premiers tirages, les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels: <span class="math inline">\(5.2986022\)</span></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="SI.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(MesStats[ MesStats<span class="sc">$</span>Group <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>  , ]) <span class="sc">+</span> </span>
-<span id="cb37-2"><a href="SI.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">size =</span> <span class="fl">0.62</span>, </span>
-<span id="cb37-3"><a href="SI.html#cb37-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">ymin =</span> UCI, <span class="at">ymax =</span> LCI, <span class="at">y =</span> Moy)) <span class="sc">+</span></span>
-<span id="cb37-4"><a href="SI.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span>  Moy, <span class="at">slope =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:IC50"></span>
-<img src="cours-echantillonnage_files/figure-html/IC50-1.png" alt="Représentation de l'intervalle de confiance à 95 % et de la vraie moyenne en rouge pour chaque simulation" width="110%" />
-<p class="caption">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">MesStats</span><span class="op">[</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">Group</span> <span class="op">%in%</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>  , <span class="op">]</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_pointrange</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.62</span>, 
+                <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Group</span>, ymin <span class="op">=</span> <span class="va">UCI</span>, ymax <span class="op">=</span> <span class="va">LCI</span>, y <span class="op">=</span> <span class="va">Moy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_abline</span><span class="op">(</span>intercept <span class="op">=</span>  <span class="va">Moy</span>, slope <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:IC50"></span>
+<img src="cours-echantillonnage_files/figure-html/IC50-1.png" alt="Représentation de l'intervalle de confiance à 95 % et de la vraie moyenne en rouge pour chaque simulation" width="110%"><p class="caption">
 Figure 4.3: Représentation de l’intervalle de confiance à 95 % et de la vraie moyenne en rouge pour chaque simulation
 </p>
 </div>
 <p>Enfin, il est possible de calculer sur l’ensemble des réalisations, le nombre de fois que la vraie moyenne tombe en dehors de l’intervalle de confiance. Ce qui donne :</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="SI.html#cb38-1" aria-hidden="true" tabindex="-1"></a>MesStats<span class="sc">$</span>test <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Moy <span class="sc">&gt;</span> MesStats<span class="sc">$</span>LCI,</span>
-<span id="cb38-2"><a href="SI.html#cb38-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">ifelse</span>(Moy<span class="sc">&lt;</span> MesStats<span class="sc">$</span>UCI,</span>
-<span id="cb38-3"><a href="SI.html#cb38-3" aria-hidden="true" tabindex="-1"></a>                               <span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb38-4"><a href="SI.html#cb38-4" aria-hidden="true" tabindex="-1"></a>                        <span class="dv">0</span>)</span>
-<span id="cb38-5"><a href="SI.html#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="SI.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">*</span> <span class="fu">sum</span>(MesStats<span class="sc">$</span>test)<span class="sc">/</span>rep</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">MesStats</span><span class="op">$</span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Moy</span> <span class="op">&gt;</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">LCI</span>,
+                        <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Moy</span><span class="op">&lt;</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">UCI</span>,
+                               <span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>,
+                        <span class="fl">0</span><span class="op">)</span>
+
+<span class="fl">100</span><span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">MesStats</span><span class="op">$</span><span class="va">test</span><span class="op">)</span><span class="op">/</span><span class="va">rep</span></code></pre></div>
 <pre><code>## [1] 94.82</code></pre>
 <p>OUI, 95 % comme attendu !</p>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="data.html"><span class="header-section-number">3</span> Données</a></div>
+<div class="next"><a href="l%C3%A9chantillonnage-al%C3%A9atoire-stratifi%C3%A9.html"><span class="header-section-number">5</span> L’échantillonnage aléatoire stratifié</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#SI"><span class="header-section-number">4</span> Echantillonnage aléatoire simple</a></li>
+<li><a class="nav-link" href="#d%C3%A9finition-1"><span class="header-section-number">4.1</span> Définition</a></li>
+<li>
+<a class="nav-link" href="#mise-en-oeuvre-avec-un-logiciel"><span class="header-section-number">4.2</span> Mise en oeuvre avec un logiciel</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#pour-les-polutations-discr%C3%A8tes"><span class="header-section-number">4.2.1</span> Pour les polutations discrètes</a></li>
+<li><a class="nav-link" href="#avec-r-pour-les-populations-continues"><span class="header-section-number">4.2.2</span> Avec R pour les populations continues</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#calcul-des-estimateurs"><span class="header-section-number">4.3</span> Calcul des estimateurs</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lestimateur-de-horvitz-thompson"><span class="header-section-number">4.3.1</span> l’estimateur de Horvitz-Thompson</a></li>
+<li><a class="nav-link" href="#la-moyenne-pour-la-population-discr%C3%A8te-finie"><span class="header-section-number">4.3.2</span> La moyenne pour la population discrète finie</a></li>
+<li><a class="nav-link" href="#la-variance-spatiale-et-variance-d%C3%A9chantillonnage"><span class="header-section-number">4.3.3</span> La variance spatiale et variance d’échantillonnage</a></li>
+<li><a class="nav-link" href="#linterval-de-confiance"><span class="header-section-number">4.3.4</span> l’interval de confiance</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#simulations-dun-interval-de-confiance"><span class="header-section-number">4.4</span> Simulations d’un interval de confiance</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="léchantillonnage-aléatoire-stratifié.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2022-01-07.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["cours-echantillonnage.pdf", "cours-echantillonnage.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -597,7 +418,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

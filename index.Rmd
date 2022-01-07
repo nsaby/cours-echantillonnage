@@ -3,7 +3,7 @@ title: "Cours sur les plans d'échantillonnage statistique dans l'espace pour l'
 author: "Nicolas Saby, INRAe Infosol, Orléans France"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::bs4_book
 github-repo: nsaby/cours-echantillonnage
 bibliography: 
  - book.bib
@@ -14,7 +14,7 @@ links-as-notes: true
 description: "Notes de cours M1 Master IHBV de Tours sur les méthodes pour les plans d'échantillonnage statistique dans l'espace"
 ---
 
-Bienvenue
+Avant propos
 =========
 
 ```{r include=FALSE}
@@ -23,13 +23,32 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','sp','tmap','rgdal','ggplot2','spcosa','fields'
 ), 'packages.bib')
 
-knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, out.width = "100%")
+
+style_data <- function(dat, n_rows = NULL, caption = NULL) {
+  
+  if (is.null(n_rows)) {
+    if (nrow(dat) < 10) {
+      n_rows <- nrow(dat)
+    } else {
+      n_rows <- 10
+    }
+  }
+  
+  dat[1:n_rows,] |>
+    knitr::kable(caption = caption) |>
+    kableExtra::kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      fixed_thead = TRUE
+    )
+}
 ```
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" /></a><br />This work by Nicolas Saby is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License</a>.
 
-Pourquoi ce cours {#WHY}
-======================
+
+Introduction {#WHY}
+===================
 
 Ces quelques notes de cours et de scripts `R` ont été produits pour un cours de M1 de la Faculté de Tours. https://master-environnement.univ-tours.fr/
 
@@ -77,6 +96,12 @@ les paramètres statistiques peuvent être estimés...
 
 
 Cela ne concerne pas  la manière dont un plan d'échantillonnage peut être évalué ex ante avant la collecte des données
+
+
+The examples in this book were created with the following R package versions:
+
+
+
 
 Objectifs d'une étude de sol
 ----------------------------
@@ -141,7 +166,6 @@ Mais
   + Infini : points dans une zone
 
 
-
 Plan
 ------
 
@@ -154,14 +178,13 @@ IL aborde également des techniques pour l'échantillonnage pour la cartographie
 3. Echantillonnage alétoire systématique
 4. Echanillonnage pour la cartographie
 
-Libraries utilisées
---------------------
-
+Details techniques
+-----------
 Ces notes ont été produites par [RStudio](http://www.rstudio.com/ide/) en utilisant [bookdown](http://bookdown.org/). Le site [website](https://nsaby.github.io/cours-echantillonnage/) est en ligne via github [Netlify](http://netlify.com/)
 
 La version de ce livre numérique a été produite avec  `r R.version.string` et les package suivants:
 
-```{r , message= FALSE, warning= FALSE}
+```{r book-pkgs, echo = FALSE}
 library(knitr)
 library(sp) # pour gérer les données SIG raster et vecteurs
 library(sf) # pour gérer les données SIG vecteurs
@@ -170,4 +193,28 @@ library(rgdal) # gestion des données raster et vecteurs
 library(ggplot2)
 library(spcosa) # pour les algorithme de stratification de la zone
 library(fields)
+
+pkgs <- c(
+  "knitr",
+  "dplyr",
+  "tidyr",
+  "ggplot2",
+  "stringr",
+  "tibble",
+  "sf",
+  "tmap",
+  "bookdown",
+  "raster",
+  "spcosa",
+  "fields",
+  "rgdal"
+)
+
+pkgs <- sessioninfo::package_info(pkgs, dependencies = FALSE)
+df <- tibble::tibble(
+  package = pkgs$package,
+  version = pkgs$ondiskversion,
+  source = gsub("@", "\\\\@", pkgs$source)
+)
+style_data(df, nrow(df), "Packages used in this book")
 ```
