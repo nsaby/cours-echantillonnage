@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 L’échantillonnage aléatoire stratifié | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
 <meta name="twitter:description" content="Pour ce type d’approche, la population ou la zone d’étude est subdivisée en sous-populations, appelées strates. Les strates ne peuvent pas se chevaucher, et leur union doit correspondre à la...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.18/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -86,7 +86,7 @@
 <ul>
 <li><p>Stratification à l’aide d’un variables auxiliaires</p></li>
 <li><p>Variable catégorielle (unités cartographiques)</p></li>
-<li><p>variable quantitative (par exemple, images de télédétection)</p></li>
+<li><p>variable quantitative (par exemple, images de télédétection, altitude, variables dérivées…)</p></li>
 <li><p>Stratification par la position géographique uniquement (X et Y)</p></li>
 </ul>
 </div>
@@ -100,16 +100,16 @@
 <p>La variance d’échantillonnage de la moyenne expérimentale des <span class="math inline">\(z\)</span> est :</p>
 <p><span class="math display">\[\begin{equation}
 
-V(\hat{ \overline{z^l} } )  = \sum_{h=1}^{H} w_h^2 \frac{ \hat{ S^2_h} (\hat{ \overline{z^l} } ) }{n_h}
+V(\hat{ \overline{z} } )  = \sum_{h=1}^{H} w_h^2 \frac{ \hat{ S^2_h} (\hat{ \overline{z} } ) }{n_h}
 \end{equation}\]</span></p>
-<p>où <span class="math inline">\(\hat{ S^2_h} (\hat{ \overline{z^l} })\)</span> est la variance SI dans la strate <span class="math inline">\(h\)</span> :</p>
+<p>où <span class="math inline">\(\hat{ S^2_h} (\hat{ \overline{z} })\)</span> est la variance SI dans la strate <span class="math inline">\(h\)</span> :</p>
 <p><span class="math display">\[\begin{equation}
-\hat{ S^2_h} (\hat{ \overline{z^l} })= \frac{1}{n_h-1}\sum_{i=1}^{n_h} ( z^l_{hi}  -\hat{\overline{z}}_h^l )
+\hat{ S^2_h} (\hat{ \overline{z} })= \frac{1}{n_h-1}\sum_{i=1}^{n_h} ( z_{hi}  -\hat{\overline{z}}_h )
 \end{equation}\]</span></p>
 </div>
-<div id="stratification-géographique-par-strates-compactes" class="section level2" number="5.4">
+<div id="stratification-géographique-par-strates-compactes-géographiques" class="section level2" number="5.4">
 <h2>
-<span class="header-section-number">5.4</span> Stratification géographique par strates compactes<a class="anchor" aria-label="anchor" href="#stratification-g%C3%A9ographique-par-strates-compactes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> Stratification géographique par strates compactes géographiques<a class="anchor" aria-label="anchor" href="#stratification-g%C3%A9ographique-par-strates-compactes-g%C3%A9ographiques"><i class="fas fa-link"></i></a>
 </h2>
 <p>Parfois, il n’existe pas d’information a priori sur la variabilité spatiale de la propriété visée. Dans ce cas, une bonne répartition spatiale peut</p>
 <div id="définition-2" class="section level3" number="5.4.1">
@@ -119,7 +119,7 @@ V(\hat{ \overline{z^l} } )  = \sum_{h=1}^{H} w_h^2 \frac{ \hat{ S^2_h} (\hat{ \o
 <p>Dans cette approche, les <span class="math inline">\(n\)</span> observations sont réparties de manière optimale au sein de la zone d’étude. Pour cela, on utilise un critère qui minimise la distance entre les observations et un discrétisation de la zone d’étude.
 La moyenne du carré de la plus courte distance au point j:</p>
 <p><span class="math inline">\(MCPCD_j = 1/N \sum^N_{i=1}min_j(D_{ij}^2)\)</span></p>
-<p>Le critère <span class="math inline">\(MCPCD_j\)</span> peut être minmisé en utilisant l’algorithme des K-moyenne</p>
+<p>Le critère <span class="math inline">\(MCPCD_j\)</span> peut être minimisé en utilisant l’algorithme des K-moyenne</p>
 <p>Il existe un package R <code>spcosa</code> de <span class="citation"><a href="references.html#ref-walvoort_r_2010" role="doc-biblioref">Walvoort, Brus, and Gruijter</a> (<a href="references.html#ref-walvoort_r_2010" role="doc-biblioref">2010</a>)</span>.</p>
 <p>Dans cette appraoche, il n’est pas nécessaire de définir un variogramme a priori pour l’optimisation de la répartition des <span class="math inline">\(n\)</span> observations. Les strates ainsi définies sont appelées <strong>Strates compactes</strong></p>
 </div>
@@ -162,7 +162,7 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/resolution.html">res</a></span><span class="op">(</span><span class="va">champSP.r</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1 1</code></pre>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#aggregate from 1x1 resolution to 3x3 (factor = 3)</span>
+<code class="sourceCode R"><span class="co">#aggregate from 1x1 resolution to 2x2 (factor = 2)</span>
 <span class="va">champSP.r.aggregate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">champSP.r</span>, 
                                  fact <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/resolution.html">res</a></span><span class="op">(</span><span class="va">champSP.r.aggregate</span><span class="op">)</span></code></pre></div>
@@ -235,9 +235,166 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 <code class="sourceCode R"><span class="va">Moy</span> <span class="op">&gt;</span> <span class="va">MoyEstSTSI</span> <span class="op">-</span> <span class="va">ICT</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">MoyEstSTSI</span>, 
+<code class="sourceCode R"><span class="op">(</span><span class="va">resSC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">MoyEstSTSI</span>, 
       ICbas <span class="op">=</span> <span class="va">MoyEstSTSI</span> <span class="op">-</span> <span class="va">ICT</span>,
-      ICHaut <span class="op">=</span> <span class="va">MoyEstSTSI</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span></code></pre></div>
+      ICHaut <span class="op">=</span> <span class="va">MoyEstSTSI</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>##      MoyEstSTSI    ICbas   ICHaut      Moy
+## [1,]   5.055314 4.892605 5.218023 5.298602</code></pre>
+</div>
+</div>
+<div id="stratification-par-stratification-dune-donnée-quantitative" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Stratification par stratification d’une donnée quantitative<a class="anchor" aria-label="anchor" href="#stratification-par-stratification-dune-donn%C3%A9e-quantitative"><i class="fas fa-link"></i></a>
+</h2>
+<div id="définition-3" class="section level3" number="5.5.1">
+<h3>
+<span class="header-section-number">5.5.1</span> Définition<a class="anchor" aria-label="anchor" href="#d%C3%A9finition-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Lorsqu’une covariable quanatitative est disponible en tous points de la zone d’étude, les strates peuvent être construite en utilisant la méthode appelée <em>cum-root-f</em> (voir <span class="citation"><a href="references.html#ref-Dalenius1959" role="doc-biblioref">Dalenius and Hodges</a> (<a href="references.html#ref-Dalenius1959" role="doc-biblioref">1959</a>)</span>).</p>
+</div>
+<div id="implementation" class="section level3" number="5.5.2">
+<h3>
+<span class="header-section-number">5.5.2</span> Implementation<a class="anchor" aria-label="anchor" href="#implementation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dans notre cas, nous allons simuler une covariables à partir de <code>champ</code></p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span>
+
+<span class="va">champSP.r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html">raster</a></span><span class="op">(</span><span class="va">champSP</span><span class="op">)</span>
+
+<span class="va">cov</span> <span class="op">&lt;-</span> <span class="va">champSP.r</span><span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="va">champSP.r</span> <span class="op">+</span> <span class="fl">9</span><span class="op">*</span><span class="va">champSP.r</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">champSP.r</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span> n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">champSP.r</span><span class="op">@</span><span class="va">data</span><span class="op">@</span><span class="va">values</span><span class="op">)</span> , sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">cov</span><span class="op">[</span><span class="va">cov</span><span class="op">&lt;</span><span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">cov</span>, main <span class="op">=</span> <span class="st">"la covariable"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-22-1.png" width="100%"></div>
+<p>Les strates peuvent être construite avec le package <code>stratification</code>. Attention, les données doivent classer par ordre croissant avant la stratification.
+En sortie, on dispose des limites des classes et de l’affectation de chaque observation à une strate.</p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stratification</span><span class="op">)</span>
+<span class="va">n.echantillons</span> <span class="op">&lt;-</span>  <span class="fl">20</span> 
+<span class="va">n.strates</span> <span class="op">&lt;-</span>  <span class="fl">6</span> 
+<span class="va">nclass</span> <span class="op">&lt;-</span> <span class="va">n.strates</span> <span class="op">*</span> <span class="fl">100</span> <span class="co">#nombre de classes pour calculer l'histogramme</span>
+
+<span class="va">dt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/xyFromCell.html">coordinates</a></span><span class="op">(</span><span class="va">cov</span><span class="op">)</span>,cov <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html">values</a></span><span class="op">(</span><span class="va">cov</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dt</span> <span class="op">&lt;-</span> <span class="va">dt</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">cov</span><span class="op">)</span>,<span class="op">]</span>
+<span class="va">dt</span> <span class="op">&lt;-</span> <span class="va">dt</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">cov</span><span class="op">)</span>,<span class="op">]</span>
+
+
+<span class="va">optstrata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/stratification/man/strata.rule.html">strata.cumrootf</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">dt</span><span class="op">$</span><span class="va">cov</span>,
+  n <span class="op">=</span> <span class="va">n.echantillons</span>,
+  Ls <span class="op">=</span> <span class="va">n.strates</span>,
+  nclass <span class="op">=</span> <span class="va">nclass</span><span class="op">)</span>
+
+<span class="va">optstrata</span><span class="op">$</span><span class="va">bh</span> <span class="co">#les limites des strates</span></code></pre></div>
+<pre><code>## [1] 10.46404 17.84493 23.45067 28.86954 35.50300</code></pre>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span> <span class="co">#la taille des strates </span></code></pre></div>
+<pre><code>## [1] 1254 1636 2098 2215 1849  948</code></pre>
+<p>La figure suivante présente covariable dont la légende correspond à la limite des classes définies à l’étape précédente.</p>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># dessin de la stratification</span>
+
+<span class="fu">tm_shape</span><span class="op">(</span><span class="va">cov</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">tm_raster</span><span class="op">(</span>
+    
+    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html">values</a></span><span class="op">(</span><span class="va">cov</span><span class="op">)</span><span class="op">)</span>,<span class="va">optstrata</span><span class="op">$</span><span class="va">bh</span>,<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html">values</a></span><span class="op">(</span><span class="va">cov</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+                        <span class="op">)</span><span class="op">+</span>
+  <span class="fu">tm_layout</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"la stratification"</span>,
+            title.size <span class="op">=</span> <span class="fl">0.6</span>,
+            legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<img src="cours-echantillonnage_files/figure-html/unnamed-chunk-24-1.png" alt="Carte des strates définies sur une variable quantitative" width="110%"><p class="caption">
+Figure 5.1: Carte des strates définies sur une variable quantitative
+</p>
+</div>
+<p>Ensuite, l’allocation des unités d’échantillonnage doit se faire au prorata des surfaces des strates. On nomme cela l’allocation de Newman. elle est idéal pour ce type de stratification</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">w_h</span> <span class="op">&lt;-</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span>
+<span class="op">(</span><span class="va">n_h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">w_h</span> <span class="op">*</span> <span class="va">n.echantillons</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 3 3 4 4 4 2</code></pre>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n_h</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n_h</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">n_h</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="fl">1</span>
+
+<span class="co">#add optimal strata to data frame</span>
+<span class="va">dt</span><span class="op">$</span><span class="va">strate</span> <span class="op">&lt;-</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">stratumID</span>
+
+<span class="co"># on ajoute l'observation</span>
+<span class="va">dt</span><span class="op">$</span><span class="va">sim1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html">values</a></span><span class="op">(</span><span class="va">champSP.r</span><span class="op">)</span></code></pre></div>
+<p>On tire au hasard ensuite une échantillon alétoire simple stratifié selon la répartition définie.</p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#select stratified simple random sample</span>
+<span class="va">units</span> <span class="op">&lt;-</span> <span class="fu">sampling</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sampling/man/strata.html">strata</a></span><span class="op">(</span>
+  <span class="va">dt</span>, 
+  stratanames <span class="op">=</span> <span class="st">"strate"</span>, 
+  size <span class="op">=</span> <span class="va">n_h</span>,
+  method <span class="op">=</span> <span class="st">"srswor"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="estimation" class="section level3" number="5.5.3">
+<h3>
+<span class="header-section-number">5.5.3</span> Estimation<a class="anchor" aria-label="anchor" href="#estimation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Examinons ce que donne la simulation pour le calcul de la moyenne. cela consiste à interroger les pixels de la simulations comme dans la méthode précédente</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mysample</span> <span class="op">&lt;-</span> <span class="va">dt</span><span class="op">[</span><span class="va">units</span><span class="op">$</span><span class="va">ID_unit</span>,<span class="op">]</span>
+
+
+<span class="va">MoyEstSTSI</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mysample</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span>
+
+<span class="va">MoyEstSTSI</span></code></pre></div>
+<pre><code>## [1] 5.149202</code></pre>
+<p>Et pour la variance, il est nécessaire de calculer la variance par state et de calculer ensuite la moyenne de ces variances.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mz_h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">mysample</span><span class="op">$</span><span class="va">sim1</span>, 
+               INDEX <span class="op">=</span> <span class="va">mysample</span><span class="op">$</span><span class="va">strate</span>,
+               FUN <span class="op">=</span> <span class="va">mean</span><span class="op">)</span>
+<span class="op">(</span><span class="va">mz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span> <span class="op">*</span> <span class="va">mz_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 5.18936</code></pre>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">S2z_h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">mysample</span><span class="op">$</span><span class="va">sim1</span>,
+                INDEX <span class="op">=</span> <span class="va">mysample</span><span class="op">$</span><span class="va">strate</span>,
+                FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span>
+
+<span class="op">(</span><span class="va">v_mz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n_h</span> <span class="op">/</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span> <span class="op">*</span> <span class="va">S2z_h</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.006210289</code></pre>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#The sampling variance can be computed without error from the population</span>
+<span class="va">S2z_h_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">sim1</span>,
+                    INDEX <span class="op">=</span> <span class="va">dt</span><span class="op">$</span><span class="va">strate</span>, 
+                    FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span>
+
+<span class="op">(</span><span class="va">v_mz_true</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n_h</span> <span class="op">/</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span> <span class="op">*</span> <span class="va">S2z_h_pop</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.02652138</code></pre>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#compute gain in precision due to stratification (stratification effect)</span>
+<span class="va">v_mz_SI_true</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n.echantillons</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span> <span class="op">/</span> <span class="va">n.echantillons</span>
+<span class="op">(</span><span class="va">gain</span> <span class="op">&lt;-</span> <span class="va">v_mz_SI_true</span> <span class="op">/</span> <span class="va">v_mz_true</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1.280028</code></pre>
+<p>Voici donc la moyenne STSI <span class="math inline">\(5.1893597\)</span> et la variance dans ce cas <span class="math inline">\(0.0062103\)</span></p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># calcul de l'interval de confiance selon les deux lois</span>
+<span class="va">ICT</span> <span class="op">&lt;-</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">v_mz</span><span class="op">)</span>
+
+<span class="co"># comme n&lt; 30, on garde ICT</span>
+<span class="co"># Est-ce que la vraie moyenne est dans l'IC student</span>
+<span class="va">Moy</span> <span class="op">&lt;</span> <span class="va">mz</span> <span class="op">+</span> <span class="va">ICT</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Moy</span> <span class="op">&gt;</span> <span class="va">mz</span> <span class="op">-</span> <span class="va">ICT</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">mz</span>, 
+      ICbas <span class="op">=</span> <span class="va">mz</span> <span class="op">-</span> <span class="va">ICT</span>,
+      ICHaut <span class="op">=</span> <span class="va">mz</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span></code></pre></div>
+<pre><code>##           mz    ICbas   ICHaut      Moy
+## [1,] 5.18936 5.024418 5.354301 5.298602</code></pre>
+<p>Pour mémoire, voici le résultat pour les strates compactes</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">resSC</span></code></pre></div>
 <pre><code>##      MoyEstSTSI    ICbas   ICHaut      Moy
 ## [1,]   5.055314 4.892605 5.218023 5.298602</code></pre>
 
@@ -255,10 +412,17 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 <li><a class="nav-link" href="#comment-stratifier"><span class="header-section-number">5.2</span> Comment stratifier ?</a></li>
 <li><a class="nav-link" href="#estimateurs-stsi"><span class="header-section-number">5.3</span> Estimateurs STSI</a></li>
 <li>
-<a class="nav-link" href="#stratification-g%C3%A9ographique-par-strates-compactes"><span class="header-section-number">5.4</span> Stratification géographique par strates compactes</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#stratification-g%C3%A9ographique-par-strates-compactes-g%C3%A9ographiques"><span class="header-section-number">5.4</span> Stratification géographique par strates compactes géographiques</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#d%C3%A9finition-2"><span class="header-section-number">5.4.1</span> Définition</a></li>
 <li><a class="nav-link" href="#estimateurs-stsi-1"><span class="header-section-number">5.4.2</span> Estimateurs STSI</a></li>
 <li><a class="nav-link" href="#impl%C3%A9mentation"><span class="header-section-number">5.4.3</span> Implémentation</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#stratification-par-stratification-dune-donn%C3%A9e-quantitative"><span class="header-section-number">5.5</span> Stratification par stratification d’une donnée quantitative</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#d%C3%A9finition-3"><span class="header-section-number">5.5.1</span> Définition</a></li>
+<li><a class="nav-link" href="#implementation"><span class="header-section-number">5.5.2</span> Implementation</a></li>
+<li><a class="nav-link" href="#estimation"><span class="header-section-number">5.5.3</span> Estimation</a></li>
 </ul>
 </li>
 </ul>
@@ -277,7 +441,7 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2022-01-07.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2023-01-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

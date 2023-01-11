@@ -1,6 +1,6 @@
 
 
-L'échantillonnage aléatoire stratifié
+L'échantillonnage aléatoire  stratifié
 =======================================
 
 Pour ce type d'approche, la population ou la zone d'étude est subdivisée en sous-populations, appelées strates.
@@ -27,7 +27,7 @@ Deux approches :
 * Stratification à l'aide d'un  variables auxiliaires
 
  - Variable catégorielle (unités cartographiques)
- - variable quantitative (par exemple, images de télédétection)
+ - variable quantitative (par exemple, images de télédétection, altitude, variables dérivées...)
  
 * Stratification par la position géographique uniquement (X et Y)
 
@@ -45,18 +45,17 @@ La variance d'échantillonnage de la moyenne expérimentale des $z$ est :
 
 \begin{equation}
 
-V(\hat{ \overline{z^l} } )  = \sum_{h=1}^{H} w_h^2 \frac{ \hat{ S^2_h} (\hat{ \overline{z^l} } ) }{n_h}
+V(\hat{ \overline{z} } )  = \sum_{h=1}^{H} w_h^2 \frac{ \hat{ S^2_h} (\hat{ \overline{z} } ) }{n_h}
 \end{equation}
 
-où $\hat{ S^2_h} (\hat{ \overline{z^l} })$ est la variance SI  dans la strate $h$ :
+où $\hat{ S^2_h} (\hat{ \overline{z} })$ est la variance SI  dans la strate $h$ :
 
 \begin{equation}
-\hat{ S^2_h} (\hat{ \overline{z^l} })= \frac{1}{n_h-1}\sum_{i=1}^{n_h} ( z^l_{hi}  -\hat{\overline{z}}_h^l )
+\hat{ S^2_h} (\hat{ \overline{z} })= \frac{1}{n_h-1}\sum_{i=1}^{n_h} ( z_{hi}  -\hat{\overline{z}}_h )
 \end{equation}
 
 
-
-Stratification géographique par strates compactes
+Stratification géographique par strates compactes géographiques
 -------------------------------------------------
 
 Parfois, il n'existe pas d'information a priori sur la variabilité spatiale de la propriété visée. Dans ce cas, une bonne répartition spatiale peut
@@ -68,7 +67,7 @@ La moyenne du carré de la plus courte distance au point j:
 
 $MCPCD_j = 1/N \sum^N_{i=1}min_j(D_{ij}^2)$
 
-Le critère $MCPCD_j$ peut être minmisé en utilisant l'algorithme des K-moyenne 
+Le critère $MCPCD_j$ peut être minimisé en utilisant l'algorithme des K-moyenne 
 
 Il existe un package R `spcosa` de @walvoort_r_2010.
 
@@ -126,7 +125,7 @@ library(raster)
 champSP.r <- raster(champSP)
 res(champSP.r)
 
-#aggregate from 1x1 resolution to 3x3 (factor = 3)
+#aggregate from 1x1 resolution to 2x2 (factor = 2)
 champSP.r.aggregate <- aggregate(champSP.r, 
                                  fact = 2)
 res(champSP.r.aggregate)
@@ -165,6 +164,7 @@ tmap_arrange(SI, STSI)
 
 
 Examinons ce que donne la simulation pour le calcul de la moyenne. On interroge ainsi au droit des pixels les points d'échantillonnage. c'est une opération SIG classique. Puis, on calule la moyenne en utilisant l'estimateur classique.
+
 
 ```{r}
 terrainSTSI <- over(mySample@sample,champSP)
@@ -207,9 +207,174 @@ Moy < MoyEstSTSI + ICT
 Moy > MoyEstSTSI - ICT
 
 
-cbind(MoyEstSTSI, 
+(resSC <- cbind(MoyEstSTSI, 
       ICbas = MoyEstSTSI - ICT,
-      ICHaut = MoyEstSTSI + ICT, Moy)
+      ICHaut = MoyEstSTSI + ICT, Moy))
 
+```
+
+Stratification  par stratification d'une donnée quantitative
+-------------------------------------------------
+### Définition
+
+Lorsqu'une covariable quanatitative est disponible en tous points de  la zone d'étude, les strates peuvent être construite en utilisant la méthode appelée *cum-root-f* (voir @Dalenius1959).
+
+### Implementation
+
+Dans notre cas, nous allons simuler une covariables à partir de `champ`
+
+```{r}
+
+library(raster)
+
+champSP.r <- raster(champSP)
+
+cov <- champSP.r^2+champSP.r + 9*champSP.r/(1-champSP.r) +
+  rnorm( n = length(champSP.r@data@values) , sd = 2)
+cov[cov<0] <- 0
+plot(cov, main = "la covariable")
+```
+
+Les strates peuvent être construite avec le package `stratification`. Attention, les données doivent classer par ordre croissant avant la stratification. 
+En sortie, on dispose des limites des classes et de l'affectation de chaque observation à une strate.
+
+
+```{r}
+library(stratification)
+n.echantillons <-  20 
+n.strates <-  6 
+nclass <- n.strates * 100 #nombre de classes pour calculer l'histogramme
+
+dt = cbind.data.frame(coordinates(cov),cov = values(cov))
+dt <- dt[!is.na(dt$cov),]
+dt <- dt[order(dt$cov),]
+
+
+optstrata <- strata.cumrootf(
+  x = dt$cov,
+  n = n.echantillons,
+  Ls = n.strates,
+  nclass = nclass)
+
+optstrata$bh #les limites des strates
+optstrata$Nh #la taille des strates 
+
+```
+
+La figure suivante présente covariable dont la légende correspond à la limite des classes définies à l'étape précédente.
+
+```{r, fig.cap='Carte des strates définies sur une variable quantitative', out.width='110%', fig.asp=.75, fig.align='center'}
+
+# dessin de la stratification
+
+tm_shape(cov) +
+  tm_raster(
+    
+    breaks = c(min(values(cov)),optstrata$bh,max(values(cov)))
+                        )+
+  tm_layout(title = "la stratification",
+            title.size = 0.6,
+            legend.outside = TRUE) 
+
+```
+
+Ensuite, l'allocation des unités d'échantillonnage doit se faire au prorata des surfaces des strates. On nomme cela l'allocation de Newman. elle est idéal pour ce type de stratification
+
+```{r}
+
+w_h <- optstrata$Nh / sum(optstrata$Nh)
+(n_h <- round(w_h * n.echantillons))
+sum(n_h)
+n_h[1] <- n_h[1] + 1
+
+#add optimal strata to data frame
+dt$strate <- optstrata$stratumID
+
+# on ajoute l'observation
+dt$sim1 <- values(champSP.r)
+
+
+```
+
+On tire au hasard ensuite une échantillon alétoire simple stratifié selon la répartition définie. 
+
+```{r}
+#select stratified simple random sample
+units <- sampling::strata(
+  dt, 
+  stratanames = "strate", 
+  size = n_h,
+  method = "srswor")
+
+```
+
+
+### Estimation
+
+
+Examinons ce que donne la simulation pour le calcul de la moyenne. cela consiste à interroger les pixels de la simulations comme dans la méthode précédente
+
+
+```{r}
+
+mysample <- dt[units$ID_unit,]
+
+
+MoyEstSTSI <- mean(mysample$sim1)
+
+MoyEstSTSI
+
+```
+
+Et pour la variance, il est nécessaire de calculer la variance par state et de calculer ensuite la moyenne de ces variances.
+
+
+```{r}
+mz_h <- tapply(mysample$sim1, 
+               INDEX = mysample$strate,
+               FUN = mean)
+(mz <- sum(w_h * mz_h))
+
+S2z_h <- tapply(mysample$sim1,
+                INDEX = mysample$strate,
+                FUN = var)
+
+(v_mz <- sum(w_h^2 * (1 - n_h / optstrata$Nh) * S2z_h / n_h))
+
+#The sampling variance can be computed without error from the population
+S2z_h_pop <- tapply(dt$sim1,
+                    INDEX = dt$strate, 
+                    FUN = var)
+
+(v_mz_true <- sum(w_h^2 * (1 - n_h / optstrata$Nh) * S2z_h_pop / n_h))
+
+#compute gain in precision due to stratification (stratification effect)
+v_mz_SI_true <- (1 - n.echantillons / sum(optstrata$Nh)) * var(dt$sim1) / n.echantillons
+(gain <- v_mz_SI_true / v_mz_true)
+```
+
+Voici donc la moyenne STSI $`r mz`$ et la variance dans ce cas $`r v_mz`$
+
+```{r}
+
+# calcul de l'interval de confiance selon les deux lois
+ICT <- talpha * sqrt(v_mz)
+
+# comme n< 30, on garde ICT
+# Est-ce que la vraie moyenne est dans l'IC student
+Moy < mz + ICT
+Moy > mz - ICT
+
+
+cbind(mz, 
+      ICbas = mz - ICT,
+      ICHaut = mz + ICT, Moy)
+
+```
+
+Pour mémoire, voici le résultat pour les strates compactes
+
+```{r}
+resSC
 ```
 

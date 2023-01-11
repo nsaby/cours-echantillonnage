@@ -212,7 +212,9 @@ pkgs <- c(
   "raster",
   "spcosa",
   "fields",
-  "rgdal"
+  "rgdal",
+  "stratification",
+  "sampling"
 )
 
 pkgs <- sessioninfo::package_info(pkgs, dependencies = FALSE)
