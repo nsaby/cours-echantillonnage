@@ -232,7 +232,13 @@ Moy > MoyEst - ICT
 
 2 *ICT
 
-cbind(MoyEst, ICbas = MoyEst - ICT, ICHaut =MoyEst + ICT, Moy)
+resSI <- cbind(MoyEst,
+               ICT,
+               ICbas = MoyEst - ICT,
+               ICHaut =MoyEst + ICT,
+               Moy)
+
+resSI
 
 ```
 

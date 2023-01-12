@@ -208,6 +208,7 @@ Moy > MoyEstSTSI - ICT
 
 
 (resSC <- cbind(MoyEstSTSI, 
+                ICT ,
       ICbas = MoyEstSTSI - ICT,
       ICHaut = MoyEstSTSI + ICT, Moy))
 
@@ -339,14 +340,14 @@ S2z_h <- tapply(mysample$sim1,
                 INDEX = mysample$strate,
                 FUN = var)
 
-(v_mz <- sum(w_h^2 * (1 - n_h / optstrata$Nh) * S2z_h / n_h))
+(v_mz <- sum(w_h^2   * S2z_h / n_h))
 
 #The sampling variance can be computed without error from the population
 S2z_h_pop <- tapply(dt$sim1,
                     INDEX = dt$strate, 
                     FUN = var)
 
-(v_mz_true <- sum(w_h^2 * (1 - n_h / optstrata$Nh) * S2z_h_pop / n_h))
+(v_mz_true <- sum(w_h^2  * S2z_h_pop / n_h))
 
 #compute gain in precision due to stratification (stratification effect)
 v_mz_SI_true <- (1 - n.echantillons / sum(optstrata$Nh)) * var(dt$sim1) / n.echantillons
@@ -367,8 +368,10 @@ Moy > mz - ICT
 
 
 cbind(mz, 
+      IC = ICT,
       ICbas = mz - ICT,
-      ICHaut = mz + ICT, Moy)
+      ICHaut = mz + ICT, 
+      Moy)
 
 ```
 
@@ -376,5 +379,7 @@ Pour mémoire, voici le résultat pour les strates compactes
 
 ```{r}
 resSC
+
+resSI
 ```
 

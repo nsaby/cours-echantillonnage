@@ -295,9 +295,15 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <code class="sourceCode R"><span class="fl">2</span> <span class="op">*</span><span class="va">ICT</span></code></pre></div>
 <pre><code>## [1] 0.8523391</code></pre>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">MoyEst</span>, ICbas <span class="op">=</span> <span class="va">MoyEst</span> <span class="op">-</span> <span class="va">ICT</span>, ICHaut <span class="op">=</span><span class="va">MoyEst</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span></code></pre></div>
-<pre><code>##        MoyEst    ICbas   ICHaut      Moy
-## [1,] 4.935534 4.509364 5.361703 5.298602</code></pre>
+<code class="sourceCode R"><span class="va">resSI</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">MoyEst</span>,
+               <span class="va">ICT</span>,
+               ICbas <span class="op">=</span> <span class="va">MoyEst</span> <span class="op">-</span> <span class="va">ICT</span>,
+               ICHaut <span class="op">=</span><span class="va">MoyEst</span> <span class="op">+</span> <span class="va">ICT</span>,
+               <span class="va">Moy</span><span class="op">)</span>
+
+<span class="va">resSI</span></code></pre></div>
+<pre><code>##        MoyEst       ICT    ICbas   ICHaut      Moy
+## [1,] 4.935534 0.4261695 4.509364 5.361703 5.298602</code></pre>
 </div>
 </div>
 <div id="simulations-dun-interval-de-confiance" class="section level2" number="4.4">

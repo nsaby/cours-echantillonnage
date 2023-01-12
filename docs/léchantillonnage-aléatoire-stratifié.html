@@ -236,10 +236,11 @@ V(\hat{ \overline{z^l} } )  = (\frac1H)^2 \sum_{h=1}^{H}  \frac{ \hat{ S^2_h} (\
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">resSC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">MoyEstSTSI</span>, 
+                <span class="va">ICT</span> ,
       ICbas <span class="op">=</span> <span class="va">MoyEstSTSI</span> <span class="op">-</span> <span class="va">ICT</span>,
       ICHaut <span class="op">=</span> <span class="va">MoyEstSTSI</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##      MoyEstSTSI    ICbas   ICHaut      Moy
-## [1,]   5.055314 4.892605 5.218023 5.298602</code></pre>
+<pre><code>##      MoyEstSTSI       ICT    ICbas   ICHaut      Moy
+## [1,]   5.055314 0.1627091 4.892605 5.218023 5.298602</code></pre>
 </div>
 </div>
 <div id="stratification-par-stratification-dune-donnée-quantitative" class="section level2" number="5.5">
@@ -354,22 +355,22 @@ Figure 5.1: Carte des strates définies sur une variable quantitative
                 INDEX <span class="op">=</span> <span class="va">mysample</span><span class="op">$</span><span class="va">strate</span>,
                 FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span>
 
-<span class="op">(</span><span class="va">v_mz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n_h</span> <span class="op">/</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span> <span class="op">*</span> <span class="va">S2z_h</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 0.006210289</code></pre>
+<span class="op">(</span><span class="va">v_mz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span>   <span class="op">*</span> <span class="va">S2z_h</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.006224801</code></pre>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#The sampling variance can be computed without error from the population</span>
 <span class="va">S2z_h_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">sim1</span>,
                     INDEX <span class="op">=</span> <span class="va">dt</span><span class="op">$</span><span class="va">strate</span>, 
                     FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span>
 
-<span class="op">(</span><span class="va">v_mz_true</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n_h</span> <span class="op">/</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span> <span class="op">*</span> <span class="va">S2z_h_pop</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 0.02652138</code></pre>
+<span class="op">(</span><span class="va">v_mz_true</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span>  <span class="op">*</span> <span class="va">S2z_h_pop</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.02657765</code></pre>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#compute gain in precision due to stratification (stratification effect)</span>
 <span class="va">v_mz_SI_true</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n.echantillons</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span> <span class="op">/</span> <span class="va">n.echantillons</span>
 <span class="op">(</span><span class="va">gain</span> <span class="op">&lt;-</span> <span class="va">v_mz_SI_true</span> <span class="op">/</span> <span class="va">v_mz_true</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1.280028</code></pre>
-<p>Voici donc la moyenne STSI <span class="math inline">\(5.1893597\)</span> et la variance dans ce cas <span class="math inline">\(0.0062103\)</span></p>
+<pre><code>## [1] 1.277318</code></pre>
+<p>Voici donc la moyenne STSI <span class="math inline">\(5.1893597\)</span> et la variance dans ce cas <span class="math inline">\(0.0062248\)</span></p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># calcul de l'interval de confiance selon les deux lois</span>
 <span class="va">ICT</span> <span class="op">&lt;-</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">v_mz</span><span class="op">)</span>
@@ -383,15 +384,21 @@ Figure 5.1: Carte des strates définies sur une variable quantitative
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">mz</span>, 
+      IC <span class="op">=</span> <span class="va">ICT</span>,
       ICbas <span class="op">=</span> <span class="va">mz</span> <span class="op">-</span> <span class="va">ICT</span>,
-      ICHaut <span class="op">=</span> <span class="va">mz</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span></code></pre></div>
-<pre><code>##           mz    ICbas   ICHaut      Moy
-## [1,] 5.18936 5.024418 5.354301 5.298602</code></pre>
+      ICHaut <span class="op">=</span> <span class="va">mz</span> <span class="op">+</span> <span class="va">ICT</span>, 
+      <span class="va">Moy</span><span class="op">)</span></code></pre></div>
+<pre><code>##           mz        IC    ICbas   ICHaut      Moy
+## [1,] 5.18936 0.1651342 5.024226 5.354494 5.298602</code></pre>
 <p>Pour mémoire, voici le résultat pour les strates compactes</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">resSC</span></code></pre></div>
-<pre><code>##      MoyEstSTSI    ICbas   ICHaut      Moy
-## [1,]   5.055314 4.892605 5.218023 5.298602</code></pre>
+<pre><code>##      MoyEstSTSI       ICT    ICbas   ICHaut      Moy
+## [1,]   5.055314 0.1627091 4.892605 5.218023 5.298602</code></pre>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">resSI</span></code></pre></div>
+<pre><code>##        MoyEst       ICT    ICbas   ICHaut      Moy
+## [1,] 4.935534 0.4261695 4.509364 5.361703 5.298602</code></pre>
 
 </div>
 </div>
