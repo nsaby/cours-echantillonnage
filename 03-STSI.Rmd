@@ -317,12 +317,16 @@ Examinons ce que donne la simulation pour le calcul de la moyenne. cela consiste
 
 ```{r}
 
+
 mysample <- dt[units$ID_unit,]
 
 
-MoyEstSTSI <- mean(mysample$sim1)
+mz_h <- tapply(mysample$sim1, 
+               INDEX = mysample$strate,
+               FUN = mean)
+(mz <- sum(w_h * mz_h))
 
-MoyEstSTSI
+
 
 ```
 
@@ -330,10 +334,6 @@ Et pour la variance, il est nécessaire de calculer la variance par state et de 
 
 
 ```{r}
-mz_h <- tapply(mysample$sim1, 
-               INDEX = mysample$strate,
-               FUN = mean)
-(mz <- sum(w_h * mz_h))
 
 S2z_h <- tapply(mysample$sim1,
                 INDEX = mysample$strate,

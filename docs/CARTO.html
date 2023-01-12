@@ -132,7 +132,7 @@
 </h3>
 <p>On teste ici les fonctions en prenant la parcelle du package <code>spcosa</code></p>
 <p>Voici l’exemple pour la grille de type régulière à maille carrée. On remarque la présence de zone sans donnée.</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># regular</span>
 <span class="va">MagrilleReg</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span> <span class="va">shpFarmsum</span> ,
                     type <span class="op">=</span> <span class="st">"regular"</span>,
@@ -149,7 +149,7 @@ Figure 7.1: Grille régulière
 </p>
 </div>
 <p>Voici l’exemple pour la grille de type régulière carré. On remarque la présence de zone sans donnée.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">MagrilleHex</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span> <span class="va">shpFarmsum</span> ,
                     type <span class="op">=</span> <span class="st">"hexagonal"</span>,
                     cellsize <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
@@ -186,7 +186,7 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <span class="header-section-number">7.4.2</span> Mise en oeuvre avec <code>spcosa</code><a class="anchor" aria-label="anchor" href="#mise-en-oeuvre-avec-spcosa"><i class="fas fa-link"></i></a>
 </h3>
 <p>La fonction <code>stratify</code> implémente la stratification dite par strate compacte.</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># initialize pseudo random number generator</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">700124</span><span class="op">)</span>
 
@@ -197,7 +197,7 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">myStratification</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-32-1.png" width="100%"></div>
 <p>Sans option, la commande spcosa::spsample extrait le centroïde des strates obtenues par l’algorithme des K-moyennes.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># sans option, la commande spcosa::spsample extrait le centroïde de la strate.</span>
 <span class="va">mySamplingPattern</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span><span class="va">myStratification</span><span class="op">)</span>
 
@@ -210,14 +210,14 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <span class="header-section-number">7.4.3</span> En présence de données existantes<a class="anchor" aria-label="anchor" href="#en-pr%C3%A9sence-de-donn%C3%A9es-existantes"><i class="fas fa-link"></i></a>
 </h3>
 <p>Supposons l’existance d’un <span class="math inline">\(k\)</span> échantillons sur la zone</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">k</span><span class="op">=</span> <span class="fl">20</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
 <span class="va">MonEchAncien</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span> <span class="va">shpFarmsum</span> , <span class="va">k</span> , type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/spplot.html">spplot</a></span><span class="op">(</span><span class="va">MonEchAncien</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-34-1.png" width="100%"></div>
 <p>La commande <code><a href="https://rdrr.io/pkg/spcosa/man/stratify-methods.html">spcosa::stratify</a></code> permet de construire les strates compactes en tenant compte de ces observations afin d’optimiser la répartition des échantillons supplémentaires pour la cartographie</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Set number of new sampling locations to be selected</span>
 <span class="va">n</span><span class="op">&lt;-</span><span class="fl">100</span>
 
@@ -235,7 +235,7 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <span class="co">#Select sampling points of infill sample (centres of geostrata)</span>
 <span class="va">mySample</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span><span class="va">myStrata</span><span class="op">)</span></code></pre></div>
 <p>Voici la répartition des points.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Plot geostrata and sampling points (centres of geostrata)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">myStrata</span>, <span class="va">mySample</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="cours-echantillonnage_files/figure-html/unnamed-chunk-36-1.png" width="100%"></div>
@@ -247,13 +247,13 @@ La moyenne du carré de la plus courte distance au point j:</p>
 </h2>
 <p>Dans une récente étude, <span class="citation"><a href="references.html#ref-wadoux_efficient_2019" role="doc-biblioref">Wadoux, Marchant, and Lark</a> (<a href="references.html#ref-wadoux_efficient_2019" role="doc-biblioref">2019</a>)</span> propose de rajouter 10 % du nombre total d’observations au plan par couverture spatiale optimisée. Ces points sont positionné à une petite distance de cette sélection au hasard de points.</p>
 <p>On définit premièremement la distance <span class="math inline">\(d\)</span> (20 m dans cette exemple) et le nombre de points <span class="math inline">\(m\)</span> (10 %)</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mySCsample.df</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">mySamplingPattern</span>, <span class="st">"data.frame"</span><span class="op">)</span> <span class="co"># on extrait ici les coordonnées</span>
 
 <span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">20</span> <span class="co"># Distance</span>
 <span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span> <span class="fl">0.1</span>  <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html">nrow</a></span><span class="op">(</span><span class="va">mySCsample.df</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
 <p>On tire ensuite au hasard les <span class="math inline">\(m\)</span> points et on calcule les nouvelles coordonnées afin de placer au hasard le nouveau points sur un cercle de rayon <span class="math inline">\(d\)</span>.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Specify separation distances and subsample sizes</span>
 
 <span class="co"># Select random subsample from the spatial coverage sample</span>
@@ -281,7 +281,7 @@ La moyenne du carré de la plus courte distance au point j:</p>
 <span class="va">mySCsample.df</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">mySCsample.df</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/xyFromCell.html">coordinates</a></span><span class="op">(</span><span class="va">mySCsample.df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="op">~</span><span class="va">x1</span><span class="op">+</span> <span class="va">x2</span></code></pre></div>
 <p>Voici la représentation du plan d’échantillonnage pour la géostatistique.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tm_shape</span><span class="op">(</span><span class="va">shpFarmsum</span><span class="op">)</span><span class="op">+</span> <span class="fu">tm_borders</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
   <span class="fu">tm_shape</span><span class="op">(</span><span class="va">mySCsample.df</span><span class="op">)</span> <span class="op">+</span> <span class="fu">tm_symbols</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -311,7 +311,7 @@ Figure 7.3: Plan optimisé pour la géostatistique
 <span class="header-section-number">7.6.2</span> Données<a class="anchor" aria-label="anchor" href="#donn%C3%A9es"><i class="fas fa-link"></i></a>
 </h3>
 <p>Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données consitué de grille décrivant un ensemble de caractéristiques d’une parcelle en Australie.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Read data with coordinates and other attributes of fine grid (discretization of study area)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span>file<span class="op">=</span><span class="st">"Data/HunterValley4Practicals.RData"</span><span class="op">)</span>
 <span class="va">grdHunterValley2</span> <span class="op">&lt;-</span> <span class="va">grdHunterValley</span>
@@ -326,7 +326,7 @@ Figure 7.3: Plan optimisé pour la géostatistique
 <h3>
 <span class="header-section-number">7.6.3</span> Mise en oeuvre avec l’algorithme K-moyennes<a class="anchor" aria-label="anchor" href="#mise-en-oeuvre-avec-lalgorithme-k-moyennes"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Set number of sampling locations to be selected</span>
 <span class="va">n</span><span class="op">&lt;-</span><span class="fl">20</span>
 
@@ -341,7 +341,7 @@ Figure 7.3: Plan optimisé pour la géostatistique
 <span class="va">mySample</span> <span class="op">&lt;-</span> <span class="va">grdHunterValley</span><span class="op">[</span><span class="va">ids.mindist</span>,<span class="op">]</span></code></pre></div>
 <p>Dans cette</p>
 <p>Il est possible de représenter les unités d’échantillonnage dans l’espace géographique:</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_tile</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easting</span>, y <span class="op">=</span> <span class="va">Northing</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_fill_discrete</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"cluster"</span><span class="op">)</span> <span class="op">+</span>
@@ -357,7 +357,7 @@ Figure 7.4: Plan optimisé par K-moyenne sur les covariables, représentation da
 </p>
 </div>
 <p>Mais également dans l’espace des covariables. Ici, on retient l’altitude et le CTI.</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span>,colour<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">.51</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span>
@@ -370,7 +370,7 @@ Figure 7.4: Plan optimisé par K-moyenne sur les covariables, représentation da
 Figure 7.5: Plan optimisé par K-moyenne sur les covariables, représentation dans l’espace des covariables
 </p>
 </div>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">slope_deg</span>,colour<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">.51</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span>
@@ -433,7 +433,7 @@ Figure 7.6: Plan optimisé par K-moyenne sur les covariables, représentation da
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2023-01-11.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2023-01-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

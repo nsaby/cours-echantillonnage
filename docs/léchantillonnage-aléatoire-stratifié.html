@@ -343,25 +343,20 @@ Figure 5.1: Carte des strates définies sur une variable quantitative
 <code class="sourceCode R"><span class="va">mysample</span> <span class="op">&lt;-</span> <span class="va">dt</span><span class="op">[</span><span class="va">units</span><span class="op">$</span><span class="va">ID_unit</span>,<span class="op">]</span>
 
 
-<span class="va">MoyEstSTSI</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mysample</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span>
-
-<span class="va">MoyEstSTSI</span></code></pre></div>
-<pre><code>## [1] 5.149202</code></pre>
-<p>Et pour la variance, il est nécessaire de calculer la variance par state et de calculer ensuite la moyenne de ces variances.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mz_h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">mysample</span><span class="op">$</span><span class="va">sim1</span>, 
+<span class="va">mz_h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">mysample</span><span class="op">$</span><span class="va">sim1</span>, 
                INDEX <span class="op">=</span> <span class="va">mysample</span><span class="op">$</span><span class="va">strate</span>,
                FUN <span class="op">=</span> <span class="va">mean</span><span class="op">)</span>
 <span class="op">(</span><span class="va">mz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span> <span class="op">*</span> <span class="va">mz_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 5.18936</code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<p>Et pour la variance, il est nécessaire de calculer la variance par state et de calculer ensuite la moyenne de ces variances.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">S2z_h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">mysample</span><span class="op">$</span><span class="va">sim1</span>,
                 INDEX <span class="op">=</span> <span class="va">mysample</span><span class="op">$</span><span class="va">strate</span>,
                 FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span>
 
 <span class="op">(</span><span class="va">v_mz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n_h</span> <span class="op">/</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span> <span class="op">*</span> <span class="va">S2z_h</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0.006210289</code></pre>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#The sampling variance can be computed without error from the population</span>
 <span class="va">S2z_h_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">sim1</span>,
                     INDEX <span class="op">=</span> <span class="va">dt</span><span class="op">$</span><span class="va">strate</span>, 
@@ -369,13 +364,13 @@ Figure 5.1: Carte des strates définies sur une variable quantitative
 
 <span class="op">(</span><span class="va">v_mz_true</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w_h</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n_h</span> <span class="op">/</span> <span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span> <span class="op">*</span> <span class="va">S2z_h_pop</span> <span class="op">/</span> <span class="va">n_h</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0.02652138</code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#compute gain in precision due to stratification (stratification effect)</span>
 <span class="va">v_mz_SI_true</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">n.echantillons</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">optstrata</span><span class="op">$</span><span class="va">Nh</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span> <span class="op">/</span> <span class="va">n.echantillons</span>
 <span class="op">(</span><span class="va">gain</span> <span class="op">&lt;-</span> <span class="va">v_mz_SI_true</span> <span class="op">/</span> <span class="va">v_mz_true</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1.280028</code></pre>
 <p>Voici donc la moyenne STSI <span class="math inline">\(5.1893597\)</span> et la variance dans ce cas <span class="math inline">\(0.0062103\)</span></p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># calcul de l'interval de confiance selon les deux lois</span>
 <span class="va">ICT</span> <span class="op">&lt;-</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">v_mz</span><span class="op">)</span>
 
@@ -383,17 +378,17 @@ Figure 5.1: Carte des strates définies sur une variable quantitative
 <span class="co"># Est-ce que la vraie moyenne est dans l'IC student</span>
 <span class="va">Moy</span> <span class="op">&lt;</span> <span class="va">mz</span> <span class="op">+</span> <span class="va">ICT</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Moy</span> <span class="op">&gt;</span> <span class="va">mz</span> <span class="op">-</span> <span class="va">ICT</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">mz</span>, 
       ICbas <span class="op">=</span> <span class="va">mz</span> <span class="op">-</span> <span class="va">ICT</span>,
       ICHaut <span class="op">=</span> <span class="va">mz</span> <span class="op">+</span> <span class="va">ICT</span>, <span class="va">Moy</span><span class="op">)</span></code></pre></div>
 <pre><code>##           mz    ICbas   ICHaut      Moy
 ## [1,] 5.18936 5.024418 5.354301 5.298602</code></pre>
 <p>Pour mémoire, voici le résultat pour les strates compactes</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">resSC</span></code></pre></div>
 <pre><code>##      MoyEstSTSI    ICbas   ICHaut      Moy
 ## [1,]   5.055314 4.892605 5.218023 5.298602</code></pre>
@@ -441,7 +436,7 @@ Figure 5.1: Carte des strates définies sur une variable quantitative
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2023-01-11.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2023-01-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
