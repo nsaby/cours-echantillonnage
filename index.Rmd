@@ -49,7 +49,7 @@ style_data <- function(dat, n_rows = NULL, caption = NULL) {
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" /></a><br />This work by Nicolas Saby is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License</a>.
 
 
-Je suis Ingénieur de Recherche en analyse de données à l'unité Infosol de l'INRAE à Orléans.
+Je suis Ingénieur de Recherche en analyse de données à l'unité Inf&osolq de l'INRAE à Orléans.
 [Ma page google Scholar](https://scholar.google.fr/citations?hl=fr&user=p1DMUcEAAAAJ&alert_preview_top_rm=2)
 
 Introduction {#WHY}
@@ -59,7 +59,9 @@ Ces quelques notes de cours et de scripts `R` ont été produits pour un cours d
 
 Ce cours est basé sur les travaux publiés dans le livre [@de_gruijter_sampling_2006]. Un descriptif des approches utiles pour la cartographie est également disponible dans l'article de Brus et al [@brus_sampling_2019] ainsi que les scripts `R` associés  sur le github: https://github.com/DickBrus/TutorialSampling4DSM
 
-Ce cours rassemble un sélection choisie de techniques et de codes !
+Une nouvelle version est disponible ici :https://dickbrus.github.io/SpatialSamplingwithR/
+
+Ce cours rassemble un sélection choisie de techniques et de codes pour mettre en oeuvre une sélection de position dans l'espace selon différents plans !
 
 
 Motivations
@@ -67,8 +69,8 @@ Motivations
 
 Les motivations pour ce cours sont les suivantes:
 
-- Les cours de statistique classique ne s'attardent pas sur la discipline de l'échantillonnage
-- La conception d'un protocole d'échantillonnage efficace et efficient est une première étape importante d'un projet de recherche
+- Les cours de statistique classiques ne s'attardent pas sur la discipline de l'échantillonnage
+- La conception d'un plan d'échantillonnage efficace et efficient est une première étape importante d'un projet de recherche ou autres projets
 - Le plan d'échantillonnage détermine en grande partie la qualité du résultat final
 - Les problèmes d'inférence statistique peuvent souvent être évités lorsque la réflexion commence avant que les données ne soient collectées
 
@@ -81,7 +83,7 @@ Le plan d'échantillonnage d'une enquête par sondage se réfère
 - aux techniques utilisées pour sélectionner un échantillon probabiliste et
 - aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l'échantillon sélectionné.
 
-On définit également l'unité d'échantillonnage qui correspond à la position dans l'espace où des observations de sols vont être effectuées. AU doit de la position, il est possible d'effectuer par exemple un sondage, une fosse ou un échantillon composite.
+On définit également l'unité d'échantillonnage qui correspond à la position dans l'espace où des observations de sols vont être effectuées. Au niceau de la position dans l'espace, il est possible d'effectuer différents prélèvements comme par exemple un sondage, une fosse ou un échantillon composite.
 
 Contenu
 ---------

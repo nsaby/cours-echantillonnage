@@ -7,18 +7,45 @@
 <title>Chapter 2 Introduction | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France">
 <meta name="description" content="Ces quelques notes de cours et de scripts R ont été produits pour un cours de M1 de la Faculté de Tours. https://master-environnement.univ-tours.fr/ Ce cours est basé sur les travaux publiés dans...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Introduction | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Ces quelques notes de cours et de scripts R ont été produits pour un cours de M1 de la Faculté de Tours. https://master-environnement.univ-tours.fr/ Ce cours est basé sur les travaux publiés dans...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Introduction | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
 <meta name="twitter:description" content="Ces quelques notes de cours et de scripts R ont été produits pour un cours de M1 de la Faculté de Tours. https://master-environnement.univ-tours.fr/ Ce cours est basé sur les travaux publiés dans...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.18/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -61,7 +88,7 @@
 <span class="header-section-number">2</span> Introduction<a class="anchor" aria-label="anchor" href="#WHY"><i class="fas fa-link"></i></a>
 </h1>
 <p>Ces quelques notes de cours et de scripts <code>R</code> ont été produits pour un cours de M1 de la Faculté de Tours. <a href="https://master-environnement.univ-tours.fr/" class="uri">https://master-environnement.univ-tours.fr/</a></p>
-<p>Ce cours est basé sur les travaux publiés dans le livre <span class="citation">(<a href="references.html#ref-de_gruijter_sampling_2006" role="doc-biblioref">Gruijter et al. 2006</a>)</span>. Un descriptif des approches utiles pour la cartographie est également disponible dans l’article de Brus et al <span class="citation">(<a href="references.html#ref-brus_sampling_2019" role="doc-biblioref">Brus 2019</a>)</span> ainsi que les scripts <code>R</code> associés sur le github: <a href="https://github.com/DickBrus/TutorialSampling4DSM" class="uri">https://github.com/DickBrus/TutorialSampling4DSM</a></p>
+<p>Ce cours est basé sur les travaux publiés dans le livre <span class="citation">(<a href="references.html#ref-de_gruijter_sampling_2006">Gruijter et al. 2006</a>)</span>. Un descriptif des approches utiles pour la cartographie est également disponible dans l’article de Brus et al <span class="citation">(<a href="references.html#ref-brus_sampling_2019">Brus 2019</a>)</span> ainsi que les scripts <code>R</code> associés sur le github: <a href="https://github.com/DickBrus/TutorialSampling4DSM" class="uri">https://github.com/DickBrus/TutorialSampling4DSM</a></p>
 <p>Ce cours rassemble un sélection choisie de techniques et de codes !</p>
 <div id="motivations" class="section level2" number="2.1">
 <h2>
@@ -69,8 +96,8 @@
 </h2>
 <p>Les motivations pour ce cours sont les suivantes:</p>
 <ul>
-<li>Les cours de statistique classique ne s’attardent pas sur la discipline de l’échantillonnage</li>
-<li>La conception d’un protocole d’échantillonnage efficace et efficient est une première étape importante d’un projet de recherche</li>
+<li>Les cours de statistique classiques ne s’attardent pas sur la discipline de l’échantillonnage</li>
+<li>La conception d’un plan d’échantillonnage efficace et efficient est une première étape importante d’un projet de recherche ou autres projets</li>
 <li>Le plan d’échantillonnage détermine en grande partie la qualité du résultat final</li>
 <li>Les problèmes d’inférence statistique peuvent souvent être évités lorsque la réflexion commence avant que les données ne soient collectées</li>
 </ul>
@@ -84,7 +111,7 @@
 <li>aux techniques utilisées pour sélectionner un échantillon probabiliste et</li>
 <li>aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l’échantillon sélectionné.</li>
 </ul>
-<p>On définit également l’unité d’échantillonnage qui correspond à la position dans l’espace où des observations de sols vont être effectuées. AU doit de la position, il est possible d’effectuer par exemple un sondage, une fosse ou un échantillon composite.</p>
+<p>On définit également l’unité d’échantillonnage qui correspond à la position dans l’espace où des observations de sols vont être effectuées. Au niceau de la position dans l’espace, il est possible d’effectuer différents prélèvements comme par exemple un sondage, une fosse ou un échantillon composite.</p>
 </div>
 <div id="contenu" class="section level2" number="2.3">
 <h2>
@@ -134,7 +161,7 @@ les paramètres statistiques peuvent être estimés…</p></li>
 <span class="header-section-number">2.6</span> Approche basée sur un modèle ou basée sur un plan d’échantillonnage<a class="anchor" aria-label="anchor" href="#approche-bas%C3%A9e-sur-un-mod%C3%A8le-ou-bas%C3%A9e-sur-un-plan-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
 </h2>
 <p>la production de statistiques sur une zone d’étude implique l’utilisation d’un estimateur à partir d’un ensemble d’observations recueillies selon un protocole d’échantillonnage. Le lien entre l’estimateur et le protocole d’échantillonnage est important.</p>
-<p>D’après le livre <span class="citation">(<a href="references.html#ref-de_gruijter_sampling_2006" role="doc-biblioref">Gruijter et al. 2006</a>)</span>, la théorie de l’échantillonnage sépare les techniques de sélection des unités d’échantillonnage en deux grandes approches:</p>
+<p>D’après le livre <span class="citation">(<a href="references.html#ref-de_gruijter_sampling_2006">Gruijter et al. 2006</a>)</span>, la théorie de l’échantillonnage sépare les techniques de sélection des unités d’échantillonnage en deux grandes approches:</p>
 <ul>
 <li><p><em>Model based</em> : L’incertitude des estimateurs est obtenu à partir d’un modèle stochastique.</p></li>
 <li><p><em>Design based</em> : l’incertitude des estimateurs est calculée à partir des probabilités d’inclusions</p></li>
@@ -180,7 +207,7 @@ les unités d’échantillonnage doivent être définies, par exemple carrés de
 <span class="header-section-number">2.9</span> Details techniques<a class="anchor" aria-label="anchor" href="#details-techniques"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ces notes ont été produites par <a href="http://www.rstudio.com/ide/">RStudio</a> en utilisant <a href="http://bookdown.org/">bookdown</a>. Le site <a href="https://nsaby.github.io/cours-echantillonnage/">website</a> est en ligne via github <a href="http://netlify.com/">Netlify</a></p>
-<p>La version de ce livre numérique a été produite avec R version 4.1.1 (2021-08-10) et les package suivants:</p>
+<p>La version de ce livre numérique a été produite avec R version 4.3.1 (2023-06-16 ucrt) et les package suivants:</p>
 <div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:book-pkgs">Table 2.1: </span>Packages used in this book
@@ -202,10 +229,10 @@ source
 bookdown
 </td>
 <td style="text-align:left;">
-0.24
+0.34
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -213,10 +240,10 @@ CRAN (R 4.1.1)
 dplyr
 </td>
 <td style="text-align:left;">
-1.0.7
+1.1.2
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -224,10 +251,10 @@ CRAN (R 4.1.1)
 fields
 </td>
 <td style="text-align:left;">
-12.5
+14.1
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -235,10 +262,10 @@ CRAN (R 4.1.1)
 ggplot2
 </td>
 <td style="text-align:left;">
-3.3.5
+3.4.2
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -246,10 +273,10 @@ CRAN (R 4.1.1)
 knitr
 </td>
 <td style="text-align:left;">
-1.36
+1.43
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -257,10 +284,10 @@ CRAN (R 4.1.1)
 raster
 </td>
 <td style="text-align:left;">
-3.5-2
+3.6-20
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -268,10 +295,10 @@ CRAN (R 4.1.1)
 rgdal
 </td>
 <td style="text-align:left;">
-1.5-27
+1.6-7
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -279,10 +306,10 @@ CRAN (R 4.1.1)
 sampling
 </td>
 <td style="text-align:left;">
-2.9
+2.10
 </td>
 <td style="text-align:left;">
-CRAN (R 4.0.5)
+CRAN (R 4.3.2)
 </td>
 </tr>
 <tr>
@@ -290,10 +317,10 @@ CRAN (R 4.0.5)
 sf
 </td>
 <td style="text-align:left;">
-1.0-3
+1.0-13
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -301,10 +328,10 @@ CRAN (R 4.1.1)
 spcosa
 </td>
 <td style="text-align:left;">
-0.4-0
+0.4-2
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.2)
+CRAN (R 4.3.3)
 </td>
 </tr>
 <tr>
@@ -312,10 +339,10 @@ CRAN (R 4.1.2)
 stratification
 </td>
 <td style="text-align:left;">
-2.2-6
+2.2-7
 </td>
 <td style="text-align:left;">
-CRAN (R 4.0.3)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -323,10 +350,10 @@ CRAN (R 4.0.3)
 stringr
 </td>
 <td style="text-align:left;">
-1.4.0
+1.5.0
 </td>
 <td style="text-align:left;">
-CRAN (R 4.0.2)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -334,10 +361,10 @@ CRAN (R 4.0.2)
 tibble
 </td>
 <td style="text-align:left;">
-3.1.5
+3.2.1
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -345,10 +372,10 @@ CRAN (R 4.1.1)
 tidyr
 </td>
 <td style="text-align:left;">
-1.1.4
+1.3.0
 </td>
 <td style="text-align:left;">
-CRAN (R 4.1.1)
+CRAN (R 4.3.1)
 </td>
 </tr>
 <tr>
@@ -356,10 +383,10 @@ CRAN (R 4.1.1)
 tmap
 </td>
 <td style="text-align:left;">
-3.3-2
+3.3-3
 </td>
 <td style="text-align:left;">
-CRAN (R 4.0.5)
+CRAN (R 4.3.1)
 </td>
 </tr>
 </tbody>
@@ -398,7 +425,7 @@ CRAN (R 4.0.5)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2023-01-12.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-01-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -411,7 +438,7 @@ CRAN (R 4.0.5)
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -7,18 +7,45 @@
 <title>Chapter 6 Echantillonnage aléatoire systématique | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France">
 <meta name="description" content="6.1 Définitions En matière d’échantillonnage dans l’espace, le type d’échantillonnage appelé communément SY signifie un échantillonnage selon une grille régulière Plusieurs points doivent...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Echantillonnage aléatoire systématique | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
 <meta property="og:type" content="book">
 <meta property="og:description" content="6.1 Définitions En matière d’échantillonnage dans l’espace, le type d’échantillonnage appelé communément SY signifie un échantillonnage selon une grille régulière Plusieurs points doivent...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Echantillonnage aléatoire systématique | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
 <meta name="twitter:description" content="6.1 Définitions En matière d’échantillonnage dans l’espace, le type d’échantillonnage appelé communément SY signifie un échantillonnage selon une grille régulière Plusieurs points doivent...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.18/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -84,20 +111,20 @@
 <span class="header-section-number">6.2</span> Exemple de grille<a class="anchor" aria-label="anchor" href="#exemple-de-grille"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/spsample.html">spsample</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">champSP</span> , 
-                    cellsize <span class="op">=</span> <span class="fl">20</span> ,
-                    type <span class="op">=</span> <span class="st">"regular"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># ne marche pas sinon</span>
-<span class="va">MonEch2</span> <span class="op">&lt;-</span> <span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/spsample.html">spsample</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">champSP</span> , 
-                    cellsize <span class="op">=</span> <span class="fl">20</span> ,
-                    type <span class="op">=</span> <span class="st">"regular"</span><span class="op">)</span>
-
-<span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP</span><span class="op">)</span> <span class="op">+</span> <span class="fu">tm_raster</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tm_shape</span><span class="op">(</span>shp <span class="op">=</span> <span class="va">MonEch</span><span class="op">)</span> <span class="op">+</span> <span class="fu">tm_symbols</span><span class="op">(</span>col<span class="op">=</span><span class="st">'black'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tm_shape</span><span class="op">(</span>shp <span class="op">=</span> <span class="va">MonEch2</span><span class="op">)</span> <span class="op">+</span> <span class="fu">tm_symbols</span><span class="op">(</span>col<span class="op">=</span><span class="st">'green'</span><span class="op">)</span><span class="op">+</span>
-
-<span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://edzer.github.io/sp/reference/spsample.html">spsample</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">champSP</span> , </span>
+<span>                    cellsize <span class="op">=</span> <span class="fl">20</span> ,</span>
+<span>                    type <span class="op">=</span> <span class="st">"regular"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># ne marche pas sinon</span></span>
+<span><span class="va">MonEch2</span> <span class="op">&lt;-</span> <span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://edzer.github.io/sp/reference/spsample.html">spsample</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">champSP</span> , </span>
+<span>                    cellsize <span class="op">=</span> <span class="fl">20</span> ,</span>
+<span>                    type <span class="op">=</span> <span class="st">"regular"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP</span><span class="op">)</span> <span class="op">+</span> <span class="fu">tm_raster</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_shape</span><span class="op">(</span>shp <span class="op">=</span> <span class="va">MonEch</span><span class="op">)</span> <span class="op">+</span> <span class="fu">tm_symbols</span><span class="op">(</span>col<span class="op">=</span><span class="st">'black'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_shape</span><span class="op">(</span>shp <span class="op">=</span> <span class="va">MonEch2</span><span class="op">)</span> <span class="op">+</span> <span class="fu">tm_symbols</span><span class="op">(</span>col<span class="op">=</span><span class="st">'green'</span><span class="op">)</span><span class="op">+</span></span>
+<span></span>
+<span><span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:SYfig"></span>
 <img src="cours-echantillonnage_files/figure-html/SYfig-1.png" alt="Exemple de  grilles systématiques placées au hasard" width="110%"><p class="caption">
@@ -117,37 +144,37 @@ Figure 6.1: Exemple de grilles systématiques placées au hasard
 </h2>
 <p>Voici un exemple de mise en oeuvre des calculs proposés au paragraphe précédent.</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">terrainSY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html">over</a></span><span class="op">(</span><span class="va">MonEch2</span>, <span class="va">champSP</span><span class="op">)</span>
-
-<span class="co">#change class of object with sample data to SpatialPixelsDataFrame</span>
-<span class="fu">gridded</span><span class="op">(</span><span class="va">MonEch2</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
-
-<span class="co">#compute number of strata from length of data file NB number of sampling units can be odd</span>
-<span class="va">numberofStrata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">MonEch2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="co">#cluster the sampling units</span>
-<span class="va">myStrata</span> <span class="op">&lt;-</span>
-  <span class="fu">stratify</span><span class="op">(</span><span class="va">MonEch2</span>,
-           nStrata <span class="op">=</span> <span class="va">numberofStrata</span>,
-           equalArea <span class="op">=</span> <span class="cn">TRUE</span>,
-           nTry <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
-
-<span class="va">myStrata.df</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">myStrata</span>, <span class="st">"data.frame"</span><span class="op">)</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">terrainSY</span>, <span class="va">myStrata.df</span><span class="op">)</span>
-
-<span class="va">varh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">sim1</span>,
-               INDEX <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">stratumId</span>,
-               FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span>
-
-<span class="va">nh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">sim1</span>,
-             INDEX <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">stratumId</span>,
-             FUN <span class="op">=</span> <span class="va">length</span><span class="op">)</span>
-
-<span class="va">varmeanh</span><span class="op">&lt;-</span><span class="va">varh</span><span class="op">/</span><span class="va">nh</span>
-<span class="va">wh</span><span class="op">&lt;-</span><span class="va">nh</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">nh</span><span class="op">)</span>
-<span class="va">semeanSTSI</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">wh</span><span class="op">^</span><span class="fl">2</span><span class="op">*</span><span class="va">varmeanh</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">semeanSI</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">terrainSY</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">MonEch2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">terrainSY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://edzer.github.io/sp/reference/over.html">over</a></span><span class="op">(</span><span class="va">MonEch2</span>, <span class="va">champSP</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#change class of object with sample data to SpatialPixelsDataFrame</span></span>
+<span><span class="fu"><a href="https://edzer.github.io/sp/reference/gridded-methods.html">gridded</a></span><span class="op">(</span><span class="va">MonEch2</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
+<span></span>
+<span><span class="co">#compute number of strata from length of data file NB number of sampling units can be odd</span></span>
+<span><span class="va">numberofStrata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">MonEch2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#cluster the sampling units</span></span>
+<span><span class="va">myStrata</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">stratify</span><span class="op">(</span><span class="va">MonEch2</span>,</span>
+<span>           nStrata <span class="op">=</span> <span class="va">numberofStrata</span>,</span>
+<span>           equalArea <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>           nTry <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">myStrata.df</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">myStrata</span>, <span class="st">"data.frame"</span><span class="op">)</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">terrainSY</span>, <span class="va">myStrata.df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">varh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">sim1</span>,</span>
+<span>               INDEX <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">stratumId</span>,</span>
+<span>               FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">sim1</span>,</span>
+<span>             INDEX <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">stratumId</span>,</span>
+<span>             FUN <span class="op">=</span> <span class="va">length</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">varmeanh</span><span class="op">&lt;-</span><span class="va">varh</span><span class="op">/</span><span class="va">nh</span></span>
+<span><span class="va">wh</span><span class="op">&lt;-</span><span class="va">nh</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">nh</span><span class="op">)</span></span>
+<span><span class="va">semeanSTSI</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">wh</span><span class="op">^</span><span class="fl">2</span><span class="op">*</span><span class="va">varmeanh</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">semeanSI</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">terrainSY</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">MonEch2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Ainsi, l’estimation de la variance d’échantillonnage dite naïve est <span class="math inline">\(0.1801523\)</span>. Cette valeur est supérieure à la valeur fournie par l’estimation avec le deuxième formule: <span class="math inline">\(0.1292304\)</span></p>
 
 </div>
@@ -179,7 +206,7 @@ Figure 6.1: Exemple de grilles systématiques placées au hasard
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2023-01-12.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-01-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -192,7 +219,7 @@ Figure 6.1: Exemple de grilles systématiques placées au hasard
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
