@@ -14,7 +14,7 @@ Caractéristiques
 
 * Lorsque les paramètres de la population (moyenne ou total, percentiles) à étudier ou pour plusieurs sous-régions n'est pas suffisant
 
-* La résolution spatiale requise pour la cartographie est bien plus importante que pour les statstisque globale
+* La résolution spatiale requise pour la cartographie est bien plus importante que pour les statistique globale
 
 * Quelles Méthodes de cartographie :
 
@@ -26,14 +26,14 @@ Caractéristiques
 Différents types de plans
 ----------------------------
 
-* Echantillonnage pour la cartographie par interpolation spatiale 
+* Échantillonnage pour la cartographie par interpolation spatiale 
 
   - Plans d'échantillonnage géométriques
   - Grilles régulières
   - Échantillonnage de la couverture spatiale
   - Plans d'échantillonnage basés sur des modèles
  
-* Echantillonnage pour la cartographie avec des modèles de régression ou par arbres de regression
+* Échantillonnage pour la cartographie avec des modèles de régression ou par arbres de régression
 
   - stratification de l'espace des covariables
   - Échantillonnage par hypercube latin
@@ -52,7 +52,7 @@ Facile à mettre en œuvre
 Pour choisir la résolution
 
  - Le maximum de budget mobilisable
- - Un seuil pour l'erreur d'interpollation mais dans ce cas, il est nécessaire de poser des hypothèses sur un modèle de variabilité spatiale
+ - Un seuil pour l'erreur d’interpolation mais dans ce cas, il est nécessaire de poser des hypothèses sur un modèle de variabilité spatiale
  
  
 Avec un échantillonnage par grille régulière, la répartition des observations est fixe (carré, triangulaire)
@@ -100,16 +100,17 @@ tm_shape(MagrilleHex) +
 Echantillonnage spatial optimisé
 --------------------------------
 ### Définition
+
 Dans cette approche, les $n$ observations sont réparties de manière optimale au sein de la zone d'étude. Pour cela, on utilise un critère qui minimise la distance entre les observations et les points de la grille régulière de prédiction.
 La moyenne du carré de la plus courte distance au point j:
 
 $MCPCD_j = 1/N \sum^N_{i=1}min_j(D_{ij}^2)$
 
-Le critère $MCPCD_j$ peut être minmisé en utilisant l'algorithme des K-moyenne 
+Le critère $MCPCD_j$ peut être minimisé en utilisant l'algorithme des K-moyenne 
 
 Il existe un package R `spcosa` de @walvoort_r_2010.
 
-Dans cette appraoche, il n'est pas nécessaire de définir un variogramme a priori  pour l'optimisation de la répartition des $n$  observations. Les strates ainsi définies sont appelées **Strates compactes**
+Dans cette approche, il n'est pas nécessaire de définir un variogramme a priori  pour l'optimisation de la répartition des $n$  observations. Les strates ainsi définies sont appelées **Strates compactes**
 
 ### Mise en oeuvre avec `spcosa`
 
@@ -247,11 +248,11 @@ Dans cette partie, l'échantillons doit permettre de calibrer un modèle de regr
 
 * cLHS
 * Surface response design
-* 
+* kmeans
 
 ### Données
 
-Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données consitué de grille décrivant un ensemble de caractéristiques d'une parcelle en Australie.
+Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données constitué de grille décrivant un ensemble de caractéristiques d'une parcelle en Australie.
 
 ```{r}
 #Read data with coordinates and other attributes of fine grid (discretization of study area)
@@ -267,30 +268,42 @@ tm_shape(grdHunterValley2) +
 ### Mise en oeuvre avec l'algorithme K-moyennes
 
 ```{r}
-#Set number of sampling locations to be selected
+#Choisir le nombre de sites d'échantillonnage
 n<-20
 
-#Compute clusters
+#Calcul des clusters
 set.seed(314)
-myClusters <- kmeans(scale(grdHunterValley[,c(3,4,6,7)]), centers=n, iter.max=100,nstart=10)
+myClusters <- kmeans(scale(grdHunterValley[,c(3,4,6,7)]), 
+                     centers=n, 
+                     iter.max=100,
+                     nstart=10
+                     )
+
 grdHunterValley$clusters <- myClusters$cluster
 
-#Select locations closest to the centers of the clusters
-rdist.out <- rdist(x1=myClusters$centers,x2=scale(grdHunterValley[,c(3,4,5,6,7)]))
+#Sélectionner les emplacements les plus proches des centres des clusters
+rdist.out <- rdist(x1=myClusters$centers,
+                   x2=scale(grdHunterValley[,c(3,4,5,6,7)])
+                   )
 ids.mindist <- apply(rdist.out,MARGIN=1,which.min)
 mySample <- grdHunterValley[ids.mindist,]
 ```
 
 
-Dans cette 
-
 Il est possible de représenter les unités d'échantillonnage dans l'espace géographique:
 
 ```{r KMsample, fig.cap='Plan optimisé par K-moyenne sur les covariables, représentation dans l\'espace géographique', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
 ggplot(grdHunterValley) +
-  geom_tile(mapping = aes(x = Easting, y = Northing, fill = factor(clusters))) +
+  geom_tile(mapping = aes(x = Easting, 
+                          y = Northing, 
+                          fill = factor(clusters))
+            ) +
+  
   scale_fill_discrete(name = "cluster") +
-  geom_point(data=mySample,mapping=aes(x=Easting,y=Northing),size=2) +
+  
+  geom_point(data=mySample,
+             mapping=aes(x=Easting,y=Northing),
+             size=2) +
   scale_x_continuous(name = "") +
   scale_y_continuous(name = "") +
   coord_fixed() +
@@ -298,10 +311,19 @@ ggplot(grdHunterValley) +
 ```
 
 Mais également dans l'espace des covariables. Ici, on retient l'altitude et le CTI.
+
 ```{r KMSample2, fig.cap='Plan optimisé par K-moyenne sur les covariables, représentation dans l\'espace des covariables', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
 ggplot(grdHunterValley) +
-  geom_point(mapping=aes(y=elevation_m,x=cti,colour=factor(clusters)), size = .51) +
-  geom_point(data=mySample,mapping=aes(y=elevation_m,x=cti),size=1.5) +
+  geom_point(mapping=aes(y=elevation_m,
+                         x=cti,
+                         colour=factor(clusters)), 
+             size = .51
+             ) +
+  
+  
+  geom_point(data=mySample,
+             mapping=aes(y=elevation_m,x=cti),
+             size=1.5) +
   scale_y_continuous(name = "Elevation") +
   scale_x_continuous(name = "ndvi") +
   theme(legend.position="none")
@@ -309,10 +331,17 @@ ggplot(grdHunterValley) +
 
 ```{r KMSample3, fig.cap='Plan optimisé par K-moyenne sur les covariables, représentation dans l\'espace des covariables', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
 ggplot(grdHunterValley) +
-  geom_point(mapping=aes(y=elevation_m,x=slope_deg,colour=factor(clusters)), size = .51) +
-  geom_point(data=mySample,mapping=aes(y=elevation_m,x=cti),size=1.5) +
+  geom_point(mapping=aes(y=elevation_m,
+                         x=slope_deg,
+                         colour=factor(clusters)),
+             size = .51) +
+  
+  geom_point(data=mySample,
+             mapping=aes(y=elevation_m,x=cti),
+             size=1.5) +
+  
   scale_y_continuous(name = "Elevation") +
-  scale_x_continuous(name = "Slope") +
+    scale_x_continuous(name = "Slope") +
   theme(legend.position="none")
 ```
 

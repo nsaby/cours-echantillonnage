@@ -93,7 +93,7 @@
 </h2>
 <ul>
 <li><p>Lorsque les paramètres de la population (moyenne ou total, percentiles) à étudier ou pour plusieurs sous-régions n’est pas suffisant</p></li>
-<li><p>La résolution spatiale requise pour la cartographie est bien plus importante que pour les statstisque globale</p></li>
+<li><p>La résolution spatiale requise pour la cartographie est bien plus importante que pour les statistique globale</p></li>
 <li>
 <p>Quelles Méthodes de cartographie :</p>
 <ul>
@@ -110,7 +110,7 @@
 </h2>
 <ul>
 <li>
-<p>Echantillonnage pour la cartographie par interpolation spatiale</p>
+<p>Échantillonnage pour la cartographie par interpolation spatiale</p>
 <ul>
 <li>Plans d’échantillonnage géométriques</li>
 <li>Grilles régulières</li>
@@ -119,7 +119,7 @@
 </ul>
 </li>
 <li>
-<p>Echantillonnage pour la cartographie avec des modèles de régression ou par arbres de regression</p>
+<p>Échantillonnage pour la cartographie avec des modèles de régression ou par arbres de régression</p>
 <ul>
 <li>stratification de l’espace des covariables</li>
 <li>Échantillonnage par hypercube latin</li>
@@ -144,7 +144,7 @@
 <p>Pour choisir la résolution</p>
 <ul>
 <li>Le maximum de budget mobilisable</li>
-<li>Un seuil pour l’erreur d’interpollation mais dans ce cas, il est nécessaire de poser des hypothèses sur un modèle de variabilité spatiale</li>
+<li>Un seuil pour l’erreur d’interpolation mais dans ce cas, il est nécessaire de poser des hypothèses sur un modèle de variabilité spatiale</li>
 </ul>
 <p>Avec un échantillonnage par grille régulière, la répartition des observations est fixe (carré, triangulaire)</p>
 <ul>
@@ -204,9 +204,9 @@ Figure 7.2: Echantillonnage optimisé pour le krigeage
 <p>Dans cette approche, les <span class="math inline">\(n\)</span> observations sont réparties de manière optimale au sein de la zone d’étude. Pour cela, on utilise un critère qui minimise la distance entre les observations et les points de la grille régulière de prédiction.
 La moyenne du carré de la plus courte distance au point j:</p>
 <p><span class="math inline">\(MCPCD_j = 1/N \sum^N_{i=1}min_j(D_{ij}^2)\)</span></p>
-<p>Le critère <span class="math inline">\(MCPCD_j\)</span> peut être minmisé en utilisant l’algorithme des K-moyenne</p>
+<p>Le critère <span class="math inline">\(MCPCD_j\)</span> peut être minimisé en utilisant l’algorithme des K-moyenne</p>
 <p>Il existe un package R <code>spcosa</code> de <span class="citation">Walvoort, Brus, and Gruijter (<a href="references.html#ref-walvoort_r_2010">2010</a>)</span>.</p>
-<p>Dans cette appraoche, il n’est pas nécessaire de définir un variogramme a priori pour l’optimisation de la répartition des <span class="math inline">\(n\)</span> observations. Les strates ainsi définies sont appelées <strong>Strates compactes</strong></p>
+<p>Dans cette approche, il n’est pas nécessaire de définir un variogramme a priori pour l’optimisation de la répartition des <span class="math inline">\(n\)</span> observations. Les strates ainsi définies sont appelées <strong>Strates compactes</strong></p>
 </div>
 <div id="mise-en-oeuvre-avec-spcosa" class="section level3" number="7.4.2">
 <h3>
@@ -330,14 +330,14 @@ Figure 7.3: Plan optimisé pour la géostatistique
 <ul>
 <li>cLHS</li>
 <li>Surface response design</li>
-<li>
+<li>kmeans</li>
 </ul>
 </div>
 <div id="données" class="section level3" number="7.6.2">
 <h3>
 <span class="header-section-number">7.6.2</span> Données<a class="anchor" aria-label="anchor" href="#donn%C3%A9es"><i class="fas fa-link"></i></a>
 </h3>
-<p>Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données consitué de grille décrivant un ensemble de caractéristiques d’une parcelle en Australie.</p>
+<p>Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données constitué de grille décrivant un ensemble de caractéristiques d’une parcelle en Australie.</p>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Read data with coordinates and other attributes of fine grid (discretization of study area)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span>file<span class="op">=</span><span class="st">"Data/HunterValley4Practicals.RData"</span><span class="op">)</span></span>
@@ -354,25 +354,38 @@ Figure 7.3: Plan optimisé pour la géostatistique
 <span class="header-section-number">7.6.3</span> Mise en oeuvre avec l’algorithme K-moyennes<a class="anchor" aria-label="anchor" href="#mise-en-oeuvre-avec-lalgorithme-k-moyennes"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#Set number of sampling locations to be selected</span></span>
+<code class="sourceCode R"><span><span class="co">#Choisir le nombre de sites d'échantillonnage</span></span>
 <span><span class="va">n</span><span class="op">&lt;-</span><span class="fl">20</span></span>
 <span></span>
-<span><span class="co">#Compute clusters</span></span>
+<span><span class="co">#Calcul des clusters</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">314</span><span class="op">)</span></span>
-<span><span class="va">myClusters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, centers<span class="op">=</span><span class="va">n</span>, iter.max<span class="op">=</span><span class="fl">100</span>,nstart<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">myClusters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, </span>
+<span>                     centers<span class="op">=</span><span class="va">n</span>, </span>
+<span>                     iter.max<span class="op">=</span><span class="fl">100</span>,</span>
+<span>                     nstart<span class="op">=</span><span class="fl">10</span></span>
+<span>                     <span class="op">)</span></span>
+<span></span>
 <span><span class="va">grdHunterValley</span><span class="op">$</span><span class="va">clusters</span> <span class="op">&lt;-</span> <span class="va">myClusters</span><span class="op">$</span><span class="va">cluster</span></span>
 <span></span>
-<span><span class="co">#Select locations closest to the centers of the clusters</span></span>
-<span><span class="va">rdist.out</span> <span class="op">&lt;-</span> <span class="fu">rdist</span><span class="op">(</span>x1<span class="op">=</span><span class="va">myClusters</span><span class="op">$</span><span class="va">centers</span>,x2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#Sélectionner les emplacements les plus proches des centres des clusters</span></span>
+<span><span class="va">rdist.out</span> <span class="op">&lt;-</span> <span class="fu">rdist</span><span class="op">(</span>x1<span class="op">=</span><span class="va">myClusters</span><span class="op">$</span><span class="va">centers</span>,</span>
+<span>                   x2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span>                   <span class="op">)</span></span>
 <span><span class="va">ids.mindist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">rdist.out</span>,MARGIN<span class="op">=</span><span class="fl">1</span>,<span class="va">which.min</span><span class="op">)</span></span>
 <span><span class="va">mySample</span> <span class="op">&lt;-</span> <span class="va">grdHunterValley</span><span class="op">[</span><span class="va">ids.mindist</span>,<span class="op">]</span></span></code></pre></div>
-<p>Dans cette</p>
 <p>Il est possible de représenter les unités d’échantillonnage dans l’espace géographique:</p>
 <div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_tile</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easting</span>, y <span class="op">=</span> <span class="va">Northing</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_tile</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easting</span>, </span>
+<span>                          y <span class="op">=</span> <span class="va">Northing</span>, </span>
+<span>                          fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span></span>
+<span>            <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
 <span>  <span class="fu">scale_fill_discrete</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"cluster"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">Easting</span>,y<span class="op">=</span><span class="va">Northing</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,</span>
+<span>             mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">Easting</span>,y<span class="op">=</span><span class="va">Northing</span><span class="op">)</span>,</span>
+<span>             size<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">coord_fixed</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -386,8 +399,16 @@ Figure 7.4: Plan optimisé par K-moyenne sur les covariables, représentation da
 <p>Mais également dans l’espace des covariables. Ici, on retient l’altitude et le CTI.</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span>,colour<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">.51</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,</span>
+<span>                         x<span class="op">=</span><span class="va">cti</span>,</span>
+<span>                         colour<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>             size <span class="op">=</span> <span class="fl">.51</span></span>
+<span>             <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,</span>
+<span>             mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span><span class="op">)</span>,</span>
+<span>             size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Elevation"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"ndvi"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
@@ -399,10 +420,17 @@ Figure 7.5: Plan optimisé par K-moyenne sur les covariables, représentation da
 </div>
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">grdHunterValley</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">slope_deg</span>,colour<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">.51</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,</span>
+<span>                         x<span class="op">=</span><span class="va">slope_deg</span>,</span>
+<span>                         colour<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clusters</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>             size <span class="op">=</span> <span class="fl">.51</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>data<span class="op">=</span><span class="va">mySample</span>,</span>
+<span>             mapping<span class="op">=</span><span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">elevation_m</span>,x<span class="op">=</span><span class="va">cti</span><span class="op">)</span>,</span>
+<span>             size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
 <span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Elevation"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Slope"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Slope"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:KMSample3"></span>
@@ -460,7 +488,7 @@ Figure 7.6: Plan optimisé par K-moyenne sur les covariables, représentation da
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-01-06.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-01-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
