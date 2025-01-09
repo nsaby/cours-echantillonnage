@@ -180,13 +180,11 @@ Figure 3.2: Histogramme de la population
 </h3>
 <p>le contour d’une parcelle est fourni par le package <code>spcosa</code>. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d’échantillonnage proposés.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">shpFarmsum</span> <span class="op">&lt;-</span> <span class="fu">readOGR</span><span class="op">(</span>dsn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"maps"</span>, package <span class="op">=</span> <span class="st">"spcosa"</span><span class="op">)</span>, layer <span class="op">=</span> <span class="st">"farmsum"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## OGR data source with driver: ESRI Shapefile 
-## Source: "C:\Users\nsaby\AppData\Local\R\win-library\4.3\spcosa\maps", layer: "farmsum"
-## with 1 features
-## It has 4 fields</code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">shpFarmsum</span><span class="op">)</span> <span class="op">+</span> </span>
+<code class="sourceCode R"><span><span class="va">shpFarmsum</span> <span class="op">&lt;-</span> <span class="fu">read_sf</span><span class="op">(</span>dsn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"maps"</span>, package <span class="op">=</span> <span class="st">"spcosa"</span><span class="op">)</span>, layer <span class="op">=</span> <span class="st">"farmsum"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">shpFarmsum</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">shpFarmsum</span>, <span class="st">"Spatial"</span><span class="op">)</span> <span class="co"># conversion sp</span></span>
+<span></span>
+<span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">shpFarmsum</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">tm_borders</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-7"></span>
@@ -207,7 +205,7 @@ Figure 3.3: Contour d’une parcelle agricole
 <li>indice de topographie</li>
 <li>l’indice de végétation normalisé</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Read data with coordinates and other attributes of fine grid (discretization of study area)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span>file<span class="op">=</span><span class="st">"Data/HunterValley4Practicals.RData"</span><span class="op">)</span></span>
 <span><span class="va">grdHunterValley2</span> <span class="op">&lt;-</span> <span class="va">grdHunterValley</span></span>

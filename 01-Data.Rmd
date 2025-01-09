@@ -83,7 +83,9 @@ Pour illuster les différents plans possible pour la cartographie, nous prenons 
 le contour d'une parcelle  est fourni par le package `spcosa`. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d'échantillonnage proposés.
 
 ```{r, warning=FALSE, fig.cap='Contour d\'une parcelle agricole', out.width='80%', fig.asp=.75, fig.align='center'}
-shpFarmsum <- readOGR(dsn = system.file("maps", package = "spcosa"), layer = "farmsum")
+shpFarmsum <- read_sf(dsn = system.file("maps", package = "spcosa"), layer = "farmsum")
+
+shpFarmsum <- as(shpFarmsum, "Spatial") # conversion sp
 
 tm_shape(shpFarmsum) + 
   tm_borders()
