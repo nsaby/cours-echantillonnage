@@ -77,20 +77,31 @@ Les motivations pour ce cours sont les suivantes:
 - Les problèmes d'inférence statistique peuvent souvent être évités lorsque la réflexion commence avant que les données ne soient collectées
 
 
+Choisir la méthode d’échantillonnage
+-----------
+
+L’échantillon peut être constitué sur une base statistique ou non statistique, en fonction des objectifs de l’audit :
+
+- dans le cas d’un échantillon statistique, l'ingénieur souhaite obtenir une base raisonnable
+à partir de laquelle pourront être tirées des conclusions probantes concernant la population dans son ensemble (inférences statistiques). Il aura recours à ce type d'échantillonnage lorsqu'il entend faire un énoncé quantitatif au sujet d'une population plus grande en se fondant sur les résultats d'un échantillon.
+
+- dans le cas d’un échantillon non statistique, l’ingénieur sélectionne l’échantillon en fonction d’une caractéristique donnée et n'a pas l'intention de tirer des conclusions au sujet d'autres cas que ceux qui sont dans l'échantillon. 
+
+
 Définition
 -----------
 
-Le plan d'échantillonnage d'une enquête par sondage se réfère
+Le plan d'échantillonnage statistique d'une enquête par sondage se réfère
 
 - aux techniques utilisées pour sélectionner un échantillon probabiliste et
 - aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l'échantillon sélectionné.
 
-On définit également l'unité d'échantillonnage qui correspond à la position dans l'espace où des observations de sols vont être effectuées. Au niceau de la position dans l'espace, il est possible d'effectuer différents prélèvements comme par exemple un sondage, une fosse ou un échantillon composite.
+On définit également l'unité d'échantillonnage qui correspond à la position dans l'espace où des observations de sols vont être effectuées. Au niveau de la position dans l'espace, il est possible d'effectuer différents prélèvements comme par exemple un sondage, une fosse ou un échantillon composite.
 
 Contenu
 ---------
 
-- Proposer un aperçu des différents plans d'échantillonnage pour l'étude des milieux naturles et notamment le sol.
+- Proposer un aperçu des différents plans d'échantillonnage pour l'étude des milieux naturels et notamment le sol.
 
 - Connaissance des types de conception de base pour l'échantillonnage probabiliste : avantages et inconvénients...
 
@@ -105,9 +116,6 @@ les paramètres statistiques peuvent être estimés...
 
 
 Cela ne concerne pas  la manière dont un plan d'échantillonnage peut être évalué ex ante avant la collecte des données
-
-
-The examples in this book were created with the following R package versions:
 
 
 

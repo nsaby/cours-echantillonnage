@@ -18,6 +18,7 @@ head(champ)
 
 ```
 
+
 Il est donc facile de transformer le tableau en une grille de type `SpatialPixelsDataframe`. Pour cela, on passe par une structure de type `SpatialPointDataframe` dans un premier temps.
 
 

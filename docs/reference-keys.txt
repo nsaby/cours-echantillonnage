@@ -17,6 +17,7 @@ fig:KMSample3
 avant-propos
 WHY
 motivations
+choisir-la-méthode-déchantillonnage
 définition
 contenu
 objectifs-dune-étude-de-sol

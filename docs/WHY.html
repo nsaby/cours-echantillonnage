@@ -103,23 +103,34 @@
 <li>Les problèmes d’inférence statistique peuvent souvent être évités lorsque la réflexion commence avant que les données ne soient collectées</li>
 </ul>
 </div>
-<div id="définition" class="section level2" number="2.2">
+<div id="choisir-la-méthode-déchantillonnage" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">2.2</span> Définition<a class="anchor" aria-label="anchor" href="#d%C3%A9finition"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Choisir la méthode d’échantillonnage<a class="anchor" aria-label="anchor" href="#choisir-la-m%C3%A9thode-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
 </h2>
-<p>Le plan d’échantillonnage d’une enquête par sondage se réfère</p>
+<p>L’échantillon peut être constitué sur une base statistique ou non statistique, en fonction des objectifs de l’audit :</p>
+<ul>
+<li><p>dans le cas d’un échantillon statistique, l’ingénieur souhaite obtenir une base raisonnable
+à partir de laquelle pourront être tirées des conclusions probantes concernant la population dans son ensemble (inférences statistiques). Il aura recours à ce type d’échantillonnage lorsqu’il entend faire un énoncé quantitatif au sujet d’une population plus grande en se fondant sur les résultats d’un échantillon.</p></li>
+<li><p>dans le cas d’un échantillon non statistique, l’ingénieur sélectionne l’échantillon en fonction d’une caractéristique donnée et n’a pas l’intention de tirer des conclusions au sujet d’autres cas que ceux qui sont dans l’échantillon.</p></li>
+</ul>
+</div>
+<div id="définition" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Définition<a class="anchor" aria-label="anchor" href="#d%C3%A9finition"><i class="fas fa-link"></i></a>
+</h2>
+<p>Le plan d’échantillonnage statistique d’une enquête par sondage se réfère</p>
 <ul>
 <li>aux techniques utilisées pour sélectionner un échantillon probabiliste et</li>
 <li>aux méthodes utilisées pour obtenir des estimations des variables étudiées à partir de l’échantillon sélectionné.</li>
 </ul>
-<p>On définit également l’unité d’échantillonnage qui correspond à la position dans l’espace où des observations de sols vont être effectuées. Au niceau de la position dans l’espace, il est possible d’effectuer différents prélèvements comme par exemple un sondage, une fosse ou un échantillon composite.</p>
+<p>On définit également l’unité d’échantillonnage qui correspond à la position dans l’espace où des observations de sols vont être effectuées. Au niveau de la position dans l’espace, il est possible d’effectuer différents prélèvements comme par exemple un sondage, une fosse ou un échantillon composite.</p>
 </div>
-<div id="contenu" class="section level2" number="2.3">
+<div id="contenu" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">2.3</span> Contenu<a class="anchor" aria-label="anchor" href="#contenu"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Contenu<a class="anchor" aria-label="anchor" href="#contenu"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li><p>Proposer un aperçu des différents plans d’échantillonnage pour l’étude des milieux naturles et notamment le sol.</p></li>
+<li><p>Proposer un aperçu des différents plans d’échantillonnage pour l’étude des milieux naturels et notamment le sol.</p></li>
 <li><p>Connaissance des types de conception de base pour l’échantillonnage probabiliste : avantages et inconvénients…</p></li>
 <li><p>et des types de conception d’échantillonnage dans l’espace plus avancés</p></li>
 <li><p>Connaissance de la manière dont les informations annexes peuvent être utilisées dans le plan d’échantillonnage…</p></li>
@@ -128,11 +139,10 @@
 les paramètres statistiques peuvent être estimés…</p></li>
 </ul>
 <p>Cela ne concerne pas la manière dont un plan d’échantillonnage peut être évalué ex ante avant la collecte des données</p>
-<p>The examples in this book were created with the following R package versions:</p>
 </div>
-<div id="objectifs-dune-étude-de-sol" class="section level2" number="2.4">
+<div id="objectifs-dune-étude-de-sol" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.4</span> Objectifs d’une étude de sol<a class="anchor" aria-label="anchor" href="#objectifs-dune-%C3%A9tude-de-sol"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Objectifs d’une étude de sol<a class="anchor" aria-label="anchor" href="#objectifs-dune-%C3%A9tude-de-sol"><i class="fas fa-link"></i></a>
 </h2>
 <p>Une étude sur le sols peut avoir les objectifs :</p>
 <ul>
@@ -143,9 +153,9 @@ les paramètres statistiques peuvent être estimés…</p></li>
 <p>Selon l’objectif, il conviendra de choisir un type d’échantillonnage différent .</p>
 <p>Dans ce cours, nous ne sommes pas intéressés par les changements au fil du temps de la variable d’intérêt. Nous faisons l’hypothèse que cette dernière ne change pas pendant la période d’enquête. Nos</p>
 </div>
-<div id="léchantillonnage-probabiliste-vs-non-probabiliste" class="section level2" number="2.5">
+<div id="léchantillonnage-probabiliste-vs-non-probabiliste" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.5</span> L’échantillonnage probabiliste vs non probabiliste<a class="anchor" aria-label="anchor" href="#l%C3%A9chantillonnage-probabiliste-vs-non-probabiliste"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> L’échantillonnage probabiliste vs non probabiliste<a class="anchor" aria-label="anchor" href="#l%C3%A9chantillonnage-probabiliste-vs-non-probabiliste"><i class="fas fa-link"></i></a>
 </h2>
 <p>Pour estimer les statistiques sommaires comme les totaux ou les moyennes, <strong>l’échantillonnage probabiliste</strong> est le plus approprié</p>
 <p>Par échantillonnage probabiliste, on entend un échantillonnage où la position dans l’espace des unité d’échantillonnage est tiré au hasard par un algorithme et est donc aléatoire. Ces échantillonnage sont tel que :</p>
@@ -157,9 +167,9 @@ les paramètres statistiques peuvent être estimés…</p></li>
 </ul>
 <p>Pour faire une <strong>carte</strong> par des techniques de modélisation comme la géostatistique, un échantillonnage qui répartit bien les observations dans l’espace géographique est plus approprié et tirer les positions au hasard n’est pas nécessaire.</p>
 </div>
-<div id="approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage" class="section level2" number="2.6">
+<div id="approche-basée-sur-un-modèle-ou-basée-sur-un-plan-déchantillonnage" class="section level2" number="2.7">
 <h2>
-<span class="header-section-number">2.6</span> Approche basée sur un modèle ou basée sur un plan d’échantillonnage<a class="anchor" aria-label="anchor" href="#approche-bas%C3%A9e-sur-un-mod%C3%A8le-ou-bas%C3%A9e-sur-un-plan-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> Approche basée sur un modèle ou basée sur un plan d’échantillonnage<a class="anchor" aria-label="anchor" href="#approche-bas%C3%A9e-sur-un-mod%C3%A8le-ou-bas%C3%A9e-sur-un-plan-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
 </h2>
 <p>la production de statistiques sur une zone d’étude implique l’utilisation d’un estimateur à partir d’un ensemble d’observations recueillies selon un protocole d’échantillonnage. Le lien entre l’estimateur et le protocole d’échantillonnage est important.</p>
 <p>D’après le livre <span class="citation">(<a href="references.html#ref-de_gruijter_sampling_2006">Gruijter et al. 2006</a>)</span>, la théorie de l’échantillonnage sépare les techniques de sélection des unités d’échantillonnage en deux grandes approches:</p>
@@ -168,9 +178,9 @@ les paramètres statistiques peuvent être estimés…</p></li>
 <li><p><em>Design based</em> : l’incertitude des estimateurs est calculée à partir des probabilités d’inclusions</p></li>
 </ul>
 </div>
-<div id="population-discrète-et-population-continue" class="section level2" number="2.7">
+<div id="population-discrète-et-population-continue" class="section level2" number="2.8">
 <h2>
-<span class="header-section-number">2.7</span> Population discrète et population continue<a class="anchor" aria-label="anchor" href="#population-discr%C3%A8te-et-population-continue"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.8</span> Population discrète et population continue<a class="anchor" aria-label="anchor" href="#population-discr%C3%A8te-et-population-continue"><i class="fas fa-link"></i></a>
 </h2>
 <p>Nous devons <strong>bien</strong> distinguer deux types de populations :</p>
 <ul>
@@ -190,9 +200,9 @@ les unités d’échantillonnage doivent être définies, par exemple carrés de
 </li>
 </ul>
 </div>
-<div id="plan" class="section level2" number="2.8">
+<div id="plan" class="section level2" number="2.9">
 <h2>
-<span class="header-section-number">2.8</span> Plan<a class="anchor" aria-label="anchor" href="#plan"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.9</span> Plan<a class="anchor" aria-label="anchor" href="#plan"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ce cours présente ainsi d’abord un ensemble de techniques relirées à l’échantillonnage probabiliste.</p>
 <p>IL aborde également des techniques pour l’échantillonnage pour la cartographie.</p>
@@ -203,9 +213,9 @@ les unités d’échantillonnage doivent être définies, par exemple carrés de
 <li>Echanillonnage pour la cartographie</li>
 </ol>
 </div>
-<div id="details-techniques" class="section level2" number="2.9">
+<div id="details-techniques" class="section level2" number="2.10">
 <h2>
-<span class="header-section-number">2.9</span> Details techniques<a class="anchor" aria-label="anchor" href="#details-techniques"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.10</span> Details techniques<a class="anchor" aria-label="anchor" href="#details-techniques"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ces notes ont été produites par <a href="http://www.rstudio.com/ide/">RStudio</a> en utilisant <a href="http://bookdown.org/">bookdown</a>. Le site <a href="https://nsaby.github.io/cours-echantillonnage/">website</a> est en ligne via github <a href="http://netlify.com/">Netlify</a></p>
 <p>La version de ce livre numérique a été produite avec R version 4.3.1 (2023-06-16 ucrt) et les package suivants:</p>
@@ -402,14 +412,15 @@ CRAN (R 4.3.1)
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#WHY"><span class="header-section-number">2</span> Introduction</a></li>
 <li><a class="nav-link" href="#motivations"><span class="header-section-number">2.1</span> Motivations</a></li>
-<li><a class="nav-link" href="#d%C3%A9finition"><span class="header-section-number">2.2</span> Définition</a></li>
-<li><a class="nav-link" href="#contenu"><span class="header-section-number">2.3</span> Contenu</a></li>
-<li><a class="nav-link" href="#objectifs-dune-%C3%A9tude-de-sol"><span class="header-section-number">2.4</span> Objectifs d’une étude de sol</a></li>
-<li><a class="nav-link" href="#l%C3%A9chantillonnage-probabiliste-vs-non-probabiliste"><span class="header-section-number">2.5</span> L’échantillonnage probabiliste vs non probabiliste</a></li>
-<li><a class="nav-link" href="#approche-bas%C3%A9e-sur-un-mod%C3%A8le-ou-bas%C3%A9e-sur-un-plan-d%C3%A9chantillonnage"><span class="header-section-number">2.6</span> Approche basée sur un modèle ou basée sur un plan d’échantillonnage</a></li>
-<li><a class="nav-link" href="#population-discr%C3%A8te-et-population-continue"><span class="header-section-number">2.7</span> Population discrète et population continue</a></li>
-<li><a class="nav-link" href="#plan"><span class="header-section-number">2.8</span> Plan</a></li>
-<li><a class="nav-link" href="#details-techniques"><span class="header-section-number">2.9</span> Details techniques</a></li>
+<li><a class="nav-link" href="#choisir-la-m%C3%A9thode-d%C3%A9chantillonnage"><span class="header-section-number">2.2</span> Choisir la méthode d’échantillonnage</a></li>
+<li><a class="nav-link" href="#d%C3%A9finition"><span class="header-section-number">2.3</span> Définition</a></li>
+<li><a class="nav-link" href="#contenu"><span class="header-section-number">2.4</span> Contenu</a></li>
+<li><a class="nav-link" href="#objectifs-dune-%C3%A9tude-de-sol"><span class="header-section-number">2.5</span> Objectifs d’une étude de sol</a></li>
+<li><a class="nav-link" href="#l%C3%A9chantillonnage-probabiliste-vs-non-probabiliste"><span class="header-section-number">2.6</span> L’échantillonnage probabiliste vs non probabiliste</a></li>
+<li><a class="nav-link" href="#approche-bas%C3%A9e-sur-un-mod%C3%A8le-ou-bas%C3%A9e-sur-un-plan-d%C3%A9chantillonnage"><span class="header-section-number">2.7</span> Approche basée sur un modèle ou basée sur un plan d’échantillonnage</a></li>
+<li><a class="nav-link" href="#population-discr%C3%A8te-et-population-continue"><span class="header-section-number">2.8</span> Population discrète et population continue</a></li>
+<li><a class="nav-link" href="#plan"><span class="header-section-number">2.9</span> Plan</a></li>
+<li><a class="nav-link" href="#details-techniques"><span class="header-section-number">2.10</span> Details techniques</a></li>
 </ul>
 
       <div class="book-extra">
@@ -426,7 +437,7 @@ CRAN (R 4.3.1)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-01-08.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-01-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
