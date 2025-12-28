@@ -7,7 +7,7 @@
 <title>Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</title>
 <meta name="author" content="Nicolas Saby, INRAe Infosol, Orléans France">
 <meta name="description" content="4.1 Définition Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé “échantillonnage aléatoire indépendant (IRS)” Deux sous-types :...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Echantillonnage aléatoire simple | Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols">
 <meta property="og:type" content="book">
 <meta property="og:description" content="4.1 Définition Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé “échantillonnage aléatoire indépendant (IRS)” Deux sous-types :...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="4.1 Définition Les unités sont sélectionnées avec une probabilité égale et indépendamment les unes des autres ; également appelé “échantillonnage aléatoire indépendant (IRS)” Deux sous-types :...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -125,7 +125,7 @@
 <span class="header-section-number">4.2.1.2</span> Avec <code>R</code><a class="anchor" aria-label="anchor" href="#avec-r"><i class="fas fa-link"></i></a>
 </h4>
 <p>Voici comment tirer au hasard des positions dans l’espace à partir de la liste des pixels.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">=</span> <span class="fl">20</span></span>
 <span></span>
 <span><span class="co">#fixer la graine pour les tirages aléatoires</span></span>
@@ -163,7 +163,7 @@
 ## 8220 19.5 82.5
 ## 9119 18.5 91.5</code></pre>
 <p>Il est possible alors d’extraire les valeurs de carbone simulée pour les pixels tirés au hasard</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">terrain1</span> <span class="op">&lt;-</span> <span class="va">champ</span><span class="op">[</span> <span class="va">MesIds</span>, <span class="st">"sim1"</span> <span class="op">]</span></span>
 <span><span class="va">terrain1</span></span></code></pre></div>
 <pre><code>##  [1] 5.088422 5.870447 4.565427 3.839903 4.177815 6.237273 5.100200 5.643163
@@ -183,18 +183,28 @@ et <span class="math inline">\(s_{2,aleat}\)</span></p>
 <li><p>Utilisez une routine de point dans le polygone pour déterminer si (<span class="math inline">\(s_{1,v}\)</span>,<span class="math inline">\(s_{2,aleat}\)</span>) tombe dans la zone</p></li>
 <li><p>Répétez les étapes 2 et 3 jusqu’à ce que n positions soient sélectionnées</p></li>
 </ol>
-<p>Le package <code>sp</code> offre la fonction <code>spsample</code> pour effectuer cette procédure à partir de couches SIG.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span> x <span class="op">=</span> <span class="va">champSP</span> ,</span>
-<span>                    n  <span class="op">=</span> <span class="va">n</span> ,</span>
-<span>                    type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span></span>
+<p>Le package <code>sp</code> offrait la fonction <code>spsample</code> pour effectuer cette procédure à partir de couches SIG.
+Nous utilisons ici la fonction <code>spatSample</code> du package <code>terra</code></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># MonEch &lt;- spsample( x = champSP ,</span></span>
+<span><span class="co">#                     n  = n ,</span></span>
+<span><span class="co">#                     type = "random")</span></span>
 <span></span>
+<span><span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">spatSample</span><span class="op">(</span></span>
+<span>  <span class="va">champSP.terra</span>,</span>
+<span>  size <span class="op">=</span> <span class="va">n</span> ,</span>
+<span>  method <span class="op">=</span> <span class="st">"random"</span>, </span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  as.points <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  xy<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>  values<span class="op">=</span><span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">SI</span> <span class="op">&lt;-</span> <span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">SI</span> <span class="op">&lt;-</span> <span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP.terra</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_raster</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">tm_shape</span><span class="op">(</span><span class="va">MonEch</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">tm_symbols</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span><span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">SI</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -203,18 +213,19 @@ et <span class="math inline">\(s_{2,aleat}\)</span></p>
 Figure 4.1: Exemple d’échantillonnage aléatoire simple, avec 20 points SI(20)
 </p>
 </div>
-<p>Le package <code>sf</code> qui va remplacer progressivement <code>sp</code> contient la fonction <code>st_sample</code>.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">MonEchSF</span> <span class="op">&lt;-</span> <span class="fu">st_sample</span><span class="op">(</span> x <span class="op">=</span> <span class="fu">as</span><span class="op">(</span><span class="va">champSP</span>,<span class="st">'sf'</span><span class="op">)</span> ,</span>
-<span>                    size  <span class="op">=</span> <span class="va">n</span> ,</span>
-<span>                    type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span></span>
+<p>Le package <code>sf</code> qui remplace progressivement <code>sp</code> contient la fonction <code>st_sample</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">MonEchSF</span> <span class="op">&lt;-</span> <span class="fu">st_sample</span><span class="op">(</span> </span>
+<span>  x <span class="op">=</span> <span class="fu">as</span><span class="op">(</span><span class="va">champSP</span>,<span class="st">'sf'</span><span class="op">)</span> ,</span>
+<span>  size  <span class="op">=</span> <span class="va">n</span> ,</span>
+<span>  type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="va">SI</span> <span class="op">&lt;-</span> <span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">SI</span> <span class="op">&lt;-</span> <span class="fu">tm_shape</span><span class="op">(</span><span class="va">champSP.terra</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_raster</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">tm_shape</span><span class="op">(</span><span class="va">MonEchSF</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">tm_symbols</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span><span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">SI</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -248,14 +259,15 @@ Figure 4.2: Exemple d’échantillonnage aléatoire simple, avec 20 points SI(20
 <span class="header-section-number">4.3.2</span> La moyenne pour la population discrète finie<a class="anchor" aria-label="anchor" href="#la-moyenne-pour-la-population-discr%C3%A8te-finie"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avec le plan aléatoire simple, le calcul de la moyenne est très simple</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># simulation du terrain</span></span>
-<span><span class="va">terrain2</span> <span class="op">&lt;-</span> <span class="fu">over</span><span class="op">(</span><span class="va">MonEch</span>,<span class="va">champSP</span><span class="op">)</span></span>
+<span><span class="co"># jointure spatiale dans le format sp...</span></span>
+<span><span class="va">terrain2</span> <span class="op">&lt;-</span> <span class="fu">extract</span><span class="op">(</span><span class="va">champSP.terra</span> , <span class="va">MonEch</span> <span class="op">)</span></span>
 <span></span>
 <span><span class="va">MoyEst</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">terrain2</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">MoyEst</span></span></code></pre></div>
-<pre><code>## [1] 4.935534</code></pre>
+<pre><code>## [1] 5.548377</code></pre>
 <p>A comparer avec la moyenne de la population <span class="math inline">\(5.2986022\)</span></p>
 </div>
 <div id="la-variance-spatiale-et-variance-déchantillonnage" class="section level3" number="4.3.3">
@@ -276,7 +288,7 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <p><span class="math inline">\(\hat{V}(\hat{ \overline{z} } )  =  (1 - \frac{n}N) \frac{\hat{S^2}(z) } {n}\)</span></p>
 <p>avec
 <span class="math inline">\((1 - \frac{n}N)\)</span> correspondant à la correction pour les populations finies</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Variance d'échantillonnage de MoyEst</span></span>
 <span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">terrain2</span><span class="op">$</span><span class="va">sim1</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span></span></code></pre></div>
 </div>
@@ -298,7 +310,7 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <p><span class="math inline">\(\hat{ \overline{z} }\pm t_{1-\alpha/2}^{(n-1)}.\sqrt{V(\hat{t^l}) }\)</span></p>
 <p>où <span class="math display">\[t^{(n-1)}_{1-\alpha/2}\]</span> est le <span class="math inline">\((1-\alpha/2)\)</span> quantile de la loi de Student <span class="math inline">\(t\)</span> avec <span class="math inline">\((n-1)\)</span> degrees of freedom. <span class="math inline">\(n\)</span> is the number of sampling observations to compute the mean, eg <span class="math inline">\(n_h*H\)</span>.</p>
 <p>Voici comment le mettre en oeuvre dans <span class="math inline">\(`R`\)</span></p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># calcul du quantile</span></span>
 <span><span class="va">zalpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1</span><span class="op">-</span> <span class="op">(</span><span class="fl">0.05</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co"># si n est petit &lt; 30</span></span>
@@ -309,19 +321,19 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <span><span class="va">ICT</span> <span class="op">&lt;-</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">IC</span>,<span class="va">ICT</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 0.3990766 0.4261695</code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<pre><code>## [1] 0.3565736 0.3807810</code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># comme n&lt; 30, on garde ICT</span></span>
 <span><span class="co"># Est-ce que la vraie moyenne est dans l'IC student</span></span>
 <span><span class="va">Moy</span> <span class="op">&lt;</span> <span class="va">MoyEst</span> <span class="op">+</span> <span class="va">ICT</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Moy</span> <span class="op">&gt;</span> <span class="va">MoyEst</span> <span class="op">-</span> <span class="va">ICT</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">2</span> <span class="op">*</span><span class="va">ICT</span></span></code></pre></div>
-<pre><code>## [1] 0.8523391</code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<pre><code>## [1] 0.7615621</code></pre>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">resSI</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">MoyEst</span>,</span>
 <span>               <span class="va">ICT</span>,</span>
 <span>               ICbas <span class="op">=</span> <span class="va">MoyEst</span> <span class="op">-</span> <span class="va">ICT</span>,</span>
@@ -329,8 +341,8 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <span>               <span class="va">Moy</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">resSI</span></span></code></pre></div>
-<pre><code>##        MoyEst       ICT    ICbas   ICHaut      Moy
-## [1,] 4.935534 0.4261695 4.509364 5.361703 5.298602</code></pre>
+<pre><code>##        MoyEst      ICT    ICbas   ICHaut      Moy
+## [1,] 5.548377 0.380781 5.167596 5.929158 5.298602</code></pre>
 </div>
 </div>
 <div id="simulations-dun-interval-de-confiance" class="section level2" number="4.4">
@@ -339,25 +351,51 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 </h2>
 <p>Dans cette partie, nous allons tenter d’appréhender l’incertitude de l’estimation de l’indicateur à travers la réalisation de plusieurs échantillonnages simulés de 20 échantillons.</p>
 <p>Pour cela, nous tirons au hasard 20 points 10000 fois et nous effectuons la jointure spatiale avec la couche SIG supposée représenter la réalité terrain.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">n</span> <span class="op">=</span> <span class="fl">20</span></span>
-<span><span class="va">rep</span> <span class="op">=</span> <span class="fl">10000</span></span>
-<span></span>
-<span><span class="va">N</span> <span class="op">=</span> <span class="va">n</span> <span class="op">*</span> <span class="va">rep</span></span>
-<span><span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">spsample</span><span class="op">(</span> <span class="va">champSP</span> , <span class="va">N</span> , type <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># on récupère les valeurs de carbone</span></span>
-<span><span class="va">terrainSimul</span> <span class="op">&lt;-</span> <span class="fu">over</span><span class="op">(</span><span class="va">MonEch</span>,<span class="va">champSP</span><span class="op">)</span></span></code></pre></div>
-<p>On calcule ensuite, par réplication, les estimations de la moyenne, de la variance d’échantillonnage et de l’intervace de confiance de la moyenne.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">rep</span>,<span class="va">n</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">n</span> <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="va">rep</span> <span class="op">=</span> <span class="fl">2000</span></span>
 <span></span>
-<span><span class="va">MesMoys</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">sim1</span>,</span>
-<span>                     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">id</span><span class="op">)</span>,</span>
+<span></span>
+<span><span class="co"># MonEch &lt;- spsample( </span></span>
+<span><span class="co">#   champSP ,</span></span>
+<span><span class="co">#   N ,</span></span>
+<span><span class="co">#   type = "random"</span></span>
+<span><span class="co">#   )</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RevolutionAnalytics/foreach">foreach</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">terrainSimulTOT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/foreach/man/foreach.html">foreach</a></span><span class="op">(</span> i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">rep</span>,</span>
+<span>                            .combine <span class="op">=</span> <span class="va">rbind.data.frame</span> </span>
+<span>                            <span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/foreach/man/foreach.html">%do%</a></span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">MonEch</span> <span class="op">&lt;-</span> <span class="fu">spatSample</span><span class="op">(</span></span>
+<span>  <span class="va">champSP.terra</span>,</span>
+<span>  size <span class="op">=</span> <span class="va">n</span> ,</span>
+<span>  method <span class="op">=</span> <span class="st">"random"</span>, </span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  as.points <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  xy<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>  values<span class="op">=</span><span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># on récupère les valeurs de carbone</span></span>
+<span><span class="va">terrainSimul</span> <span class="op">&lt;-</span> <span class="fu">extract</span><span class="op">(</span><span class="va">champSP.terra</span> , </span>
+<span>                        <span class="va">MonEch</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="va">resu</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span><span class="op">(</span></span>
+<span>  id <span class="op">=</span> <span class="va">i</span> ,</span>
+<span>  sim1 <span class="op">=</span> <span class="va">terrainSimul</span><span class="op">$</span><span class="va">sim1</span> </span>
+<span>  <span class="op">)</span></span>
+<span><span class="va">resu</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>On calcule ensuite, par réplication, les estimations de la moyenne, de la variance d’échantillonnage et de l’interface de confiance de la moyenne.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">MesMoys</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">terrainSimulTOT</span><span class="op">$</span><span class="va">sim1</span>,</span>
+<span>                     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">terrainSimulTOT</span><span class="op">$</span><span class="va">id</span><span class="op">)</span>,</span>
 <span>                     FUN <span class="op">=</span> <span class="va">mean</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">MesVarsEch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">sim1</span>,</span>
-<span>                        by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">terrainSimul</span><span class="op">$</span><span class="va">id</span><span class="op">)</span>,</span>
+<span><span class="va">MesVarsEch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">terrainSimulTOT</span><span class="op">$</span><span class="va">sim1</span>,</span>
+<span>                        by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">terrainSimulTOT</span><span class="op">$</span><span class="va">id</span><span class="op">)</span>,</span>
 <span>                        FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="va">MesVarsEch</span><span class="op">$</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">MesVarsEch</span><span class="op">$</span><span class="va">x</span> <span class="op">/</span> <span class="fl">20</span></span>
@@ -368,7 +406,7 @@ c’est-à-dire une combinaison d’un plan d’échantillonnage et d’un estim
 <span><span class="va">MesStats</span><span class="op">$</span><span class="va">UCI</span> <span class="op">&lt;-</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">Moy</span> <span class="op">+</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">MesStats</span><span class="op">$</span><span class="va">VarEch</span><span class="op">)</span></span>
 <span><span class="va">MesStats</span><span class="op">$</span><span class="va">LCI</span> <span class="op">&lt;-</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">Moy</span> <span class="op">-</span> <span class="va">talpha</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">MesStats</span><span class="op">$</span><span class="va">VarEch</span><span class="op">)</span></span></code></pre></div>
 <p>Pour se rendre compte de l’intervalle de confiance à 95 %, nous représentons sur le graphique suivant pour les 100 premiers tirages, les estimations de la moyenne, et de son intervalle. Nous représentons également la vraie moyenne calculée sur tous les pixels: <span class="math inline">\(5.2986022\)</span></p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">MesStats</span><span class="op">[</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">Group</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>  , <span class="op">]</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">geom_pointrange</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.62</span>, </span>
 <span>                <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Group</span>, ymin <span class="op">=</span> <span class="va">UCI</span>, ymax <span class="op">=</span> <span class="va">LCI</span>, y <span class="op">=</span> <span class="va">Moy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -380,14 +418,14 @@ Figure 4.3: Représentation de l’intervalle de confiance à 95 % et de la vrai
 </p>
 </div>
 <p>Enfin, il est possible de calculer sur l’ensemble des réalisations, le nombre de fois que la vraie moyenne tombe en dehors de l’intervalle de confiance. Ce qui donne :</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">MesStats</span><span class="op">$</span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Moy</span> <span class="op">&gt;</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">LCI</span>,</span>
 <span>                        <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Moy</span><span class="op">&lt;</span> <span class="va">MesStats</span><span class="op">$</span><span class="va">UCI</span>,</span>
 <span>                               <span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>,</span>
 <span>                        <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fl">100</span><span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">MesStats</span><span class="op">$</span><span class="va">test</span><span class="op">)</span><span class="op">/</span><span class="va">rep</span></span></code></pre></div>
-<pre><code>## [1] 94.82</code></pre>
+<pre><code>## [1] 94.45</code></pre>
 <p>OUI, 95 % comme attendu !</p>
 
 </div>
@@ -431,7 +469,7 @@ Figure 4.3: Représentation de l’intervalle de confiance à 95 % et de la vrai
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-01-09.</p>
+    <p>"<strong>Cours sur les plans d’échantillonnage statistique dans l’espace pour l’étude des sols</strong>" was written by Nicolas Saby, INRAe Infosol, Orléans France. It was last built on 2025-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,12 +1,12 @@
 tab:book-pkgs
 fig:nice-fig2
-fig:unnamed-chunk-5
-fig:unnamed-chunk-7
+fig:unnamed-chunk-6
 fig:unnamed-chunk-8
+fig:unnamed-chunk-9
 fig:SIsample
 fig:SIsampleSF
 fig:IC50
-fig:unnamed-chunk-24
+fig:unnamed-chunk-25
 fig:SYfig
 fig:Grilleregfig
 fig:GrillerHexfig
