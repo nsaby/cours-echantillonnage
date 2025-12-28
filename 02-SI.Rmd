@@ -75,39 +75,51 @@ et $s_{2,aleat}$
 
 
 
-Le package `sp` offre la fonction `spsample` pour effectuer cette procédure à partir de couches SIG.
-
+Le package `sp` offrait la fonction `spsample` pour effectuer cette procédure à partir de couches SIG.
+Nous utilisons ici la fonction `spatSample` du package `terra`
 
 ```{r SIsample, fig.cap='Exemple d\'échantillonnage aléatoire simple, avec 20 points SI(20)', out.width='110%', fig.asp=.75, fig.align='center'}
-MonEch <- spsample( x = champSP ,
-                    n  = n ,
-                    type = "random")
 
+# MonEch <- spsample( x = champSP ,
+#                     n  = n ,
+#                     type = "random")
 
-SI <- tm_shape(champSP) +
+MonEch <- spatSample(
+  champSP.terra,
+  size = n ,
+  method = "random", 
+  na.rm = TRUE,
+  as.points = TRUE,
+  xy=TRUE,
+  values=FALSE
+)
+
+SI <- tm_shape(champSP.terra) +
   tm_raster()+
   tm_shape(MonEch)+
   tm_symbols()+
-tm_layout(legend.outside = TRUE)
+  tm_layout(legend.outside = TRUE)
 
 SI
 ```
 
 
-Le package `sf` qui va remplacer progressivement `sp` contient la fonction `st_sample`.
+Le package `sf` qui  remplace progressivement `sp` contient la fonction `st_sample`.
 
 
 ```{r SIsampleSF, fig.cap='Exemple d\'échantillonnage aléatoire simple, avec 20 points SI(20), avec le package sf', out.width='110%', fig.asp=.75, fig.align='center'}
-MonEchSF <- st_sample( x = as(champSP,'sf') ,
-                    size  = n ,
-                    type = "random")
+
+MonEchSF <- st_sample( 
+  x = as(champSP,'sf') ,
+  size  = n ,
+  type = "random")
 
 
-SI <- tm_shape(champSP) +
+SI <- tm_shape(champSP.terra) +
   tm_raster()+
   tm_shape(MonEchSF)+
   tm_symbols()+
-tm_layout(legend.outside = TRUE)
+  tm_layout(legend.outside = TRUE)
 
 SI
 ```
@@ -146,7 +158,8 @@ Avec le plan aléatoire simple, le calcul de la moyenne est très simple
 
 ```{r}
 # simulation du terrain
-terrain2 <- over(MonEch,champSP)
+# jointure spatiale dans le format sp...
+terrain2 <- extract(champSP.terra , MonEch )
 
 MoyEst <- mean(terrain2$sim1)
 
@@ -252,27 +265,59 @@ Pour cela, nous tirons au hasard 20 points 10000 fois et nous effectuons la join
 
 ```{r}
 n = 20
-rep = 10000
+rep = 2000
 
-N = n * rep
-MonEch <- spsample( champSP , N , type = "random")
 
-# on récupère les valeurs de carbone
-terrainSimul <- over(MonEch,champSP)
+# MonEch <- spsample( 
+#   champSP ,
+#   N ,
+#   type = "random"
+#   )
+
+library(foreach)
+
+terrainSimulTOT <- foreach( i = 1:rep,
+                            .combine = rbind.data.frame 
+                            ) %do% {
+  
+  MonEch <- spatSample(
+  champSP.terra,
+  size = n ,
+  method = "random", 
+  na.rm = TRUE,
+  as.points = FALSE,
+  xy=TRUE,
+  values=FALSE
+)
+  
+  # on récupère les valeurs de carbone
+terrainSimul <- extract(champSP.terra , 
+                        MonEch )
+
+resu = cbind.data.frame(
+  id = i ,
+  sim1 = terrainSimul$sim1 
+  )
+resu
+}
+
+
+
+
+
 
 ```
 
-On calcule ensuite, par réplication, les estimations de la moyenne, de la variance d'échantillonnage et de l'intervace de confiance de la moyenne.
+On calcule ensuite, par réplication, les estimations de la moyenne, de la variance d'échantillonnage et de l'interface de confiance de la moyenne.
 
 ```{r}
-terrainSimul$id <- rep(1:rep,n)
 
-MesMoys <- aggregate(terrainSimul$sim1,
-                     by = list(terrainSimul$id),
+MesMoys <- aggregate(terrainSimulTOT$sim1,
+                     by = list(terrainSimulTOT$id),
                      FUN = mean)
 
-MesVarsEch <- aggregate(terrainSimul$sim1,
-                        by = list(terrainSimul$id),
+MesVarsEch <- aggregate(terrainSimulTOT$sim1,
+                        by = list(terrainSimulTOT$id),
                         FUN = var) 
 
 MesVarsEch$x <- MesVarsEch$x / 20

@@ -120,20 +120,23 @@ Ici, on avait retenu 20 unités, soit donc 10 strates.
 
 ```{r}
 
-library(raster)
 
-champSP.r <- raster(champSP)
-res(champSP.r)
+res(champSP.terra)
 
 #aggregate from 1x1 resolution to 2x2 (factor = 2)
-champSP.r.aggregate <- aggregate(champSP.r, 
+champSP.aggregate <- aggregate(champSP.terra, 
                                  fact = 2)
-res(champSP.r.aggregate)
+res(champSP.aggregate)
 
-champSP.r.aggregate <- as(champSP.r.aggregate , "SpatialPixels")
+
+# il faut transformer en format grid sp
+# pour cela il est possible d'utiliser un dataframe.
+dt <- as.data.frame(champSP.aggregate,xy=TRUE)
+coordinates(dt) <- c('x','y')
+gridded(dt) <- TRUE
 
 # compute compact geographical strata
-myStrata <- stratify(champSP.r.aggregate,
+myStrata <- stratify(dt,
                      nStrata = 10,
                      equalArea=TRUE, 
                      nTry=5
@@ -153,9 +156,11 @@ plot(myStrata, mySample)
 Comparons les deux approches: SI et STSI avec strates compactes
 
 ```{r}
-STSI <- tm_shape(champSP) +
+
+
+STSI <- tm_shape(champSP.terra) +
   tm_raster()+
-  tm_shape(mySample@sample)+
+  tm_shape( vect(mySample@sample) )+
   tm_symbols()+
 tm_layout(legend.outside = TRUE)
 
@@ -175,16 +180,18 @@ MoyEstSTSI
 
 ```
 
-Et pour la variance, il est nécessaire de calculer la variance par state et de calculer ensuite la moyenne de ces variances.
+Et pour la variance, il est nécessaire de calculer la variance par state et de calculer ensuite la moyenne pondérée de ces variances.
 
+IL faut pour cela former un tableau qui rassemble les identifiants des strates pour chaque point. Nous allons récupérer ces informations avec une jointure spatiale.
 
 ```{r}
+#
 StratesSTSI <- over(mySample@sample,myStrata@cells)
-
-myStrata@stratumId[StratesSTSI]
+id <- as.numeric(row.names(StratesSTSI)) # les numéros des pixels
+myStrata@stratumId[ id ]
 
 Mydata <- cbind.data.frame(
-  strate = myStrata@stratumId[StratesSTSI],
+  strate = myStrata@stratumId[id],
   z= terrainSTSI$sim1
   
 )

@@ -20,7 +20,7 @@ head(champ)
 
 
 Il est donc facile de transformer le tableau en une grille de type `SpatialPixelsDataframe`. Pour cela, on passe par une structure de type `SpatialPointDataframe` dans un premier temps.
-
+ce format ancien est nécessaire pour le package `spcosa`. Il faudra changer de format des raster selon les packages. C'est notament le cas pour `tmap` qui ne lit que du `terra`
 
 ```{r}
 champSP <- champ
@@ -28,6 +28,7 @@ champSP <- champ
 coordinates(champSP) <- c('s1','s2') 
 # transformer en raster
 gridded(champSP) <- TRUE
+
 ```
 
 Voici la structure de l'objet de type sp.
@@ -38,14 +39,18 @@ Voici la structure de l'objet de type sp.
 str(champSP)
 ```
 
-Il est assez simple de faire une carte avec le package `tmap`
+Il est assez simple de faire une carte avec le package `tmap` mais il faut transformer le raster dans le format du package `terra` comme ceci
+
+```{r}
+champSP.terra <- rast(champSP)
+```
+
 
 
 ```{r nice-fig2, fig.cap='Notre réalité: un champ aléatoire simulé avec un variogramme de type exponentiel', out.width='110%', fig.asp=.75, fig.align='center'}
 
-
-tm_shape(champSP) +
-  tm_raster()+
+tm_shape(champSP.terra)  +
+  tm_raster() +
 tm_layout(legend.outside = TRUE)
 
 ```
@@ -83,9 +88,12 @@ Pour illuster les différents plans possible pour la cartographie, nous prenons 
 le contour d'une parcelle  est fourni par le package `spcosa`. Sa forme est complexe et permet de bien illustrer les caractéristiques des plans d'échantillonnage proposés.
 
 ```{r, warning=FALSE, fig.cap='Contour d\'une parcelle agricole', out.width='80%', fig.asp=.75, fig.align='center'}
-shpFarmsum <- read_sf(dsn = system.file("maps", package = "spcosa"), layer = "farmsum")
 
-shpFarmsum <- as(shpFarmsum, "Spatial") # conversion sp
+shpFarmsum.sf <- read_sf(dsn = system.file("maps", 
+                                        package = "spcosa"), 
+                      layer = "farmsum")
+
+shpFarmsum <- as(shpFarmsum.sf, "Spatial") # conversion sp
 
 tm_shape(shpFarmsum) + 
   tm_borders()
@@ -104,14 +112,20 @@ Un ensemble de 5 rasters sont disponibles pour une parcelle située en Australie
 
 
 ```{r , warning=FALSE, fig.cap='Covariables raster en Australie', out.width='80%', fig.asp=.75, fig.align='center'}
+
 #Read data with coordinates and other attributes of fine grid (discretization of study area)
-load(file="Data/HunterValley4Practicals.RData")
+grdHunterValley <- readRDS(file="data/grdHunterValley.RDS")
+
 grdHunterValley2 <- grdHunterValley
 coordinates(grdHunterValley2) <- c('Easting','Northing')
 gridded(grdHunterValley2) <- TRUE
 
-tm_shape(grdHunterValley2) + 
-  tm_raster(col = c("elevation_m","slope_deg","cti","ndvi") )
+tm_shape( rast(grdHunterValley2) ) + 
+  tm_raster(
+    col = c("elevation_m","slope_deg","cti","ndvi")
+            )  +
+tm_layout(legend.outside = TRUE)
+  
 
 ```
 

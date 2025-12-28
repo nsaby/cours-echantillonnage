@@ -61,7 +61,7 @@ Ces quelques notes de cours et de scripts `R` ont été produits pour un cours d
 
 Ce cours est basé sur les travaux publiés dans le livre [@de_gruijter_sampling_2006]. Un descriptif des approches utiles pour la cartographie est également disponible dans l'article de Brus et al [@brus_sampling_2019] ainsi que les scripts `R` associés  sur le github: https://github.com/DickBrus/TutorialSampling4DSM
 
-Une nouvelle version est disponible ici :https://dickbrus.github.io/SpatialSamplingwithR/
+Dr Dick Brus a publié un recueil des méthodes de définition d'un plan d'échantillonnage dans un livre en ligne, disponible ici :https://dickbrus.github.io/SpatialSamplingwithR/
 
 Ce cours rassemble un sélection choisie de techniques et de codes pour mettre en oeuvre une sélection de position dans l'espace selon différents plans !
 
@@ -71,7 +71,7 @@ Motivations
 
 Les motivations pour ce cours sont les suivantes:
 
-- Les cours de statistique classiques ne s'attardent pas sur la discipline de l'échantillonnage
+- Les cours de statistique classique ne s'attardent pas sur la discipline de l'échantillonnage
 - La conception d'un plan d'échantillonnage efficace et efficient est une première étape importante d'un projet de recherche ou autres projets
 - Le plan d'échantillonnage détermine en grande partie la qualité du résultat final
 - Les problèmes d'inférence statistique peuvent souvent être évités lorsque la réflexion commence avant que les données ne soient collectées
@@ -206,7 +206,8 @@ library(knitr)
 library(sp) # pour gérer les données SIG raster et vecteurs
 library(sf) # pour gérer les données SIG vecteurs
 library(tmap) # faire les carte
-library(rgdal) # gestion des données raster et vecteurs
+# library(rgdal)
+library(terra) # gestion des données raster et vecteurs
 library(ggplot2)
 library(spcosa) # pour les algorithme de stratification de la zone
 library(fields)

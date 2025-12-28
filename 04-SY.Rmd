@@ -20,23 +20,32 @@ Plusieurs points doivent caractériser cette grille
   - Inconvénient : ils n'existe pas d'estimateur non biaisé de la variance d'échantillonnage 
 
 
-fixer le nombre de points avec la résolution qui va dépndre du budget alloué au projet.
+fixer le nombre de points avec la résolution qui va dépandre du budget alloué au projet.
 
 Exemple de grille
 -----------------
 
 ```{r SYfig, fig.cap='Exemple de  grilles systématiques placées au hasard', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
 
-MonEch <- sp::spsample( x = champSP , 
-                    cellsize = 20 ,
-                    type = "regular")
+set.seed(1) # ne marche pas sinon
+# MonEch <- sp::spsample( x = champSP , 
+#                     cellsize = 20 ,
+#                     type = "regular")
+x = st_sfc(
+  st_polygon(list(rbind(c(0,0),c(100,0),c(100,100),c(0,100),c(0,0))))
+  )
 
-set.seed(2) # ne marche pas sinon
-MonEch2 <- sp::spsample( x = champSP , 
-                    cellsize = 20 ,
-                    type = "regular")
+MonEch <- st_sample( x ,
+                    type = "regular",
+                    30)
 
-tm_shape(champSP) + tm_raster() +
+set.seed(3) # ne marche pas sinon
+MonEch2 <- st_sample( x ,
+                    type = "regular",
+                    30)
+
+
+tm_shape(champSP.terra) + tm_raster() +
   tm_shape(shp = MonEch) + tm_symbols(col='black') +
   tm_shape(shp = MonEch2) + tm_symbols(col='green')+
 
@@ -55,39 +64,116 @@ Exemple de mise en oeuvre
 
 Voici un exemple de mise en oeuvre des calculs proposés au paragraphe précédent.
 
+https://dickbrus.github.io/SpatialSamplingwithR/SY.html#approximating-the-sampling-variance-of-the-estimator-of-the-mean
+
 ```{r}
-terrainSY <- over(MonEch2, champSP)
+# d'abord récupérer les valeurs au niveau des sites
+terrainSY <- extract( champSP.terra , 
+                      vect(MonEch2) ,
+                      xy=TRUE
+                      )
 
-#change class of object with sample data to SpatialPixelsDataFrame
-gridded(MonEch2) <- TRUE
 
-#compute number of strata from length of data file NB number of sampling units can be odd
-numberofStrata <- floor(length(MonEch2) / 2)
-
-#cluster the sampling units
-myStrata <-
-  stratify(MonEch2,
-           nStrata = numberofStrata,
-           equalArea = TRUE,
-           nTry = 100)
-
-myStrata.df <- as(myStrata, "data.frame")
-data <- cbind(terrainSY, myStrata.df)
-
-varh <- tapply(data$sim1,
-               INDEX = data$stratumId,
-               FUN = var)
-
-nh <- tapply(data$sim1,
-             INDEX = data$stratumId,
-             FUN = length)
-
-varmeanh<-varh/nh
-wh<-nh/sum(nh)
-semeanSTSI<-sqrt(sum(wh^2*varmeanh))
-
-semeanSI <- sqrt(var(terrainSY$sim1)/length(MonEch2))
 
 ```
 
-Ainsi, l'estimation de la variance d'échantillonnage dite naïve est $`r semeanSI`$. Cette valeur est supérieure à la valeur fournie par l'estimation avec le deuxième formule: $`r semeanSTSI`$
+Voici la fonction pour faire le clustering spatiale par groupe égale
+
+```{r}
+
+.kmeans_equal_size <- function(s1, s2, k) {
+  n <- length(s1)
+  cluster_id <- rep(1:k, times = ceiling(n / k))
+  cluster_id <- cluster_id[1:n]
+  cluster_id <- cluster_id[sample(n, size = n)]
+  s1_c <- tapply(s1, INDEX = cluster_id, FUN = mean)
+  s2_c <- tapply(s2, INDEX = cluster_id, FUN = mean)
+  repeat {
+    n_swop <- 0
+    for (i in 1:(n - 1)) {
+      ci <- cluster_id[i]
+      for (j in (i + 1):n) {
+        cj <- cluster_id[j]
+        if (ci == cj) {
+          next
+          }
+        d1 <- (s1[i] - s1_c[ci])^2 + (s2[i] - s2_c[ci])^2 +
+          (s1[j] - s1_c[cj])^2 + (s2[j] - s2_c[cj])^2
+        d2 <- (s1[i] - s1_c[cj])^2 + (s2[i] - s2_c[cj])^2 +
+          (s1[j] - s1_c[ci])^2 + (s2[j] - s2_c[ci])^2
+        if (d1 > d2) {
+          #swop cluster ids and recompute cluster centres
+          cluster_id[i] <- cj; cluster_id[j] <- ci
+          s1_c <- tapply(s1, cluster_id, mean)
+          s2_c <- tapply(s2, cluster_id, mean)
+          n_swop <- n_swop + 1
+          break
+        }
+      }
+    }
+    if (n_swop == 0) {
+      break
+      }
+  }
+  D <- fields::rdist(x1 = cbind(s1_c, s2_c), x2 = cbind(s1, s2))
+  dmin <- apply(D, MARGIN = 2, FUN = min)
+  MSSD <- mean(dmin^2)
+  list(clusters = cluster_id, MSSD = MSSD)
+}
+
+kmeans_equal_size <- function(s1, s2, k, ntry) {
+  res_opt <- NULL
+  MSSD_min <- Inf
+  for (i in 1:ntry) {
+      res <- .kmeans_equal_size(s1, s2, k)
+      if (res$MSSD < MSSD_min) {
+        MSSD_min <- res$MSSD
+        res_opt <- res
+      }
+  }
+  res_opt
+}
+
+```
+
+
+```{r}
+
+n <- nrow(terrainSY)
+k <- floor(n / 2)
+
+set.seed(314)
+
+res <- kmeans_equal_size(
+  s1 = terrainSY$x / 1000,
+  s2 = terrainSY$y / 1000,
+  k = k, 
+  ntry = 100
+  )
+terrainSY$cluster <- res$clusters
+
+```
+
+Pour approximer la variance, voici l'implémentation.
+
+```{r}
+
+S2z_h <- tapply(terrainSY$sim1,
+                INDEX = terrainSY$cluster, 
+                FUN = var)
+
+nh <- tapply(terrainSY$sim1, 
+             INDEX = terrainSY$cluster, 
+             FUN = length
+             )
+
+v_mz_h <- S2z_h / nh
+w_h <- nh / sum(nh)
+
+av_STSI_mz <- sum(w_h^2 * v_mz_h)
+
+
+semeanSI = var(terrainSY$sim1)
+```
+
+Ainsi, l'estimation de la variance d'échantillonnage dite naïve est $`r semeanSI`$. Cette valeur est supérieure à la valeur fournie par l'estimation avec le deuxième formule: $`r av_STSI_mz`$

@@ -70,9 +70,9 @@ Voici l'exemple pour la grille de type régulière à maille carrée. On remarqu
 
 ```{r Grilleregfig, fig.cap='Grille régulière', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
 # regular
-MagrilleReg <- spsample( shpFarmsum ,
+MagrilleReg <- st_sample( shpFarmsum.sf ,
                     type = "regular",
-                    cellsize = 30)
+                    30)
 
 tm_shape(shpFarmsum) + 
   tm_borders( ) +
@@ -86,9 +86,9 @@ tm_shape(MagrilleReg) +
 Voici l'exemple pour la grille de type régulière carré. On remarque la présence de zone sans donnée.
 
 ```{r GrillerHexfig, fig.cap='Echantillonnage optimisé pour le krigeage', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
-MagrilleHex <- spsample( shpFarmsum ,
+MagrilleHex <- st_sample( shpFarmsum.sf ,
                     type = "hexagonal",
-                    cellsize = 30)
+                    30)
 
 tm_shape(shpFarmsum) + 
   tm_borders( ) +
@@ -145,7 +145,10 @@ Supposons l'existance d'un $k$ échantillons sur la zone
 ```{r}
 k= 20
 set.seed(3)
-MonEchAncien <- spsample( shpFarmsum , k , type = "random")
+MonEchAncien <- spsample( shpFarmsum , 
+                          k , 
+                          type = "random"
+                          )
 spplot(MonEchAncien)
 
 ```
@@ -226,8 +229,9 @@ plus <- NULL
 mySCsample.df <- rbind(mySCsample.df,plus.h)
 
 mySCsample.df$id <- row.names(mySCsample.df)
-coordinates(mySCsample.df) <- ~x1+ x2
 
+mySCsample.sf <- st_as_sf(mySCsample.df , 
+                          coords = c("x1" , "x2"))
 ```
 
 Voici la représentation du plan d'échantillonnage pour la géostatistique.
@@ -235,7 +239,7 @@ Voici la représentation du plan d'échantillonnage pour la géostatistique.
 ```{r PlusSample, fig.cap='Plan optimisé pour la géostatistique', out.width='110%',fig.asp=.75, fig.align='center',warning=FALSE}
 
 tm_shape(shpFarmsum)+ tm_borders()+
-  tm_shape(mySCsample.df) + tm_symbols()
+  tm_shape(mySCsample.sf) + tm_symbols()
 
 ```
 
@@ -255,14 +259,12 @@ Dans cette partie, l'échantillons doit permettre de calibrer un modèle de regr
 Comme présenté dans le chapitre sur les données, nous utilisons un jeu de données constitué de grille décrivant un ensemble de caractéristiques d'une parcelle en Australie.
 
 ```{r}
-#Read data with coordinates and other attributes of fine grid (discretization of study area)
-load(file="Data/HunterValley4Practicals.RData")
-grdHunterValley2 <- grdHunterValley
-coordinates(grdHunterValley2) <- c('Easting','Northing')
-gridded(grdHunterValley2) <- TRUE
 
-tm_shape(grdHunterValley2) + 
-  tm_raster(col = c("elevation_m","slope_deg","cti","ndvi") )
+tm_shape( rast(grdHunterValley2) ) + 
+  tm_raster(
+    col = c("elevation_m","slope_deg","cti","ndvi")
+            )  +
+tm_layout(legend.outside = TRUE)
 ```
 
 ### Mise en oeuvre avec l'algorithme K-moyennes
