@@ -143,13 +143,17 @@ plot(myStratification, mySamplingPattern)
 Supposons l'existance d'un $k$ échantillons sur la zone
 
 ```{r}
-k= 20
-set.seed(3)
-MonEchAncien <- spsample( shpFarmsum , 
-                          k , 
-                          type = "random"
-                          )
-spplot(MonEchAncien)
+k= 30
+set.seed(50)
+
+MonEchAncien <- st_sample( shpFarmsum.sf ,
+                    type = "random",
+                    k)
+
+
+
+tm_shape(shpFarmsum.sf) + tm_polygons()+
+  tm_shape(MonEchAncien) + tm_dots(fill="red" , shape = 22, size = 1)
 
 ```
 
@@ -157,16 +161,19 @@ La commande `spcosa::stratify` permet de construire les strates compactes en ten
 
 ```{r}
 #Set number of new sampling locations to be selected
-n<-100
+n<-130
 
 #Compute total sample size (existing points + new points)
 ntot<-n+k
 #Compute geostrata with option priorPoints=priordataEthiopia
 set.seed(314)
+
+MonEchAncien.sp  <- as_Spatial(MonEchAncien )
+
 myStrata <- stratify(shpFarmsum, 
                      cellSize= 2 ,
                      nStrata = ntot,
-                     priorPoints=MonEchAncien,
+                     priorPoints=MonEchAncien.sp,
                      nTry=10)
 
 
