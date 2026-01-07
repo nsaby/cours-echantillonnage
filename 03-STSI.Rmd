@@ -250,7 +250,7 @@ En sortie, on dispose des limites des classes et de l'affectation de chaque obse
 ```{r}
 library(stratification)
 n.echantillons <-  20 
-n.strates <-  6 
+n.strates <-  3 
 nclass <- n.strates * 100 #nombre de classes pour calculer l'histogramme
 
 dt = cbind.data.frame(coordinates(cov),cov = values(cov))
